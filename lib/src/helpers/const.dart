@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../gen by easy_localization/locale_keys.g.dart';
+import '../localization/gen by easy_localization/locale_keys.g.dart';
 
 class AppConstants {
   static final List<ThemeMode> themeModes = [

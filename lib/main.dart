@@ -1,11 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:provider/provider.dart';
-import 'src/gen by easy_localization/codegen_loader.g.dart';
+import 'src/localization/gen by easy_localization/codegen_loader.g.dart';
 import 'src/helpers/const.dart';
 import 'src/localization/app_locales.dart';
-import 'src/services/service_locator.dart';
+import 'state/services (Get It)/service_locator.dart';
 import 'this_app.dart';
 import 'theme/theme_controller.dart';
 
@@ -18,11 +17,10 @@ void main() async {
   final appLocales = AppLocales().appLocales;
 
   runApp(
+// here we can add Provider like next:
     // MultiProvider(
     //   providers: const [
-    //     // ChangeNotifierProvider(create: (_) => ItemsDataBase()),
-    //     // ChangeNotifierProvider(create: (_) => ThemeProvider()),
-    //     // ChangeNotifierProvider(create: (_) => CategoriesProvider()),
+    //    ChangeNotifierProvider(create: (_) => ThemeProvider()),
     //   ],
     ProviderScope(
       child: EasyLocalization(

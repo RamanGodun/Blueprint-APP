@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../src/services/theme_service.dart';
+import '../state/services (Get It)/theme_service.dart';
 
 class ThemeController with ChangeNotifier {
   ThemeController(this._settingsService);

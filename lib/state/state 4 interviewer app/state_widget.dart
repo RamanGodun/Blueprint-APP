@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'models 4 interviewer app/app_state_model.dart';
 import 'models 4 interviewer app/question_model.dart';
-import 'strings_4_app.dart';
 
 class DataProviderStateFull extends StatefulWidget {
   final Widget child;
@@ -9,6 +8,14 @@ class DataProviderStateFull extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _StateWidgetState();
+
+  static AppStateModel of(BuildContext context) {
+    final _StateWidgetState? state =
+        context.findAncestorStateOfType<_StateWidgetState>();
+    assert(
+        state != null, 'Cannot find DataProviderStateFull above this context');
+    return state!.appState;
+  }
 }
 
 class _StateWidgetState extends State<DataProviderStateFull> {
@@ -17,14 +24,13 @@ class _StateWidgetState extends State<DataProviderStateFull> {
   @override
   void initState() {
     super.initState();
-    appState = AppStateModel();
+    appState = AppStateModel(selectedAnswers: []);
   }
 
   void setAnswer(String answer) {
     setState(() {
-      appState = appState.copyWith(
-        selectedAnswers: [...appState.selectedAnswers!, answer],
-      );
+      appState = appState
+          .copyWith(selectedAnswers: [...?appState.selectedAnswers, answer]);
     });
   }
 
@@ -35,30 +41,27 @@ class _StateWidgetState extends State<DataProviderStateFull> {
   }
 
   @override
-  Widget build(BuildContext context) => DataProviderInherited(
-        key: const Key(AppStrings.key4StateWidget),
-        appState: appState,
-        stateWidget: widget,
-        child: widget.child,
-      );
+  Widget build(BuildContext context) {
+    return DataProviderInherited(
+      appState: appState,
+      child: widget.child,
+    );
+  }
 }
 
 class DataProviderInherited extends InheritedWidget {
   final AppStateModel appState;
-  final DataProviderStateFull stateWidget;
 
   const DataProviderInherited({
     super.key,
-    required super.child,
     required this.appState,
-    required this.stateWidget,
+    required super.child,
   });
 
   static AppStateModel? of(BuildContext context) {
-    final DataProviderInherited? result =
-        context.dependOnInheritedWidgetOfExactType<DataProviderInherited>();
-    assert(result != null, AppStrings.inheritedWidgetNotFound);
-    return result?.appState;
+    return context
+        .dependOnInheritedWidgetOfExactType<DataProviderInherited>()
+        ?.appState;
   }
 
   @override

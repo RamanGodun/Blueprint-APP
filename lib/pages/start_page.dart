@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../src/gen by easy_localization/locale_keys.g.dart';
+import '../src/localization/gen by easy_localization/locale_keys.g.dart';
 import '../theme/this_app_icons_icons.dart';
 
 class StartPage extends StatefulWidget {

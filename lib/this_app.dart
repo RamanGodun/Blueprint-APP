@@ -1,7 +1,7 @@
 import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'src/gen by easy_localization/locale_keys.g.dart';
+import 'src/localization/gen by easy_localization/locale_keys.g.dart';
 import 'src/app routing/app_routes.dart';
 import 'theme/theme_controller.dart';
 import 'theme/app_themes.dart';
