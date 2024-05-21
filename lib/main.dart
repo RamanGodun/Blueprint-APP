@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'src/gen by easy_localization/codegen_loader.g.dart';
 import 'src/helpers/const.dart';
 import 'src/localization/app_locales.dart';
@@ -15,11 +16,15 @@ void main() async {
   await settingsController.loadSettings();
   final appLocales = AppLocales().appLocales;
 
-  runApp(EasyLocalization(
-    assetLoader: const CodegenLoader(),
-    supportedLocales: AppLocales().appLocales,
-    path: AppConstants.translationsPath,
-    fallbackLocale: appLocales[0],
-    child: ThisApp(settingsController: settingsController),
-  ));
+  runApp(
+    ProviderScope(
+      child: EasyLocalization(
+        assetLoader: const CodegenLoader(),
+        supportedLocales: AppLocales().appLocales,
+        path: AppConstants.translationsPath,
+        fallbackLocale: appLocales[0],
+        child: ThisApp(settingsController: settingsController),
+      ),
+    ),
+  );
 }
