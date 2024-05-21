@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:provider/provider.dart';
 import 'src/gen by easy_localization/codegen_loader.g.dart';
 import 'src/helpers/const.dart';
 import 'src/localization/app_locales.dart';
@@ -17,6 +18,12 @@ void main() async {
   final appLocales = AppLocales().appLocales;
 
   runApp(
+    // MultiProvider(
+    //   providers: const [
+    //     // ChangeNotifierProvider(create: (_) => ItemsDataBase()),
+    //     // ChangeNotifierProvider(create: (_) => ThemeProvider()),
+    //     // ChangeNotifierProvider(create: (_) => CategoriesProvider()),
+    //   ],
     ProviderScope(
       child: EasyLocalization(
         assetLoader: const CodegenLoader(),
