@@ -11,7 +11,8 @@ class WidgetWithInheritedMethods extends StatefulWidget {
 }
 
 void goToNextQuestion(BuildContext context) {
-  final inheritModel = ChangeNotifierProvider.watch<InheritModel>(context);
+  final inheritModel =
+      ChangeNotifierProvider.watch<QuestionAndAnswersProvider>(context);
   if (inheritModel != null &&
       inheritModel.currentQuestion <
           (inheritModel.selectedQuestions?.length ?? 0) - 1) {
@@ -20,7 +21,8 @@ void goToNextQuestion(BuildContext context) {
 }
 
 void checkAnswer(BuildContext context, String userAnswer) {
-  final inheritModel = ChangeNotifierProvider.watch<InheritModel>(context);
+  final inheritModel =
+      ChangeNotifierProvider.watch<QuestionAndAnswersProvider>(context);
   if (inheritModel != null) {
     final correctAnswer = inheritModel
         .selectedQuestions?[inheritModel.currentQuestion].answers.first;

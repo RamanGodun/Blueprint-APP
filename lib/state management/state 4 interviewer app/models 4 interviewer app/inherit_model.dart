@@ -1,14 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'question_model.dart';
 
-class InheritModel extends ChangeNotifier {
+class QuestionAndAnswersProvider extends ChangeNotifier {
   List<QuestionAndAnswersModel>? _selectedQuestions;
   List<String>? _selectedAnswers;
+  List<bool>? _listOfIsCorrectAnswer;
   int _currentQuestion = 0;
   bool _isCurrentAnswerCorrect = false;
 
   List<QuestionAndAnswersModel>? get selectedQuestions => _selectedQuestions;
   List<String>? get selectedAnswers => _selectedAnswers;
+  List<bool>? get listOfIsCorrectAnswer => _listOfIsCorrectAnswer;
   int get currentQuestion => _currentQuestion;
   bool get isCurrentAnswerCorrect => _isCurrentAnswerCorrect;
 

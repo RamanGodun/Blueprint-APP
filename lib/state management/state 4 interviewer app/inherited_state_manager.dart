@@ -11,17 +11,17 @@ class InheritedWidgetManager extends StatefulWidget {
 }
 
 class _InheritedWidgetManagerState extends State<InheritedWidgetManager> {
-  late final InheritModel inheritModel;
+  late final QuestionAndAnswersProvider inheritModel;
 
   @override
   void initState() {
     super.initState();
-    inheritModel = InheritModel();
+    inheritModel = QuestionAndAnswersProvider();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<InheritModel>(
+    return ChangeNotifierProvider<QuestionAndAnswersProvider>(
       notifier: inheritModel,
       child: widget.child,
     );
