@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../src/localization/gen by easy_localization/locale_keys.g.dart';
-import '../../src/helpers/const.dart';
+import '../src/localization/gen by easy_localization/locale_keys.g.dart';
+import '../src/helpers/const.dart';
 
 class ThemeService {
   late String lightThemeText;

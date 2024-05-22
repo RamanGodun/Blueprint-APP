@@ -3,22 +3,6 @@ import 'package:flutter/material.dart';
 
 class StaticButtons {
 //
-  // static Widget loadingWidget() {
-  //   return const Center(
-  //     child: Column(
-  //       mainAxisSize: MainAxisSize.min,
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         CupertinoActivityIndicator(
-  //           radius: 15.0,
-  //           color: ThisAppColors.kSecondaryColor,
-  //         ),
-  //         SizedBox(height: 8.0),
-  //         Text(AppStrings2.loadingText),
-  //       ],
-  //     ),
-  //   );
-  // }
 
 //
   static Widget actionButtonForDialog(BuildContext context) {

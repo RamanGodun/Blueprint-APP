@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import '../../theme/theme_controller.dart';
-import 'theme_service.dart';
+import '../../theme/theme_service.dart';
 
 final GetIt getIt = GetIt.instance;
 

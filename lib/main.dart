@@ -1,45 +1,38 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'src/localization/gen by easy_localization/codegen_loader.g.dart';
-import 'src/helpers/const.dart';
-import 'src/localization/app_locales.dart';
+
+import 'main/app_state_management.dart';
 import 'state/services (Get It)/service_locator.dart';
-import 'state/state 4 interviewer app/state_widget.dart';
-import 'this_app.dart';
 import 'theme/theme_controller.dart';
+import 'widgets/static/static_widgets.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
-  setupOfGetItDependencies();
+  runApp(const AppInitializer());
+}
 
-  // Ініціалізація бази даних
-  // await setupDatabase();
+class AppInitializer extends StatelessWidget {
+  const AppInitializer({super.key});
 
-  final appLocales = AppLocales().appLocales;
-  final settingsController = getIt<ThemeController>();
-  await settingsController.loadSettings();
-  // final appState = await loadInitialState();
+  Future<void> initializeApp() async {
+    await EasyLocalization.ensureInitialized();
+    setupOfGetItDependencies();
+    final themeSettingsController = getIt<ThemeController>();
+    await themeSettingsController.loadSettings();
+  }
 
-  runApp(
-// here we can add Provider like next:
-    // MultiProvider(
-    //   providers: const [
-    //    ChangeNotifierProvider(create: (_) => ThemeProvider()),
-    //   ],
-    ProviderScope(
-      child: EasyLocalization(
-        assetLoader: const CodegenLoader(),
-        supportedLocales: AppLocales().appLocales,
-        path: AppConstants.translationsPath,
-        fallbackLocale: appLocales[0],
-        child: DataProviderStateFull(
-            // appState: appState,
-            child: ThisApp(settingsController: settingsController)),
-      ),
-    ),
-  );
-
-//
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: initializeApp(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return const AppStateManagement();
+        } else {
+          return const Material(
+              child: Center(child: StaticWidgets.loadingWidget));
+        }
+      },
+    );
+  }
 }
