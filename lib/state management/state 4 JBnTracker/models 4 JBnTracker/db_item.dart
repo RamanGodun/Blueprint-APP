@@ -1,5 +1,6 @@
 import 'package:isar/isar.dart';
-import '../string_4_jbn_tracker.dart';
+
+import '../../../src/string_4_jbn_tracker.dart';
 
 // next line is needed to generate isar file (run cmd in terminal)
 // " dart run build_runner build "
