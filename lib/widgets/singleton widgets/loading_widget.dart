@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../state management/state 4 JBnTracker/string_4_jbn_tracker.dart';
+import '../../src/string_4_jbn_tracker.dart';
 import '../../theme configuration/app_colorscheme.dart';
 
 class LoadingWidgetManager {
