@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../src/app routing/app_routes.dart';
 import '../src/localization/gen by easy_localization/locale_keys.g.dart';
-import '../state/services (Get It)/service_locator.dart';
-import '../theme/app_themes.dart';
-import '../theme/theme_controller.dart';
+import '../state management/services (Get It)/service_locator.dart';
+import '../theme configuration/app_themes.dart';
+import '../theme configuration/theme_controller.dart';
 
 class MaterialAppWithThemeAndRoutesSettings extends StatelessWidget {
   const MaterialAppWithThemeAndRoutesSettings({super.key});

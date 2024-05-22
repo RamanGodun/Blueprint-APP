@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../src/localization/gen by easy_localization/locale_keys.g.dart';
-import '../theme/this_app_icons_icons.dart';
+import '../theme configuration/this_app_icons_icons.dart';
 import '../widgets/icon_button_4_language_changing.dart';
 import '../widgets/icons_dialog.dart';
 import '../widgets/theme_drop_down_button.dart';

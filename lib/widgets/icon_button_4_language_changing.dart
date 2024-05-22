@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import '../src/localization/app_locales.dart';
-import '../theme/this_app_icons_icons.dart';
+import '../theme configuration/this_app_icons_icons.dart';
 
 class LanguageToggleButton extends StatelessWidget {
   final VoidCallback onUpdate;

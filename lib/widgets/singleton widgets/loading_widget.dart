@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import '../../state/state 4 JBnTracker/string_4_jbn_tracker.dart';
-import '../../theme/app_colorscheme.dart';
+import '../../state management/state 4 JBnTracker/string_4_jbn_tracker.dart';
+import '../../theme configuration/app_colorscheme.dart';
 
 class LoadingWidgetManager {
   static final LoadingWidgetManager _instance =

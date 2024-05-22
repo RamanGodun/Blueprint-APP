@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 // import '../../state/state 4 JBnTracker/string_4_jbn_tracker.dart';
-import '../../theme/app_colorscheme.dart';
+import '../../theme configuration/app_colorscheme.dart';
 
 class StaticWidgets {
   static const Widget loadingWidget = Center(
