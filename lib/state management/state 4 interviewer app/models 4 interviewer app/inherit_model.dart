@@ -1,26 +1,26 @@
 import 'package:flutter/foundation.dart';
 import 'question_model.dart';
 
-class AppStateModel {
+class InheritModel {
   final List<QuestionAndAnswersModel>? selectedQuestions;
   final List<String>? selectedAnswers;
   final int currentQuestion;
   final bool isCurrentAnswerCorrect;
 
-  AppStateModel({
+  InheritModel({
     this.selectedQuestions = const [],
     this.selectedAnswers = const <String>[],
     this.currentQuestion = 0,
     this.isCurrentAnswerCorrect = false,
   });
 
-  AppStateModel copyWith({
+  InheritModel copyWith({
     List<QuestionAndAnswersModel>? selectedQuestions,
     List<String>? selectedAnswers,
     int? currentQuestion,
     bool? isCurrentAnswerCorrect,
   }) =>
-      AppStateModel(
+      InheritModel(
         selectedQuestions: selectedQuestions ?? this.selectedQuestions,
         selectedAnswers: selectedAnswers ?? this.selectedAnswers,
         currentQuestion: currentQuestion ?? this.currentQuestion,
@@ -31,7 +31,7 @@ class AppStateModel {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AppStateModel &&
+      other is InheritModel &&
           runtimeType == other.runtimeType &&
           listEquals(selectedAnswers, other.selectedAnswers) &&
           listEquals(selectedQuestions, other.selectedQuestions) &&
