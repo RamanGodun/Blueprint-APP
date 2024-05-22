@@ -1,4 +1,4 @@
-import 'models 4 interviewer app/question_model.dart';
+import '../state management/state 4 interviewer app/models 4 interviewer app/question_model.dart';
 
 class QuestionAndAnswers {
   static const listOfQuestionsAndAnswers = [

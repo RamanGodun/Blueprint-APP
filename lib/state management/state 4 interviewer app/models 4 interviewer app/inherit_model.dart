@@ -1,47 +1,34 @@
 import 'package:flutter/foundation.dart';
 import 'question_model.dart';
 
-class InheritModel {
-  final List<QuestionAndAnswersModel>? selectedQuestions;
-  final List<String>? selectedAnswers;
-  final int currentQuestion;
-  final bool isCurrentAnswerCorrect;
+class InheritModel extends ChangeNotifier {
+  List<QuestionAndAnswersModel>? _selectedQuestions;
+  List<String>? _selectedAnswers;
+  int _currentQuestion = 0;
+  bool _isCurrentAnswerCorrect = false;
 
-  InheritModel({
-    this.selectedQuestions = const [],
-    this.selectedAnswers = const <String>[],
-    this.currentQuestion = 0,
-    this.isCurrentAnswerCorrect = false,
-  });
+  List<QuestionAndAnswersModel>? get selectedQuestions => _selectedQuestions;
+  List<String>? get selectedAnswers => _selectedAnswers;
+  int get currentQuestion => _currentQuestion;
+  bool get isCurrentAnswerCorrect => _isCurrentAnswerCorrect;
 
-  InheritModel copyWith({
-    List<QuestionAndAnswersModel>? selectedQuestions,
-    List<String>? selectedAnswers,
-    int? currentQuestion,
-    bool? isCurrentAnswerCorrect,
-  }) =>
-      InheritModel(
-        selectedQuestions: selectedQuestions ?? this.selectedQuestions,
-        selectedAnswers: selectedAnswers ?? this.selectedAnswers,
-        currentQuestion: currentQuestion ?? this.currentQuestion,
-        isCurrentAnswerCorrect:
-            isCurrentAnswerCorrect ?? this.isCurrentAnswerCorrect,
-      );
+  void setSelectedQuestions(List<QuestionAndAnswersModel> questions) {
+    _selectedQuestions = questions;
+    notifyListeners();
+  }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is InheritModel &&
-          runtimeType == other.runtimeType &&
-          listEquals(selectedAnswers, other.selectedAnswers) &&
-          listEquals(selectedQuestions, other.selectedQuestions) &&
-          currentQuestion == other.currentQuestion &&
-          isCurrentAnswerCorrect == other.isCurrentAnswerCorrect;
+  void addAnswer(String answer) {
+    _selectedAnswers = [..._selectedAnswers ?? [], answer];
+    notifyListeners();
+  }
 
-  @override
-  int get hashCode =>
-      selectedAnswers.hashCode ^
-      selectedQuestions.hashCode ^
-      currentQuestion.hashCode ^
-      isCurrentAnswerCorrect.hashCode;
+  void setCurrentQuestion(int questionIndex) {
+    _currentQuestion = questionIndex;
+    notifyListeners();
+  }
+
+  void setIsCurrentAnswerCorrect(bool isCorrect) {
+    _isCurrentAnswerCorrect = isCorrect;
+    notifyListeners();
+  }
 }
