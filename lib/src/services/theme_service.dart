@@ -1,13 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../src/localization/gen by easy_localization/locale_keys.g.dart';
-import '../src/helpers/const.dart';
+import '../localization/gen by easy_localization/locale_keys.g.dart';
+import '../helpers/const.dart';
 
 class ThemeService {
   late String lightThemeText;
   late String darkThemeText;
   late String systemThemeText;
+  final SharedPreferences sharedPrefs = GetIt.instance.get<SharedPreferences>();
 
   Future<void> loadLocaleTexts() async {
     lightThemeText = LocaleKeys.lightTheme.tr();
@@ -17,15 +19,14 @@ class ThemeService {
 
   Future<ThemeMode> themeMode() async {
     await loadLocaleTexts();
-    final prefs = await SharedPreferences.getInstance();
     final themeModeString =
-        prefs.getString(AppConstants.themeModeKey) ?? 'system';
+        sharedPrefs.getString(AppConstants.themeModeKey) ?? 'system';
     return _themeModeFromString(themeModeString);
   }
 
   Future<void> updateThemeMode(ThemeMode theme) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(AppConstants.themeModeKey, _themeModeToString(theme));
+    await sharedPrefs.setString(
+        AppConstants.themeModeKey, _themeModeToString(theme));
   }
 
   String _themeModeToString(ThemeMode themeMode) {
