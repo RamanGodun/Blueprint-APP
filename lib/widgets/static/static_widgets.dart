@@ -26,8 +26,13 @@ class StaticWidgets {
   static Widget getLoadingWidget() => loadingWidget;
 
   static Widget errorWidget(String errorText) {
-    return Center(
-      child: Text('Error: $errorText'),
+    return Material(
+      child: Center(
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: Text('Error: $errorText'),
+        ),
+      ),
     );
   }
 }

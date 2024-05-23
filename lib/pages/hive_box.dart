@@ -23,14 +23,24 @@ class _HiveBoxPageState extends State<HiveBoxPage> {
     box = GetIt.instance.get<Box<Person>>();
   }
 
+  @override
+  void dispose() {
+    box.compact(); // to delete temporary trash
+    box.close();
+    super.dispose();
+  }
+
+/*
+good practice to put all these methods into provider notifier 
+ */
   void _addPerson() {
     final person = Person(name: 'John Doe', age: 30);
-    box.add(person);
+    box.put("person", person);
     print('Person added: ${person.name}, Age: ${person.age}');
   }
 
   void _printFirstPerson() {
-    final person = box.getAt(0);
+    final person = box.get("person");
     if (person != null) {
       print('Person retrieved: ${person.name}, Age: ${person.age}');
     } else {
@@ -58,7 +68,7 @@ class _HiveBoxPageState extends State<HiveBoxPage> {
               padding: const EdgeInsets.all(18.0),
               child: ElevatedButton(
                 onPressed: _printFirstPerson,
-                child: const Text('Print First Person'),
+                child: const Text('Print Person'),
               ),
             ),
           ],

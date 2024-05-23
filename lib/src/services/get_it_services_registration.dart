@@ -32,7 +32,8 @@ Future<void> setupOfGetItDependencies() async {
   // Registering Hive boxes
   final appDocumentDir = await getApplicationDocumentsDirectory();
   await Hive.initFlutter(appDocumentDir.path);
-  var personBox = await Hive.openBox<Person>('personBox');
   Hive.registerAdapter(PersonAdapter());
+  var personBox = await Hive.openBox<Person>('personBox');
+// nice feature "lazy box"
   getIt.registerSingleton<Box<Person>>(personBox);
 }
