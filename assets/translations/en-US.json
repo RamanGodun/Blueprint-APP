@@ -1,7 +1,8 @@
 {
 "appTitle": "This app",
 "darkTheme": "Dark Theme",
-"goToTextfield": "Go to textfield",
+"goToTextfield": "To textfield page",
+"goToHiveBox": "To Hive page",
 "lightTheme": "Light Theme",
 "startScreen": "Start screen",
 "systemTheme": "System Theme",

@@ -17,7 +17,8 @@ class CodegenLoader extends AssetLoader {
   static const Map<String, dynamic> uk_UA = {
     "appTitle": "Цей додаток",
     "darkTheme": "Темна тема",
-    "goToTextfield": "Перейти до текст філда",
+    "goToTextfield": "До сторінки текст філда",
+    "goToHiveBox": "До сторінки Hive",
     "lightTheme": "світла тема",
     "startScreen": "стартовий екран",
     "systemTheme": "Тема девайсу",
@@ -26,7 +27,8 @@ class CodegenLoader extends AssetLoader {
   static const Map<String, dynamic> en_US = {
     "appTitle": "This app",
     "darkTheme": "Dark Theme",
-    "goToTextfield": "Go to textfield",
+    "goToTextfield": "To textfield page",
+    "goToHiveBox": "To Hive page",
     "lightTheme": "Light Theme",
     "startScreen": "Start screen",
     "systemTheme": "System Theme",

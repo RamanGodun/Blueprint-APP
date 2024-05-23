@@ -44,6 +44,16 @@ class _StartPageState extends State<StartPage> {
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
+            const SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {
+                context.pushNamed('HiveBoxPage');
+              },
+              child: Text(
+                LocaleKeys.goToHiveBox.tr(),
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
           ],
         ),
       ),
