@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../src/app routing/app_routes.dart';
 import '../src/localization/gen by easy_localization/locale_keys.g.dart';
-import '../state management/services 4 GetIt/service_locator.dart';
+import '../src/services/service_locator_get_it.dart';
 import '../theme configuration/app_themes.dart';
 import '../theme configuration/theme_controller.dart';
 
