@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'main/app_state_management.dart';
-import 'state management/services (Get It)/service_locator.dart';
+import 'state management/services 4 GetIt/service_locator.dart';
 import 'theme configuration/theme_controller.dart';
 import 'widgets/static/static_widgets.dart';
 

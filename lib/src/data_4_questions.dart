@@ -1,7 +1,7 @@
 import '../state management/state 4 interviewer app/models 4 interviewer app/question_model.dart';
 
 class QuestionAndAnswers {
-  static const listOfQuestionsAndAnswers = [
+  final listOfQuestionsAndAnswers = [
     QuestionAndAnswersModel(
       '     What are the main building blocks of Flutter UIs?',
       [
@@ -67,7 +67,7 @@ class QuestionAndAnswers {
     ),
   ];
 
-  static List<QuestionAndAnswersModel> generateRandomQuestionsList(
+  List<QuestionAndAnswersModel> generateRandomQuestionsList(
       int selectedQuantityOfQuestions) {
     final shuffledListOfQuestionAndAnswers = List.of(listOfQuestionsAndAnswers)
       ..shuffle();
