@@ -4,7 +4,7 @@ import '../../pages/hive_box.dart';
 import '../../pages/start_page.dart';
 import '../../pages/settings_page.dart';
 import '../../pages/textfield_page.dart';
-import '../services/get_it_services_registration.dart';
+import '../services/service_locator_get_it.dart';
 
 class AppRoutes {
   static final GoRouter router = GoRouter(

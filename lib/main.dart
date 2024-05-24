@@ -15,7 +15,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'main/app_state_management.dart';
-import 'src/services/get_it_services_registration.dart';
+import 'src/services/service_locator_get_it.dart';
 import 'theme configuration/theme_controller.dart';
 import 'widgets/static/static_widgets.dart';
 

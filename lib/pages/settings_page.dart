@@ -25,9 +25,8 @@ class _SettingsPageState extends State<SettingsPage> {
           IconButton(
             icon: const Icon(ThisAppIcons.crown),
             onPressed: () => showDialog(
-              context: context,
-              builder: (BuildContext context) => const CustomIconsDialog(),
-            ),
+                context: context,
+                builder: (BuildContext context) => const CustomIconsDialog()),
           ),
         ],
       ),
