@@ -30,9 +30,11 @@ class AppInitializer extends StatelessWidget {
   Future<void> initializeApp() async {
     await Future.wait([
       EasyLocalization.ensureInitialized(),
-      setupOfGetItDependencies(),
+      DependencyInitializer.instance.setupDependencies(),
     ]);
-    await getIt<ThemeController>().loadSettings();
+    await DependencyInitializer.instance
+        .getIt<ThemeController>()
+        .loadSettings();
   }
 
   @override

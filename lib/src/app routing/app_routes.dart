@@ -4,6 +4,7 @@ import '../../pages/hive_box.dart';
 import '../../pages/start_page.dart';
 import '../../pages/settings_page.dart';
 import '../../pages/textfield_page.dart';
+import '../services/get_it_services_registration.dart';
 
 class AppRoutes {
   static final GoRouter router = GoRouter(
@@ -68,7 +69,7 @@ class AppRoutes {
         pageBuilder: (context, state) {
           return CustomTransitionPage(
             key: state.pageKey,
-            child: const HiveBoxPage(),
+            child: HiveBoxPage(box: DependencyInitializer.instance.personBox),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               return CupertinoPageTransition(

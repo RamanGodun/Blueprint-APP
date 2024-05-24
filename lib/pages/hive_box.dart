@@ -1,53 +1,21 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 
 import '../state management/model_4_hive.dart';
 
 class HiveBoxPage extends StatefulWidget {
+  final Box<Person> box;
   static const routeName = '/hive_box';
-  const HiveBoxPage({super.key});
+
+  const HiveBoxPage({super.key, required this.box});
 
   @override
   State<HiveBoxPage> createState() => _HiveBoxPageState();
 }
 
 class _HiveBoxPageState extends State<HiveBoxPage> {
-  late Box<Person> box;
-
-  @override
-  void initState() {
-    super.initState();
-    box = GetIt.instance.get<Box<Person>>();
-  }
-
-  @override
-  void dispose() {
-    box.compact(); // to delete temporary trash
-    box.close();
-    super.dispose();
-  }
-
-/*
-good practice to put all these methods into provider notifier 
- */
-  void _addPerson() {
-    final person = Person(name: 'John Doe', age: 30);
-    box.put("person", person);
-    print('Person added: ${person.name}, Age: ${person.age}');
-  }
-
-  void _printFirstPerson() {
-    final person = box.get("person");
-    if (person != null) {
-      print('Person retrieved: ${person.name}, Age: ${person.age}');
-    } else {
-      print('No person found at index 0');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,5 +43,30 @@ good practice to put all these methods into provider notifier
         ),
       ),
     );
+  }
+
+/*
+good practice to put 2 these methods into provider notifier 
+ */
+  void _addPerson() {
+    final person = Person(name: 'John Doe', age: 30);
+    widget.box.put("person", person);
+    print('Person added: ${person.name}, Age: ${person.age}');
+  }
+
+  void _printFirstPerson() {
+    final person = widget.box.get("person");
+    if (person != null) {
+      print('Person retrieved: ${person.name}, Age: ${person.age}');
+    } else {
+      print('No person found at index 0');
+    }
+  }
+
+  @override
+  void dispose() {
+    widget.box.compact(); // to delete temporary trash
+    widget.box.close();
+    super.dispose();
   }
 }

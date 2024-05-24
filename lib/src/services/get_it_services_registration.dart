@@ -1,39 +1,50 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../state management/model_4_hive.dart';
 import '../../theme configuration/theme_controller.dart';
-import 'theme_service.dart';
 import 'isar_service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'theme_service.dart';
 
-final GetIt getIt = GetIt.instance;
+class DependencyInitializer {
+  static final DependencyInitializer _singleton =
+      DependencyInitializer._internal();
+  DependencyInitializer._internal();
 
-Future<void> setupOfGetItDependencies() async {
-// SharedPreferences&FlutterSecureStorage registration
-  const secureStorage = FlutterSecureStorage();
-  getIt.registerSingleton<FlutterSecureStorage>(secureStorage);
+  static DependencyInitializer get instance => _singleton;
 
-  final sharedPrefs = await SharedPreferences.getInstance();
-  getIt.registerSingleton<SharedPreferences>(sharedPrefs);
+  final GetIt _getIt = GetIt.instance;
+  GetIt get getIt => _getIt;
 
-// theme service&controller registration
-  getIt.registerSingleton<ThemeService>(ThemeService());
-  getIt.registerSingleton<ThemeController>(
-    ThemeController(getIt<ThemeService>()),
-  );
+  Future<void> setupDependencies() async {
+    // SharedPreferences & FlutterSecureStorage registration
+    const secureStorage = FlutterSecureStorage();
+    _getIt.registerSingleton<FlutterSecureStorage>(secureStorage);
 
-// isar registration
-  final isarService = IsarService();
-  await isarService.initializeIsar();
-  getIt.registerSingleton<IsarService>(isarService);
+    final sharedPrefs = await SharedPreferences.getInstance();
+    _getIt.registerSingleton<SharedPreferences>(sharedPrefs);
 
-  // Registering Hive boxes
-  final appDocumentDir = await getApplicationDocumentsDirectory();
-  await Hive.initFlutter(appDocumentDir.path);
-  Hive.registerAdapter(PersonAdapter());
-  var personBox = await Hive.openBox<Person>('personBox');
-// nice feature "lazy box"
-  getIt.registerSingleton<Box<Person>>(personBox);
+    // Theme service & controller registration
+    _getIt.registerSingleton<ThemeService>(ThemeService());
+    _getIt.registerSingleton<ThemeController>(
+      ThemeController(_getIt<ThemeService>()),
+    );
+
+    // Isar registration
+    final isarService = IsarService();
+    await isarService.initializeIsar();
+    _getIt.registerSingleton<IsarService>(isarService);
+
+    // Registering Hive
+    final appDocumentDir = await getApplicationDocumentsDirectory();
+    await Hive.initFlutter(appDocumentDir.path);
+    Hive.registerAdapter(PersonAdapter());
+    var personBox = await Hive.openBox<Person>('personBox');
+    _getIt.registerSingleton<Box<Person>>(personBox);
+  }
+
+  Box<Person> get personBox => _getIt.get<Box<Person>>();
 }
