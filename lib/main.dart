@@ -11,7 +11,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import 'package:blueprint_app/firebase_options.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'main/app_state_management.dart';
@@ -31,6 +33,9 @@ class AppInitializer extends StatelessWidget {
     await Future.wait([
       EasyLocalization.ensureInitialized(),
       DependencyInitializer.instance.setupDependencies(),
+      Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      )
     ]);
     await DependencyInitializer.instance
         .getIt<ThemeController>()
