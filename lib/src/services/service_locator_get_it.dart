@@ -8,13 +8,12 @@ import 'isar_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class DependencyInitializer {
-  DependencyInitializer._internal();
-  static final DependencyInitializer _singleton =
-      DependencyInitializer._internal();
+class DIServiceLocator {
+  DIServiceLocator._internal();
+  static final DIServiceLocator _singleton = DIServiceLocator._internal();
 
   // Публічний гетер для отримання екземпляру
-  static DependencyInitializer get instance => _singleton;
+  static DIServiceLocator get instance => _singleton;
 
   final GetIt _getIt = GetIt.instance;
   GetIt get getIt => _getIt;

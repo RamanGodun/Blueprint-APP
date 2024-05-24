@@ -1,6 +1,7 @@
 import 'package:blueprint_app/src/app%20routing/cup_page_transition.dart';
 import 'package:go_router/go_router.dart';
 import '../../pages/hive_box.dart';
+import '../../pages/login_page.dart';
 import '../../pages/start_page.dart';
 import '../../pages/settings_page.dart';
 import '../../pages/textfield_page.dart';
@@ -11,6 +12,24 @@ class AppRoutes {
     routes: [
       GoRoute(
         path: '/',
+        name: 'LoginPage',
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const LoginPage(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return CupertinoPageTransition(
+                primaryRouteAnimation: animation,
+                secondaryRouteAnimation: secondaryAnimation,
+                child: child,
+              );
+            },
+          );
+        },
+      ),
+      GoRoute(
+        path: '/start_page',
         name: 'StartPage',
         pageBuilder: (context, state) {
           return CustomTransitionPage(
@@ -28,7 +47,7 @@ class AppRoutes {
         },
       ),
       GoRoute(
-        path: '/settings',
+        path: '/start_page/settings',
         name: 'SettingsPage',
         pageBuilder: (context, state) {
           return CustomTransitionPage(
@@ -46,7 +65,7 @@ class AppRoutes {
         },
       ),
       GoRoute(
-        path: '/new_screen',
+        path: '/start_page/new_screen',
         name: 'TextFieldPage',
         pageBuilder: (context, state) {
           return CustomTransitionPage(
@@ -64,12 +83,12 @@ class AppRoutes {
         },
       ),
       GoRoute(
-        path: '/hive_box',
+        path: '/start_page/hive_box',
         name: 'HiveBoxPage',
         pageBuilder: (context, state) {
           return CustomTransitionPage(
             key: state.pageKey,
-            child: HiveBoxPage(box: DependencyInitializer.instance.personBox),
+            child: HiveBoxPage(box: DIServiceLocator.instance.personBox),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               return CupertinoPageTransition(

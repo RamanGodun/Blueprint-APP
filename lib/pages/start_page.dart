@@ -5,7 +5,7 @@ import '../src/localization/gen by easy_localization/locale_keys.g.dart';
 import '../theme configuration/this_app_icons_icons.dart';
 
 class StartPage extends StatefulWidget {
-  static const routeName = '/';
+  static const routeName = '/start_page';
   const StartPage({super.key});
 
   @override

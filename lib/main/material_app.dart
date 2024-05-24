@@ -12,8 +12,7 @@ class MaterialAppWithThemeAndRoutesSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeController =
-        DependencyInitializer.instance.getIt<ThemeController>();
+    final themeController = DIServiceLocator.instance.getIt<ThemeController>();
 
     return ListenableBuilder(
       listenable: themeController,

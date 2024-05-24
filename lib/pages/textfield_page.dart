@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class TextFieldPage extends HookWidget {
-  static const routeName = '/new_screen';
+  static const routeName = '/start_page/new_screen';
 
   const TextFieldPage({super.key});
 

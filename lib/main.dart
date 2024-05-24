@@ -32,14 +32,12 @@ class AppInitializer extends StatelessWidget {
   Future<void> initializeApp() async {
     await Future.wait([
       EasyLocalization.ensureInitialized(),
-      DependencyInitializer.instance.setupDependencies(),
+      DIServiceLocator.instance.setupDependencies(),
       Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       )
     ]);
-    await DependencyInitializer.instance
-        .getIt<ThemeController>()
-        .loadSettings();
+    await DIServiceLocator.instance.getIt<ThemeController>().loadSettings();
   }
 
   @override

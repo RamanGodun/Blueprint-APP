@@ -7,7 +7,7 @@ import '../state management/model_4_hive.dart';
 
 class HiveBoxPage extends StatefulWidget {
   final Box<Person> box;
-  static const routeName = '/hive_box';
+  static const routeName = '/start_page/hive_box';
 
   const HiveBoxPage({super.key, required this.box});
 

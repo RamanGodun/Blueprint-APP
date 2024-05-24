@@ -7,7 +7,7 @@ import '../widgets/icons_dialog.dart';
 import '../widgets/theme_drop_down_button.dart';
 
 class SettingsPage extends StatefulWidget {
-  static const routeName = '/settings';
+  static const routeName = '/start_page/settings';
   const SettingsPage({super.key});
 
   @override
