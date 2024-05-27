@@ -1,5 +1,5 @@
-import 'package:blueprint_app/src/helpers/inherited_change_notifier.dart';
 import 'package:flutter/material.dart';
+import '../src/helpers/inherited_change_notifier.dart';
 import '../state management/state 4 interviewer app/models 4 interviewer app/inherit_model.dart';
 
 class WidgetWithInheritedMethods extends StatefulWidget {

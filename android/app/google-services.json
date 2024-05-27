@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "526635916196",
+    "project_id": "my-blueprint-for-apps",
+    "storage_bucket": "my-blueprint-for-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526635916196:android:4395f73df8ff4f5e6aff31",
+        "android_client_info": {
+          "package_name": "com.example.blueprint_4app"
+        }
+      },
+     "oauth_client": [
+        {
+          "client_id": "526635916196-k1p4q2g43u11vms75ohpuj1p5bldijar.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.blueprint_4app",
+            "certificate_hash": "b4b87426a486043a74b63022b883a2958f2e4089"
+          }
+        },
+        {
+          "client_id": "526635916196-bgua4485hchkpmp521f9p4ll8ak7mdcn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQrjBILfcPgPr_ZfXH62pqWrS92f5Et-Q"
+        }
+      ],
+       "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526635916196-bgua4485hchkpmp521f9p4ll8ak7mdcn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "526635916196-6renhs9bhblro48qh3ficsqpf6nu3njf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.blueprintApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

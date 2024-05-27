@@ -11,12 +11,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import 'package:blueprint_app/src/firebase_options.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'main/app_state_management.dart';
+import 'src/firebase_options.dart';
 import 'src/services/service_locator_get_it.dart';
 import 'theme configuration/theme_controller.dart';
 import 'widgets/static/static_widgets.dart';
@@ -35,7 +35,7 @@ class AppInitializer extends StatelessWidget {
       DIServiceLocator.instance.setupDependencies(),
       Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
-      )
+      ),
     ]);
     await DIServiceLocator.instance.getIt<ThemeController>().loadSettings();
   }
@@ -57,3 +57,12 @@ class AppInitializer extends StatelessWidget {
     );
   }
 }
+
+
+/*
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>uk</string>
+	</array>
+ */

@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../src/localization/gen by easy_localization/locale_keys.g.dart';
 import '../theme configuration/this_app_icons_icons.dart';
@@ -15,6 +16,13 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  final user = FirebaseAuth.instance.currentUser!;
+
+  // sign user out method
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +36,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 context: context,
                 builder: (BuildContext context) => const CustomIconsDialog()),
           ),
+          IconButton(
+            onPressed: signUserOut,
+            icon: const Icon(Icons.logout),
+          )
         ],
       ),
       body: const Center(

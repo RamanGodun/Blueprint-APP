@@ -2,12 +2,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../src/images src gen by spider/resources.dart';
 import '../../widgets/my_button.dart';
 import '../../widgets/my_textfield.dart';
 import '../../widgets/square_tile.dart';
 
 class LoginPage extends StatefulWidget {
-  static const routeName = '/';
   const LoginPage({super.key});
 
   @override
@@ -198,12 +198,12 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // google button
-                  SquareTile(imagePath: 'lib/images/google.png'),
+                  SquareTile(imagePath: ThisAppImages.google),
 
                   SizedBox(width: 25),
 
                   // apple button
-                  SquareTile(imagePath: 'lib/images/apple.png')
+                  SquareTile(imagePath: ThisAppImages.apple)
                 ],
               ),
 

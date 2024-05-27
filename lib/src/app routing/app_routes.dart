@@ -1,6 +1,6 @@
-import 'package:blueprint_app/src/app%20routing/cupertino_page_transition.dart';
+import 'package:blueprint_4app/src/app%20routing/cupertino_page_transition.dart';
 import 'package:go_router/go_router.dart';
-import '../../pages/auth/login_page.dart';
+import '../../pages/auth/auth_page.dart';
 import '../../pages/hive_box.dart';
 
 import '../../pages/start_page.dart';
@@ -13,11 +13,11 @@ class AppRoutes {
     routes: [
       GoRoute(
         path: '/',
-        name: 'LoginPage',
+        name: 'AuthPage',
         pageBuilder: (context, state) {
           return CustomTransitionPage(
             key: state.pageKey,
-            child: const LoginPage(),
+            child: const AuthPage(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               return CupertinoPageTransition(
@@ -29,6 +29,24 @@ class AppRoutes {
           );
         },
       ),
+      // GoRoute(
+      //   path: '/',
+      //   name: 'LoginPage',
+      //   pageBuilder: (context, state) {
+      //     return CustomTransitionPage(
+      //       key: state.pageKey,
+      //       child: const LoginPage(),
+      //       transitionsBuilder:
+      //           (context, animation, secondaryAnimation, child) {
+      //         return CupertinoPageTransition(
+      //           primaryRouteAnimation: animation,
+      //           secondaryRouteAnimation: secondaryAnimation,
+      //           child: child,
+      //         );
+      //       },
+      //     );
+      //   },
+      // ),
       GoRoute(
         path: '/start_page',
         name: 'StartPage',
