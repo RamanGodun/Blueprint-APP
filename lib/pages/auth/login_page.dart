@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +7,7 @@ import '../../widgets/my_textfield.dart';
 import '../../widgets/square_tile.dart';
 
 class LoginPage extends StatefulWidget {
+  static const routeName = '/';
   const LoginPage({super.key});
 
   @override

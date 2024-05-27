@@ -1,7 +1,8 @@
-import 'package:blueprint_app/src/app%20routing/cup_page_transition.dart';
+import 'package:blueprint_app/src/app%20routing/cupertino_page_transition.dart';
 import 'package:go_router/go_router.dart';
+import '../../pages/auth/login_page.dart';
 import '../../pages/hive_box.dart';
-import '../../pages/auth/login_page_old.dart';
+
 import '../../pages/start_page.dart';
 import '../../pages/settings_page.dart';
 import '../../pages/textfield_page.dart';
