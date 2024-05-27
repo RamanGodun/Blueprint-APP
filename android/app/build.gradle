@@ -28,7 +28,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace = "com.example.blueprint_4app"
-    compileSdk = 33
+    compileSdk = 34
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

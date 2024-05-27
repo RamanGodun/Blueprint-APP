@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../src/localization/gen by easy_localization/locale_keys.g.dart';
 import '../theme configuration/this_app_icons_icons.dart';
 import '../widgets/icon_button_4_language_changing.dart';
@@ -16,11 +17,19 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  final user = FirebaseAuth.instance.currentUser!;
+  User? user;
 
-  // sign user out method
-  void signUserOut() {
-    FirebaseAuth.instance.signOut();
+  @override
+  void initState() {
+    super.initState();
+    user = FirebaseAuth.instance.currentUser;
+  }
+
+  void signUserOut() async {
+    await FirebaseAuth.instance.signOut();
+    if (!mounted) return;
+    user = null;
+    context.pushNamed('AuthPage');
   }
 
   @override
@@ -42,8 +51,10 @@ class _SettingsPageState extends State<SettingsPage> {
           )
         ],
       ),
-      body: const Center(
-        child: ThemeChangingButton(),
+      body: Center(
+        child: user == null
+            ? const Text("User is not logged in")
+            : const ThemeChangingButton(),
       ),
     );
   }

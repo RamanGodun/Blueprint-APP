@@ -10,7 +10,7 @@ class SquareTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white),
         borderRadius: BorderRadius.circular(16),
@@ -18,7 +18,7 @@ class SquareTile extends StatelessWidget {
       ),
       child: Image.asset(
         imagePath,
-        height: 40,
+        height: 30,
       ),
     );
   }

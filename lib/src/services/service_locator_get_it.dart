@@ -6,7 +6,6 @@ import '../../theme configuration/theme_controller.dart';
 import 'theme_service.dart';
 import 'isar_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class DIServiceLocator {
   DIServiceLocator._internal();
@@ -20,8 +19,8 @@ class DIServiceLocator {
 
   Future<void> setupDependencies() async {
     // Реєстрація SharedPreferences & FlutterSecureStorage
-    const secureStorage = FlutterSecureStorage();
-    _getIt.registerSingleton<FlutterSecureStorage>(secureStorage);
+    // const secureStorage = FlutterSecureStorage();
+    // _getIt.registerSingleton<FlutterSecureStorage>(secureStorage);
 
     final sharedPrefs = await SharedPreferences.getInstance();
     _getIt.registerSingleton<SharedPreferences>(sharedPrefs);

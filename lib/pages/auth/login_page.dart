@@ -104,9 +104,9 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 50),
 
               // logo
-              const Icon(
-                Icons.lock,
-                size: 100,
+              Image.asset(
+                ThisAppImages.flutterLogo,
+                height: 70,
               ),
 
               const SizedBox(height: 50),
@@ -191,7 +191,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
 
               // google + apple sign in buttons
               const Row(

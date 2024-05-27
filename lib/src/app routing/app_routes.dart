@@ -29,24 +29,6 @@ class AppRoutes {
           );
         },
       ),
-      // GoRoute(
-      //   path: '/',
-      //   name: 'LoginPage',
-      //   pageBuilder: (context, state) {
-      //     return CustomTransitionPage(
-      //       key: state.pageKey,
-      //       child: const LoginPage(),
-      //       transitionsBuilder:
-      //           (context, animation, secondaryAnimation, child) {
-      //         return CupertinoPageTransition(
-      //           primaryRouteAnimation: animation,
-      //           secondaryRouteAnimation: secondaryAnimation,
-      //           child: child,
-      //         );
-      //       },
-      //     );
-      //   },
-      // ),
       GoRoute(
         path: '/start_page',
         name: 'StartPage',
