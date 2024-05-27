@@ -1,6 +1,9 @@
+// ignore_for_file: use_build_context_synchronously, unnecessary_null_comparison, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   static const routeName = '/';
@@ -12,8 +15,28 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  Future<void> _handleSignIn() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser!.authentication;
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // ignore: unused_local_variable
+      final UserCredential userCredential =
+          await _auth.signInWithCredential(credential);
+      context.pushNamed('StartPage');
+    } catch (error) {
+      print('Sign in error: $error');
+    }
+  }
 
   void _signInWithEmailAndPassword() async {
     try {
@@ -21,9 +44,7 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-      // ignore: unnecessary_null_comparison
       if (user != null) {
-        // ignore: use_build_context_synchronously
         context.pushNamed('StartPage');
       }
     } catch (e) {
@@ -37,9 +58,7 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-      // ignore: unnecessary_null_comparison
       if (newUser != null) {
-        // ignore: use_build_context_synchronously
         context.pushNamed('StartPage');
       }
     } catch (e) {
@@ -83,6 +102,12 @@ class _LoginPageState extends State<LoginPage> {
                 foregroundColor: Colors.white,
               ),
               child: const Text('Register'),
+            ),
+            ElevatedButton(
+              onPressed: _handleSignIn,
+              style: ElevatedButton.styleFrom(
+                  foregroundColor: Theme.of(context).colorScheme.secondary),
+              child: const Text('Sign in with Google'),
             ),
           ],
         ),

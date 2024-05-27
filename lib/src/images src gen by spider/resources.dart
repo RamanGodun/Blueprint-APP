@@ -1,1 +1,1 @@
-part 'blueprint_app_images.dart';
+part 'this_app_images.dart';
