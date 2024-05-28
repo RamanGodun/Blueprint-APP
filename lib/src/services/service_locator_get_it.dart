@@ -1,3 +1,4 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
@@ -19,29 +20,42 @@ class DIServiceLocator {
 
   Future<void> setupDependencies() async {
     // Реєстрація SharedPreferences & FlutterSecureStorage
-    // const secureStorage = FlutterSecureStorage();
-    // _getIt.registerSingleton<FlutterSecureStorage>(secureStorage);
+    if (!_getIt.isRegistered<FlutterSecureStorage>()) {
+      const secureStorage = FlutterSecureStorage();
+      _getIt.registerSingleton<FlutterSecureStorage>(secureStorage);
+    }
 
-    final sharedPrefs = await SharedPreferences.getInstance();
-    _getIt.registerSingleton<SharedPreferences>(sharedPrefs);
+    if (!_getIt.isRegistered<SharedPreferences>()) {
+      final sharedPrefs = await SharedPreferences.getInstance();
+      _getIt.registerSingleton<SharedPreferences>(sharedPrefs);
+    }
 
     // Реєстрація ThemeService та ThemeController
-    _getIt.registerSingleton<ThemeService>(ThemeService());
-    _getIt.registerSingleton<ThemeController>(
-      ThemeController(_getIt<ThemeService>()),
-    );
+    if (!_getIt.isRegistered<ThemeService>()) {
+      _getIt.registerSingleton<ThemeService>(ThemeService());
+    }
+    if (!_getIt.isRegistered<ThemeController>()) {
+      _getIt.registerSingleton<ThemeController>(
+        ThemeController(_getIt<ThemeService>()),
+      );
+    }
 
     // Реєстрація Isar
-    final isarService = IsarService();
-    await isarService.initializeIsar();
-    _getIt.registerSingleton<IsarService>(isarService);
+    if (!_getIt.isRegistered<IsarService>()) {
+      final isarService = IsarService();
+      await isarService.initializeIsar();
+      _getIt.registerSingleton<IsarService>(isarService);
+    }
 
     // Ініціалізація та реєстрація Hive
-    final appDocumentDir = await getApplicationDocumentsDirectory();
-    await Hive.initFlutter(appDocumentDir.path);
-    Hive.registerAdapter(PersonAdapter());
-    var personBox = await Hive.openBox<Person>('personBox');
-    _getIt.registerSingleton<Box<Person>>(personBox);
+    if (!_getIt.isRegistered<Box<Person>>()) {
+      final appDocumentDir = await getApplicationDocumentsDirectory();
+      await Hive.initFlutter(appDocumentDir.path);
+      Hive.registerAdapter(PersonAdapter());
+      var personBox = await Hive.openBox<Person>('personBox');
+      _getIt.registerSingleton<Box<Person>>(personBox);
+    }
+    //
   }
 
   // Гетер для доступу до Box<Person>

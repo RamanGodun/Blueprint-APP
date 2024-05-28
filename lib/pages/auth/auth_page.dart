@@ -1,11 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../start_page.dart';
-import 'login_page.dart';
+import 'login_or_register_page.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthPage extends StatefulWidget {
   static const routeName = '/';
   const AuthPage({super.key});
+
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+  bool showLoginPage = true;
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +24,19 @@ class AuthPage extends StatelessWidget {
           if (snapshot.hasData) {
             return const StartPage();
           }
-
           // user is NOT logged in
-          else {
-            return const LoginPage();
-          }
+          return LoginOrRegisterPage(
+            changeAuthMode: toggleLoginOrRegisterPageMode,
+            isLoginPage: showLoginPage,
+          );
         },
       ),
     );
+  }
+
+  void toggleLoginOrRegisterPageMode() {
+    setState(() {
+      showLoginPage = !showLoginPage;
+    });
   }
 }

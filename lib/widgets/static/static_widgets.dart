@@ -14,10 +14,6 @@ class StaticWidgets {
               radius: 15.0,
               color: ThisAppColors.kSecondaryColor,
             ),
-            // SizedBox(height: 8.0),
-            // Directionality(
-            //     textDirection: TextDirection.ltr,
-            //     child: Text(AppStrings4JBnTracker.loadingText)),
           ],
         ),
       ),

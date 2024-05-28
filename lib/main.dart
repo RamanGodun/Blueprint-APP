@@ -57,12 +57,3 @@ class AppInitializer extends StatelessWidget {
     );
   }
 }
-
-
-/*
-	<key>CFBundleLocalizations</key>
-	<array>
-		<string>en</string>
-		<string>uk</string>
-	</array>
- */
