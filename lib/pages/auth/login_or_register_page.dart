@@ -206,21 +206,24 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
       },
     );
     try {
-      if (isLoginPage) {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text,
-        );
-      } else {
-        if (passwordConfirmationController != null &&
-            passwordController.text == passwordConfirmationController!.text) {
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      if (emailController.text.isNotEmpty &&
+          passwordController.text.isNotEmpty) {
+        if (isLoginPage) {
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: emailController.text,
             password: passwordController.text,
           );
         } else {
-          Navigator.pop(context);
-          return wrongEmailOrPasswordMessage('Passwords don\'t match');
+          if (passwordConfirmationController != null &&
+              passwordController.text == passwordConfirmationController!.text) {
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+              email: emailController.text,
+              password: passwordController.text,
+            );
+          } else {
+            Navigator.pop(context);
+            return wrongEmailOrPasswordMessage('Passwords don\'t match');
+          }
         }
       }
       Navigator.pop(context);

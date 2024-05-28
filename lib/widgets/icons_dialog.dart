@@ -23,11 +23,6 @@ class _CustomIconsDialogState extends State<CustomIconsDialog> {
     colorScheme = Theme.of(context).colorScheme;
     textTheme = Theme.of(context).textTheme;
     size = MediaQuery.of(context).size;
-    // final valueOfInheritedWidget =
-    //     context.dependOnInheritedWidgetOfExactType<DataProviderInherited>();
-    // final textForTest =
-    //     valueOfInheritedWidget?.appState.selectedQuestions?[0].text ?? "null";
-// final test2 = context.getElementForInheritedWidgetOfExactType
   }
 
   @override
