@@ -15,6 +15,7 @@ abstract class ThisAppColors {
   static const Color kDarkOnSurface = Color(0xFFD1D1D6);
   static const Color kOnSecondary = Color(0xFFFFFFFF);
   static final Color dividerColor = Colors.grey[600]?.withOpacity(0.6) as Color;
+  static final Color grey700 = Colors.grey[700] as Color;
 
   static MaterialColor createMaterialColor(Color color) {
     return MaterialColor(

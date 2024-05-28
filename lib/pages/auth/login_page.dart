@@ -3,9 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../src/images src gen by spider/resources.dart';
+import '../../theme configuration/app_colorscheme.dart';
 import '../../widgets/my_button.dart';
 import '../../widgets/my_textfield.dart';
 import '../../widgets/square_tile.dart';
+import '../../widgets/static/static_widgets.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -19,79 +21,6 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // sign user in method
-  void signUserIn() async {
-    // show loading circle
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
-
-    // try sign in
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
-      // pop the loading circle
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      // pop the loading circle
-      Navigator.pop(context);
-      // WRONG EMAIL
-      if (e.code == 'user-not-found') {
-        // show error to user
-        wrongEmailMessage();
-      }
-
-      // WRONG PASSWORD
-      else if (e.code == 'wrong-password') {
-        // show error to user
-        wrongPasswordMessage();
-      }
-    }
-  }
-
-  // wrong email message popup
-  void wrongEmailMessage() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          backgroundColor: Colors.deepPurple,
-          title: Center(
-            child: Text(
-              'Incorrect Email',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  // wrong password message popup
-  void wrongPasswordMessage() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          backgroundColor: Colors.deepPurple,
-          title: Center(
-            child: Text(
-              'Incorrect Password',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,31 +31,25 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 50),
-
               // logo
               Image.asset(
                 ThisAppImages.flutterLogo,
                 height: 70,
               ),
-
               const SizedBox(height: 50),
 
-              // welcome back, you've been missed!
-              Text(
+              StaticWidgets.text4LoginPageWidget(
+                context,
                 'Welcome back you\'ve been missed!',
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 16,
-                ),
+                color: ThisAppColors.grey700,
               ),
-
               const SizedBox(height: 25),
 
               // email textfield
               MyTextField(
                 controller: emailController,
                 hintText: 'Email',
-                obscureText: false,
+                isObscureText: false,
               ),
 
               const SizedBox(height: 10),
@@ -135,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
               MyTextField(
                 controller: passwordController,
                 hintText: 'Password',
-                obscureText: true,
+                isObscureText: true,
               ),
 
               const SizedBox(height: 10),
@@ -146,9 +69,10 @@ class _LoginPageState extends State<LoginPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
+                    StaticWidgets.text4LoginPageWidget(
+                      context,
                       'Forgot Password?',
-                      style: TextStyle(color: Colors.grey[600]),
+                      color: Colors.grey[600],
                     ),
                   ],
                 ),
@@ -157,40 +81,11 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 25),
 
               // sign in button
-              MyButton(
-                onTap: signUserIn,
-              ),
-
+              MyButton(onTap: signUserIn),
               const SizedBox(height: 50),
 
               // or continue with
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Text(
-                        'Or continue with',
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
+              StaticWidgets.divider4LoginPage(),
               const SizedBox(height: 30),
 
               // google + apple sign in buttons
@@ -199,30 +94,28 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   // google button
                   SquareTile(imagePath: ThisAppImages.google),
-
                   SizedBox(width: 25),
-
                   // apple button
                   SquareTile(imagePath: ThisAppImages.apple)
                 ],
               ),
-
               const SizedBox(height: 50),
 
               // not a member? register now
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  StaticWidgets.text4LoginPageWidget(
+                    context,
                     'Not a member?',
-                    style: TextStyle(color: Colors.grey[700]),
+                    color: ThisAppColors.grey700,
                   ),
                   const SizedBox(width: 4),
-                  const Text(
+                  Text(
                     'Register now',
                     style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ],
@@ -231,6 +124,54 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+    );
+  }
+
+// sign user in method
+  void signUserIn() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      // pop the loading circle
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      // WRONG EMAIL
+      if (e.code == 'user-not-found') {
+        wrongEmailOrPasswordMessage('Incorrect Email');
+      }
+      // WRONG PASSWORD
+      else if (e.code == 'wrong-password') {
+        wrongEmailOrPasswordMessage('Incorrect Password');
+      }
+    }
+  }
+
+  // wrong email or password message popup
+  void wrongEmailOrPasswordMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Colors.greenAccent,
+          title: Center(
+            child: Text(
+              message,
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+        );
+      },
     );
   }
 }
