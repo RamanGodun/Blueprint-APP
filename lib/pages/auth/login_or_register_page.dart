@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../src/images src gen by spider/resources.dart';
+import '../../src/services/google_signing_service.dart';
 import '../../theme configuration/app_colorscheme.dart';
 import '../../widgets/my_button.dart';
 import '../../widgets/my_textfield.dart';
@@ -25,6 +26,7 @@ class LoginOrRegisterPage extends StatefulWidget {
 
 class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   //
+  final AuthService _authService = AuthService();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   TextEditingController? passwordConfirmationController;
@@ -125,14 +127,17 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                 StaticWidgets.divider4LoginPage(),
 
                 // google + apple sign in buttons
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // google button
-                    SquareTile(imagePath: ThisAppImages.google),
-                    SizedBox(width: 25),
+                    SquareTile(
+                      imagePath: ThisAppImages.google,
+                      onTap: _authService.signInWithGoogle,
+                    ),
+                    const SizedBox(width: 25),
                     // apple button
-                    SquareTile(imagePath: ThisAppImages.apple)
+                    SquareTile(imagePath: ThisAppImages.apple, onTap: () {})
                   ],
                 ),
                 const SizedBox(height: 50),
