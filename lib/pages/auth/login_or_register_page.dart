@@ -26,10 +26,10 @@ class LoginOrRegisterPage extends StatefulWidget {
 
 class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   //
-  final AuthService _authService = AuthService();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   TextEditingController? passwordConfirmationController;
+  bool isLoading = false;
 
   @override
   void didUpdateWidget(LoginOrRegisterPage oldWidget) {
@@ -46,134 +46,155 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 50),
-                // logo
-                Image.asset(
-                  ThisAppImages.flutterLogo,
-                  color: Theme.of(context).colorScheme.inversePrimary,
-                  height: 70,
-                ),
-                const SizedBox(height: 50),
-
-                StaticWidgets.text4LoginPageWidget(
-                  context,
-                  (widget.isLoginPage == true)
-                      ? 'Welcome back you\'ve been missed!'
-                      : 'Let\'s create an account',
-                  color: ThisAppColors.grey700,
-                ),
-                const SizedBox(height: 25),
-
-                // email textfield
-                MyTextField(
-                  controller: emailController,
-                  hintText: 'Email',
-                  isObscureText: false,
-                  icon: Icons.mail,
-                ),
-
-                // password textfield
-                MyTextField(
-                  controller: passwordController,
-                  hintText: 'Password',
-                  isObscureText: true,
-                  icon: Icons.password,
-                ),
-
-                if (widget.isLoginPage == false &&
-                    passwordConfirmationController != null)
-                  MyTextField(
-                    controller: passwordConfirmationController!,
-                    hintText: 'Confirm password',
-                    isObscureText: true,
-                    icon: Icons.password_outlined,
-                  ),
-
-                // forgot password?
-                if (widget.isLoginPage == true)
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        StaticWidgets.text4LoginPageWidget(
-                          context,
-                          'Forgot Password?',
-                          color: Colors.grey[600],
-                        ),
-                      ],
-                    ),
-                  ),
-                const SizedBox(height: 35),
-
-                // sign in button
-                MyButton(
-                  buttonText:
-                      (widget.isLoginPage == true) ? 'Sign In' : 'Sign Up',
-                  onTap: () => signUserInOrUp(widget.isLoginPage == true),
-                ),
-                const SizedBox(height: 50),
-
-                // or continue with
-                StaticWidgets.divider4LoginPage(),
-
-                // google + apple sign in buttons
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // google button
-                    SquareTile(
-                      imagePath: ThisAppImages.google,
-                      onTap: _authService.signInWithGoogle,
-                    ),
-                    const SizedBox(width: 25),
-                    // apple button
-                    SquareTile(imagePath: ThisAppImages.apple, onTap: () {})
-                  ],
-                ),
-                const SizedBox(height: 50),
-
-                // not a member? register now
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    StaticWidgets.text4LoginPageWidget(
-                      context,
-                      (widget.isLoginPage == true)
-                          ? 'Not a member?'
-                          : 'Already have an account?',
-                      color: ThisAppColors.grey700,
-                    ),
-                    const SizedBox(width: 4),
-                    InkWell(
-                      onTap: widget.changeAuthMode,
-                      child: Text(
-                        (widget.isLoginPage == true)
-                            ? 'Register now'
-                            : 'Log in now',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontWeight: FontWeight.w700,
-                        ),
+    return (isLoading)
+        ? StaticWidgets.loadingWidget
+        : Scaffold(
+            backgroundColor: Colors.grey[300],
+            body: SafeArea(
+              child: Center(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 50),
+                      // logo
+                      Image.asset(
+                        ThisAppImages.flutterLogo,
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                        height: 70,
                       ),
-                    ),
-                  ],
-                )
-              ],
+                      const SizedBox(height: 50),
+
+                      StaticWidgets.text4LoginPageWidget(
+                        context,
+                        (widget.isLoginPage == true)
+                            ? 'Welcome back you\'ve been missed!'
+                            : 'Let\'s create an account',
+                        color: ThisAppColors.grey700,
+                      ),
+                      const SizedBox(height: 25),
+
+                      // email textfield
+                      MyTextField(
+                        controller: emailController,
+                        hintText: 'Email',
+                        isObscureText: false,
+                        icon: Icons.mail,
+                      ),
+
+                      // password textfield
+                      MyTextField(
+                        controller: passwordController,
+                        hintText: 'Password',
+                        isObscureText: true,
+                        icon: Icons.password,
+                      ),
+
+                      if (widget.isLoginPage == false &&
+                          passwordConfirmationController != null)
+                        MyTextField(
+                          controller: passwordConfirmationController!,
+                          hintText: 'Confirm password',
+                          isObscureText: true,
+                          icon: Icons.password_outlined,
+                        ),
+
+                      // forgot password?
+                      if (widget.isLoginPage == true)
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              StaticWidgets.text4LoginPageWidget(
+                                context,
+                                'Forgot Password?',
+                                color: Colors.grey[600],
+                              ),
+                            ],
+                          ),
+                        ),
+                      const SizedBox(height: 35),
+
+                      // sign in button
+                      MyButton(
+                        buttonText: (widget.isLoginPage == true)
+                            ? 'Sign In'
+                            : 'Sign Up',
+                        onTap: () => signUserInOrUp(widget.isLoginPage == true),
+                      ),
+                      const SizedBox(height: 50),
+
+                      // or continue with
+                      StaticWidgets.divider4LoginPage(),
+
+                      // google + apple sign in buttons
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // google button
+                          SquareTile(
+                            imagePath: ThisAppImages.google,
+                            onTap: googleSignIn,
+                          ),
+                          const SizedBox(width: 25),
+                          // apple button
+                          SquareTile(
+                              imagePath: ThisAppImages.apple, onTap: () {})
+                        ],
+                      ),
+                      const SizedBox(height: 50),
+
+                      // not a member? register now
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          StaticWidgets.text4LoginPageWidget(
+                            context,
+                            (widget.isLoginPage == true)
+                                ? 'Not a member?'
+                                : 'Already have an account?',
+                            color: ThisAppColors.grey700,
+                          ),
+                          const SizedBox(width: 4),
+                          InkWell(
+                            onTap: widget.changeAuthMode,
+                            child: Text(
+                              (widget.isLoginPage == true)
+                                  ? 'Register now'
+                                  : 'Log in now',
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
+  }
+
+// google sign-in method
+  void googleSignIn() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      final AuthService authService = AuthService();
+      await authService.signInWithGoogle();
+    } catch (error) {
+      // ignore: avoid_print
+      print(error);
+    }
+    setState(() {
+      isLoading = false;
+    });
   }
 
 // sign user in method
@@ -202,7 +223,6 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
           return wrongEmailOrPasswordMessage('Passwords don\'t match');
         }
       }
-
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
