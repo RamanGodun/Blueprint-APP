@@ -12,7 +12,7 @@
           "package_name": "com.example.blueprint_4app"
         }
       },
-     "oauth_client": [
+      "oauth_client": [
         {
           "client_id": "526635916196-k1p4q2g43u11vms75ohpuj1p5bldijar.apps.googleusercontent.com",
           "client_type": 1,
@@ -31,7 +31,7 @@
           "current_key": "AIzaSyCQrjBILfcPgPr_ZfXH62pqWrS92f5Et-Q"
         }
       ],
-       "services": {
+      "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
