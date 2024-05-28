@@ -51,7 +51,7 @@ class StaticWidgets {
 
   static Widget divider4LoginPage() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      padding: const EdgeInsets.only(left: 25.0, right: 25, bottom: 30),
       child: Row(
         children: [
           Expanded(

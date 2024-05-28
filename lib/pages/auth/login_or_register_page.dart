@@ -14,10 +14,10 @@ class LoginOrRegisterPage extends StatefulWidget {
   final bool isLoginPage;
 
   const LoginOrRegisterPage({
-    Key? key,
+    super.key,
     required this.changeAuthMode,
     required this.isLoginPage,
-  }) : super(key: key);
+  });
 
   @override
   State<LoginOrRegisterPage> createState() => _LoginOrRegisterPageState();
@@ -33,11 +33,9 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   void didUpdateWidget(LoginOrRegisterPage oldWidget) {
     if (oldWidget.isLoginPage != widget.isLoginPage) {
       if (widget.isLoginPage) {
-        // Якщо сторінка переходить на логін, очистіть passwordConfirmationController
         passwordConfirmationController?.clear();
         passwordConfirmationController = null;
       } else {
-        // Якщо сторінка переходить на реєстрацію, створіть новий passwordConfirmationController
         passwordConfirmationController = TextEditingController();
       }
     }
@@ -119,13 +117,12 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                 MyButton(
                   buttonText:
                       (widget.isLoginPage == true) ? 'Sign In' : 'Sign Up',
-                  onTap: () => signUserInOrUp(widget.isLoginPage),
+                  onTap: () => signUserInOrUp(widget.isLoginPage == true),
                 ),
                 const SizedBox(height: 50),
 
                 // or continue with
                 StaticWidgets.divider4LoginPage(),
-                const SizedBox(height: 30),
 
                 // google + apple sign in buttons
                 const Row(
@@ -179,26 +176,28 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
+        return StaticWidgets.loadingWidget;
       },
     );
     try {
-      isLoginPage
-          ? await FirebaseAuth.instance.signInWithEmailAndPassword(
-              email: emailController.text,
-              password: passwordController.text,
-            )
-          : (passwordConfirmationController != null &&
-                  passwordController.text ==
-                      passwordConfirmationController!.text)
-              ? await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                  email: emailController.text,
-                  password: passwordController.text,
-                )
-              : wrongEmailOrPasswordMessage('Passwords don\'t match');
-      // pop the loading circle
+      if (isLoginPage) {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+      } else {
+        if (passwordConfirmationController != null &&
+            passwordController.text == passwordConfirmationController!.text) {
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailController.text,
+            password: passwordController.text,
+          );
+        } else {
+          Navigator.pop(context);
+          return wrongEmailOrPasswordMessage('Passwords don\'t match');
+        }
+      }
+
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
