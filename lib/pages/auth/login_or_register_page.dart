@@ -1,16 +1,17 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter/cupertino.dart';
 import '../../src/images src gen by spider/resources.dart';
 import '../../src/services/google_signing_service.dart';
-import '../../theme configuration/app_colorscheme.dart';
 import '../../widgets/my_button.dart';
 import '../../widgets/my_textfield.dart';
 import '../../widgets/square_tile.dart';
 import '../../widgets/static/static_widgets.dart';
 
-class LoginOrRegisterPage extends StatefulWidget {
+class LoginOrRegisterPage extends HookWidget {
   final Function() changeAuthMode;
   final bool isLoginPage;
 
@@ -21,38 +22,103 @@ class LoginOrRegisterPage extends StatefulWidget {
   });
 
   @override
-  State<LoginOrRegisterPage> createState() => _LoginOrRegisterPageState();
-}
+  Widget build(BuildContext context) {
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
+    final passwordConfirmationController =
+        useState<TextEditingController?>(null);
+    final isLoading = useState(false);
 
-class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
-  //
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  TextEditingController? passwordConfirmationController;
-  bool isLoading = false;
-
-  @override
-  void didUpdateWidget(LoginOrRegisterPage oldWidget) {
-    if (oldWidget.isLoginPage != widget.isLoginPage) {
-      if (widget.isLoginPage) {
-        passwordConfirmationController?.clear();
-        passwordConfirmationController = null;
+    useEffect(() {
+      if (!isLoginPage) {
+        passwordConfirmationController.value = TextEditingController();
       } else {
-        passwordConfirmationController = TextEditingController();
+        passwordConfirmationController.value?.dispose();
+        passwordConfirmationController.value = null;
+      }
+      return () => passwordConfirmationController.value?.dispose();
+    }, [isLoginPage]);
+
+    Future<void> googleSignIn() async {
+      isLoading.value = true;
+      try {
+        final AuthService authService = AuthService();
+        await authService.signInWithGoogle();
+      } catch (error) {
+        print(error);
+      }
+      isLoading.value = false;
+    }
+
+    void wrongEmailOrPasswordMessage(BuildContext context, String message) {
+      showCupertinoDialog(
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: const Text('Error'),
+            content: Text(message),
+            actions: [
+              CupertinoDialogAction(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+    Future<void> signUserInOrUp(bool isLoginPage) async {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(child: CircularProgressIndicator());
+        },
+      );
+      try {
+        if (emailController.text.isNotEmpty &&
+            passwordController.text.isNotEmpty) {
+          if (isLoginPage) {
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
+              email: emailController.text,
+              password: passwordController.text,
+            );
+          } else {
+            if (passwordConfirmationController.value != null &&
+                passwordController.text ==
+                    passwordConfirmationController.value!.text) {
+              await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                email: emailController.text,
+                password: passwordController.text,
+              );
+            } else {
+              Navigator.pop(context);
+              return wrongEmailOrPasswordMessage(
+                  context, 'Passwords don\'t match');
+            }
+          }
+        }
+        Navigator.pop(context);
+      } on FirebaseAuthException catch (e) {
+        Navigator.pop(context);
+        if (e.code == 'user-not-found') {
+          wrongEmailOrPasswordMessage(context, 'Incorrect Email');
+        } else if (e.code == 'wrong-password') {
+          wrongEmailOrPasswordMessage(context, 'Incorrect Password');
+        }
       }
     }
-    super.didUpdateWidget(oldWidget);
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return (isLoading)
+    return isLoading.value
         ? StaticWidgets.loadingWidget
         : Scaffold(
-            backgroundColor: Colors.grey[300],
+            backgroundColor: Theme.of(context).colorScheme.surface,
             body: SafeArea(
               child: Center(
                 child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -60,20 +126,21 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                       // logo
                       Image.asset(
                         ThisAppImages.flutterLogo,
-                        color: Theme.of(context).colorScheme.inversePrimary,
+                        color: Theme.of(context).colorScheme.primary,
                         height: 70,
                       ),
                       const SizedBox(height: 50),
-
-                      StaticWidgets.text4LoginPageWidget(
-                        context,
-                        (widget.isLoginPage == true)
-                            ? 'Welcome back you\'ve been missed!'
+                      // welcome text
+                      Text(
+                        isLoginPage
+                            ? 'Welcome back, you\'ve been missed!'
                             : 'Let\'s create an account',
-                        color: ThisAppColors.grey700,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
+                        textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 25),
-
                       // email textfield
                       MyTextField(
                         controller: emailController,
@@ -81,190 +148,123 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                         isObscureText: false,
                         icon: Icons.mail,
                       ),
-
                       // password textfield
                       MyTextField(
                         controller: passwordController,
                         hintText: 'Password',
                         isObscureText: true,
-                        icon: Icons.password,
+                        icon: Icons.lock,
                       ),
-
-                      if (widget.isLoginPage == false &&
-                          passwordConfirmationController != null)
+                      if (!isLoginPage &&
+                          passwordConfirmationController.value != null)
                         MyTextField(
-                          controller: passwordConfirmationController!,
+                          controller: passwordConfirmationController.value!,
                           hintText: 'Confirm password',
                           isObscureText: true,
-                          icon: Icons.password_outlined,
+                          icon: Icons.lock_outline,
                         ),
-
-                      // forgot password?
-                      if (widget.isLoginPage == true)
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              StaticWidgets.text4LoginPageWidget(
-                                context,
-                                'Forgot Password?',
-                                color: Colors.grey[600],
-                              ),
-                            ],
+                      if (isLoginPage)
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: TextButton(
+                            onPressed: () {
+                              // Forgot password logic
+                            },
+                            child: Text(
+                              'Forgot Password?',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                            ),
                           ),
                         ),
                       const SizedBox(height: 35),
-
-                      // sign in button
+                      // sign in/sign up button
                       MyButton(
-                        buttonText: (widget.isLoginPage == true)
-                            ? 'Sign In'
-                            : 'Sign Up',
-                        onTap: () => signUserInOrUp(widget.isLoginPage == true),
+                        buttonText: isLoginPage ? 'Sign In' : 'Sign Up',
+                        onTap: () => signUserInOrUp(isLoginPage),
                       ),
                       const SizedBox(height: 50),
-
                       // or continue with
-                      StaticWidgets.divider4LoginPage(),
-
+                      Row(
+                        children: <Widget>[
+                          const Expanded(child: Divider()),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Text(
+                              "or continue with",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.onSurface,
+                                  ),
+                            ),
+                          ),
+                          const Expanded(child: Divider()),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
                       // google + apple sign in buttons
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // google button
                           SquareTile(
                             imagePath: ThisAppImages.google,
                             onTap: googleSignIn,
                           ),
                           const SizedBox(width: 25),
-                          // apple button
                           SquareTile(
-                              imagePath: ThisAppImages.apple, onTap: () {})
+                            imagePath: ThisAppImages.apple,
+                            onTap: () {},
+                          ),
                         ],
                       ),
                       const SizedBox(height: 50),
-
                       // not a member? register now
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          StaticWidgets.text4LoginPageWidget(
-                            context,
-                            (widget.isLoginPage == true)
+                          Text(
+                            isLoginPage
                                 ? 'Not a member?'
                                 : 'Already have an account?',
-                            color: ThisAppColors.grey700,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
+                                ),
                           ),
                           const SizedBox(width: 4),
-                          InkWell(
-                            onTap: widget.changeAuthMode,
+                          GestureDetector(
+                            onTap: changeAuthMode,
                             child: Text(
-                              (widget.isLoginPage == true)
-                                  ? 'Register now'
-                                  : 'Log in now',
-                              style: TextStyle(
-                                color: Theme.of(context).colorScheme.primary,
-                                fontWeight: FontWeight.w700,
-                              ),
+                              isLoginPage ? 'Register now' : 'Log in now',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
           );
-  }
-
-// google sign-in method
-  void googleSignIn() async {
-    setState(() {
-      isLoading = true;
-    });
-    try {
-      final AuthService authService = AuthService();
-      await authService.signInWithGoogle();
-    } catch (error) {
-      // ignore: avoid_print
-      print(error);
-    }
-    setState(() {
-      isLoading = false;
-    });
-  }
-
-// sign user in method
-  void signUserInOrUp(bool isLoginPage) async {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return StaticWidgets.loadingWidget;
-      },
-    );
-    try {
-      if (emailController.text.isNotEmpty &&
-          passwordController.text.isNotEmpty) {
-        if (isLoginPage) {
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
-            email: emailController.text,
-            password: passwordController.text,
-          );
-        } else {
-          if (passwordConfirmationController != null &&
-              passwordController.text == passwordConfirmationController!.text) {
-            await FirebaseAuth.instance.createUserWithEmailAndPassword(
-              email: emailController.text,
-              password: passwordController.text,
-            );
-          } else {
-            Navigator.pop(context);
-            return wrongEmailOrPasswordMessage('Passwords don\'t match');
-          }
-        }
-      }
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      Navigator.pop(context);
-      // WRONG EMAIL
-      if (e.code == 'user-not-found') {
-        wrongEmailOrPasswordMessage('Incorrect Email');
-      }
-      // WRONG PASSWORD
-      else if (e.code == 'wrong-password') {
-        wrongEmailOrPasswordMessage('Incorrect Password');
-      }
-    }
-  }
-
-  // wrong email or password message popup
-  void wrongEmailOrPasswordMessage(String message) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          backgroundColor: Theme.of(context).colorScheme.secondary,
-          title: Center(
-            child: Text(
-              message,
-              style: const TextStyle(color: Colors.white),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    emailController.clear();
-    passwordController.clear();
-    if (widget.isLoginPage == false) {
-      passwordConfirmationController!.clear();
-    }
-    super.dispose();
   }
 }

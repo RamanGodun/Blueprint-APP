@@ -17,33 +17,39 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 3.0),
+      padding: const EdgeInsets.symmetric(vertical: 3.0),
       child: SizedBox(
-        height: 45,
+        height: 50,
         child: TextField(
           controller: controller,
           obscureText: isObscureText,
-          style: const TextStyle(
-            color: Colors.black87,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface,
             fontSize: 16.0,
           ),
           decoration: InputDecoration(
             contentPadding:
-                const EdgeInsets.symmetric(vertical: 12.0, horizontal: 1.0),
+                const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(9.0),
-              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderSide: BorderSide(
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.3)),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(9.0),
               borderSide:
-                  BorderSide(color: Theme.of(context).colorScheme.secondary),
+                  BorderSide(color: Theme.of(context).colorScheme.primary),
             ),
-            fillColor: Colors.grey.shade200,
+            fillColor: Theme.of(context).colorScheme.surface,
             filled: true,
             hintText: hintText,
-            hintStyle: TextStyle(color: Colors.grey.shade500),
-            prefixIcon: Icon(icon, color: Colors.grey.shade500),
+            hintStyle: TextStyle(
+                color:
+                    Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
+            prefixIcon: Icon(icon,
+                color:
+                    Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
           ),
         ),
       ),
