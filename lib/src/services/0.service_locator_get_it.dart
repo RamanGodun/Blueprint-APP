@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import '../../state management/model_4_hive.dart';
 import '../../theme configuration/theme_controller.dart';
+import 'open_ai_service.dart';
 import 'theme_service.dart';
 import 'isar_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -28,6 +29,11 @@ class DIServiceLocator {
     if (!_getIt.isRegistered<SharedPreferences>()) {
       final sharedPrefs = await SharedPreferences.getInstance();
       _getIt.registerSingleton<SharedPreferences>(sharedPrefs);
+    }
+
+    // Реєстрація OpenAiService
+    if (!_getIt.isRegistered<OpenAiService>()) {
+      _getIt.registerSingleton<OpenAiService>(OpenAiService());
     }
 
     // Реєстрація ThemeService та ThemeController

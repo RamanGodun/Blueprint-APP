@@ -54,6 +54,16 @@ class _StartPageState extends State<StartPage> {
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
+            const SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {
+                context.pushNamed('SendPromptPage');
+              },
+              child: Text(
+                "To Chat GPT prompts",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
           ],
         ),
       ),

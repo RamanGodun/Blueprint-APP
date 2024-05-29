@@ -54,7 +54,22 @@ class _SettingsPageState extends State<SettingsPage> {
       body: Center(
         child: user == null
             ? const Text("User is not logged in")
-            : const ThemeChangingButton(),
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const ThemeChangingButton(),
+                  const SizedBox(height: 30),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.pushNamed('ApiKeyInputPage');
+                    },
+                    child: Text(
+                      "To enter GPT API key",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  ),
+                ],
+              ),
       ),
     );
   }

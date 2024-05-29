@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 
 import 'main/app_state_management.dart';
 import 'src/firebase_options.dart';
-import 'src/services/service_locator_get_it.dart';
+import 'src/services/0.service_locator_get_it.dart';
 import 'theme configuration/theme_controller.dart';
 import 'widgets/static/static_widgets.dart';
 

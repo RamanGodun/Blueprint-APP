@@ -1,12 +1,14 @@
 import 'package:blueprint_4app/src/app%20routing/cupertino_page_transition.dart';
 import 'package:go_router/go_router.dart';
+import '../../pages/GPT/api_key_page.dart';
+import '../../pages/GPT/send_prompt.dart';
 import '../../pages/auth/auth_page.dart';
 import '../../pages/hive_box.dart';
 
 import '../../pages/start_page.dart';
 import '../../pages/settings_page.dart';
 import '../../pages/textfield_page.dart';
-import '../services/service_locator_get_it.dart';
+import '../services/0.service_locator_get_it.dart';
 
 class AppRoutes {
   static final GoRouter router = GoRouter(
@@ -101,6 +103,43 @@ class AppRoutes {
           );
         },
       ),
+      GoRoute(
+        path: '/start_page/settings/enter_api_key',
+        name: 'ApiKeyInputPage',
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const ApiKeyInputPage(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return CupertinoPageTransition(
+                primaryRouteAnimation: animation,
+                secondaryRouteAnimation: secondaryAnimation,
+                child: child,
+              );
+            },
+          );
+        },
+      ),
+      GoRoute(
+        path: '/start_page/send_prompt',
+        name: 'SendPromptPage',
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const SendPromptPage(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return CupertinoPageTransition(
+                primaryRouteAnimation: animation,
+                secondaryRouteAnimation: secondaryAnimation,
+                child: child,
+              );
+            },
+          );
+        },
+      ),
+//
     ],
   );
 }
