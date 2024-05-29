@@ -127,18 +127,16 @@ DBItem _dBItemDeserialize(
 ) {
   final object = DBItem(
     amount: reader.readDoubleOrNull(offsets[0]) ?? 0,
-    categoryName:
-        reader.readStringOrNull(offsets[1]) ?? AppStrings4JBnTracker.other,
+    categoryName: reader.readStringOrNull(offsets[1]) ?? AppStrings.other,
     date: reader.readDateTime(offsets[2]),
     id4Order: reader.readLongOrNull(offsets[3]) ?? 0,
     isBlueprint: reader.readBoolOrNull(offsets[4]) ?? false,
     isPurchase: reader.readBoolOrNull(offsets[5]) ?? true,
-    measurementUnit:
-        reader.readStringOrNull(offsets[6]) ?? AppStrings4JBnTracker.pieces,
+    measurementUnit: reader.readStringOrNull(offsets[6]) ?? AppStrings.pieces,
     name: reader.readString(offsets[7]),
     quantity: reader.readDoubleOrNull(offsets[8]) ?? 1,
-    subCategoryName: reader.readStringOrNull(offsets[9]) ??
-        AppStrings4JBnTracker.withoutSubCategory,
+    subCategoryName:
+        reader.readStringOrNull(offsets[9]) ?? AppStrings.withoutSubCategory,
     totalAmount: reader.readDoubleOrNull(offsets[10]) ?? 0,
   );
   object.id = id;
@@ -155,8 +153,7 @@ P _dBItemDeserializeProp<P>(
     case 0:
       return (reader.readDoubleOrNull(offset) ?? 0) as P;
     case 1:
-      return (reader.readStringOrNull(offset) ?? AppStrings4JBnTracker.other)
-          as P;
+      return (reader.readStringOrNull(offset) ?? AppStrings.other) as P;
     case 2:
       return (reader.readDateTime(offset)) as P;
     case 3:
@@ -166,7 +163,7 @@ P _dBItemDeserializeProp<P>(
     case 5:
       return (reader.readBoolOrNull(offset) ?? true) as P;
     case 6:
-      return (reader.readStringOrNull(offset) ?? AppStrings4JBnTracker.pieces)
+      return (reader.readStringOrNull(offset) ?? AppStrings.pieces)
           as P;
     case 7:
       return (reader.readString(offset)) as P;
@@ -174,7 +171,7 @@ P _dBItemDeserializeProp<P>(
       return (reader.readDoubleOrNull(offset) ?? 1) as P;
     case 9:
       return (reader.readStringOrNull(offset) ??
-          AppStrings4JBnTracker.withoutSubCategory) as P;
+          AppStrings.withoutSubCategory) as P;
     case 10:
       return (reader.readDoubleOrNull(offset) ?? 0) as P;
     default:

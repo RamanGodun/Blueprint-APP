@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-import '../state management/model_4_hive.dart';
+import '../../state management/models/model_4_hive.dart';
 
 class HiveBoxPage extends StatefulWidget {
   final Box<Person> box;

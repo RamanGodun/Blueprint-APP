@@ -2,13 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../src/app routing/app_routes.dart';
-import '../src/localization/gen by easy_localization/locale_keys.g.dart';
-import '../src/services/0.service_locator_get_it.dart';
+import '../src/generated code/by easy_localization/locale_keys.g.dart';
+import '../src/services/0.service_locator.dart';
 import '../theme configuration/app_themes.dart';
 import '../theme configuration/theme_controller.dart';
 
-class MaterialAppWithThemeAndRoutesSettings extends StatelessWidget {
-  const MaterialAppWithThemeAndRoutesSettings({super.key});
+class ThemeAndRoutesSettings extends StatelessWidget {
+  const ThemeAndRoutesSettings({super.key});
 
   @override
   Widget build(BuildContext context) {

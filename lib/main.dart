@@ -14,10 +14,11 @@ limitations under the License.
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'main/app_state_management.dart';
-import 'src/firebase_options.dart';
-import 'src/services/0.service_locator_get_it.dart';
+import 'main/app.localization.dart';
+import 'src/helpers/firebase_options.dart';
+import 'src/services/0.service_locator.dart';
 import 'theme configuration/theme_controller.dart';
 import 'widgets/static/static_widgets.dart';
 
@@ -30,6 +31,7 @@ class AppInitializer extends StatelessWidget {
   const AppInitializer({super.key});
 
   Future<void> initializeApp() async {
+    // here all necessary initialization (Easy_localization, GetIt, FireBase)
     await Future.wait([
       EasyLocalization.ensureInitialized(),
       DIServiceLocator.instance.setupDependencies(),
@@ -49,7 +51,8 @@ class AppInitializer extends StatelessWidget {
           if (snapshot.hasError) {
             return StaticWidgets.errorWidget(snapshot.error.toString());
           }
-          return const AppStateManagement();
+          // here connected RiverPod (which can be replaced by Provider)
+          return const ProviderScope(child: LocalizationOfThisApp());
         } else {
           return StaticWidgets.loadingWidget;
         }

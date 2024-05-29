@@ -2,11 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../src/localization/gen by easy_localization/locale_keys.g.dart';
-import '../theme configuration/this_app_icons_icons.dart';
-import '../widgets/icon_button_4_language_changing.dart';
-import '../widgets/icons_dialog.dart';
-import '../widgets/theme_drop_down_button.dart';
+import '../src/generated code/by easy_localization/locale_keys.g.dart';
+import '../state management/const data/this_app_icons.dart';
+import '../widgets/buttons/icon_button_4_language_changing.dart';
+import '../widgets/dialogs/icons_dialog.dart';
+import '../widgets/buttons/theme_drop_down_button.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/start_page/settings';

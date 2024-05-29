@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../src/string_4_jbn_tracker.dart';
-import '../../theme configuration/app_colorscheme.dart';
+import '../../../theme configuration/app_colorscheme.dart';
 
 class LoadingWidgetManager {
   static final LoadingWidgetManager _instance =
@@ -22,8 +21,8 @@ class LoadingWidgetManager {
             radius: radius ?? 15.0,
             color: color ?? ThisAppColors.kSecondaryColor,
           ),
-          const SizedBox(height: 8.0),
-          Text(text ?? AppStrings4JBnTracker.loadingText),
+          // const SizedBox(height: 8.0),
+          // Text(text ?? AppStrings4JBnTracker.loadingText),
         ],
       ),
     );

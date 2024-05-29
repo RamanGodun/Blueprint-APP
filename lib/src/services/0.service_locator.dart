@@ -2,7 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
-import '../../state management/model_4_hive.dart';
+import '../../state management/models/model_4_hive.dart';
 import '../../theme configuration/theme_controller.dart';
 import 'open_ai_service.dart';
 import 'theme_service.dart';

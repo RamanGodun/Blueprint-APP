@@ -1,4 +1,4 @@
-import '../state management/state 4 interviewer app/models 4 interviewer app/question_model.dart';
+import '../models/models 4 interviewer app/question_model.dart';
 
 class QuestionAndAnswers {
   final listOfQuestionsAndAnswers = [

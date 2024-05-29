@@ -4,10 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/cupertino.dart';
-import '../../src/images src gen by spider/resources.dart';
+import '../../src/generated code/by spider/resources.dart';
 import '../../src/services/google_signing_service.dart';
-import '../../widgets/my_button.dart';
-import '../../widgets/my_textfield.dart';
+import '../../widgets/buttons/my_button.dart';
+import '../../widgets/text_fields.dart/custom_textfield.dart';
 import '../../widgets/square_tile.dart';
 import '../../widgets/static/static_widgets.dart';
 
