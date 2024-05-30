@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../state_management/const_data/app_const.dart';
@@ -12,11 +13,12 @@ class ThemeService {
   late SharedPreferences sharedPrefs;
 
   ThemeService() {
-    _initializePreferences();
+    _initialize();
   }
 
-  Future<void> _initializePreferences() async {
-    sharedPrefs = await SharedPreferences.getInstance();
+  Future<void> _initialize() async {
+    sharedPrefs = GetIt.instance<SharedPreferences>();
+    await loadLocaleTexts();
   }
 
   Future<void> loadLocaleTexts() async {
@@ -26,7 +28,6 @@ class ThemeService {
   }
 
   Future<ThemeMode> themeMode() async {
-    await loadLocaleTexts();
     final themeModeString =
         sharedPrefs.getString(AppConstants.themeModeKey) ?? 'system';
     return _themeModeFromString(themeModeString);

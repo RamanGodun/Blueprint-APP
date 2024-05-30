@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../../../src/helpers/inherited_change_notifier.dart';
+
+import '../../../src/helpers/my_change_notifier_provider.dart';
 import '../../../state_management/const_data/app_const.dart';
 import '../../../state_management/theme_provider.dart';
 
@@ -9,7 +10,8 @@ class ThemeChangingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = ChangeNotifierProvider.watch<ThemeProvider>(context);
+    final themeProvider =
+        MyChangeNotifierProvider.watch<ThemeProvider>(context);
 
     return DropdownButton<ThemeMode>(
       key: ValueKey(context.locale.toString()),

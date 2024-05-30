@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import '../src/services/theme_service.dart';
 
 class ThemeProvider extends ChangeNotifier {
+  final ThemeService _themeService = ThemeService();
   ThemeMode _themeMode = ThemeMode.system;
   ThemeMode get themeMode => _themeMode;
 
   Future<void> loadSettings() async {
-    _themeMode = await ThemeService().themeMode();
+    _themeMode = await _themeService.themeMode();
     notifyListeners();
   }
 
@@ -15,6 +16,6 @@ class ThemeProvider extends ChangeNotifier {
     if (newThemeMode == _themeMode) return;
     _themeMode = newThemeMode;
     notifyListeners();
-    await ThemeService().updateThemeMode(newThemeMode);
+    await _themeService.updateThemeMode(newThemeMode);
   }
 }

@@ -1,4 +1,4 @@
-import 'package:blueprint_4app/src/helpers/inherited_change_notifier.dart';
+import 'package:blueprint_4app/src/helpers/my_change_notifier_provider.dart';
 import 'package:flutter/material.dart';
 import 'theme_provider.dart';
 
@@ -30,7 +30,7 @@ class _InheritedThemeManagerState extends State<InheritedThemeManager> {
     if (!isInitialized) {
       return const Center(child: CircularProgressIndicator());
     }
-    return ChangeNotifierProvider<ThemeProvider>(
+    return MyChangeNotifierProvider<ThemeProvider>(
       notifier: themeProvider,
       child: widget.child,
     );

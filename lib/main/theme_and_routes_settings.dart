@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import '../src/App_routing/app_routes.dart';
 import '../src/generated code/by easy_localization/locale_keys.g.dart';
-import '../src/helpers/inherited_change_notifier.dart';
+import '../src/helpers/my_change_notifier_provider.dart';
 import '../state_management/inherited_theme_manager.dart';
 import '../state_management/theme_provider.dart';
 import '../theme_configuration/app_themes.dart';
@@ -24,7 +24,7 @@ class ThemeAndRoutesSettings extends StatelessWidget {
         theme: FIAppLightTheme.kLightTheme,
         darkTheme: ThisAppDarkTheme.kDarkTheme,
         themeMode:
-            ChangeNotifierProvider.watch<ThemeProvider>(context)?.themeMode ??
+            MyChangeNotifierProvider.watch<ThemeProvider>(context)?.themeMode ??
                 ThemeMode.system,
       ),
     );
