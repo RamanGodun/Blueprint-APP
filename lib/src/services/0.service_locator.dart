@@ -10,32 +10,27 @@ class DIServiceLocator {
   DIServiceLocator._internal();
   static final DIServiceLocator _singleton = DIServiceLocator._internal();
 
-  // Публічний гетер для отримання екземпляру
   static DIServiceLocator get instance => _singleton;
 
   final GetIt _getIt = GetIt.instance;
   GetIt get getIt => _getIt;
 
   Future<void> setupDependencies() async {
-    // Реєстрація FlutterSecureStorage
     if (!_getIt.isRegistered<FlutterSecureStorage>()) {
       const secureStorage = FlutterSecureStorage();
       _getIt.registerSingleton<FlutterSecureStorage>(secureStorage);
     }
 
-    // Реєстрація OpenAiService
     if (!_getIt.isRegistered<OpenAiService>()) {
       _getIt.registerSingleton<OpenAiService>(OpenAiService());
     }
 
-    // Реєстрація Isar
     if (!_getIt.isRegistered<IsarService>()) {
       final isarService = IsarService();
       await isarService.initializeIsar();
       _getIt.registerSingleton<IsarService>(isarService);
     }
 
-    // Ініціалізація та реєстрація Hive
     if (!_getIt.isRegistered<Box<Person>>()) {
       final appDocumentDir = await getApplicationDocumentsDirectory();
       await Hive.initFlutter(appDocumentDir.path);
@@ -45,6 +40,5 @@ class DIServiceLocator {
     }
   }
 
-  // Гетер для доступу до Box<Person>
   Box<Person> get personBox => _getIt.get<Box<Person>>();
 }

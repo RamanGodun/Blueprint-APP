@@ -27,11 +27,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const AppInitializer());
+  runApp(const AppRootClass());
 }
 
-class AppInitializer extends StatelessWidget {
-  const AppInitializer({super.key});
+class AppRootClass extends StatelessWidget {
+  const AppRootClass({super.key});
 
   @override
   Widget build(BuildContext context) {

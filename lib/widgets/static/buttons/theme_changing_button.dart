@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../../../src/helpers/my_change_notifier_provider.dart';
-import '../../../state_management/const_data/app_const.dart';
+import '../../../src/generated code/by easy_localization/locale_keys.g.dart';
 import '../../../state_management/theme_provider.dart';
 
 class ThemeChangingButton extends StatelessWidget {
@@ -9,28 +8,40 @@ class ThemeChangingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider =
-        MyChangeNotifierProvider.watch<ThemeProvider>(context);
+    final themeProvider = ThemeProvider.instance;
 
-    return DropdownButton<ThemeMode>(
-      key: ValueKey(context.locale.toString()),
-      value: themeProvider?.themeMode ?? ThemeMode.system,
-      onChanged: (newThemeMode) {
-        themeProvider?.updateThemeMode(newThemeMode);
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeProvider,
+      builder: (context, themeMode, _) {
+        return DropdownButton<ThemeMode>(
+          key: ValueKey(context.locale.toString()),
+          value: themeMode,
+          onChanged: (newThemeMode) {
+            themeProvider.updateThemeMode(newThemeMode);
+          },
+          items: _buildThemeModeItems(context),
+        );
       },
-      items: _buildThemeModeItems(context),
     );
   }
 
   List<DropdownMenuItem<ThemeMode>> _buildThemeModeItems(BuildContext context) {
-    final List<ThemeMode> themeModes = AppConstants.themeModes;
-    final List<String> themeModeTexts = AppConstants.themeModeTexts;
+    final List<ThemeMode> themeModes = [
+      ThemeMode.system,
+      ThemeMode.light,
+      ThemeMode.dark
+    ];
+    final List<String> themeModeTexts = [
+      LocaleKeys.systemTheme.tr(),
+      LocaleKeys.lightTheme.tr(),
+      LocaleKeys.darkTheme.tr()
+    ];
 
     return List<DropdownMenuItem<ThemeMode>>.generate(
       themeModes.length,
       (index) => DropdownMenuItem<ThemeMode>(
         value: themeModes[index],
-        child: Text(themeModeTexts[index].tr()),
+        child: Text(themeModeTexts[index]),
       ),
     );
   }
