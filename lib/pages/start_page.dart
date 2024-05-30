@@ -45,39 +45,42 @@ class _StartPageState extends State<StartPage> {
         ],
       ),
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            StaticTextWidgets.themedText(
-              context,
-              LocaleKeys.thisIsStartScreen.tr(),
-              color: colorScheme.inverseSurface,
-            ),
-            StaticCustomButtons.customButton(
-              context,
-              onPressed: () {
-                context.pushNamed('TextFieldPage');
-              },
-              buttonText: LocaleKeys.goToTextfield.tr(),
-            ),
-            const SizedBox(height: 50),
-            StaticCustomButtons.customButton(
-              context,
-              onPressed: () {
-                context.pushNamed('HiveBoxPage');
-              },
-              buttonText: LocaleKeys.goToHiveBox.tr(),
-            ),
-            const SizedBox(height: 50),
-            StaticCustomButtons.customButton(
-              context,
-              onPressed: () {
-                context.pushNamed('SendPromptPage');
-              },
-              buttonText: "To Chat GPT prompts",
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              StaticTextWidgets.themedText(
+                context,
+                LocaleKeys.thisIsStartScreen.tr(),
+                color: colorScheme.inverseSurface,
+              ),
+              StaticCustomButtons.customButton(
+                context,
+                onPressed: () {
+                  context.pushNamed('TextFieldPage');
+                },
+                buttonText: LocaleKeys.goToTextfield.tr(),
+              ),
+              const SizedBox(height: 50),
+              StaticCustomButtons.customButton(
+                context,
+                onPressed: () {
+                  context.pushNamed('HiveBoxPage');
+                },
+                buttonText: LocaleKeys.goToHiveBox.tr(),
+              ),
+              const SizedBox(height: 50),
+              StaticCustomButtons.customButton(
+                context,
+                onPressed: () {
+                  context.pushNamed('SendPromptPage');
+                },
+                buttonText: "To Chat GPT prompts",
+              ),
+            ],
+          ),
         ),
       ),
     );

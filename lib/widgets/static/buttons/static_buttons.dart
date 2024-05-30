@@ -11,9 +11,8 @@ class StaticCustomButtons {
       child: Container(
         height: 50,
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-        margin: const EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
-          color: colorScheme.secondary.withOpacity(0.3),
+          color: colorScheme.secondary.withOpacity(0.7),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
@@ -28,5 +27,23 @@ class StaticCustomButtons {
         ),
       ),
     );
+  }
+
+  static Widget customButton2(BuildContext context,
+      {required VoidCallback onPressed, required String buttonText}) {
+    return ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.all<Color>(
+            Theme.of(context).colorScheme.secondary,
+          ),
+        ),
+        onPressed: onPressed,
+        child: Text(
+          buttonText,
+          style: Theme.of(context)
+              .textTheme
+              .bodyLarge
+              ?.copyWith(color: Theme.of(context).colorScheme.onInverseSurface),
+        ));
   }
 }

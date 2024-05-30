@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../src/generated code/by easy_localization/locale_keys.g.dart';
 import '../state_management/const_data/this_app_icons.dart';
 import '../widgets/static/buttons/icon_button_4_language_changing.dart';
+import '../widgets/static/buttons/static_buttons.dart';
 import '../widgets/static/buttons/theme_changing_button.dart';
 import '../widgets/static/dialogs/icons_dialog.dart';
 
@@ -59,15 +60,13 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   const ThemeChangingButton(),
                   const SizedBox(height: 30),
-                  ElevatedButton(
+                  StaticCustomButtons.customButton2(
+                    context,
                     onPressed: () {
                       context.pushNamed('ApiKeyInputPage');
                     },
-                    child: Text(
-                      "To enter GPT API key",
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ),
+                    buttonText: "To enter GPT API key",
+                  )
                 ],
               ),
       ),
