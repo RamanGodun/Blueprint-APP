@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../state_management/const_data/custom_icons_list.dart';
-import '../../../theme_configuration/app_colorscheme.dart';
+import '../../../state_management/theme_settings/app_colorscheme.dart';
 import 'dialog_action_buttons.dart';
 
 class CustomIconsDialog extends StatefulWidget {

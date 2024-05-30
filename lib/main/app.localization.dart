@@ -18,7 +18,7 @@ class LocalizationOfThisApp extends StatelessWidget {
       supportedLocales: appLocales,
       path: AppConstants.translationsPath,
       fallbackLocale: appLocales[0],
-      child: const ThemeAndRoutesSettings(),
+      child: const GettingContextForThemeManager(),
     );
   }
 }

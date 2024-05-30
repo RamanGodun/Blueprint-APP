@@ -26,9 +26,17 @@ class _InheritedThemeManagerState extends State<InheritedThemeManager> {
 
   @override
   Widget build(BuildContext context) {
-    return _InheritedNotifier(
-      notifier: themeProvider,
-      child: widget.child,
+    return FutureBuilder(
+      future: themeProvider.loadSettings(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        return _InheritedNotifier(
+          notifier: themeProvider,
+          child: widget.child,
+        );
+      },
     );
   }
 }

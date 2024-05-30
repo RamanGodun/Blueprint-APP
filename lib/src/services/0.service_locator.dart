@@ -2,6 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../state_management/models/model_4_hive.dart';
 import 'open_ai_service.dart';
 import 'isar_service.dart';
@@ -16,6 +17,10 @@ class DIServiceLocator {
   GetIt get getIt => _getIt;
 
   Future<void> setupDependencies() async {
+    if (!_getIt.isRegistered<SharedPreferences>()) {
+      final prefs = await SharedPreferences.getInstance();
+      _getIt.registerSingleton<SharedPreferences>(prefs);
+    }
     if (!_getIt.isRegistered<FlutterSecureStorage>()) {
       const secureStorage = FlutterSecureStorage();
       _getIt.registerSingleton<FlutterSecureStorage>(secureStorage);
@@ -38,6 +43,10 @@ class DIServiceLocator {
       var personBox = await Hive.openBox<Person>('personBox');
       _getIt.registerSingleton<Box<Person>>(personBox);
     }
+  }
+
+  T get<T extends Object>() {
+    return _getIt.get<T>();
   }
 
   Box<Person> get personBox => _getIt.get<Box<Person>>();

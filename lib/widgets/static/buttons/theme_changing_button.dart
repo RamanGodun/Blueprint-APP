@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../src/generated code/by easy_localization/locale_keys.g.dart';
-import '../../../state_management/inherited_theme_manager.dart';
+import '../../../state_management/theme_settings/inherited_theme_manager.dart';
 
 class ThemeChangingButton extends StatelessWidget {
   const ThemeChangingButton({super.key});
