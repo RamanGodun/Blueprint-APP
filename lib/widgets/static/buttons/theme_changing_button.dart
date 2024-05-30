@@ -1,23 +1,25 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../src/generated code/by easy_localization/locale_keys.g.dart';
-import '../../../state_management/theme_provider.dart';
+import '../../../state_management/inherited_theme_manager.dart';
 
 class ThemeChangingButton extends StatelessWidget {
   const ThemeChangingButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = ThemeProvider.instance;
+    final themeProvider = InheritedThemeManager.of(context);
 
     return ValueListenableBuilder<ThemeMode>(
-      valueListenable: themeProvider,
+      valueListenable: themeProvider!,
       builder: (context, themeMode, _) {
         return DropdownButton<ThemeMode>(
           key: ValueKey(context.locale.toString()),
           value: themeMode,
           onChanged: (newThemeMode) {
-            themeProvider.updateThemeMode(newThemeMode);
+            if (newThemeMode != null) {
+              themeProvider.updateThemeMode(newThemeMode);
+            }
           },
           items: _buildThemeModeItems(context),
         );

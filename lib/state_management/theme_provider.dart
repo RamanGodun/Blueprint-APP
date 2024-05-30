@@ -1,26 +1,51 @@
 import 'package:flutter/material.dart';
-import '../src/services/theme_service.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:get_it/get_it.dart';
+import '../src/generated code/by easy_localization/locale_keys.g.dart';
+import '../state_management/const_data/app_const.dart';
 
 class ThemeProvider extends ValueNotifier<ThemeMode> {
-  final ThemeService _themeService = ThemeService();
+  static final ThemeProvider _instance = ThemeProvider._internal();
+  static ThemeProvider get instance => _instance;
 
-  // Статичний екземпляр для зручного доступу
-  static final ThemeProvider instance = ThemeProvider._internal();
+  final FlutterSecureStorage secureStorage;
 
-  ThemeProvider._internal() : super(ThemeMode.system) {
-    loadSettings();
+  ThemeProvider._internal()
+      : secureStorage = GetIt.instance<FlutterSecureStorage>(),
+        super(ThemeMode.system) {
+    _loadSettings();
   }
 
-  Future<void> loadSettings() async {
-    value = await _themeService.themeMode();
-    notifyListeners();
+  Future<void> _loadSettings() async {
+    final themeModeString =
+        await secureStorage.read(key: AppConstants.themeModeKey) ?? 'system';
+    value = _themeModeFromString(themeModeString);
   }
 
-  Future<void> updateThemeMode(ThemeMode? newThemeMode) async {
-    if (newThemeMode == null) return;
-    if (newThemeMode == value) return;
+  Future<void> updateThemeMode(ThemeMode newThemeMode) async {
     value = newThemeMode;
-    notifyListeners();
-    await _themeService.updateThemeMode(newThemeMode);
+    await secureStorage.write(
+      key: AppConstants.themeModeKey,
+      value: _themeModeToString(newThemeMode),
+    );
+  }
+
+  String _themeModeToString(ThemeMode themeMode) {
+    Map<ThemeMode, String> themeModeToString = {
+      ThemeMode.light: LocaleKeys.lightTheme.tr(),
+      ThemeMode.dark: LocaleKeys.darkTheme.tr(),
+      ThemeMode.system: LocaleKeys.systemTheme.tr(),
+    };
+    return themeModeToString[themeMode] ?? LocaleKeys.systemTheme.tr();
+  }
+
+  ThemeMode _themeModeFromString(String themeModeString) {
+    Map<String, ThemeMode> stringToThemeMode = {
+      LocaleKeys.lightTheme.tr(): ThemeMode.light,
+      LocaleKeys.darkTheme.tr(): ThemeMode.dark,
+      LocaleKeys.systemTheme.tr(): ThemeMode.system,
+    };
+    return stringToThemeMode[themeModeString] ?? ThemeMode.system;
   }
 }
