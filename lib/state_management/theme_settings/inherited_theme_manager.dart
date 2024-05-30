@@ -21,6 +21,7 @@ class _InheritedThemeManagerState extends State<InheritedThemeManager> {
   @override
   void initState() {
     super.initState();
+
     themeProvider = ThemeProvider.instance;
   }
 
@@ -32,6 +33,7 @@ class _InheritedThemeManagerState extends State<InheritedThemeManager> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         }
+
         return _InheritedNotifier(
           notifier: themeProvider,
           child: widget.child,

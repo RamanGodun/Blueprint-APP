@@ -10,8 +10,10 @@ class GettingContextForThemeManager extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const InheritedThemeManager(
-      child: ThemeAndRoutesSettings(),
+    return const Material(
+      child: InheritedThemeManager(
+        child: ThemeAndRoutesSettings(),
+      ),
     );
   }
 }
