@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 import '../../../src/helpers/my_change_notifier_provider.dart';
 import '../../../state_management/const_data/app_const.dart';
 import '../../../state_management/theme_provider.dart';

@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../state_management/const_data/app_const.dart';
 import '../generated code/by easy_localization/locale_keys.g.dart';
@@ -10,14 +10,13 @@ class ThemeService {
   late String lightThemeText;
   late String darkThemeText;
   late String systemThemeText;
-  late SharedPreferences sharedPrefs;
+  final FlutterSecureStorage secureStorage;
 
-  ThemeService() {
+  ThemeService() : secureStorage = GetIt.instance<FlutterSecureStorage>() {
     _initialize();
   }
 
   Future<void> _initialize() async {
-    sharedPrefs = GetIt.instance<SharedPreferences>();
     await loadLocaleTexts();
   }
 
@@ -29,13 +28,13 @@ class ThemeService {
 
   Future<ThemeMode> themeMode() async {
     final themeModeString =
-        sharedPrefs.getString(AppConstants.themeModeKey) ?? 'system';
+        await secureStorage.read(key: AppConstants.themeModeKey) ?? 'system';
     return _themeModeFromString(themeModeString);
   }
 
   Future<void> updateThemeMode(ThemeMode theme) async {
-    await sharedPrefs.setString(
-        AppConstants.themeModeKey, _themeModeToString(theme));
+    await secureStorage.write(
+        key: AppConstants.themeModeKey, value: _themeModeToString(theme));
   }
 
   String _themeModeToString(ThemeMode themeMode) {

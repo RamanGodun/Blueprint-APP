@@ -5,7 +5,6 @@ import 'package:path_provider/path_provider.dart';
 import '../../state_management/models/model_4_hive.dart';
 import 'open_ai_service.dart';
 import 'isar_service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class DIServiceLocator {
   DIServiceLocator._internal();
@@ -18,15 +17,10 @@ class DIServiceLocator {
   GetIt get getIt => _getIt;
 
   Future<void> setupDependencies() async {
-    // Реєстрація SharedPreferences & FlutterSecureStorage
+    // Реєстрація FlutterSecureStorage
     if (!_getIt.isRegistered<FlutterSecureStorage>()) {
       const secureStorage = FlutterSecureStorage();
       _getIt.registerSingleton<FlutterSecureStorage>(secureStorage);
-    }
-
-    if (!_getIt.isRegistered<SharedPreferences>()) {
-      final sharedPrefs = await SharedPreferences.getInstance();
-      _getIt.registerSingleton<SharedPreferences>(sharedPrefs);
     }
 
     // Реєстрація OpenAiService
