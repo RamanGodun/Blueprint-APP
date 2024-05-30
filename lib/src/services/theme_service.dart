@@ -27,6 +27,7 @@ class ThemeService {
   }
 
   Future<ThemeMode> themeMode() async {
+    await _initialize();
     final themeModeString =
         await secureStorage.read(key: AppConstants.themeModeKey) ?? 'system';
     return _themeModeFromString(themeModeString);

@@ -1,5 +1,5 @@
-import 'package:blueprint_4app/src/helpers/my_change_notifier_provider.dart';
 import 'package:flutter/material.dart';
+import '../src/helpers/my_change_notifier_provider.dart';
 import 'theme_provider.dart';
 
 class InheritedThemeManager extends StatefulWidget {

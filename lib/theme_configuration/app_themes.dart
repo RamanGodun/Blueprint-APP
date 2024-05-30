@@ -30,7 +30,7 @@ class ThisAppDarkTheme {
   );
 }
 
-class FIAppLightTheme {
+class ThisAppLightTheme {
   static final ThemeData kLightTheme = ThemeData.light().copyWith(
     visualDensity: VisualDensity.adaptivePlatformDensity,
     colorScheme: ThisAppColors.kColorScheme,

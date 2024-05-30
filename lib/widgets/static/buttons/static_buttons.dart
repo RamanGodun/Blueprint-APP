@@ -13,7 +13,7 @@ class StaticCustomButtons {
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
         margin: const EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
-          color: colorScheme.primary,
+          color: colorScheme.secondary.withOpacity(0.3),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(

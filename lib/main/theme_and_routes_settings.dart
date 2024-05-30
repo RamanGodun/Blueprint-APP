@@ -13,19 +13,24 @@ class ThemeAndRoutesSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InheritedThemeManager(
-      child: MaterialApp.router(
-        routerConfig: AppRoutes.router,
-        debugShowCheckedModeBanner: false,
-        restorationScopeId: 'This app',
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        title: LocaleKeys.appTitle.tr(),
-        theme: FIAppLightTheme.kLightTheme,
-        darkTheme: ThisAppDarkTheme.kDarkTheme,
-        themeMode:
-            MyChangeNotifierProvider.watch<ThemeProvider>(context)?.themeMode ??
-                ThemeMode.system,
+      child: Builder(
+        builder: (context) {
+          final themeProvider =
+              MyChangeNotifierProvider.watch<ThemeProvider>(context);
+
+          return MaterialApp.router(
+            routerConfig: AppRoutes.router,
+            debugShowCheckedModeBanner: false,
+            restorationScopeId: 'This app',
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            title: LocaleKeys.appTitle.tr(),
+            theme: ThisAppLightTheme.kLightTheme,
+            darkTheme: ThisAppDarkTheme.kDarkTheme,
+            themeMode: themeProvider?.themeMode ?? ThemeMode.system,
+          );
+        },
       ),
     );
   }
