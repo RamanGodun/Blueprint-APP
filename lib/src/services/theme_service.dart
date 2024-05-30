@@ -1,15 +1,23 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../generated code/by easy_localization/locale_keys.g.dart';
+
 import '../../state_management/const_data/app_const.dart';
+import '../generated code/by easy_localization/locale_keys.g.dart';
 
 class ThemeService {
   late String lightThemeText;
   late String darkThemeText;
   late String systemThemeText;
-  final SharedPreferences sharedPrefs = GetIt.instance.get<SharedPreferences>();
+  late SharedPreferences sharedPrefs;
+
+  ThemeService() {
+    _initializePreferences();
+  }
+
+  Future<void> _initializePreferences() async {
+    sharedPrefs = await SharedPreferences.getInstance();
+  }
 
   Future<void> loadLocaleTexts() async {
     lightThemeText = LocaleKeys.lightTheme.tr();

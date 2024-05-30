@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../state_management/const_data/app_const.dart';
 import '../state_management/const_data/app_locales.dart';
 import '../src/generated code/by easy_localization/codegen_loader.g.dart';
-import 'material_app.dart';
+import 'theme_and_routes_settings.dart';
 
 class LocalizationOfThisApp extends StatelessWidget {
   const LocalizationOfThisApp({super.key});

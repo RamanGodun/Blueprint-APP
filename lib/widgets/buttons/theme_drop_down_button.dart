@@ -1,23 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get_it/get_it.dart';
-
+import '../../src/helpers/inherited_change_notifier.dart';
 import '../../state_management/const_data/app_const.dart';
-import '../../theme_configuration/theme_controller.dart';
+import '../../state_management/theme_provider.dart';
 
-class ThemeChangingButton extends HookWidget {
+class ThemeChangingButton extends StatelessWidget {
   const ThemeChangingButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = useMemoized(() => GetIt.instance<ThemeController>());
-    final themeMode = useListenable(controller);
+    final themeProvider = ChangeNotifierProvider.watch<ThemeProvider>(context);
 
     return DropdownButton<ThemeMode>(
       key: ValueKey(context.locale.toString()),
-      value: themeMode.themeMode,
-      onChanged: controller.updateThemeMode,
+      value: themeProvider?.themeMode ?? ThemeMode.system,
+      onChanged: (newThemeMode) {
+        themeProvider?.updateThemeMode(newThemeMode);
+      },
       items: _buildThemeModeItems(context),
     );
   }

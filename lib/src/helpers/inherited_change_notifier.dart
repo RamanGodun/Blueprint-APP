@@ -20,5 +20,4 @@ class ChangeNotifierProvider<T extends ChangeNotifier>
         ?.widget as ChangeNotifierProvider<T>;
     return provider.notifier;
   }
-//
 }

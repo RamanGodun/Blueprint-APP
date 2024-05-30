@@ -19,46 +19,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'main/app.localization.dart';
 import 'state_management/const_data/firebase_options.dart';
 import 'src/services/0.service_locator.dart';
-import 'theme_configuration/theme_controller.dart';
-import 'widgets/static/static_widgets.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  await DIServiceLocator.instance.setupDependencies();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const AppInitializer());
 }
 
 class AppInitializer extends StatelessWidget {
   const AppInitializer({super.key});
 
-  Future<void> initializeApp() async {
-    // here all necessary initialization (Easy_localization, GetIt, FireBase)
-    await Future.wait([
-      EasyLocalization.ensureInitialized(),
-      DIServiceLocator.instance.setupDependencies(),
-      Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      ),
-    ]);
-    await DIServiceLocator.instance.getIt<ThemeController>().loadSettings();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: initializeApp(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasError) {
-            return StaticWidgets.errorWidget(snapshot.error.toString());
-          }
-          // here connected RiverPod (which can be replaced by Provider)
-          return const ProviderScope(
-            child: LocalizationOfThisApp(),
-          );
-        } else {
-          return StaticWidgets.loadingWidget;
-        }
-      },
+    return const ProviderScope(
+      child: LocalizationOfThisApp(),
     );
   }
 }

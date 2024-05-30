@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 import '../src/generated code/by easy_localization/locale_keys.g.dart';
 import '../state_management/const_data/this_app_icons.dart';
 import '../widgets/buttons/icon_button_4_language_changing.dart';
-import '../widgets/dialogs/icons_dialog.dart';
 import '../widgets/buttons/theme_drop_down_button.dart';
+import '../widgets/dialogs/icons_dialog.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/start_page/settings';
