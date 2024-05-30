@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../src/app routing/app_routes.dart';
+import '../src/App_routing/app_routes.dart';
 import '../src/generated code/by easy_localization/locale_keys.g.dart';
 import '../src/services/0.service_locator.dart';
-import '../theme configuration/app_themes.dart';
-import '../theme configuration/theme_controller.dart';
+import '../theme_configuration/app_themes.dart';
+import '../theme_configuration/theme_controller.dart';
 
 class ThemeAndRoutesSettings extends StatelessWidget {
   const ThemeAndRoutesSettings({super.key});

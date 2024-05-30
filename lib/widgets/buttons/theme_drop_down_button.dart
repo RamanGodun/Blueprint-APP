@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../state management/const data/app_const.dart';
-import '../../theme configuration/theme_controller.dart';
+import '../../state_management/const_data/app_const.dart';
+import '../../theme_configuration/theme_controller.dart';
 
 class ThemeChangingButton extends HookWidget {
   const ThemeChangingButton({super.key});

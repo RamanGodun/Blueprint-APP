@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../src/generated code/by easy_localization/locale_keys.g.dart';
-import '../state management/const data/this_app_icons.dart';
+import '../state_management/const_data/this_app_icons.dart';
 
 class StartPage extends StatefulWidget {
   static const routeName = '/start_page';

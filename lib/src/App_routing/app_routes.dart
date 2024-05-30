@@ -1,13 +1,13 @@
-import 'package:blueprint_4app/src/app%20routing/cupertino_page_transition.dart';
+import 'package:blueprint_4app/src/App_routing/cupertino_page_transition.dart';
 import 'package:go_router/go_router.dart';
-import '../../pages/GPT pages/api_key_page.dart';
-import '../../pages/GPT pages/send_prompt.dart';
+import '../../pages/GPT_pages/api_key_page.dart';
+import '../../pages/GPT_pages/send_prompt.dart';
 import '../../pages/auth pages/auth_page.dart';
-import '../../pages/SM pages/hive_box.dart';
+import '../../pages/SM _ages/hive_box.dart';
 
 import '../../pages/start_page.dart';
 import '../../pages/settings_page.dart';
-import '../../pages/others pages/textfield_page.dart';
+import '../../pages/Others_pages/textfield_page.dart';
 import '../services/0.service_locator.dart';
 
 class AppRoutes {

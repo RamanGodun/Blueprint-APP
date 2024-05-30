@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../../theme configuration/app_colorscheme.dart';
+import '../../../theme_configuration/app_colorscheme.dart';
 
 class LoadingWidgetManager {
   static final LoadingWidgetManager _instance =

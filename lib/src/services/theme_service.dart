@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../generated code/by easy_localization/locale_keys.g.dart';
-import '../../state management/const data/app_const.dart';
+import '../../state_management/const_data/app_const.dart';
 
 class ThemeService {
   late String lightThemeText;

@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../state management/const data/app_const.dart';
-import '../state management/const data/app_locales.dart';
+import '../state_management/const_data/app_const.dart';
+import '../state_management/const_data/app_locales.dart';
 import '../src/generated code/by easy_localization/codegen_loader.g.dart';
 import 'material_app.dart';
 

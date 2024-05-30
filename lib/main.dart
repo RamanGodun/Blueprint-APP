@@ -17,9 +17,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'main/app.localization.dart';
-import 'src/helpers/firebase_options.dart';
+import 'state_management/const_data/firebase_options.dart';
 import 'src/services/0.service_locator.dart';
-import 'theme configuration/theme_controller.dart';
+import 'theme_configuration/theme_controller.dart';
 import 'widgets/static/static_widgets.dart';
 
 void main() {
@@ -52,7 +52,9 @@ class AppInitializer extends StatelessWidget {
             return StaticWidgets.errorWidget(snapshot.error.toString());
           }
           // here connected RiverPod (which can be replaced by Provider)
-          return const ProviderScope(child: LocalizationOfThisApp());
+          return const ProviderScope(
+            child: LocalizationOfThisApp(),
+          );
         } else {
           return StaticWidgets.loadingWidget;
         }

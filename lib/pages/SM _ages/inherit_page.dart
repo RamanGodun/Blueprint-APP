@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../src/helpers/inherited_change_notifier.dart';
-import '../../state management/models/inherit_model.dart';
+import '../../state_management/models/inherit_model.dart';
 
 class WidgetWithInheritedMethods extends StatefulWidget {
   const WidgetWithInheritedMethods({super.key});
