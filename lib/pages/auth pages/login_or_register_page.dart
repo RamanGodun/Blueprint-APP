@@ -2,16 +2,15 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/cupertino.dart';
 import '../../src/generated code/by spider/resources.dart';
 import '../../src/services/google_signing_service.dart';
-import '../../widgets/buttons/my_button.dart';
+import '../../widgets/static/buttons/static_buttons.dart';
 import '../../widgets/text_fields.dart/custom_textfield.dart';
 import '../../widgets/square_tile.dart';
 import '../../widgets/static/static_widgets.dart';
 
-class LoginOrRegisterPage extends HookWidget {
+class LoginOrRegisterPage extends StatefulWidget {
   final Function() changeAuthMode;
   final bool isLoginPage;
 
@@ -22,96 +21,109 @@ class LoginOrRegisterPage extends HookWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    final emailController = useTextEditingController();
-    final passwordController = useTextEditingController();
-    final passwordConfirmationController =
-        useState<TextEditingController?>(null);
-    final isLoading = useState(false);
+  State<LoginOrRegisterPage> createState() => _LoginOrRegisterPageState();
+}
 
-    useEffect(() {
-      if (!isLoginPage) {
-        passwordConfirmationController.value = TextEditingController();
-      } else {
-        passwordConfirmationController.value?.dispose();
-        passwordConfirmationController.value = null;
-      }
-      return () => passwordConfirmationController.value?.dispose();
-    }, [isLoginPage]);
+class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  TextEditingController? passwordConfirmationController;
+  bool isLoading = false;
 
-    Future<void> googleSignIn() async {
-      isLoading.value = true;
-      try {
-        final AuthService authService = AuthService();
-        await authService.signInWithGoogle();
-      } catch (error) {
-        print(error);
-      }
-      isLoading.value = false;
+  @override
+  void initState() {
+    super.initState();
+    if (!widget.isLoginPage) {
+      passwordConfirmationController = TextEditingController();
     }
+  }
 
-    void wrongEmailOrPasswordMessage(BuildContext context, String message) {
-      showCupertinoDialog(
-        context: context,
-        builder: (context) {
-          return CupertinoAlertDialog(
-            title: const Text('Error'),
-            content: Text(message),
-            actions: [
-              CupertinoDialogAction(
-                child: const Text('OK'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    passwordConfirmationController?.dispose();
+    super.dispose();
+  }
+
+  Future<void> googleSignIn() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      final AuthService authService = AuthService();
+      await authService.signInWithGoogle();
+    } catch (error) {
+      print(error);
+    }
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  void wrongEmailOrPasswordMessage(BuildContext context, String message) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: const Text('Error'),
+          content: Text(message),
+          actions: [
+            CupertinoDialogAction(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> signUserInOrUp(bool isLoginPage) async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+    try {
+      if (emailController.text.isNotEmpty &&
+          passwordController.text.isNotEmpty) {
+        if (isLoginPage) {
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: emailController.text,
+            password: passwordController.text,
           );
-        },
-      );
-    }
-
-    Future<void> signUserInOrUp(bool isLoginPage) async {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(child: CircularProgressIndicator());
-        },
-      );
-      try {
-        if (emailController.text.isNotEmpty &&
-            passwordController.text.isNotEmpty) {
-          if (isLoginPage) {
-            await FirebaseAuth.instance.signInWithEmailAndPassword(
+        } else {
+          if (passwordConfirmationController != null &&
+              passwordController.text == passwordConfirmationController!.text) {
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
               email: emailController.text,
               password: passwordController.text,
             );
           } else {
-            if (passwordConfirmationController.value != null &&
-                passwordController.text ==
-                    passwordConfirmationController.value!.text) {
-              await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                email: emailController.text,
-                password: passwordController.text,
-              );
-            } else {
-              Navigator.pop(context);
-              return wrongEmailOrPasswordMessage(
-                  context, 'Passwords don\'t match');
-            }
+            Navigator.pop(context);
+            return wrongEmailOrPasswordMessage(
+                context, 'Passwords don\'t match');
           }
         }
-        Navigator.pop(context);
-      } on FirebaseAuthException catch (e) {
-        Navigator.pop(context);
-        if (e.code == 'user-not-found') {
-          wrongEmailOrPasswordMessage(context, 'Incorrect Email');
-        } else if (e.code == 'wrong-password') {
-          wrongEmailOrPasswordMessage(context, 'Incorrect Password');
-        }
+      }
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      if (e.code == 'user-not-found') {
+        wrongEmailOrPasswordMessage(context, 'Incorrect Email');
+      } else if (e.code == 'wrong-password') {
+        wrongEmailOrPasswordMessage(context, 'Incorrect Password');
       }
     }
+  }
 
-    return isLoading.value
+  @override
+  Widget build(BuildContext context) {
+    return isLoading
         ? StaticWidgets.loadingWidget
         : Scaffold(
             backgroundColor: Theme.of(context).colorScheme.surface,
@@ -132,7 +144,7 @@ class LoginOrRegisterPage extends HookWidget {
                       const SizedBox(height: 50),
                       // welcome text
                       Text(
-                        isLoginPage
+                        widget.isLoginPage
                             ? 'Welcome back, you\'ve been missed!'
                             : 'Let\'s create an account',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -155,15 +167,15 @@ class LoginOrRegisterPage extends HookWidget {
                         isObscureText: true,
                         icon: Icons.lock,
                       ),
-                      if (!isLoginPage &&
-                          passwordConfirmationController.value != null)
+                      if (!widget.isLoginPage &&
+                          passwordConfirmationController != null)
                         MyTextField(
-                          controller: passwordConfirmationController.value!,
+                          controller: passwordConfirmationController!,
                           hintText: 'Confirm password',
                           isObscureText: true,
                           icon: Icons.lock_outline,
                         ),
-                      if (isLoginPage)
+                      if (widget.isLoginPage)
                         Align(
                           alignment: Alignment.topRight,
                           child: TextButton(
@@ -184,9 +196,10 @@ class LoginOrRegisterPage extends HookWidget {
                         ),
                       const SizedBox(height: 35),
                       // sign in/sign up button
-                      MyButton(
-                        buttonText: isLoginPage ? 'Sign In' : 'Sign Up',
-                        onTap: () => signUserInOrUp(isLoginPage),
+                      StaticCustomButtons.customButton(
+                        context,
+                        buttonText: widget.isLoginPage ? 'Sign In' : 'Sign Up',
+                        onPressed: () => signUserInOrUp(widget.isLoginPage),
                       ),
                       const SizedBox(height: 50),
                       // or continue with
@@ -232,7 +245,7 @@ class LoginOrRegisterPage extends HookWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            isLoginPage
+                            widget.isLoginPage
                                 ? 'Not a member?'
                                 : 'Already have an account?',
                             style: Theme.of(context)
@@ -245,9 +258,11 @@ class LoginOrRegisterPage extends HookWidget {
                           ),
                           const SizedBox(width: 4),
                           GestureDetector(
-                            onTap: changeAuthMode,
+                            onTap: widget.changeAuthMode,
                             child: Text(
-                              isLoginPage ? 'Register now' : 'Log in now',
+                              widget.isLoginPage
+                                  ? 'Register now'
+                                  : 'Log in now',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium

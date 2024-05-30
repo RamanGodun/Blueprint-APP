@@ -32,23 +32,6 @@ class StaticWidgets {
     );
   }
 
-  static Widget text4LoginPageWidget(
-    BuildContext context,
-    String text, {
-    Color? color,
-    double fontSize = 16,
-  }) {
-    return Center(
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: color,
-              fontSize: fontSize,
-            ),
-      ),
-    );
-  }
-
   static Widget divider4LoginPage() {
     return Padding(
       padding: const EdgeInsets.only(left: 25.0, right: 25, bottom: 30),

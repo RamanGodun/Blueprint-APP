@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../../src/helpers/inherited_change_notifier.dart';
-import '../../state_management/const_data/app_const.dart';
-import '../../state_management/theme_provider.dart';
+import '../../../src/helpers/inherited_change_notifier.dart';
+import '../../../state_management/const_data/app_const.dart';
+import '../../../state_management/theme_provider.dart';
 
 class ThemeChangingButton extends StatelessWidget {
   const ThemeChangingButton({super.key});

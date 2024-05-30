@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../src/generated code/by easy_localization/locale_keys.g.dart';
 import '../state_management/const_data/this_app_icons.dart';
+import '../widgets/static/buttons/static_buttons.dart';
+import '../widgets/static/text_widgets.dart';
 
 class StartPage extends StatefulWidget {
   static const routeName = '/start_page';
@@ -13,16 +15,29 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
+  late TextTheme textTheme;
+  late ColorScheme colorScheme;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    textTheme = Theme.of(context).textTheme;
+    colorScheme = Theme.of(context).colorScheme;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: StaticTextWidgets.themedText(
+          context,
           LocaleKeys.startScreen.tr(),
+          color: colorScheme.onPrimary,
+          fontSize: 20,
         ),
         actions: [
           IconButton(
-            icon: const Icon(ThisAppIcons.settings),
+            icon: Icon(ThisAppIcons.settings, color: colorScheme.onPrimary),
             onPressed: () {
               context.pushNamed('SettingsPage');
             },
@@ -34,35 +49,33 @@ class _StartPageState extends State<StartPage> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text(LocaleKeys.thisIsStartScreen.tr()),
-            ElevatedButton(
+            StaticTextWidgets.themedText(
+              context,
+              LocaleKeys.thisIsStartScreen.tr(),
+              color: colorScheme.inverseSurface,
+            ),
+            StaticCustomButtons.customButton(
+              context,
               onPressed: () {
                 context.pushNamed('TextFieldPage');
               },
-              child: Text(
-                LocaleKeys.goToTextfield.tr(),
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
+              buttonText: LocaleKeys.goToTextfield.tr(),
             ),
             const SizedBox(height: 50),
-            ElevatedButton(
+            StaticCustomButtons.customButton(
+              context,
               onPressed: () {
                 context.pushNamed('HiveBoxPage');
               },
-              child: Text(
-                LocaleKeys.goToHiveBox.tr(),
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
+              buttonText: LocaleKeys.goToHiveBox.tr(),
             ),
             const SizedBox(height: 50),
-            ElevatedButton(
+            StaticCustomButtons.customButton(
+              context,
               onPressed: () {
                 context.pushNamed('SendPromptPage');
               },
-              child: Text(
-                "To Chat GPT prompts",
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
+              buttonText: "To Chat GPT prompts",
             ),
           ],
         ),

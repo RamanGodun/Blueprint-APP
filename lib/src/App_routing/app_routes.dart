@@ -4,7 +4,6 @@ import '../../pages/GPT_pages/api_key_page.dart';
 import '../../pages/GPT_pages/send_prompt.dart';
 import '../../pages/auth pages/auth_page.dart';
 import '../../pages/SM _ages/hive_box.dart';
-
 import '../../pages/start_page.dart';
 import '../../pages/settings_page.dart';
 import '../../pages/Others_pages/textfield_page.dart';
@@ -19,7 +18,7 @@ class AppRoutes {
         pageBuilder: (context, state) {
           return CustomTransitionPage(
             key: state.pageKey,
-            child: const AuthPage(),
+            child: const AuthHandler(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               return CupertinoPageTransition(
@@ -139,7 +138,6 @@ class AppRoutes {
           );
         },
       ),
-//
     ],
   );
 }
