@@ -14,15 +14,35 @@ class ThemeChangingButton extends StatelessWidget {
     return ValueListenableBuilder<CustomThemeMode>(
       valueListenable: themeProvider!,
       builder: (context, themeMode, _) {
-        return DropdownButton<CustomThemeMode>(
-          key: ValueKey(context.locale.toString()),
-          value: themeMode,
-          onChanged: (newThemeMode) {
-            if (newThemeMode != null) {
-              themeProvider.updateThemeMode(newThemeMode);
-            }
-          },
-          items: StaticDecorations.buildThemeModeItems(context),
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
+            borderRadius: BorderRadius.circular(8.0),
+            border: Border.all(
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+            ),
+          ),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<CustomThemeMode>(
+              key: ValueKey(context.locale.toString()),
+              value: themeMode,
+              onChanged: (newThemeMode) {
+                if (newThemeMode != null) {
+                  themeProvider.updateThemeMode(newThemeMode);
+                }
+              },
+              items: StaticDecorations.buildThemeModeItems(context),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+              dropdownColor: Theme.of(context).colorScheme.surface,
+              icon: Icon(
+                Icons.arrow_drop_down,
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+          ),
         );
       },
     );
@@ -55,7 +75,9 @@ class StaticDecorations {
         value: themeModes[index],
         child: Text(
           themeModeTexts[index],
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
         ),
       ),
     );

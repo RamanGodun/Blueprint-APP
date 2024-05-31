@@ -1,8 +1,5 @@
-// ignore_for_file: avoid_print
-
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
-
 import '../../state_management/models/model_4_hive.dart';
 
 class HiveBoxPage extends StatefulWidget {
@@ -18,23 +15,24 @@ class HiveBoxPage extends StatefulWidget {
 class _HiveBoxPageState extends State<HiveBoxPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hive Example'),
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Hive Example'),
       ),
-      body: Center(
+      child: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(18.0),
-              child: ElevatedButton(
+              child: CupertinoButton.filled(
                 onPressed: _addPerson,
                 child: const Text('Add Person'),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(18.0),
-              child: ElevatedButton(
+              child: CupertinoButton.filled(
                 onPressed: _printFirstPerson,
                 child: const Text('Print Person'),
               ),
@@ -45,21 +43,18 @@ class _HiveBoxPageState extends State<HiveBoxPage> {
     );
   }
 
-/*
-good practice to put 2 these methods into provider notifier 
- */
   void _addPerson() {
     final person = Person(name: 'John Doe', age: 30);
     widget.box.put("person", person);
-    print('Person added: ${person.name}, Age: ${person.age}');
+    // print('Person added: ${person.name}, Age: ${person.age}');
   }
 
   void _printFirstPerson() {
     final person = widget.box.get("person");
     if (person != null) {
-      print('Person retrieved: ${person.name}, Age: ${person.age}');
+      // print('Person retrieved: ${person.name}, Age: ${person.age}');
     } else {
-      print('No person found at index 0');
+      // print('No person found at index 0');
     }
   }
 

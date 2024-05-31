@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-
 import '../../state_management/services/open_ai_service.dart';
 
 class ApiKeyInputPage extends StatefulWidget {
@@ -25,52 +24,77 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text(
           'Enter OpenAI API Key',
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.info_outline),
-            onPressed: _showTooltip,
+          style: textTheme.titleMedium?.copyWith(
+            color: colorScheme.onSurface,
           ),
-        ],
+        ),
+        trailing: CupertinoButton(
+          padding: EdgeInsets.zero,
+          onPressed: _showTooltip,
+          child: Icon(
+            CupertinoIcons.info,
+            color: colorScheme.primary,
+          ),
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _apiKeyController,
-              decoration: const InputDecoration(
-                labelText: 'Enter API Key here',
-              ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () async {
-                  await _saveApiKey();
-                  showSnackBar();
-                },
-                child: Text(
-                  'Save API Key',
-                  style: Theme.of(context).textTheme.bodyLarge,
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CupertinoTextField(
+                  controller: _apiKeyController,
+                  placeholder: 'Enter API Key here',
+                  decoration: BoxDecoration(
+                    border: Border.all(color: colorScheme.primary, width: 1.0),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 16.0),
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: colorScheme.onSurface,
+                  ),
                 ),
-              ),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  child: CupertinoButton.filled(
+                    onPressed: () async {
+                      await _saveApiKey();
+                      showSnackBar();
+                    },
+                    child: Text(
+                      'Save API Key',
+                      style: textTheme.bodyLarge?.copyWith(
+                        color: CupertinoColors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 50),
+                CupertinoButton(
+                  color: colorScheme.primary,
+                  onPressed: testAPIKey,
+                  child: Text(
+                    'Test API Key',
+                    style: textTheme.bodyLarge?.copyWith(
+                      color: CupertinoColors.white,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 50),
-            ElevatedButton(
-              onPressed: testAPIKey,
-              child: Text(
-                'Test API Key',
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

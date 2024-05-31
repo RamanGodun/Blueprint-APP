@@ -1,89 +1,147 @@
 import 'package:flutter/material.dart';
 
 abstract class ThisAppColors {
-  static const Color kAppPrimaryColor = Color.fromARGB(255, 0, 138, 142);
-  static const Color kSecondaryColor = Color.fromARGB(255, 45, 188, 220);
-  static const Color kSecondaryDarkColor = Color(0xFF32D74B);
-  static const Color kErrorColor = Color(0xFFFF3B30);
-  static const Color kDarkBackground = Color(0xFF1C1C1E);
-  static const Color kLightBackground = Color(0xFFF2F2F7);
-  static const Color kOnTertiary = Colors.white;
-  static const Color kOnBackgroundColor = Color(0xFF1C1C1E);
-  static const Color kOnSurfaceColor = Color(0xFF1C1C1E);
-  static const Color kSurface = Color(0xFFFFFFFF);
-  static const Color kDarkSurface = Color.fromARGB(255, 30, 30, 30);
-  static const Color kDarkOnSurface = Color(0xFFD1D1D6);
-  static const Color kOnSecondary = Color(0xFFFFFFFF);
-  static final Color dividerColor = Colors.grey[600]?.withOpacity(0.6) as Color;
-  static final Color grey700 = Colors.grey[700] as Color;
+  // Primary and secondary colors
+  static const Color kPrimaryColor = Color.fromARGB(255, 7, 131, 143);
+  static const Color kSecondaryColor = Color.fromARGB(255, 69, 127, 155);
+  static const Color kSecondaryDarkColor = Color.fromARGB(198, 124, 170, 194);
+
+  static const Color kPrimaryVariant = Color.fromARGB(199, 14, 117, 91);
+  static const Color kSecondaryVariant = Color.fromARGB(198, 124, 170, 194);
+  static const Color kErrorColor = Color(0xFFB00020);
 
   static MaterialColor createMaterialColor(Color color) {
-    return MaterialColor(
-      color.value,
-      <int, Color>{
-        50: color.withOpacity(0.1),
-        100: color.withOpacity(0.2),
-        200: color.withOpacity(0.3),
-        300: color.withOpacity(0.4),
-        400: color.withOpacity(0.5),
-        500: color.withOpacity(0.6),
-        600: color.withOpacity(0.7),
-        700: color.withOpacity(0.8),
-        800: color.withOpacity(0.9),
-        900: color.withOpacity(0.95),
-      },
-    );
+    List<double> strengths = <double>[.05];
+    final swatch = <int, Color>{};
+    final int r = color.red, g = color.green, b = color.blue;
+
+    for (int i = 1; i < 10; i++) {
+      strengths.add(0.1 * i);
+    }
+    for (var strength in strengths) {
+      final double ds = 0.5 - strength;
+      swatch[(strength * 1000).round()] = Color.fromRGBO(
+        r + ((ds < 0 ? r : (255 - r)) * ds).round(),
+        g + ((ds < 0 ? g : (255 - g)) * ds).round(),
+        b + ((ds < 0 ? b : (255 - b)) * ds).round(),
+        1,
+      );
+    }
+    return MaterialColor(color.value, swatch);
   }
 
-  static final kColorScheme = const ColorScheme.light().copyWith(
-    brightness: Brightness.light,
-    error: kErrorColor,
-    inversePrimary: Colors.white,
-    inverseSurface: const Color.fromARGB(255, 59, 59, 59),
-    onError: kErrorColor,
-    onPrimary: kAppPrimaryColor,
-    onSurface: kOnSurfaceColor,
-    primary: kAppPrimaryColor,
-    secondary: kSecondaryColor,
-    surface: kSurface,
-    onSecondary: kOnSecondary,
-    onTertiary: kOnTertiary,
+  static final MaterialColor kPrimarySwatch =
+      createMaterialColor(kPrimaryColor);
+
+  // iOS light theme colors
+  static const Color kLightIOSBackground = Color.fromARGB(246, 236, 232, 232);
+  static const Color kLightIOSSurface = Color.fromARGB(255, 240, 234, 234);
+  static const Color kLightIOSOnSurface = Color(0xFF1C1C1E);
+  static const Color kLightIOSOnPrimary = Color(0xFFFFFFFF);
+
+  // iOS dark theme colors
+  static const Color kDarkIOSBackground = Color(0xFF1C1C1E);
+  static const Color kDarkIOSSurface = Color(0xFF2C2C2E);
+  static const Color kDarkIOSOnSurface = Color(0xFFD1D1D6);
+  static const Color kDarkIOSOnPrimary = Color(0xFFFFFFFF);
+  static const Color kDarkIOSGrey = Color.fromARGB(255, 153, 153, 153);
+
+  // Android light theme colors
+  static const Color kLightAndroidBackground = Color(0xFFFFFFFF);
+  static const Color kLightAndroidSurface = Color(0xFFFFFFFF);
+  static const Color kLightAndroidOnSurface = Color(0xFF000000);
+  static const Color kLightAndroidOnPrimary = Color(0xFFFFFFFF);
+
+  // Android dark theme colors
+  static const Color kDarkAndroidBackground = Color(0xFF121212);
+  static const Color kDarkAndroidSurface = Color(0xFF1F1F1F);
+  static const Color kDarkAndroidOnSurface = Color(0xFFFFFFFF);
+  static const Color kDarkAndroidOnPrimary = Color(0xFFFFFFFF);
+
+  // Dark Glass theme colors
+  static const Color kDarkGlassBackground = Color(0xFF1E1E1E);
+  static const Color kDarkGlassSurface = Color(0xFF2A2A2A);
+  static const Color kDarkGlassOnSurface = Color(0xFFD1D1D6);
+  static const Color kDarkGlassOnPrimary = Color(0xFFFFFFFF);
+
+  // Color Schemes
+  static final kLightIOSColorScheme = ColorScheme.fromSwatch(
+    primarySwatch: kPrimarySwatch,
+    accentColor: kSecondaryVariant,
+    backgroundColor: ThisAppColors.kLightIOSBackground,
+    errorColor: kErrorColor,
+  ).copyWith(
+    primaryContainer: kPrimaryColor.withOpacity(0.2),
+    secondaryContainer: kSecondaryColor.withOpacity(0.2),
+    surface: ThisAppColors.kLightIOSSurface,
+    onPrimary: ThisAppColors.kLightIOSOnPrimary,
+    onSecondary: ThisAppColors.kLightIOSOnPrimary,
+    onSurface: ThisAppColors.kLightIOSOnSurface,
+    onError: ThisAppColors.kLightIOSOnPrimary,
   );
 
-  static final kColorDarkScheme = const ColorScheme.dark().copyWith(
+  static final kDarkIOSColorScheme = ColorScheme.fromSwatch(
     brightness: Brightness.dark,
-    error: kErrorColor,
-    inversePrimary: Colors.white,
-    inverseSurface: const Color.fromARGB(255, 156, 156, 156),
-    onError: kErrorColor,
-    onPrimary: Colors.white,
-    onSecondary: kOnSecondary,
-    onSurface: kDarkOnSurface,
-    onTertiary: kOnTertiary,
-    primary: kAppPrimaryColor.withOpacity(0.9),
-    secondary: kSecondaryDarkColor,
-    surface: kDarkSurface,
+    primarySwatch: kPrimarySwatch,
+    accentColor: kSecondaryVariant,
+    backgroundColor: ThisAppColors.kDarkIOSBackground,
+    errorColor: kErrorColor,
+  ).copyWith(
+    primaryContainer: kPrimaryColor.withOpacity(0.2),
+    secondaryContainer: kSecondaryColor.withOpacity(0.2),
+    surface: ThisAppColors.kDarkIOSSurface,
+    onPrimary: ThisAppColors.kDarkIOSOnPrimary,
+    onSecondary: ThisAppColors.kDarkIOSOnPrimary,
+    onSurface: ThisAppColors.kDarkIOSOnSurface,
+    onError: ThisAppColors.kDarkIOSOnPrimary,
+    inverseSurface: ThisAppColors.kDarkIOSGrey,
   );
-}
 
-class OftenUsedInIOSColorsForApp {
-  static const Color lightSnackBar = Color.fromARGB(255, 225, 225, 225);
-  static const Color silver = Color(0xFF999A9B);
-  static const Color lightGrey = Color(0xFF777777);
-  static const Color shadow = Color(0xFF999A9B);
-  static const Color grey = Color(0xFF666666);
-  static const Color hover = Color(0xFF525559);
-  static const Color lightHover = Color.fromARGB(255, 224, 227, 207);
-  static const Color darkGrey1 = Color(0xFF3A3A3A);
-  static const Color darkGrey2 = Color(0xFF454545);
-  static const Color darkGrey3 = Color(0xFF343434);
-  static const Color bottomNavBarUnselectedLight =
-      Color.fromARGB(255, 193, 193, 193);
-  static const Color black1 = Color(0xFF242424);
-  static const Color black2 = Color(0xFF1F1F1F);
-  static const Color black3 = Color(0xFF000000);
-  static const Color black4 = Color(0xFF1B1B1B);
+  static final kLightAndroidColorScheme = ColorScheme.fromSwatch(
+    brightness: Brightness.light,
+    primarySwatch: kPrimarySwatch,
+    accentColor: kSecondaryVariant,
+    backgroundColor: ThisAppColors.kLightAndroidBackground,
+    errorColor: kErrorColor,
+  ).copyWith(
+    primaryContainer: kPrimaryColor.withOpacity(0.2),
+    secondaryContainer: kSecondaryColor.withOpacity(0.2),
+    surface: ThisAppColors.kLightAndroidSurface,
+    onPrimary: ThisAppColors.kLightAndroidOnPrimary,
+    onSecondary: ThisAppColors.kLightAndroidOnPrimary,
+    onSurface: ThisAppColors.kLightAndroidOnSurface,
+    onError: ThisAppColors.kLightAndroidOnPrimary,
+  );
 
-  static const Color alert = Color.fromARGB(255, 201, 76, 76);
-  static const Color error = Colors.red;
+  static final kDarkAndroidColorScheme = ColorScheme.fromSwatch(
+    brightness: Brightness.dark,
+    primarySwatch: kPrimarySwatch,
+    accentColor: kSecondaryVariant,
+    backgroundColor: ThisAppColors.kDarkAndroidBackground,
+    errorColor: kErrorColor,
+  ).copyWith(
+    primaryContainer: kPrimaryColor.withOpacity(0.2),
+    secondaryContainer: kSecondaryColor.withOpacity(0.2),
+    surface: ThisAppColors.kDarkAndroidSurface,
+    onPrimary: ThisAppColors.kDarkAndroidOnPrimary,
+    onSecondary: ThisAppColors.kDarkAndroidOnPrimary,
+    onSurface: ThisAppColors.kDarkAndroidOnSurface,
+    onError: ThisAppColors.kDarkAndroidOnPrimary,
+  );
+
+  static final kDarkGlassColorScheme = ColorScheme.fromSwatch(
+    brightness: Brightness.dark,
+    primarySwatch: kPrimarySwatch,
+    accentColor: kSecondaryVariant,
+    backgroundColor: ThisAppColors.kDarkGlassBackground,
+    errorColor: kErrorColor,
+  ).copyWith(
+    primaryContainer: kPrimaryColor.withOpacity(0.2),
+    secondaryContainer: kSecondaryColor.withOpacity(0.2),
+    surface: ThisAppColors.kDarkGlassSurface,
+    onPrimary: ThisAppColors.kDarkGlassOnPrimary,
+    onSecondary: ThisAppColors.kDarkGlassOnPrimary,
+    onSurface: ThisAppColors.kDarkGlassOnSurface,
+    onError: ThisAppColors.kDarkGlassOnPrimary,
+  );
 }

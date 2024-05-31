@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'app_colorscheme.dart';
 
 abstract class ThisAppTextStyles {
-  static final darkScheme = ThisAppColors.kColorDarkScheme;
-  static final lightScheme = ThisAppColors.kColorScheme;
+  static final darkScheme = ThisAppColors.kLightIOSColorScheme;
+  static final lightScheme = ThisAppColors.kDarkIOSColorScheme;
 
   static TextTheme kTextThemeData(bool isDarkTheme) {
     return GoogleFonts.montserratTextTheme().copyWith(
@@ -44,7 +44,7 @@ abstract class ThisAppTextStyles {
     return const TextStyle(
       fontWeight: FontWeight.w500,
       fontSize: 15,
-      color: ThisAppColors.kAppPrimaryColor,
+      color: ThisAppColors.kPrimaryColor,
     );
   }
 }

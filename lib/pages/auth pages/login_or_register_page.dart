@@ -147,8 +147,12 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                         widget.isLoginPage
                             ? 'Welcome back, you\'ve been missed!'
                             : 'Let\'s create an account',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
                               color: Theme.of(context).colorScheme.onSurface,
+                              fontWeight: FontWeight.w600,
                             ),
                         textAlign: TextAlign.center,
                       ),
@@ -190,6 +194,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                                   ?.copyWith(
                                     color:
                                         Theme.of(context).colorScheme.primary,
+                                    fontWeight: FontWeight.w600,
                                   ),
                             ),
                           ),
@@ -217,6 +222,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                                   ?.copyWith(
                                     color:
                                         Theme.of(context).colorScheme.onSurface,
+                                    fontWeight: FontWeight.w500,
                                   ),
                             ),
                           ),
@@ -254,6 +260,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                                 ?.copyWith(
                                   color:
                                       Theme.of(context).colorScheme.onSurface,
+                                  fontWeight: FontWeight.w500,
                                 ),
                           ),
                           const SizedBox(width: 4),

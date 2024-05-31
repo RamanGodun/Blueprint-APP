@@ -5,6 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../widgets/static/widgets_on_get_it.dart';
 import '../models/model_4_hive.dart';
+import 'animation_controller.dart';
 import 'open_ai_service.dart';
 import 'isar_service.dart';
 
@@ -47,6 +48,10 @@ class DIServiceLocator {
       Hive.registerAdapter(PersonAdapter());
       var personBox = await Hive.openBox<Person>('personBox');
       _getIt.registerSingleton<Box<Person>>(personBox);
+    }
+
+    if (!_getIt.isRegistered<AnimationService>()) {
+      _getIt.registerSingleton<AnimationService>(AnimationService());
     }
   }
 

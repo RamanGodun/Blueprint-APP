@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -34,41 +35,72 @@ class _SendPromptPageState extends State<SendPromptPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Send Prompt'),
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Send Prompt'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              controller: _promptController,
-              decoration: const InputDecoration(
-                labelText: 'Prompt',
-              ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: _sendPrompt,
-                child: _isLoading
-                    ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text('Send'),
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text('Response:'),
-            const SizedBox(height: 10),
-            _isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : Text(
-                    _response,
-                    style: Theme.of(context).textTheme.bodyMedium,
+      child: Material(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CupertinoTextField(
+                  controller: _promptController,
+                  placeholder: 'Prompt',
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                  decoration: BoxDecoration(
+                    color: CupertinoColors.white,
+                    border: Border.all(
+                      color: CupertinoColors.lightBackgroundGray,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
                   ),
-          ],
+                ),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  child: CupertinoButton.filled(
+                    onPressed: _sendPrompt,
+                    child: _isLoading
+                        ? const CupertinoActivityIndicator()
+                        : const Text('Send'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Text(
+                        'Response:',
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Theme.of(context).colorScheme.onSurface),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                _isLoading
+                    ? const Center(child: CupertinoActivityIndicator())
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          _response,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface),
+                        ),
+                      ),
+              ],
+            ),
+          ),
         ),
       ),
     );

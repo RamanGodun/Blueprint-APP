@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class TextFieldPage extends HookWidget {
@@ -15,23 +15,47 @@ class TextFieldPage extends HookWidget {
       isValid.value = textController.text.isNotEmpty;
     }
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('New Screen')),
-      body: Padding(
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text(
+          'New Screen',
+          style: TextStyle(
+            color: CupertinoTheme.of(context).primaryColor,
+            fontSize: 20,
+          ),
+        ),
+      ),
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
+            CupertinoTextField(
               controller: textController,
-              decoration: InputDecoration(
-                labelText: 'Enter text',
-                errorText: isValid.value ? null : 'This field cannot be empty',
+              placeholder: 'Enter text',
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: isValid.value
+                      ? CupertinoColors.inactiveGray
+                      : CupertinoColors.destructiveRed,
+                ),
+                borderRadius: BorderRadius.circular(8.0),
               ),
               onChanged: (text) => validateInput(),
             ),
+            if (!isValid.value)
+              const Padding(
+                padding: EdgeInsets.only(top: 8.0),
+                child: Text(
+                  'This field cannot be empty',
+                  style: TextStyle(
+                    color: CupertinoColors.destructiveRed,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
             const SizedBox(height: 20),
-            ElevatedButton(
+            CupertinoButton.filled(
               onPressed: () {
                 if (isValid.value) {
                   // Handle the submit action

@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
-import '../src/generated code/by easy_localization/locale_keys.g.dart';
-import '../state_management/const_data/this_app_icons.dart';
+import 'package:get_it/get_it.dart';
+import '../../src/generated code/by easy_localization/locale_keys.g.dart';
+import '../../state_management/const_data/this_app_icons.dart';
+import '../state_management/services/animation_controller.dart';
 import '../widgets/buttons/static_buttons.dart';
 import '../widgets/buttons/theme_changing_button.dart';
 import '../widgets/dialogs/custom_dialog.dart';
@@ -17,20 +20,32 @@ class SettingsPage extends StatefulWidget {
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _SettingsPageState extends State<SettingsPage>
+    with TickerProviderStateMixin {
   User? user;
   late ColorScheme colorScheme;
+  late TextTheme textTheme;
+  late AnimationService animationService;
 
   @override
   void initState() {
     super.initState();
     user = FirebaseAuth.instance.currentUser;
+    animationService = GetIt.instance<AnimationService>();
+    animationService.init(this);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    textTheme = Theme.of(context).textTheme;
     colorScheme = Theme.of(context).colorScheme;
+  }
+
+  @override
+  void dispose() {
+    animationService.dispose();
+    super.dispose();
   }
 
   void signUserOut() async {
@@ -40,45 +55,80 @@ class _SettingsPageState extends State<SettingsPage> {
     context.pushNamed('AuthPage');
   }
 
+  void showCustomCupertinoDialog(BuildContext context, Widget contentWidget) {
+    animationService.controller.forward();
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) {
+        return CustomCupertinoDialog(
+          contentWidget: contentWidget,
+        );
+      },
+    ).then((_) {
+      animationService.controller.reverse();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(LocaleKeys.startScreen.tr()),
-        actions: [
-          StaticCustomButtons.changeLanguageButton(
-              context, () => setState(() {})),
-          IconButton(
-            icon: const Icon(ThisAppIcons.crown),
-            onPressed: () => showDialog(
-                context: context,
-                builder: (BuildContext context) => CustomCupertinoDialog(
-                      contentWidget: IconsGridView(
-                        colorScheme: colorScheme,
-                      ),
-                    )),
-          ),
-          IconButton(
-            onPressed: signUserOut,
-            icon: const Icon(Icons.logout),
-          )
-        ],
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        backgroundColor: colorScheme.surface,
+        middle: Text(
+          LocaleKeys.startScreen.tr(),
+          style: textTheme.titleMedium?.copyWith(color: colorScheme.onSurface),
+        ),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            StaticCustomButtons.changeLanguageButton(
+                context, () => context.pushNamed('ApiKeyInputPage')),
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: Icon(
+                ThisAppIcons.crown,
+                color: colorScheme.onSurface,
+                size: 25,
+              ),
+              onPressed: () => showCustomCupertinoDialog(
+                context,
+                IconsGridView(
+                  colorScheme: colorScheme,
+                ),
+              ),
+            ),
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              onPressed: () => signUserOut(),
+              child: Icon(Icons.logout, color: colorScheme.onSurface, size: 25),
+            ),
+          ],
+        ),
       ),
-      body: Center(
+      child: Center(
         child: user == null
-            ? const Text("User is not logged in")
+            ? Text(
+                "User is not logged in",
+                style: TextStyle(color: colorScheme.onSurface),
+              )
             : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const ThemeChangingButton(),
                   const SizedBox(height: 30),
-                  StaticCustomButtons.customButton2(
-                    context,
-                    onPressed: () {
-                      context.pushNamed('ApiKeyInputPage');
-                    },
-                    buttonText: "To enter GPT API key",
-                  )
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: StaticCustomButtons.customButton2(
+                      context,
+                      onPressed: () {
+                        context.pushNamed('ApiKeyInputPage');
+                      },
+                      buttonText: "To enter GPT API key",
+                    ),
+                  ),
                 ],
               ),
       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class DialogStaticButtons {
   static Widget actionButtonForDialog(BuildContext context,
@@ -12,8 +11,10 @@ class DialogStaticButtons {
             },
         child: Text(
           'OK',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: Theme.of(context).colorScheme.primary, fontSize: 17),
+          style: CupertinoTheme.of(context).textTheme.actionTextStyle.copyWith(
+                fontSize: 17,
+                color: CupertinoTheme.of(context).primaryColor,
+              ),
         ),
       ),
     );
@@ -31,6 +32,7 @@ class DialogStaticButtons {
           'Cancel',
           style: TextStyle(
             color: CupertinoColors.destructiveRed,
+            fontSize: 17,
           ),
         ),
       ),
@@ -44,7 +46,7 @@ class DialogStaticButtons {
         'OK',
         style: TextStyle(
           fontSize: 20,
-          color: Colors.blue,
+          color: CupertinoColors.activeBlue,
         ),
       ),
     ),

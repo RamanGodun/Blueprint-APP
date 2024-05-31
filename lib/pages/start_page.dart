@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../src/generated code/by easy_localization/locale_keys.g.dart';
 import '../state_management/const_data/this_app_icons.dart';
 import '../widgets/buttons/static_buttons.dart';
-import '../widgets/text_widgets/text_widgets.dart';
 
 class StartPage extends StatefulWidget {
   static const routeName = '/start_page';
@@ -15,47 +15,42 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
-  late TextTheme textTheme;
+  late CupertinoThemeData cupertinoTheme;
   late ColorScheme colorScheme;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    textTheme = Theme.of(context).textTheme;
+    cupertinoTheme = CupertinoTheme.of(context);
     colorScheme = Theme.of(context).colorScheme;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: StaticTextWidgets.themedText(
-          context,
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text(
           LocaleKeys.startScreen.tr(),
-          color: colorScheme.onPrimary,
-          fontSize: 20,
+          style: cupertinoTheme.textTheme.navTitleTextStyle
+              .copyWith(color: colorScheme.onSurface),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(ThisAppIcons.settings, color: colorScheme.onPrimary),
-            onPressed: () {
-              context.pushNamed('SettingsPage');
-            },
-          ),
-        ],
+        trailing: CupertinoButton(
+          padding: EdgeInsets.zero,
+          child:
+              Icon(ThisAppIcons.settings, color: cupertinoTheme.primaryColor),
+          onPressed: () {
+            context.pushNamed('SettingsPage');
+          },
+        ),
       ),
-      body: Center(
+      child: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              StaticTextWidgets.themedText(
-                context,
-                LocaleKeys.thisIsStartScreen.tr(),
-                color: colorScheme.inverseSurface,
-              ),
+              const SizedBox(height: 20),
               StaticCustomButtons.customButton(
                 context,
                 onPressed: () {
@@ -63,7 +58,7 @@ class _StartPageState extends State<StartPage> {
                 },
                 buttonText: LocaleKeys.goToTextfield.tr(),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
               StaticCustomButtons.customButton(
                 context,
                 onPressed: () {
@@ -71,7 +66,7 @@ class _StartPageState extends State<StartPage> {
                 },
                 buttonText: LocaleKeys.goToHiveBox.tr(),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
               StaticCustomButtons.customButton(
                 context,
                 onPressed: () {

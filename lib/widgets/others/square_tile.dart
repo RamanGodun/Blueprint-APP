@@ -34,6 +34,22 @@ class StaticDecorations {
         border: Border.all(color: Colors.white),
         borderRadius: BorderRadius.circular(16),
         color: Colors.grey[200],
+        boxShadow: [
+          // Основна тінь з більшою непрозорістю і розмитістю
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.4),
+            spreadRadius: 2,
+            blurRadius: 10,
+            offset: const Offset(2, 4),
+          ),
+          // Додаткова тінь з меншою непрозорістю і розмитістю
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: child,
     );
