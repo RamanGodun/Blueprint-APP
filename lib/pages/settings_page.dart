@@ -6,7 +6,7 @@ import '../src/generated code/by easy_localization/locale_keys.g.dart';
 import '../state_management/const_data/this_app_icons.dart';
 import '../widgets/buttons/static_buttons.dart';
 import '../widgets/buttons/theme_changing_button.dart';
-import '../widgets/dialogs/icons_dialog.dart';
+import '../widgets/dialogs/custom_dialog.dart';
 import '../widgets/others/icons_grid_view.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -53,7 +53,7 @@ class _SettingsPageState extends State<SettingsPage> {
             onPressed: () => showDialog(
                 context: context,
                 builder: (BuildContext context) => CustomCupertinoDialog(
-                      content: IconsGridView(
+                      contentWidget: IconsGridView(
                         colorScheme: colorScheme,
                       ),
                     )),

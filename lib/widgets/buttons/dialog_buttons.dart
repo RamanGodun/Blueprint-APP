@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class StaticButtons {
-  // Статичний віджет для дії OK з кастомним onPressed
+class DialogStaticButtons {
   static Widget actionButtonForDialog(BuildContext context,
       {VoidCallback? onPressed}) {
     return Expanded(
@@ -13,15 +12,13 @@ class StaticButtons {
             },
         child: Text(
           'OK',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Theme.of(context).colorScheme.secondary,
-              ),
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              color: Theme.of(context).colorScheme.primary, fontSize: 17),
         ),
       ),
     );
   }
 
-  // Статичний віджет для дії Cancel з кастомним onPressed
   static Widget cancelButtonForDialog(BuildContext context,
       {VoidCallback? onPressed}) {
     return Expanded(
@@ -40,32 +37,29 @@ class StaticButtons {
     );
   }
 
-  // Константний віджет для OK, використовується, якщо не потрібен контекст
   static const Widget defaultActionButtonForDialog = Expanded(
     child: CupertinoDialogAction(
       onPressed: null,
       child: Text(
         'OK',
         style: TextStyle(
-          fontSize: 20, // можна змінити на відповідне значення
-          color: Colors
-              .blue, // це лише приклад, налаштуйте відповідно до вашої теми
+          fontSize: 20,
+          color: Colors.blue,
         ),
-      ), // замінити при виклику
+      ),
     ),
   );
 
-  // Константний віджет для Cancel, використовується, якщо не потрібен контекст
   static const Widget defaultCancelButtonForDialog = Expanded(
     child: CupertinoDialogAction(
       onPressed: null,
       child: Text(
         'Cancel',
         style: TextStyle(
-          fontSize: 20, // можна змінити на відповідне значення
+          fontSize: 20,
           color: CupertinoColors.destructiveRed,
         ),
-      ), // замінити при виклику
+      ),
     ),
   );
 }

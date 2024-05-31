@@ -53,7 +53,10 @@ class StaticDecorations {
       themeModes.length,
       (index) => DropdownMenuItem<CustomThemeMode>(
         value: themeModes[index],
-        child: Text(themeModeTexts[index]),
+        child: Text(
+          themeModeTexts[index],
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
       ),
     );
   }

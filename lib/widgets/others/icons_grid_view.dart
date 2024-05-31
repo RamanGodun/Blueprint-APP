@@ -8,19 +8,26 @@ class IconsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 4,
-        crossAxisSpacing: 4,
-        mainAxisSpacing: 4,
-      ),
-      itemCount: ThisAppCustomIcons().myCustomIconsList.length,
-      itemBuilder: (BuildContext context, int index) {
-        final IconData icon = ThisAppCustomIcons().myCustomIconsList[index];
-        return Icon(
-          icon,
-          size: 30,
-          color: colorScheme.onSurface,
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final maxWidth = constraints.maxWidth;
+        final crossAxisCount = (maxWidth / 60).floor();
+
+        return GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            crossAxisSpacing: 4,
+            mainAxisSpacing: 4,
+          ),
+          itemCount: ThisAppCustomIcons().myCustomIconsList.length,
+          itemBuilder: (BuildContext context, int index) {
+            final IconData icon = ThisAppCustomIcons().myCustomIconsList[index];
+            return Icon(
+              icon,
+              size: 30,
+              color: colorScheme.onSurface,
+            );
+          },
         );
       },
     );

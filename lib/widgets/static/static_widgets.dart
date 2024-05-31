@@ -64,11 +64,13 @@ class StaticWidgets {
 
   static Widget getDivider4LoginPage() => divider4LoginPage;
 
-  static final Widget dividerBetweenDialogButtons = Container(
-    width: 1,
-    height: 40,
-    color: ThisAppColors.dividerColor,
-  );
+  static Widget dividerBetweenDialogButtons(BuildContext context) {
+    return Container(
+      width: 0.5,
+      color: Theme.of(context).colorScheme.inverseSurface.withOpacity(0.5),
+    );
+  }
 
-  static Widget getDividerBetweenDialogButtons() => divider4LoginPage;
+  static Widget getDividerBetweenDialogButtons(BuildContext context) =>
+      dividerBetweenDialogButtons(context);
 }
