@@ -3,7 +3,8 @@ import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../state_management/models/model_4_hive.dart';
+import '../../widgets/static/widgets_on_get_it.dart';
+import '../models/model_4_hive.dart';
 import 'open_ai_service.dart';
 import 'isar_service.dart';
 
@@ -28,6 +29,10 @@ class DIServiceLocator {
 
     if (!_getIt.isRegistered<OpenAiService>()) {
       _getIt.registerSingleton<OpenAiService>(OpenAiService());
+    }
+
+    if (!_getIt.isRegistered<StaticWidgetsOnGetIt>()) {
+      getIt.registerSingleton<StaticWidgetsOnGetIt>(StaticWidgetsOnGetIt());
     }
 
     if (!_getIt.isRegistered<IsarService>()) {

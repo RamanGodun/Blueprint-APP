@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../../../src/generated code/by easy_localization/locale_keys.g.dart';
-import '../../../state_management/theme_settings/inherited_theme_manager.dart';
-import '../../../state_management/theme_settings/theme_provider.dart';
+import '../../src/generated code/by easy_localization/locale_keys.g.dart';
+import '../../state_management/theme_settings/inherited_theme_manager.dart';
+import '../../state_management/theme_settings/theme_provider.dart';
 
 class ThemeChangingButton extends StatelessWidget {
   const ThemeChangingButton({super.key});
@@ -22,29 +22,31 @@ class ThemeChangingButton extends StatelessWidget {
               themeProvider.updateThemeMode(newThemeMode);
             }
           },
-          items: _buildThemeModeItems(context),
+          items: StaticDecorations.buildThemeModeItems(context),
         );
       },
     );
   }
+}
 
-  List<DropdownMenuItem<CustomThemeMode>> _buildThemeModeItems(
+class StaticDecorations {
+  static List<DropdownMenuItem<CustomThemeMode>> buildThemeModeItems(
       BuildContext context) {
     final List<CustomThemeMode> themeModes = [
       CustomThemeMode.system,
-      CustomThemeMode.light,
-      CustomThemeMode.dark,
-      CustomThemeMode.glass,
-      CustomThemeMode.darkGlass1,
-      CustomThemeMode.darkGlass2,
+      CustomThemeMode.lightAndroid,
+      CustomThemeMode.lightIOS,
+      CustomThemeMode.darkAndroid,
+      CustomThemeMode.darkIOS,
+      CustomThemeMode.darkGlass,
     ];
     final List<String> themeModeTexts = [
       LocaleKeys.systemTheme.tr(),
-      LocaleKeys.lightTheme.tr(),
-      LocaleKeys.darkTheme.tr(),
-      LocaleKeys.glassTheme.tr(),
-      LocaleKeys.darkGlassTheme1.tr(),
-      LocaleKeys.darkGlassTheme2.tr(),
+      LocaleKeys.lightAndroidTheme.tr(),
+      LocaleKeys.lightIOSTheme.tr(),
+      LocaleKeys.darkAndroidTheme.tr(),
+      LocaleKeys.darkIOSTheme.tr(),
+      LocaleKeys.darkGlassTheme.tr(),
     ];
 
     return List<DropdownMenuItem<CustomThemeMode>>.generate(

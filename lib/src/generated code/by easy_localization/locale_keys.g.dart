@@ -2,13 +2,13 @@
 
 abstract class  LocaleKeys {
   static const appTitle = 'appTitle';
-  static const darkTheme = 'darkTheme';
-  static const darkGlassTheme1 = 'darkGlassTheme1';
-  static const darkGlassTheme2 = 'darkGlassTheme2';
-  static const glassTheme = 'glassTheme';
+  static const darkIOSTheme = 'darkIOSTheme';
+  static const darkAndroidTheme = 'darkAndroidTheme';
+  static const darkGlassTheme = 'darkGlassTheme';
+  static const lightAndroidTheme = 'lightAndroidTheme';
   static const goToTextfield = 'goToTextfield';
   static const goToHiveBox = 'goToHiveBox';
-  static const lightTheme = 'lightTheme';
+  static const lightIOSTheme = 'lightIOSTheme';
   static const startScreen = 'startScreen';
   static const systemTheme = 'systemTheme';
   static const thisIsStartScreen = 'thisIsStartScreen';

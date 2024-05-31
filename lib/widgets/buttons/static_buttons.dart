@@ -1,4 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import '../../state_management/const_data/app_locales.dart';
+import '../../state_management/const_data/this_app_icons.dart';
 
 class StaticCustomButtons {
   static Widget customButton(BuildContext context,
@@ -31,19 +35,35 @@ class StaticCustomButtons {
 
   static Widget customButton2(BuildContext context,
       {required VoidCallback onPressed, required String buttonText}) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all<Color>(
-            Theme.of(context).colorScheme.secondary,
-          ),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: colorScheme.secondary,
+      ),
+      onPressed: onPressed,
+      child: Text(
+        buttonText,
+        style: textTheme.bodyLarge?.copyWith(
+          color: colorScheme.onInverseSurface,
         ),
-        onPressed: onPressed,
-        child: Text(
-          buttonText,
-          style: Theme.of(context)
-              .textTheme
-              .bodyLarge
-              ?.copyWith(color: Theme.of(context).colorScheme.onInverseSurface),
-        ));
+      ),
+    );
+  }
+
+  static Widget changeLanguageButton(
+      BuildContext context, VoidCallback onUpdate) {
+    final appLocales = AppLocales().appLocales;
+
+    return IconButton(
+      icon: const Icon(ThisAppIcons.globe),
+      onPressed: () {
+        Locale newLocale =
+            context.locale == appLocales[0] ? appLocales[1] : appLocales[0];
+        context.setLocale(newLocale);
+        onUpdate();
+      },
+    );
   }
 }

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../src/generated code/by easy_localization/locale_keys.g.dart';
 import '../state_management/const_data/this_app_icons.dart';
-import '../widgets/static/buttons/static_buttons.dart';
-import '../widgets/static/text_widgets.dart';
+import '../widgets/buttons/static_buttons.dart';
+import '../widgets/text_widgets/text_widgets.dart';
 
 class StartPage extends StatefulWidget {
   static const routeName = '/start_page';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../src/services/open_ai_service.dart';
+import '../../state_management/services/open_ai_service.dart';
 
 class SendPromptPage extends StatefulWidget {
   static const routeName = '/start_page/send_prompt';

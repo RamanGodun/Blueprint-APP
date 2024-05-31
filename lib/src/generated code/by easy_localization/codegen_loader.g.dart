@@ -16,26 +16,26 @@ class CodegenLoader extends AssetLoader {
 
   static const Map<String, dynamic> uk_UA = {
     "appTitle": "Цей додаток",
-    "darkTheme": "Темна тема",
-    "darkGlassTheme1": "Темна скляна тема 1",
-    "darkGlassTheme2": "Темна скляна тема 2",
-    "glassTheme": "Скляна тема",
+    "darkIOSTheme": "Темна IOS тема",
+    "darkAndroidTheme": "Темна андроїд тема",
+    "darkGlassTheme": "Темна скляна тема",
+    "lightAndroidTheme": "Світла андроїд тема",
     "goToTextfield": "До сторінки текст філда",
     "goToHiveBox": "До сторінки Hive",
-    "lightTheme": "світла тема",
+    "lightIOSTheme": "світла IOS тема",
     "startScreen": "стартовий екран",
     "systemTheme": "Тема девайсу",
     "thisIsStartScreen": "Це стартовий екран"
   };
   static const Map<String, dynamic> en_US = {
     "appTitle": "This app",
-    "darkTheme": "Dark theme",
-    "darkGlassTheme1": "Dark-glassy theme1",
-    "darkGlassTheme2": "Dark-glassy theme2",
-    "glassTheme": "Glassy theme",
+    "darkIOSTheme": "Dark IOS theme",
+    "darkAndroidTheme": "Dark android theme",
+    "darkGlassTheme": "Dark-glassy theme2",
+    "lightAndroidTheme": "Light android theme",
     "goToTextfield": "To textfield page",
     "goToHiveBox": "To Hive page",
-    "lightTheme": "Light theme",
+    "lightIOSTheme": "Light IOS theme",
     "startScreen": "Start screen",
     "systemTheme": "System Theme",
     "thisIsStartScreen": "This is start screen"

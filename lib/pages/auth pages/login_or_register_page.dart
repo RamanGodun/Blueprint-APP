@@ -4,10 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../../src/generated code/by spider/resources.dart';
-import '../../src/services/google_signing_service.dart';
-import '../../widgets/static/buttons/static_buttons.dart';
-import '../../widgets/text_fields.dart/custom_textfield.dart';
-import '../../widgets/square_tile.dart';
+import '../../state_management/services/google_signing_service.dart';
+import '../../widgets/buttons/static_buttons.dart';
+import '../../widgets/text_fields.dart/textfield1.dart';
+import '../../widgets/others/square_tile.dart';
 import '../../widgets/static/static_widgets.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {
@@ -154,14 +154,14 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                       ),
                       const SizedBox(height: 25),
                       // email textfield
-                      MyTextField(
+                      CustomTextField(
                         controller: emailController,
                         hintText: 'Email',
                         isObscureText: false,
                         icon: Icons.mail,
                       ),
                       // password textfield
-                      MyTextField(
+                      CustomTextField(
                         controller: passwordController,
                         hintText: 'Password',
                         isObscureText: true,
@@ -169,7 +169,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                       ),
                       if (!widget.isLoginPage &&
                           passwordConfirmationController != null)
-                        MyTextField(
+                        CustomTextField(
                           controller: passwordConfirmationController!,
                           hintText: 'Confirm password',
                           isObscureText: true,

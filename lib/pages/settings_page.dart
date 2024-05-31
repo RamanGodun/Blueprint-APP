@@ -4,10 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import '../src/generated code/by easy_localization/locale_keys.g.dart';
 import '../state_management/const_data/this_app_icons.dart';
-import '../widgets/static/buttons/icon_button_4_language_changing.dart';
-import '../widgets/static/buttons/static_buttons.dart';
-import '../widgets/static/buttons/theme_changing_button.dart';
-import '../widgets/static/dialogs/icons_dialog.dart';
+import '../widgets/buttons/static_buttons.dart';
+import '../widgets/buttons/theme_changing_button.dart';
+import '../widgets/dialogs/icons_dialog.dart';
+import '../widgets/others/icons_grid_view.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/start_page/settings';
@@ -19,11 +19,18 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   User? user;
+  late ColorScheme colorScheme;
 
   @override
   void initState() {
     super.initState();
     user = FirebaseAuth.instance.currentUser;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    colorScheme = Theme.of(context).colorScheme;
   }
 
   void signUserOut() async {
@@ -39,12 +46,17 @@ class _SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         title: Text(LocaleKeys.startScreen.tr()),
         actions: [
-          LanguageToggleButton(onUpdate: () => setState(() {})),
+          StaticCustomButtons.changeLanguageButton(
+              context, () => setState(() {})),
           IconButton(
             icon: const Icon(ThisAppIcons.crown),
             onPressed: () => showDialog(
                 context: context,
-                builder: (BuildContext context) => const CustomIconsDialog()),
+                builder: (BuildContext context) => CustomCupertinoDialog(
+                      content: IconsGridView(
+                        colorScheme: colorScheme,
+                      ),
+                    )),
           ),
           IconButton(
             onPressed: signUserOut,

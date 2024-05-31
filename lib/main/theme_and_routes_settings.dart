@@ -30,30 +30,30 @@ class ThemeAndRoutesSettings extends StatelessWidget {
         ThemeData? selectedTheme;
         ThemeData? darkTheme;
         switch (themeMode) {
-          case CustomThemeMode.light:
-            selectedTheme = ThisAppThemes.kLightTheme;
-            darkTheme = ThisAppThemes.kDarkTheme;
+          case CustomThemeMode.lightIOS:
+            selectedTheme = ThisAppThemes.kLightIOSTheme;
+            darkTheme = ThisAppThemes.kDarkIOSTheme;
             break;
-          case CustomThemeMode.dark:
-            selectedTheme = ThisAppThemes.kDarkTheme;
-            darkTheme = ThisAppThemes.kDarkTheme;
+          case CustomThemeMode.darkIOS:
+            selectedTheme = ThisAppThemes.kDarkIOSTheme;
+            darkTheme = ThisAppThemes.kDarkIOSTheme;
             break;
-          case CustomThemeMode.glass:
-            selectedTheme = ThisAppThemes.kGlassTheme;
-            darkTheme = ThisAppThemes.kDarkTheme;
+          case CustomThemeMode.lightAndroid:
+            selectedTheme = ThisAppThemes.kLightAndroidTheme;
+            darkTheme = ThisAppThemes.kDarkAndroidTheme;
             break;
-          case CustomThemeMode.darkGlass1:
-            selectedTheme = ThisAppThemes.kDarkGlassTheme1;
-            darkTheme = ThisAppThemes.kDarkGlassTheme1;
+          case CustomThemeMode.darkAndroid:
+            selectedTheme = ThisAppThemes.kDarkAndroidTheme;
+            darkTheme = ThisAppThemes.kDarkAndroidTheme;
             break;
-          case CustomThemeMode.darkGlass2:
-            selectedTheme = ThisAppThemes.kDarkGlassTheme2;
-            darkTheme = ThisAppThemes.kDarkGlassTheme2;
+          case CustomThemeMode.darkGlass:
+            selectedTheme = ThisAppThemes.kDarkGlassTheme;
+            darkTheme = ThisAppThemes.kDarkGlassTheme;
             break;
           case CustomThemeMode.system:
           default:
-            selectedTheme = ThisAppThemes.kLightTheme;
-            darkTheme = ThisAppThemes.kDarkTheme;
+            selectedTheme = ThisAppThemes.kLightIOSTheme;
+            darkTheme = ThisAppThemes.kDarkIOSTheme;
         }
 
         return MaterialApp.router(

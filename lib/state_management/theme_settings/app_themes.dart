@@ -3,7 +3,7 @@ import 'app_colorscheme.dart';
 import 'text_style.dart';
 
 class ThisAppThemes {
-  static final ThemeData kDarkTheme = ThemeData.dark().copyWith(
+  static final ThemeData kDarkIOSTheme = ThemeData.dark().copyWith(
     visualDensity: VisualDensity.adaptivePlatformDensity,
     colorScheme: ThisAppColors.kColorDarkScheme,
     textTheme: ThisAppTextStyles.kTextThemeData(true),
@@ -29,7 +29,7 @@ class ThisAppThemes {
     ),
   );
 
-  static final ThemeData kLightTheme = ThemeData.light().copyWith(
+  static final ThemeData kLightIOSTheme = ThemeData.light().copyWith(
     visualDensity: VisualDensity.adaptivePlatformDensity,
     colorScheme: ThisAppColors.kColorScheme,
     textTheme: ThisAppTextStyles.kTextThemeData(false),
@@ -63,59 +63,21 @@ class ThisAppThemes {
     ),
   );
 
-  static final ThemeData kGlassTheme = ThemeData.light().copyWith(
-    primaryColor: ColorsForApp.black,
+  static final ThemeData kLightAndroidTheme = ThemeData.light().copyWith(
     colorScheme: const ColorScheme.light(),
-    scaffoldBackgroundColor: ColorsForApp.white,
-    indicatorColor: AdditionalColorsForApp.amber1,
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: ColorsForApp.black,
-        unselectedItemColor: AdditionalColorsForApp.bottomNavBarUnselectedLight,
-        backgroundColor: Color.fromARGB(255, 255, 255, 255)),
-    appBarTheme: const AppBarTheme(
-      color: ColorsForApp.white,
-      iconTheme: IconThemeData(color: ColorsForApp.black),
-      elevation: 0,
-    ),
-    snackBarTheme: const SnackBarThemeData(
-        backgroundColor: AdditionalColorsForApp.lightSnackBar,
-        contentTextStyle:
-            TextStyle(color: ColorsForApp.black, fontFamily: 'MA')),
-    textTheme: const TextTheme(
-      bodyMedium: TextStyle(fontFamily: 'MA', color: ColorsForApp.black),
-    ),
+    textTheme: ThisAppTextStyles.kTextThemeData(false),
+    // Додайте інші налаштування
   );
 
-  static final ThemeData kDarkGlassTheme1 = ThemeData.dark().copyWith(
-    primaryColor: ColorsForApp.white,
+  static final ThemeData kDarkAndroidTheme = ThemeData.dark().copyWith(
     colorScheme: const ColorScheme.dark(),
-    scaffoldBackgroundColor: ColorsForApp.background,
-    indicatorColor: AdditionalColorsForApp.amber1,
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: ColorsForApp.white,
-        unselectedItemColor: AdditionalColorsForApp.hover,
-        backgroundColor: ColorsForApp.background),
-    appBarTheme: const AppBarTheme(
-        elevation: 0, backgroundColor: ColorsForApp.background),
-    snackBarTheme: const SnackBarThemeData(
-        backgroundColor: Color.fromARGB(255, 51, 51, 51),
-        contentTextStyle:
-            TextStyle(color: ColorsForApp.white, fontFamily: 'MA')),
-    textTheme: const TextTheme(
-      bodyMedium: TextStyle(fontFamily: 'MA', color: ColorsForApp.white),
-    ),
+    textTheme: ThisAppTextStyles.kTextThemeData(true),
+    // Додайте інші налаштування
   );
 
-  static final ThemeData kDarkGlassTheme2 = ThemeData.dark().copyWith(
+  static final ThemeData kDarkGlassTheme = ThemeData.dark().copyWith(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: Colors.black.withOpacity(0.6),
-    // Додайте інші налаштування для темної скляної теми 2
+    textTheme: ThisAppTextStyles.kTextThemeData(true),
+    // Додайте інші налаштування
   );
-}
-
-class ColorsForApp {
-  static const Color white = Colors.white;
-  static const Color primary = Color(0xFFFFB100);
-  static const Color background = Color(0xFF1B1B1B);
-  static const Color black = Colors.black;
 }

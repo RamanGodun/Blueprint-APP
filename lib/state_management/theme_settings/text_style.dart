@@ -8,18 +8,18 @@ abstract class ThisAppTextStyles {
 
   static TextTheme kTextThemeData(bool isDarkTheme) {
     return GoogleFonts.montserratTextTheme().copyWith(
-      titleLarge: _getTextStyle(isDarkTheme, FontWeight.w600, 22),
-      titleMedium: _getTextStyle(isDarkTheme, FontWeight.w500, 16),
-      titleSmall: _getTextStyle(isDarkTheme, FontWeight.w400, 14),
+      titleLarge: _getTextStyle(isDarkTheme, FontWeight.w700, 22),
+      titleMedium: _getTextStyle(isDarkTheme, FontWeight.w600, 19),
+      titleSmall: _getTextStyle(isDarkTheme, FontWeight.w600, 16),
       bodyLarge: _getTextStyle(isDarkTheme, FontWeight.w400, 16),
       bodyMedium: _getTextStyle(isDarkTheme, FontWeight.w400, 14),
       bodySmall: _getTextStyle(isDarkTheme, FontWeight.w400, 12),
       labelLarge: _getTextStyle(isDarkTheme, FontWeight.w400, 14),
       labelMedium: _getTextStyle(isDarkTheme, FontWeight.w400, 12),
       labelSmall: _getTextStyle(isDarkTheme, FontWeight.w400, 11),
-      displayLarge: _getTextStyle(isDarkTheme, FontWeight.w400, 57),
-      displayMedium: _getTextStyle(isDarkTheme, FontWeight.w400, 45),
-      displaySmall: _getTextStyle(isDarkTheme, FontWeight.w300, 36),
+      displayLarge: _getTextStyle(isDarkTheme, FontWeight.w400, 25),
+      displayMedium: _getTextStyle(isDarkTheme, FontWeight.w400, 22),
+      displaySmall: _getTextStyle(isDarkTheme, FontWeight.w300, 19),
     );
   }
 

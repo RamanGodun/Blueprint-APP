@@ -18,7 +18,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'main/app.localization.dart';
 import 'state_management/const_data/firebase_options.dart';
-import 'src/services/0.service_locator.dart';
+import 'state_management/services/0.service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
