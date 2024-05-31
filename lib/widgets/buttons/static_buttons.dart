@@ -14,7 +14,14 @@ class StaticCustomButtons {
         height: 50,
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
         decoration: BoxDecoration(
-          color: CupertinoTheme.of(context).primaryColor.withOpacity(0.95),
+          gradient: LinearGradient(
+            colors: [
+              CupertinoTheme.of(context).primaryColor.withOpacity(0.9),
+              CupertinoTheme.of(context).primaryColor.withOpacity(0.95),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
@@ -22,6 +29,12 @@ class StaticCustomButtons {
               spreadRadius: 1,
               blurRadius: 5,
               offset: const Offset(0, 2),
+            ),
+            BoxShadow(
+              color: CupertinoColors.black.withOpacity(0.05),
+              spreadRadius: 0.5,
+              blurRadius: 2,
+              offset: const Offset(0, 1),
             ),
           ],
         ),
@@ -43,16 +56,45 @@ class StaticCustomButtons {
       {required VoidCallback onPressed, required String buttonText}) {
     final textTheme = CupertinoTheme.of(context).textTheme;
 
-    return CupertinoButton.filled(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-      borderRadius: BorderRadius.circular(8),
-      onPressed: onPressed,
-      child: Text(
-        buttonText,
-        style: textTheme.textStyle.copyWith(
-          color: CupertinoColors.white,
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        height: 50,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              CupertinoTheme.of(context).primaryColor.withOpacity(0.9),
+              CupertinoTheme.of(context).primaryColor.withOpacity(0.95),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: CupertinoColors.black.withOpacity(0.1),
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: const Offset(0, 2),
+            ),
+            BoxShadow(
+              color: CupertinoColors.black.withOpacity(0.05),
+              spreadRadius: 0.5,
+              blurRadius: 2,
+              offset: const Offset(0, 1),
+            ),
+          ],
+        ),
+        child: Center(
+          child: Text(
+            buttonText,
+            style: textTheme.textStyle.copyWith(
+              color: CupertinoColors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+            ),
+          ),
         ),
       ),
     );
@@ -71,6 +113,14 @@ class StaticCustomButtons {
       child: Icon(
         ThisAppIcons.globe,
         color: CupertinoTheme.of(context).primaryColor,
+        shadows: [
+          BoxShadow(
+            color: CupertinoColors.black.withOpacity(0.2),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(1, 3),
+          ),
+        ],
       ),
     );
   }

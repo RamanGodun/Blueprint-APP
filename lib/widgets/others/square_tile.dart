@@ -28,23 +28,23 @@ class SquareTile extends StatelessWidget {
 class StaticDecorations {
   static Widget squareTileContainer(BuildContext context,
       {required Widget child}) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.white),
+        border: Border.all(color: colorScheme.onSurface.withOpacity(0.2)),
         borderRadius: BorderRadius.circular(16),
-        color: Colors.grey[200],
+        color: colorScheme.surface,
         boxShadow: [
-          // Основна тінь з більшою непрозорістю і розмитістю
           BoxShadow(
-            color: Colors.grey.withOpacity(0.4),
+            color: colorScheme.shadow.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 10,
             offset: const Offset(2, 4),
           ),
-          // Додаткова тінь з меншою непрозорістю і розмитістю
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
+            color: colorScheme.shadow.withOpacity(0.05),
             spreadRadius: 1,
             blurRadius: 5,
             offset: const Offset(0, 2),

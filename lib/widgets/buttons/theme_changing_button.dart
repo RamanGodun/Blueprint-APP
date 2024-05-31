@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
 import '../../src/generated code/by easy_localization/locale_keys.g.dart';
 import '../../state_management/theme_settings/inherited_theme_manager.dart';
 import '../../state_management/theme_settings/theme_provider.dart';
@@ -14,14 +15,33 @@ class ThemeChangingButton extends StatelessWidget {
     return ValueListenableBuilder<CustomThemeMode>(
       valueListenable: themeProvider!,
       builder: (context, themeMode, _) {
+        final colorScheme = Theme.of(context).colorScheme;
+        final textTheme = Theme.of(context).textTheme;
+        final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
-            borderRadius: BorderRadius.circular(8.0),
-            border: Border.all(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
-            ),
+            color: colorScheme.surface,
+            borderRadius: BorderRadius.circular(12.0),
+            boxShadow: [
+              BoxShadow(
+                color: isDarkMode
+                    ? Colors.black
+                    : colorScheme.inverseSurface.withOpacity(0.3),
+                spreadRadius: 2,
+                blurRadius: 10,
+                offset: const Offset(2, 4),
+              ),
+              BoxShadow(
+                color: isDarkMode
+                    ? Colors.black
+                    : colorScheme.inverseSurface.withOpacity(0.1),
+                spreadRadius: 1,
+                blurRadius: 5,
+                offset: const Offset(0, 2),
+              ),
+            ],
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<CustomThemeMode>(
@@ -33,13 +53,13 @@ class ThemeChangingButton extends StatelessWidget {
                 }
               },
               items: StaticDecorations.buildThemeModeItems(context),
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurface,
-                  ),
-              dropdownColor: Theme.of(context).colorScheme.surface,
+              style: textTheme.bodyLarge?.copyWith(
+                color: colorScheme.onSurface,
+              ),
+              dropdownColor: colorScheme.surface,
               icon: Icon(
                 Icons.arrow_drop_down,
-                color: Theme.of(context).colorScheme.onSurface,
+                color: colorScheme.onSurface,
               ),
             ),
           ),

@@ -76,6 +76,16 @@ class _SettingsPageState extends State<SettingsPage>
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
+        leading: CupertinoButton(
+          padding: EdgeInsets.zero,
+          child: Icon(
+            CupertinoIcons.back,
+            color: colorScheme.onSurface,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         middle: Text(
           LocaleKeys.startScreen.tr(),
           style: textTheme.titleMedium?.copyWith(color: colorScheme.onSurface),

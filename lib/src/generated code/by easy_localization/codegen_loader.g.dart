@@ -31,7 +31,7 @@ class CodegenLoader extends AssetLoader {
     "appTitle": "This app",
     "darkIOSTheme": "Dark IOS theme",
     "darkAndroidTheme": "Dark android theme",
-    "darkGlassTheme": "Dark-glassy theme2",
+    "darkGlassTheme": "Dark glassy theme",
     "lightAndroidTheme": "Light android theme",
     "goToTextfield": "To textfield page",
     "goToHiveBox": "To Hive page",

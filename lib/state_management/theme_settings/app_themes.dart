@@ -4,7 +4,6 @@ import 'app_colorscheme.dart';
 import 'text_style.dart';
 
 class ThisAppThemes {
-  // Загальна функція для налаштувань теми
   static ThemeData _buildThemeData({
     required bool isDark,
     required ColorScheme colorScheme,

@@ -29,10 +29,13 @@ class _StartPageState extends State<StartPage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text(
-          LocaleKeys.startScreen.tr(),
-          style: cupertinoTheme.textTheme.navTitleTextStyle
-              .copyWith(color: colorScheme.onSurface),
+        middle: Padding(
+          padding: const EdgeInsets.only(right: 127.0),
+          child: Text(
+            LocaleKeys.startScreen.tr(),
+            style: cupertinoTheme.textTheme.navTitleTextStyle
+                .copyWith(color: colorScheme.onSurface),
+          ),
         ),
         trailing: CupertinoButton(
           padding: EdgeInsets.zero,
