@@ -1,6 +1,9 @@
 {
 "appTitle": "Цей додаток",
 "darkTheme": "Темна тема",
+"darkGlassTheme1": "Темна скляна тема 1",
+"darkGlassTheme2": "Темна скляна тема 2",
+"glassTheme": "Скляна тема",
 "goToTextfield": "До сторінки текст філда",
 "goToHiveBox": "До сторінки Hive",
 "lightTheme": "світла тема",

@@ -3,6 +3,9 @@
 abstract class  LocaleKeys {
   static const appTitle = 'appTitle';
   static const darkTheme = 'darkTheme';
+  static const darkGlassTheme1 = 'darkGlassTheme1';
+  static const darkGlassTheme2 = 'darkGlassTheme2';
+  static const glassTheme = 'glassTheme';
   static const goToTextfield = 'goToTextfield';
   static const goToHiveBox = 'goToHiveBox';
   static const lightTheme = 'lightTheme';

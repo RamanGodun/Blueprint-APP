@@ -3,7 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../src/services/0.service_locator.dart';
 import '../const_data/app_const.dart';
 
-class ThemeProvider extends ValueNotifier<ThemeMode> {
+enum CustomThemeMode { light, dark, system, glass, darkGlass1, darkGlass2 }
+
+class ThemeProvider extends ValueNotifier<CustomThemeMode> {
   static final ThemeProvider _instance = ThemeProvider._internal();
   static ThemeProvider get instance => _instance;
 
@@ -11,46 +13,58 @@ class ThemeProvider extends ValueNotifier<ThemeMode> {
 
   ThemeProvider._internal()
       : prefs = DIServiceLocator.instance.get<SharedPreferences>(),
-        super(ThemeMode.system);
+        super(CustomThemeMode.system);
 
   Future<void> loadSettings() async {
     final themeModeString = prefs.getString(AppConstants.themeModeKey);
     if (themeModeString != null) {
-      value = _themeModeFromString(themeModeString);
+      value = _customThemeModeFromString(themeModeString);
     } else {
-      value = ThemeMode.system;
+      value = CustomThemeMode.system;
     }
   }
 
-  Future<void> updateThemeMode(ThemeMode newThemeMode) async {
+  Future<void> updateThemeMode(CustomThemeMode newThemeMode) async {
     value = newThemeMode;
     await prefs.setString(
       AppConstants.themeModeKey,
-      _themeModeToString(newThemeMode),
+      _customThemeModeToString(newThemeMode),
     );
   }
 
-  String _themeModeToString(ThemeMode themeMode) {
+  String _customThemeModeToString(CustomThemeMode themeMode) {
     switch (themeMode) {
-      case ThemeMode.light:
+      case CustomThemeMode.light:
         return 'light';
-      case ThemeMode.dark:
+      case CustomThemeMode.dark:
         return 'dark';
-      case ThemeMode.system:
+      case CustomThemeMode.glass:
+        return 'glass';
+      case CustomThemeMode.darkGlass1:
+        return 'darkGlass1';
+      case CustomThemeMode.darkGlass2:
+        return 'darkGlass2';
+      case CustomThemeMode.system:
       default:
         return 'system';
     }
   }
 
-  ThemeMode _themeModeFromString(String themeModeString) {
+  CustomThemeMode _customThemeModeFromString(String themeModeString) {
     switch (themeModeString) {
       case 'light':
-        return ThemeMode.light;
+        return CustomThemeMode.light;
       case 'dark':
-        return ThemeMode.dark;
+        return CustomThemeMode.dark;
+      case 'glass':
+        return CustomThemeMode.glass;
+      case 'darkGlass1':
+        return CustomThemeMode.darkGlass1;
+      case 'darkGlass2':
+        return CustomThemeMode.darkGlass2;
       case 'system':
       default:
-        return ThemeMode.system;
+        return CustomThemeMode.system;
     }
   }
 }
