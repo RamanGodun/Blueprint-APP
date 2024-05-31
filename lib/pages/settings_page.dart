@@ -76,7 +76,6 @@ class _SettingsPageState extends State<SettingsPage>
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        backgroundColor: colorScheme.surface,
         middle: Text(
           LocaleKeys.startScreen.tr(),
           style: textTheme.titleMedium?.copyWith(color: colorScheme.onSurface),
@@ -84,8 +83,7 @@ class _SettingsPageState extends State<SettingsPage>
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            StaticCustomButtons.changeLanguageButton(
-                context, () => context.pushNamed('ApiKeyInputPage')),
+            StaticCustomButtons.changeLanguageButton(context),
             CupertinoButton(
               padding: EdgeInsets.zero,
               child: Icon(

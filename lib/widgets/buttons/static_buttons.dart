@@ -58,8 +58,7 @@ class StaticCustomButtons {
     );
   }
 
-  static Widget changeLanguageButton(
-      BuildContext context, VoidCallback onUpdate) {
+  static Widget changeLanguageButton(BuildContext context) {
     final appLocales = AppLocales().appLocales;
 
     return CupertinoButton(
@@ -68,7 +67,6 @@ class StaticCustomButtons {
         Locale newLocale =
             context.locale == appLocales[0] ? appLocales[1] : appLocales[0];
         context.setLocale(newLocale);
-        onUpdate();
       },
       child: Icon(
         ThisAppIcons.globe,
