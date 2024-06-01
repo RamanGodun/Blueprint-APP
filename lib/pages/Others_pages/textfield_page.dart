@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import '../../State_management/Src/Helpers/helpers.dart';
+import '../../UI_Components/Text_fields.dart/cupertino_tf2.dart';
+import '../../state_management/src/custom_icons/app_icons.dart';
+import '../../state_management/src/helpers/helpers.dart';
+import '../../ui_components/buttons/static_buttons.dart';
+import '../../ui_components/widgets_styling/0.text_styles_for_components.dart';
 
 class TextFieldPage extends HookWidget {
   static const routeName = '/start_page/new_screen';
@@ -13,6 +17,7 @@ class TextFieldPage extends HookWidget {
     final textController = useTextEditingController();
     final isValid = useState(true);
     final colorScheme = Helpers.colorScheme(context);
+    final cupertinoTheme = Helpers.cupertinoThemeData(context);
 
     void validateInput() {
       isValid.value = textController.text.isNotEmpty;
@@ -20,31 +25,20 @@ class TextFieldPage extends HookWidget {
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text(
-          'New Screen',
-          style: TextStyle(
-            color: colorScheme.onSurface,
-            fontSize: 20,
-          ),
-        ),
+        leading: AppIcons.backIcon(context, colorScheme),
+        middle: Text('New Screen',
+            style: TextStyle4Components.appBarTitle(
+                cupertinoTheme: cupertinoTheme, colorScheme: colorScheme)),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CupertinoTextField(
-              controller: textController,
-              placeholder: 'Enter text',
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: isValid.value
-                      ? CupertinoColors.inactiveGray
-                      : CupertinoColors.destructiveRed,
-                ),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              onChanged: (text) => validateInput(),
+            CupertinoTextField2(
+              textController: textController,
+              isValid: isValid,
+              validateInput: validateInput,
             ),
             if (!isValid.value)
               const Padding(
@@ -58,16 +52,7 @@ class TextFieldPage extends HookWidget {
                 ),
               ),
             const SizedBox(height: 20),
-            CupertinoButton.filled(
-              onPressed: () {
-                if (isValid.value) {
-                  // Handle the submit action
-                } else {
-                  validateInput();
-                }
-              },
-              child: const Text('Submit'),
-            ),
+            StaticCustomButtons.cupertinoButton1(context, buttonText: 'Submit'),
           ],
         ),
       ),

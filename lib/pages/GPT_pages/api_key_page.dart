@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import '../../State_management/Services/open_ai_service.dart';
+import '../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
+import '../../UI_Components/Text_fields.dart/cupertino_tf3.dart';
+import '../../UI_Components/Widgets_STYLING/0.text_styles_for_components.dart';
 
 class ApiKeyInputPage extends StatefulWidget {
   static const routeName = '/start_page/settings/enter_api_key';
@@ -19,6 +22,7 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
 
   late ColorScheme colorScheme;
   late TextTheme textTheme;
+  late CupertinoThemeData cupertinoTheme;
 
   @override
   void initState() {
@@ -29,78 +33,70 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    cupertinoTheme = Helpers.cupertinoThemeData(context);
     colorScheme = Helpers.colorScheme(context);
     textTheme = Helpers.textTheme(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text(
-          'Enter OpenAI API Key',
-          style: textTheme.titleMedium?.copyWith(
-            color: colorScheme.onSurface,
+    return Material(
+      child: CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          leading: AppIcons.backIcon(context, colorScheme),
+          middle: Text('Enter OpenAI API Key',
+              style: TextStyle4Components.appBarTitle(
+                  cupertinoTheme: cupertinoTheme, colorScheme: colorScheme)),
+          trailing: CupertinoButton(
+            padding: EdgeInsets.zero,
+            onPressed: _showTooltip,
+            child: AppIcons.toolTipIcon(context, colorScheme),
           ),
         ),
-        trailing: CupertinoButton(
-          padding: EdgeInsets.zero,
-          onPressed: _showTooltip,
-          child: Icon(
-            CupertinoIcons.info,
-            color: colorScheme.primary,
-          ),
-        ),
-      ),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CupertinoTextField(
-                  controller: _apiKeyController,
-                  placeholder: 'Enter API Key here',
-                  decoration: BoxDecoration(
-                    border: Border.all(color: colorScheme.primary, width: 1.0),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 12.0, horizontal: 16.0),
-                  style: textTheme.bodyMedium?.copyWith(
-                    color: colorScheme.onSurface,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  width: double.infinity,
-                  child: CupertinoButton.filled(
-                    onPressed: () async {
-                      await _saveApiKey();
-                      showSnackBar();
-                    },
-                    child: Text(
-                      'Save API Key',
-                      style: textTheme.bodyLarge?.copyWith(
-                        color: CupertinoColors.white,
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CupertinoTextField3(
+                      apiKeyController: _apiKeyController,
+                      colorScheme: colorScheme,
+                      textTheme: textTheme),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    child: CupertinoButton.filled(
+                      onPressed: () async {
+                        await _saveApiKey();
+                        showSnackBar();
+                      },
+                      child: Text(
+                        'Save API Key',
+                        style: textTheme.bodyLarge?.copyWith(
+                          color: CupertinoColors.white,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 50),
-                CupertinoButton(
-                  color: colorScheme.primary,
-                  onPressed: testAPIKey,
-                  child: Text(
-                    'Test API Key',
-                    style: textTheme.bodyLarge?.copyWith(
-                      color: CupertinoColors.white,
+                  const SizedBox(height: 50),
+                  SizedBox(
+                    width: double.infinity,
+                    child: CupertinoButton(
+                      color: colorScheme.primary,
+                      onPressed: testAPIKey,
+                      child: Text(
+                        'Test API Key',
+                        style: textTheme.bodyLarge?.copyWith(
+                          color: CupertinoColors.white,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

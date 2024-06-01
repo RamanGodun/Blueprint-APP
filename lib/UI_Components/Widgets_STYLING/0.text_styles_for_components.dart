@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
 
@@ -20,5 +21,12 @@ class TextStyle4Components {
       fontSize: 15,
       color: colorScheme.onPrimary,
     );
+  }
+
+  static TextStyle appBarTitle(
+      {required CupertinoThemeData cupertinoTheme,
+      required ColorScheme colorScheme}) {
+    return cupertinoTheme.textTheme.navTitleTextStyle
+        .copyWith(color: colorScheme.onSurface);
   }
 }

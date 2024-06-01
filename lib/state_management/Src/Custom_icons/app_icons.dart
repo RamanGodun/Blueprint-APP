@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../Theme_configuration/App_colors_schemes/this_app_colors.dart';
@@ -7,6 +8,14 @@ class AppIcons {
 /*
 Icons 
 */
+
+  static Icon toolTipIcon(BuildContext context, ColorScheme colorScheme) {
+    return Icon(
+      CupertinoIcons.info,
+      color: colorScheme.primary,
+    );
+  }
+
 // icons 4 bottom tab bar
   static const List<IconData> icons = [
     Icons.account_balance_wallet,
@@ -159,6 +168,19 @@ Icons
       Icons.add_task_sharp,
       color: ThisAppColors.kAppPrimaryColor,
       size: 20,
+    );
+  }
+
+  static Widget backIcon(BuildContext context, ColorScheme colorScheme) {
+    return CupertinoButton(
+      padding: EdgeInsets.zero,
+      child: Icon(
+        CupertinoIcons.back,
+        color: colorScheme.onSurface,
+      ),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
     );
   }
 

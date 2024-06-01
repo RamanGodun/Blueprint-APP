@@ -61,7 +61,7 @@ Checkbox
 /*
 OTHERS (borders)
 */
-  static Border border4LightThemeGNavButton = Border.symmetric(
+  static final Border border4LightThemeGNavButton = Border.symmetric(
     vertical: BorderSide(
       color: const Color.fromARGB(114, 15, 108, 91).withOpacity(0.4),
       width: 2.5,
@@ -69,7 +69,7 @@ OTHERS (borders)
     ),
   );
 
-  static Border border4DarkThemeGNavButton = Border.symmetric(
+  static final Border border4DarkThemeGNavButton = Border.symmetric(
     vertical: BorderSide(
       color: ThisAppColors.kAppPrimaryColor.withOpacity(0.3),
       width: 2.5,

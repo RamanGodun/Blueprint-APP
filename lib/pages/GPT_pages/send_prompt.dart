@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../State_management/Services/open_ai_service.dart';
+import '../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
 
 class SendPromptPage extends StatefulWidget {
@@ -20,12 +21,14 @@ class _SendPromptPageState extends State<SendPromptPage> {
   String _response = '';
   bool _isLoading = false;
 
+  late CupertinoThemeData cupertinoTheme;
   late ColorScheme colorScheme;
   late TextTheme textTheme;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    cupertinoTheme = Helpers.cupertinoThemeData(context);
     colorScheme = Helpers.colorScheme(context);
     textTheme = Helpers.textTheme(context);
   }
@@ -33,8 +36,9 @@ class _SendPromptPageState extends State<SendPromptPage> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        middle: Text('Send Prompt'),
+      navigationBar: CupertinoNavigationBar(
+        leading: AppIcons.backIcon(context, colorScheme),
+        middle: const Text('Send Prompt'),
       ),
       child: Material(
         child: SafeArea(

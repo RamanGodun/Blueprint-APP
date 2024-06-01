@@ -6,6 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import '../State_management/Services/animation_controller_service.dart';
+import '../State_management/Src/Custom_icons/app_icons.dart';
 import '../State_management/Src/Helpers/helpers.dart';
 import '../UI_Components/Buttons/static_buttons.dart';
 import '../UI_Components/Buttons/theme_changing_button.dart';
@@ -13,6 +14,7 @@ import '../UI_Components/Dialogs/custom_dialog.dart';
 import '../UI_Components/Others/icons_grid_view.dart';
 import '../State_management/Src/Custom_icons/this_app_icons.dart';
 import '../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
+import '../UI_Components/Widgets_STYLING/0.text_styles_for_components.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/start_page/settings';
@@ -25,6 +27,7 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage>
     with TickerProviderStateMixin {
   User? user;
+  late CupertinoThemeData cupertinoTheme;
   late ColorScheme colorScheme;
   late TextTheme textTheme;
   late AnimationService animationService;
@@ -40,75 +43,71 @@ class _SettingsPageState extends State<SettingsPage>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    cupertinoTheme = Helpers.cupertinoThemeData(context);
     textTheme = Helpers.textTheme(context);
     colorScheme = Helpers.colorScheme(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        leading: CupertinoButton(
-          padding: EdgeInsets.zero,
-          child: Icon(
-            CupertinoIcons.back,
-            color: colorScheme.onSurface,
+    return Material(
+      child: CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          leading: AppIcons.backIcon(context, colorScheme),
+          middle: Text(
+            LocaleKeys.startScreen.tr(),
+            style: TextStyle4Components.appBarTitle(
+                cupertinoTheme: cupertinoTheme, colorScheme: colorScheme),
           ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        middle: Text(
-          LocaleKeys.startScreen.tr(),
-          style: textTheme.titleMedium?.copyWith(color: colorScheme.onSurface),
-        ),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            StaticCustomButtons.changeLanguageButton(context),
-            CupertinoButton(
-              padding: EdgeInsets.zero,
-              child: Icon(
-                ThisAppIcons.crown,
-                color: colorScheme.onSurface,
-                size: 25,
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              StaticCustomButtons.changeLanguageButton(context),
+              CupertinoButton(
+                padding: EdgeInsets.zero,
+                child: Icon(
+                  ThisAppIcons.crown,
+                  color: colorScheme.onSurface,
+                  size: 25,
+                ),
+                onPressed: () => showCustomCupertinoDialog(
+                  context,
+                  const IconsGridView(),
+                ),
               ),
-              onPressed: () => showCustomCupertinoDialog(
-                context,
-                const IconsGridView(),
+              CupertinoButton(
+                padding: EdgeInsets.zero,
+                onPressed: () => signUserOut(),
+                child:
+                    Icon(Icons.logout, color: colorScheme.onSurface, size: 25),
               ),
-            ),
-            CupertinoButton(
-              padding: EdgeInsets.zero,
-              onPressed: () => signUserOut(),
-              child: Icon(Icons.logout, color: colorScheme.onSurface, size: 25),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-      child: Center(
-        child: user == null
-            ? Text(
-                "User is not logged in",
-                style: TextStyle(color: colorScheme.onSurface),
-              )
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const ThemeChangingButton(),
-                  const SizedBox(height: 30),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: StaticCustomButtons.customButton2(
-                      context,
-                      onPressed: () {
-                        context.pushNamed('ApiKeyInputPage');
-                      },
-                      buttonText: "To enter GPT API key",
+        child: Center(
+          child: user == null
+              ? Text(
+                  "User is not logged in",
+                  style: TextStyle(color: colorScheme.onSurface),
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const ThemeChangingButton(),
+                    const SizedBox(height: 30),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: StaticCustomButtons.customButton2(
+                        context,
+                        onPressed: () {
+                          context.pushNamed('ApiKeyInputPage');
+                        },
+                        buttonText: "To enter GPT API key",
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+        ),
       ),
     );
   }

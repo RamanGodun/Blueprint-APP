@@ -104,6 +104,29 @@ class StaticCustomButtons {
     );
   }
 
+  static Widget cupertinoButton1(
+    BuildContext context, {
+    required String buttonText,
+  }) {
+    return Material(
+      child: SizedBox(
+        width: double.infinity,
+        child: CupertinoButton.filled(
+          pressedOpacity: 0.8,
+          onPressed: () {
+            // if (isValid.value) {
+            //   // Handle the submit action
+            // } else {
+            //   validateInput();
+            // }
+          },
+          child: Text(buttonText,
+              style: TextStyle4Components.buttonTextStyle(context)),
+        ),
+      ),
+    );
+  }
+
   static Widget changeLanguageButton(BuildContext context) {
     final theme = Helpers.cupertinoThemeData(context);
     final appLocales = AppLocales().appLocales;

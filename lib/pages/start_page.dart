@@ -7,6 +7,7 @@ import '../State_management/Src/Helpers/helpers.dart';
 import '../UI_Components/Buttons/static_buttons.dart';
 import '../State_management/Src/Custom_icons/this_app_icons.dart';
 import '../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
+import '../UI_Components/Widgets_STYLING/0.text_styles_for_components.dart';
 
 class StartPage extends StatefulWidget {
   static const routeName = '/start_page';
@@ -29,57 +30,52 @@ class _StartPageState extends State<StartPage> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Padding(
-          padding: const EdgeInsets.only(right: 127.0),
-          child: Text(
-            LocaleKeys.startScreen.tr(),
-            style: cupertinoTheme.textTheme.navTitleTextStyle
-                .copyWith(color: colorScheme.onSurface),
+    return Material(
+      child: CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          middle: Text(LocaleKeys.startScreen.tr(),
+              style: TextStyle4Components.appBarTitle(
+                  cupertinoTheme: cupertinoTheme, colorScheme: colorScheme)),
+          trailing: CupertinoButton(
+            padding: EdgeInsets.zero,
+            child:
+                Icon(ThisAppIcons.settings, color: cupertinoTheme.primaryColor),
+            onPressed: () {
+              context.pushNamed('SettingsPage');
+            },
           ),
         ),
-        trailing: CupertinoButton(
-          padding: EdgeInsets.zero,
-          child:
-              Icon(ThisAppIcons.settings, color: cupertinoTheme.primaryColor),
-          onPressed: () {
-            context.pushNamed('SettingsPage');
-          },
-        ),
-      ),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const SizedBox(height: 20),
-              StaticCustomButtons.customButton(
-                context,
-                onPressed: () {
-                  context.pushNamed('TextFieldPage');
-                },
-                buttonText: LocaleKeys.goToTextfield.tr(),
-              ),
-              const SizedBox(height: 20),
-              StaticCustomButtons.customButton(
-                context,
-                onPressed: () {
-                  context.pushNamed('HiveBoxPage');
-                },
-                buttonText: LocaleKeys.goToHiveBox.tr(),
-              ),
-              const SizedBox(height: 20),
-              StaticCustomButtons.customButton(
-                context,
-                onPressed: () {
-                  context.pushNamed('SendPromptPage');
-                },
-                buttonText: "To Chat GPT prompts",
-              ),
-            ],
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 35),
+            child: ListView(
+              children: [
+                const SizedBox(height: 20),
+                StaticCustomButtons.customButton(
+                  context,
+                  onPressed: () {
+                    context.pushNamed('TextFieldPage');
+                  },
+                  buttonText: LocaleKeys.goToTextfield.tr(),
+                ),
+                const SizedBox(height: 20),
+                StaticCustomButtons.customButton(
+                  context,
+                  onPressed: () {
+                    context.pushNamed('HiveBoxPage');
+                  },
+                  buttonText: LocaleKeys.goToHiveBox.tr(),
+                ),
+                const SizedBox(height: 20),
+                StaticCustomButtons.customButton(
+                  context,
+                  onPressed: () {
+                    context.pushNamed('SendPromptPage');
+                  },
+                  buttonText: "To Chat GPT prompts",
+                ),
+              ],
+            ),
           ),
         ),
       ),
