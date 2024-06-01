@@ -1,13 +1,14 @@
+import 'package:blueprint_4app/State_management/Services/isar_service.dart';
+import 'package:blueprint_4app/State_management/Services/open_ai_service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../widgets/static/widgets_on_get_it.dart';
-import '../models/model_4_hive.dart';
-import 'animation_controller.dart';
-import 'open_ai_service.dart';
-import 'isar_service.dart';
+
+import '../../Widgets/Static/widgets_on_get_it.dart';
+import '../Models/model_4_hive.dart';
+import 'animation_controller_service.dart';
 
 class DIServiceLocator {
   DIServiceLocator._internal();

@@ -1,6 +1,6 @@
 import 'package:path_provider/path_provider.dart';
 import 'package:isar/isar.dart';
-import '../models/models with isar and to json code generation/db_item.dart';
+import '../Models/models with isar and to json code generation/db_item.dart';
 
 class IsarService {
   late Isar isar;

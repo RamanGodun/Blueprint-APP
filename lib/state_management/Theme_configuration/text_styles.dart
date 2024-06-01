@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'app_colorscheme1.dart';
+
+import 'themes_color_schemes.dart';
 
 abstract class ThisAppTextStyles {
   static final darkScheme = ThisAppColors.kDarkIOSColorScheme;
@@ -34,5 +35,12 @@ abstract class ThisAppTextStyles {
 
   static Color _getTextColor(bool isDarkTheme) {
     return isDarkTheme ? darkScheme.onSurface : lightScheme.onSurface;
+  }
+
+  static TextStyle? bodyMedium(BuildContext context) {
+    return Theme.of(context).textTheme.bodyMedium?.copyWith(
+          color: Theme.of(context).colorScheme.onSurface,
+          fontSize: 16.0,
+        );
   }
 }

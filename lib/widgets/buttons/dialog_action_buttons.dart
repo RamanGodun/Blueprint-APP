@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class DialogStaticButtons {
+class StaticButtons4Dialogs {
   static Widget actionButtonForDialog(BuildContext context,
       {VoidCallback? onPressed}) {
     return Expanded(

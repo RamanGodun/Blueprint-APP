@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
-import '../../state_management/const_data/app_locales.dart';
-import '../../state_management/const_data/this_app_icons.dart';
+
+import '../../State_management/Const_data/app_locales.dart';
+import '../../State_management/Src/Custom_icons/this_app_icons.dart';
 
 class StaticCustomButtons {
   static Widget customButton(BuildContext context,

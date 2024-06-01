@@ -1,26 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../src/App_routing/app_routes.dart';
-import '../src/generated code/by easy_localization/locale_keys.g.dart';
-import '../state_management/theme_settings/inherited_theme_manager.dart';
-import '../state_management/theme_settings/app_themes.dart';
-import '../state_management/theme_settings/theme_provider.dart';
+import '../State_management/Models/app_enums.dart';
+import '../State_management/Theme_configuration/configurations_of_themes.dart';
+import '../State_management/Theme_configuration/Themes_provider/manager_of_themes.dart';
+import '../State_management/Src/App_routing/app_routes.dart';
+import '../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
 
-class GettingContextForThemeManager extends StatelessWidget {
-  const GettingContextForThemeManager({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Material(
-      child: InheritedThemeManager(
-        child: ThemeAndRoutesSettings(),
-      ),
-    );
-  }
-}
-
-class ThemeAndRoutesSettings extends StatelessWidget {
-  const ThemeAndRoutesSettings({super.key});
+class ThemeAndRoutesConfiguration extends StatelessWidget {
+  const ThemeAndRoutesConfiguration({super.key});
 
   @override
   Widget build(BuildContext context) {

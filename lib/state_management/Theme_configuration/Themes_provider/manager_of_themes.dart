@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../widgets/static/widgets_on_get_it.dart';
-import 'theme_provider.dart';
+
+import '../../../Widgets/Static/widgets_on_get_it.dart';
+import '../../Src/Helpers/my_change_notifier_provider.dart';
+import 'provider_of_theme.dart';
 
 class InheritedThemeManager extends StatefulWidget {
   final Widget child;
@@ -10,9 +12,7 @@ class InheritedThemeManager extends StatefulWidget {
   State<InheritedThemeManager> createState() => _InheritedThemeManagerState();
 
   static ThemeProvider? of(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<_InheritedNotifier>()!
-        .notifier;
+    return MyChangeNotifierProvider.watch<ThemeProvider>(context);
   }
 }
 
@@ -36,18 +36,11 @@ class _InheritedThemeManagerState extends State<InheritedThemeManager> {
           return Center(child: widgetManager.loadingWidget);
         }
 
-        return _InheritedNotifier(
+        return MyChangeNotifierProvider(
           notifier: themeProvider,
           child: widget.child,
         );
       },
     );
   }
-}
-
-class _InheritedNotifier extends InheritedNotifier<ThemeProvider> {
-  const _InheritedNotifier({
-    required ThemeProvider super.notifier,
-    required super.child,
-  });
 }

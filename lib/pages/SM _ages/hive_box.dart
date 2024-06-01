@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
-import '../../state_management/models/model_4_hive.dart';
+import '../../State_management/Models/model_4_hive.dart';
 
 class HiveBoxPage extends StatefulWidget {
   final Box<Person> box;

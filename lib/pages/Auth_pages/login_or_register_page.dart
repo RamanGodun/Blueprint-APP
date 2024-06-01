@@ -1,14 +1,15 @@
 // ignore_for_file: use_build_context_synchronously, avoid_print
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../../src/generated code/by spider/resources.dart';
-import '../../state_management/services/google_signing_service.dart';
-import '../../widgets/buttons/static_buttons.dart';
-import '../../widgets/text_fields.dart/textfield1.dart';
-import '../../widgets/others/square_tile.dart';
-import '../../widgets/static/static_widgets.dart';
+import 'package:flutter/material.dart';
+
+import '../../State_management/Services/google_signing_service.dart';
+import '../../Widgets/Buttons/static_buttons.dart';
+import '../../Widgets/Others/square_tile.dart';
+import '../../Widgets/Static/static_widgets.dart';
+import '../../Widgets/Text_fields.dart/textfield1.dart';
+import '../../State_management/Src/Generated_code/by spider/resources.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {
   final Function() changeAuthMode;
@@ -158,14 +159,16 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                       ),
                       const SizedBox(height: 25),
                       // email textfield
-                      CustomTextField(
+                      CustomTextFields.customTextField1(
+                        context: context,
                         controller: emailController,
                         hintText: 'Email',
                         isObscureText: false,
                         icon: Icons.mail,
                       ),
                       // password textfield
-                      CustomTextField(
+                      CustomTextFields.customTextField1(
+                        context: context,
                         controller: passwordController,
                         hintText: 'Password',
                         isObscureText: true,
@@ -173,7 +176,8 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                       ),
                       if (!widget.isLoginPage &&
                           passwordConfirmationController != null)
-                        CustomTextField(
+                        CustomTextFields.customTextField1(
+                          context: context,
                           controller: passwordConfirmationController!,
                           hintText: 'Confirm password',
                           isObscureText: true,

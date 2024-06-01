@@ -14,11 +14,10 @@ limitations under the License.
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'main/app.localization.dart';
-import 'state_management/const_data/firebase_options.dart';
-import 'state_management/services/0.service_locator.dart';
+import 'Main/app_data_and_localization.dart';
+import 'State_management/Services/0.service_locator.dart';
+import 'State_management/Src/Generated_code/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,16 +26,5 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const AppRootClass());
-}
-
-class AppRootClass extends StatelessWidget {
-  const AppRootClass({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const ProviderScope(
-      child: LocalizationOfThisApp(),
-    );
-  }
+  runApp(const AppLocalization());
 }

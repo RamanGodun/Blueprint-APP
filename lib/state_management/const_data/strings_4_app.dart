@@ -7,6 +7,20 @@ class AppStrings {
       "No StateInheritedWidget found in context";
   static const String key4StateWidget = "StateInheritedWidget";
   static const String loadingText = "Loading, wait please";
+  static const List<String> monthsName = [
+    "січні",
+    "лютому",
+    "березні",
+    "квітні",
+    "травні",
+    "червні",
+    "липні",
+    "серпні",
+    "вересні",
+    "жовтні",
+    "листопаді",
+    "грудні",
+  ];
   static const String oK = "OK, let's try";
   static const String other = "інше";
   static const String outOf = " out of ";

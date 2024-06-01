@@ -1,16 +1,17 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import '../../src/generated code/by easy_localization/locale_keys.g.dart';
-import '../../state_management/const_data/this_app_icons.dart';
-import '../state_management/services/animation_controller.dart';
-import '../widgets/buttons/static_buttons.dart';
-import '../widgets/buttons/theme_changing_button.dart';
-import '../widgets/dialogs/custom_dialog.dart';
-import '../widgets/others/icons_grid_view.dart';
+import 'package:go_router/go_router.dart';
+
+import '../State_management/Services/animation_controller_service.dart';
+import '../Widgets/Buttons/static_buttons.dart';
+import '../Widgets/Buttons/theme_changing_button.dart';
+import '../Widgets/Dialogs/custom_dialog.dart';
+import '../Widgets/Others/icons_grid_view.dart';
+import '../State_management/Src/Custom_icons/this_app_icons.dart';
+import '../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/start_page/settings';
@@ -40,33 +41,6 @@ class _SettingsPageState extends State<SettingsPage>
     super.didChangeDependencies();
     textTheme = Theme.of(context).textTheme;
     colorScheme = Theme.of(context).colorScheme;
-  }
-
-  @override
-  void dispose() {
-    animationService.dispose();
-    super.dispose();
-  }
-
-  void signUserOut() async {
-    await FirebaseAuth.instance.signOut();
-    if (!mounted) return;
-    user = null;
-    context.pushNamed('AuthPage');
-  }
-
-  void showCustomCupertinoDialog(BuildContext context, Widget contentWidget) {
-    animationService.controller.forward();
-    showCupertinoModalPopup(
-      context: context,
-      builder: (BuildContext context) {
-        return CustomCupertinoDialog(
-          contentWidget: contentWidget,
-        );
-      },
-    ).then((_) {
-      animationService.controller.reverse();
-    });
   }
 
   @override
@@ -141,5 +115,35 @@ class _SettingsPageState extends State<SettingsPage>
               ),
       ),
     );
+  }
+
+/*
+Methods next
+ */
+  @override
+  void dispose() {
+    animationService.dispose();
+    super.dispose();
+  }
+
+  void signUserOut() async {
+    await FirebaseAuth.instance.signOut();
+    if (!mounted) return;
+    user = null;
+    context.pushNamed('AuthPage');
+  }
+
+  void showCustomCupertinoDialog(BuildContext context, Widget contentWidget) {
+    animationService.controller.forward();
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) {
+        return CustomCupertinoDialog(
+          contentWidget: contentWidget,
+        );
+      },
+    ).then((_) {
+      animationService.controller.reverse();
+    });
   }
 }

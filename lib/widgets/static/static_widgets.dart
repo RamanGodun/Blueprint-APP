@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../../state_management/theme_settings/app_colorscheme.dart';
+
+import '../../State_management/Theme_configuration/themes_color_schemes.dart';
 
 class StaticWidgets {
   static const Widget loadingWidget = Material(

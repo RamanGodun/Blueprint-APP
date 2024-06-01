@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import '../../state_management/services/open_ai_service.dart';
+import '../../State_management/Services/open_ai_service.dart';
 
 class ApiKeyInputPage extends StatefulWidget {
   static const routeName = '/start_page/settings/enter_api_key';

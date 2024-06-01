@@ -1,13 +1,14 @@
-import 'package:blueprint_4app/src/App_routing/cupertino_page_transition.dart';
+import 'package:blueprint_4app/State_management/Src/App_routing/cupertino_page_transition.dart';
 import 'package:go_router/go_router.dart';
-import '../../pages/GPT_pages/api_key_page.dart';
-import '../../pages/GPT_pages/send_prompt.dart';
-import '../../pages/auth pages/auth_handler_widget.dart';
-import '../../pages/SM _ages/hive_box.dart';
-import '../../pages/start_page.dart';
-import '../../pages/settings_page.dart';
-import '../../pages/Others_pages/textfield_page.dart';
-import '../../state_management/services/0.service_locator.dart';
+
+import '../../../Pages/Auth_pages/auth_handler.dart';
+import '../../../Pages/GPT_pages/api_key_page.dart';
+import '../../../Pages/GPT_pages/send_prompt.dart';
+import '../../../Pages/Others_pages/textfield_page.dart';
+import '../../../Pages/SM _ages/hive_box.dart';
+import '../../../Pages/settings_page.dart';
+import '../../../Pages/start_page.dart';
+import '../../Services/0.service_locator.dart';
 
 class AppRoutes {
   static final GoRouter router = GoRouter(

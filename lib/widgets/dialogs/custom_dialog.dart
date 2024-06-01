@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../../state_management/services/animation_controller.dart';
-import '../buttons/dialog_action_buttons.dart';
-import '../static/static_widgets.dart';
 import 'package:get_it/get_it.dart';
+
+import '../../State_management/Services/animation_controller_service.dart';
+import '../Buttons/dialog_action_buttons.dart';
+import '../Static/static_widgets.dart';
 
 class CustomCupertinoDialog extends HookWidget {
   final Widget contentWidget;
@@ -105,9 +106,11 @@ class CustomCupertinoDialog extends HookWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            DialogStaticButtons.cancelButtonForDialog(context),
+                            StaticButtons4Dialogs.cancelButtonForDialog(
+                                context),
                             StaticWidgets.dividerBetweenDialogButtons(context),
-                            DialogStaticButtons.actionButtonForDialog(context),
+                            StaticButtons4Dialogs.actionButtonForDialog(
+                                context),
                           ],
                         ),
                       ),

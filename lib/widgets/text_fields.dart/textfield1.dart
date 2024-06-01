@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatelessWidget {
-  final TextEditingController controller;
-  final String hintText;
-  final bool isObscureText;
-  final IconData icon;
+import '../../State_management/Theme_configuration/Widgets_styling/for_text_fields.dart';
+import '../../State_management/Theme_configuration/text_styles.dart';
 
-  const CustomTextField({
-    super.key,
-    required this.controller,
-    required this.hintText,
-    required this.isObscureText,
-    required this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
+class CustomTextFields {
+  static Widget customTextField1({
+    required BuildContext context,
+    required TextEditingController controller,
+    required String hintText,
+    required bool isObscureText,
+    required IconData icon,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3.0),
       child: SizedBox(
@@ -23,8 +18,8 @@ class CustomTextField extends StatelessWidget {
         child: TextField(
           controller: controller,
           obscureText: isObscureText,
-          style: StaticTextStyles.bodyMedium(context),
-          decoration: StaticInputDecorations.inputDecoration(
+          style: ThisAppTextStyles.bodyMedium(context),
+          decoration: StaticInputDecorations4Textfield1.inputDecoration(
             context,
             hintText,
             icon,
@@ -34,134 +29,3 @@ class CustomTextField extends StatelessWidget {
     );
   }
 }
-
-class StaticTextStyles {
-  static TextStyle? bodyMedium(BuildContext context) {
-    return Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: Theme.of(context).colorScheme.onSurface,
-          fontSize: 16.0,
-        );
-  }
-}
-
-class StaticInputDecorations {
-  static InputDecoration inputDecoration(
-    BuildContext context,
-    String hintText,
-    IconData icon,
-  ) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-
-    return InputDecoration(
-      contentPadding:
-          const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(9.0),
-        borderSide: BorderSide(
-          color: colorScheme.onSurface.withOpacity(0.3),
-        ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(9.0),
-        borderSide: BorderSide(
-          color: colorScheme.primary,
-        ),
-      ),
-      fillColor: colorScheme.surface,
-      filled: true,
-      hintText: hintText,
-      hintStyle: textTheme.bodyMedium?.copyWith(
-        color: colorScheme.onSurface.withOpacity(0.5),
-      ),
-      prefixIcon: Icon(
-        icon,
-        color: colorScheme.onSurface.withOpacity(0.5),
-      ),
-    );
-  }
-}
-
-// import 'package:flutter/material.dart';
-
-// class CustomTextField extends StatelessWidget {
-//   final TextEditingController controller;
-//   final String hintText;
-//   final bool isObscureText;
-//   final IconData icon;
-
-//   const CustomTextField({
-//     super.key,
-//     required this.controller,
-//     required this.hintText,
-//     required this.isObscureText,
-//     required this.icon,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(vertical: 3.0),
-//       child: SizedBox(
-//         height: 50,
-//         child: TextField(
-//           controller: controller,
-//           obscureText: isObscureText,
-//           style: StaticTextStyles.bodyMedium(context),
-//           decoration: StaticInputDecorations.inputDecoration(
-//             context,
-//             hintText,
-//             icon,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class StaticTextStyles {
-//   static TextStyle? bodyMedium(BuildContext context) {
-//     return Theme.of(context).textTheme.bodyMedium?.copyWith(
-//           color: Theme.of(context).colorScheme.onSurface,
-//           fontSize: 16.0,
-//         );
-//   }
-// }
-
-// class StaticInputDecorations {
-//   static InputDecoration inputDecoration(
-//     BuildContext context,
-//     String hintText,
-//     IconData icon,
-//   ) {
-//     final colorScheme = Theme.of(context).colorScheme;
-//     final textTheme = Theme.of(context).textTheme;
-
-//     return InputDecoration(
-//       contentPadding:
-//           const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-//       enabledBorder: OutlineInputBorder(
-//         borderRadius: BorderRadius.circular(9.0),
-//         borderSide: BorderSide(
-//           color: colorScheme.onSurface.withOpacity(0.3),
-//         ),
-//       ),
-//       focusedBorder: OutlineInputBorder(
-//         borderRadius: BorderRadius.circular(9.0),
-//         borderSide: BorderSide(
-//           color: colorScheme.primary,
-//         ),
-//       ),
-//       fillColor: colorScheme.surface,
-//       filled: true,
-//       hintText: hintText,
-//       hintStyle: textTheme.bodyMedium?.copyWith(
-//         color: colorScheme.onSurface.withOpacity(0.5),
-//       ),
-//       prefixIcon: Icon(
-//         icon,
-//         color: colorScheme.onSurface.withOpacity(0.5),
-//       ),
-//     );
-//   }
-// }

@@ -32,15 +32,3 @@ class SubCategory {
     );
   }
 }
-
-enum CategoriesEnum {
-  food,
-  transport,
-  study,
-  rest,
-  tech,
-  charity,
-  health,
-  household,
-  other
-}

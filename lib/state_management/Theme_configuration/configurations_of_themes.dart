@@ -1,92 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'app_colorscheme.dart';
-import 'text_style.dart';
+import 'theme_builder.dart';
+import 'themes_color_schemes.dart';
 
 class ThisAppThemes {
-  static ThemeData _buildThemeData({
-    required bool isDark,
-    required ColorScheme colorScheme,
-    required Color scaffoldBackgroundColor,
-    required Color appBarBackgroundColor,
-    required Color barBackgroundColor,
-    required Color dividerColor,
-    required Color highlightColor,
-    required Color splashColor,
-    required Color tooltipColor,
-    required Color tabBarIndicatorColor,
-    required Color tabBarLabelColor,
-    required Color tabBarUnselectedLabelColor,
-  }) {
-    return ThemeData(
-      brightness: isDark ? Brightness.dark : Brightness.light,
-      visualDensity: VisualDensity.adaptivePlatformDensity,
-      primarySwatch: ThisAppColors.kPrimarySwatch,
-      colorScheme: colorScheme,
-      textTheme: ThisAppTextStyles.kTextThemeData(isDark),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: colorScheme.primary,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-      ),
-      appBarTheme: AppBarTheme(
-        backgroundColor: appBarBackgroundColor,
-        iconTheme: IconThemeData(color: colorScheme.onSurface),
-        titleTextStyle:
-            ThisAppTextStyles.kTextThemeData(isDark).titleLarge?.copyWith(
-                  color: colorScheme.onSurface,
-                ),
-        toolbarTextStyle:
-            ThisAppTextStyles.kTextThemeData(isDark).bodyMedium?.copyWith(
-                  color: colorScheme.onSurface,
-                ),
-      ),
-      scaffoldBackgroundColor: scaffoldBackgroundColor,
-      cupertinoOverrideTheme: NoDefaultCupertinoThemeData(
-        primaryColor: ThisAppColors.kPrimaryColor,
-        barBackgroundColor: barBackgroundColor,
-        scaffoldBackgroundColor: scaffoldBackgroundColor,
-      ),
-      inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: colorScheme.onSurface),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: ThisAppColors.kPrimaryColor),
-        ),
-      ),
-      dividerColor: dividerColor,
-      highlightColor: highlightColor,
-      splashColor: splashColor,
-      tooltipTheme: TooltipThemeData(
-        decoration: BoxDecoration(
-          color: tooltipColor,
-          borderRadius: BorderRadius.circular(4),
-        ),
-      ),
-      tabBarTheme: TabBarTheme(
-        indicator: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-          color: tabBarIndicatorColor,
-        ),
-        labelColor: tabBarLabelColor,
-        unselectedLabelColor: tabBarUnselectedLabelColor,
-      ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: appBarBackgroundColor,
-        selectedItemColor: ThisAppColors.kPrimaryColor,
-        unselectedItemColor: colorScheme.onSurface,
-      ),
-    );
-  }
-
-  // iOS Themes
-  static final ThemeData kLightIOSTheme = _buildThemeData(
+// iOS Themes
+  static final ThemeData kLightIOSTheme = ThisAppThemesBuilder.buildThemeData(
     isDark: false,
     colorScheme: ThisAppColors.kLightIOSColorScheme,
     scaffoldBackgroundColor: ThisAppColors.kLightIOSBackground,
@@ -102,7 +20,7 @@ class ThisAppThemes {
     tabBarUnselectedLabelColor: ThisAppColors.kLightIOSColorScheme.onSurface,
   );
 
-  static final ThemeData kDarkIOSTheme = _buildThemeData(
+  static final ThemeData kDarkIOSTheme = ThisAppThemesBuilder.buildThemeData(
     isDark: true,
     colorScheme: ThisAppColors.kDarkIOSColorScheme,
     scaffoldBackgroundColor: ThisAppColors.kDarkIOSBackground,
@@ -119,7 +37,8 @@ class ThisAppThemes {
   );
 
   // Android Themes
-  static final ThemeData kLightAndroidTheme = _buildThemeData(
+  static final ThemeData kLightAndroidTheme =
+      ThisAppThemesBuilder.buildThemeData(
     isDark: false,
     colorScheme: ThisAppColors.kLightAndroidColorScheme,
     scaffoldBackgroundColor: ThisAppColors.kLightAndroidBackground,
@@ -137,7 +56,8 @@ class ThisAppThemes {
         ThisAppColors.kLightAndroidColorScheme.onSurface,
   );
 
-  static final ThemeData kDarkAndroidTheme = _buildThemeData(
+  static final ThemeData kDarkAndroidTheme =
+      ThisAppThemesBuilder.buildThemeData(
     isDark: true,
     colorScheme: ThisAppColors.kDarkAndroidColorScheme,
     scaffoldBackgroundColor: ThisAppColors.kDarkAndroidBackground,
@@ -155,7 +75,7 @@ class ThisAppThemes {
   );
 
   // Dark Glass Theme
-  static final ThemeData kDarkGlassTheme = _buildThemeData(
+  static final ThemeData kDarkGlassTheme = ThisAppThemesBuilder.buildThemeData(
     isDark: true,
     colorScheme: ThisAppColors.kDarkGlassColorScheme,
     scaffoldBackgroundColor:
@@ -173,7 +93,6 @@ class ThisAppThemes {
     tabBarUnselectedLabelColor: ThisAppColors.kDarkGlassColorScheme.onSurface,
   );
 }
-
 
 /*
 1. проаналізуй свій останній код 
