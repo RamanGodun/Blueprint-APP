@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 
 import '../../State_management/Services/google_signing_service.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
-import '../../Widgets/Buttons/static_buttons.dart';
-import '../../Widgets/Others/square_tile.dart';
-import '../../Widgets/Static/static_widgets.dart';
-import '../../Widgets/Text_fields.dart/textfield1.dart';
+import '../../UI_Components/Buttons/static_buttons.dart';
+import '../../UI_Components/Others/square_tile.dart';
+import '../../UI_Components/Static/static_widgets.dart';
+import '../../UI_Components/Text_fields.dart/textfield1.dart';
 import '../../State_management/Src/Generated_code/by spider/resources.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {

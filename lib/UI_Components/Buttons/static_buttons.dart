@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import '../../State_management/Const_data/app_locales.dart';
 import '../../State_management/Src/Custom_icons/this_app_icons.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Theme_configuration/text_styles.dart';
 
 class StaticCustomButtons {
   static Widget customButton(BuildContext context,
@@ -43,11 +44,7 @@ class StaticCustomButtons {
         child: Center(
           child: Text(
             buttonText,
-            style: theme.textTheme.textStyle.copyWith(
-              color: CupertinoColors.white,
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
-            ),
+            style: ThisAppTextStyles.buttonTextStyle(context),
           ),
         ),
       ),
@@ -91,11 +88,7 @@ class StaticCustomButtons {
         child: Center(
           child: Text(
             buttonText,
-            style: theme.textTheme.textStyle.copyWith(
-              color: CupertinoColors.white,
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
-            ),
+            style: ThisAppTextStyles.buttonTextStyle(context),
           ),
         ),
       ),

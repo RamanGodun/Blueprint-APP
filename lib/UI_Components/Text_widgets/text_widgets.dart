@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/helpers.dart';
 
 class StaticTextWidgets {
   static Widget themedText(

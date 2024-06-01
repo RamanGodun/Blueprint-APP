@@ -1,20 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import '../../Const_data/strings_4_app.dart';
-import '../../Theme_configuration/themes_color_schemes.dart';
-import 'shared_prefs_helper.dart';
 
+class Helpers {
 /*
 Here some useful methods, used across all app
 */
-class Helpers {
-/*
-OFTEN USED
- */
-// Styling and MQ methods
+
+/* Styling and MQ methods
+*/
   static bool isDarkTheme(BuildContext context) {
     bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return isDarkTheme;
@@ -40,23 +36,8 @@ OFTEN USED
     return MediaQuery.of(context).size.width;
   }
 
-  //
-  static Future<void> setSystemColors() async {
-    bool isDarkThemeMode =
-        await SharedPreferencesHelper.getThemeModeFromShPrefs();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      systemNavigationBarDividerColor: Colors.transparent,
-      statusBarBrightness: isDarkThemeMode ? Brightness.dark : Brightness.light,
-      systemNavigationBarColor: isDarkThemeMode
-          ? ThisAppColors.kDarkIOSBackground
-          : ThisAppColors.kLightIOSBackground,
-      systemNavigationBarIconBrightness:
-          isDarkThemeMode ? Brightness.light : Brightness.dark,
-    ));
-  }
-
-// Converting & formatting of data
+/* Converting & formatting of data
+*/
   double convertStringToDouble(String inputString) {
     double? amount = double.tryParse(inputString);
     return amount ?? 0;
@@ -83,7 +64,8 @@ OFTEN USED
     return formattedAmount;
   }
 
-//  Operations with dates
+/* Operations with dates
+*/
   static DateTime now() {
     return DateTime.now();
   }
@@ -121,7 +103,8 @@ OFTEN USED
     return AppStrings.monthsName[now.month - 1];
   }
 
-// Navigation methods
+/* Navigation methods
+*/
   static void push(BuildContext context, Widget page) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }
@@ -132,7 +115,8 @@ OFTEN USED
     });
   }
 
-// Snackbars
+/* Snackbars
+*/
   static void clearSnackBar(BuildContext context) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
   }
@@ -160,5 +144,26 @@ OFTEN USED
     );
   }
 
-//
+/*
+  IF during APP loading need to paint system bars we can use next:
+import 'package:flutter/services.dart';
+
+  static Future<void> setSystemColors() async {
+    bool isDarkThemeMode =
+        await SharedPreferencesHelper.getThemeModeFromShPrefs();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+      statusBarBrightness: isDarkThemeMode ? Brightness.dark : Brightness.light,
+      systemNavigationBarColor: isDarkThemeMode
+          ? ThisThisAppColors.kDarkIOSBackground
+          : ThisThisAppColors.kLightIOSBackground,
+      systemNavigationBarIconBrightness:
+          isDarkThemeMode ? Brightness.light : Brightness.dark,
+    ));
+  }
+
+WHERE
+
+ */
 }

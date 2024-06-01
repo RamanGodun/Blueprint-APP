@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../State_management/Models/app_enums.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
-import '../../State_management/Theme_configuration/Widgets_styling/for_drop_down_button.dart';
+import '../Widgets_STYLING/for_drop_down_button.dart';
 import '../../State_management/Theme_configuration/Themes_provider/manager_of_themes.dart';
 
 class ThemeChangingButton extends StatelessWidget {
@@ -53,7 +53,7 @@ class ThemeChangingButton extends StatelessWidget {
                   themeProvider.updateThemeMode(newThemeMode);
                 }
               },
-              items: StaticDecorations.buildThemeModeItems(context),
+              items: DropButtonStyle.buildThemeModeItems(context),
               style: textTheme.bodyLarge?.copyWith(
                 color: colorScheme.onSurface,
               ),

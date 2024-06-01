@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/helpers.dart';
 
 class StaticInputDecorations4Textfield1 {
   static InputDecoration inputDecoration(

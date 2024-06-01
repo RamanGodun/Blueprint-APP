@@ -1,4 +1,15 @@
 class AppStrings {
+  static const List<String> categoryNames = [
+    'Їжа',
+    'Транспорт',
+    'Навчання',
+    'Відпочинок',
+    'Техніка',
+    'Благодійність',
+    'Здоровʼя',
+    'Побутове',
+    'Інше'
+  ];
   static const String chosenQuantityOFQuestions =
       "Chosen quantity of questions:    ";
   static const String chosenComplexity = "Chosen complexity:    ";

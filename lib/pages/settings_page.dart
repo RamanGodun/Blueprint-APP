@@ -7,10 +7,10 @@ import 'package:go_router/go_router.dart';
 
 import '../State_management/Services/animation_controller_service.dart';
 import '../State_management/Src/Helpers/helpers.dart';
-import '../Widgets/Buttons/static_buttons.dart';
-import '../Widgets/Buttons/theme_changing_button.dart';
-import '../Widgets/Dialogs/custom_dialog.dart';
-import '../Widgets/Others/icons_grid_view.dart';
+import '../UI_Components/Buttons/static_buttons.dart';
+import '../UI_Components/Buttons/theme_changing_button.dart';
+import '../UI_Components/Dialogs/custom_dialog.dart';
+import '../UI_Components/Others/icons_grid_view.dart';
 import '../State_management/Src/Custom_icons/this_app_icons.dart';
 import '../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
 

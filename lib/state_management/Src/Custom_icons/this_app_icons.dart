@@ -18,6 +18,10 @@ import 'package:flutter/widgets.dart';
 class ThisAppIcons {
   ThisAppIcons._();
 
+  static int getCodePointForIconData(IconData iconData) {
+    return iconData.codePoint;
+  }
+
   static const _kFontFam = 'ThisAppIcons';
   static const String? _kFontPkg = null;
 

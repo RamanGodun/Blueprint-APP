@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../State_management/Src/Helpers/helpers.dart';
-import '../../State_management/Theme_configuration/themes_color_schemes.dart';
+import '../../State_management/Theme_configuration/App_colors_schemes/this_app_colors.dart';
 
 class StaticWidgets {
   static const Widget loadingWidget = Material(

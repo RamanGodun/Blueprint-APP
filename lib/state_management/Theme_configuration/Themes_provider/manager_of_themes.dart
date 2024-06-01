@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../Widgets/Static/widgets_on_get_it.dart';
+import '../../../UI_Components/Static/widgets_on_get_it.dart';
 import '../../Src/Helpers/my_change_notifier_provider.dart';
 import 'provider_of_theme.dart';
 

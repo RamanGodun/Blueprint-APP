@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'text_styles.dart';
-import 'themes_color_schemes.dart';
+import '../text_styles.dart';
+import '../App_colors_schemes/this_app_colors.dart';
 
 class ThisAppThemesBuilder {
   static ThemeData buildThemeData({
@@ -47,7 +47,7 @@ class ThisAppThemesBuilder {
       ),
       scaffoldBackgroundColor: scaffoldBackgroundColor,
       cupertinoOverrideTheme: NoDefaultCupertinoThemeData(
-        primaryColor: ThisAppColors.kPrimaryColor,
+        primaryColor: ThisAppColors.kAppPrimaryColor,
         barBackgroundColor: barBackgroundColor,
         scaffoldBackgroundColor: scaffoldBackgroundColor,
       ),
@@ -58,7 +58,7 @@ class ThisAppThemesBuilder {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: ThisAppColors.kPrimaryColor),
+          borderSide: const BorderSide(color: ThisAppColors.kAppPrimaryColor),
         ),
       ),
       dividerColor: dividerColor,
@@ -80,7 +80,7 @@ class ThisAppThemesBuilder {
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: appBarBackgroundColor,
-        selectedItemColor: ThisAppColors.kPrimaryColor,
+        selectedItemColor: ThisAppColors.kAppPrimaryColor,
         unselectedItemColor: colorScheme.onSurface,
       ),
     );

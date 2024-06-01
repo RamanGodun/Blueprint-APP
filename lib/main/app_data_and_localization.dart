@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:provider/provider.dart';
 
 import '../State_management/Const_data/app_const.dart';
 import '../State_management/Const_data/app_locales.dart';
+import '../State_management/Providers/categories_provider.dart';
 import '../State_management/Theme_configuration/Themes_provider/manager_of_themes.dart';
 import '../State_management/Src/Generated_code/by easy_localization/codegen_loader.g.dart';
 import 'theme_and_routes_settings.dart';
@@ -29,9 +30,13 @@ class DataProviders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Material(
-      child: ProviderScope(
-        child: InheritedThemeManager(
+    return Material(
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => CategoriesProvider()),
+          // ChangeNotifierProvider(create: (_) => ItemsDataBase()),
+        ],
+        child: const InheritedThemeManager(
           child: ThemeAndRoutesConfiguration(),
         ),
       ),

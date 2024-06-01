@@ -1,4 +1,4 @@
-import 'package:blueprint_4app/Widgets/Static/static_widgets.dart';
+import 'package:blueprint_4app/UI_Components/Static/static_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';

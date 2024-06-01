@@ -1,96 +1,103 @@
 import 'package:flutter/material.dart';
-import 'theme_builder.dart';
-import 'themes_color_schemes.dart';
+import 'App_colors_schemes/this_app_color_schemes.dart';
+import 'Themes_provider/theme_builder.dart';
+import 'App_colors_schemes/this_app_colors.dart';
 
 class ThisAppThemes {
 // iOS Themes
   static final ThemeData kLightIOSTheme = ThisAppThemesBuilder.buildThemeData(
     isDark: false,
-    colorScheme: ThisAppColors.kLightIOSColorScheme,
+    colorScheme: ThisAppColorSchemes.kLightIOSColorScheme,
     scaffoldBackgroundColor: ThisAppColors.kLightIOSBackground,
     appBarBackgroundColor: ThisAppColors.kLightIOSBackground,
     barBackgroundColor:
-        ThisAppColors.kLightIOSColorScheme.surface.withOpacity(0.3),
-    dividerColor: ThisAppColors.kLightIOSColorScheme.onSurface.withOpacity(0.5),
-    highlightColor: ThisAppColors.kPrimaryColor.withOpacity(0.3),
-    splashColor: ThisAppColors.kPrimaryColor.withOpacity(0.2),
-    tooltipColor: ThisAppColors.kPrimaryColor.withOpacity(0.9),
-    tabBarIndicatorColor: ThisAppColors.kPrimaryColor,
-    tabBarLabelColor: ThisAppColors.kLightIOSColorScheme.onPrimary,
-    tabBarUnselectedLabelColor: ThisAppColors.kLightIOSColorScheme.onSurface,
+        ThisAppColorSchemes.kLightIOSColorScheme.surface.withOpacity(0.3),
+    dividerColor:
+        ThisAppColorSchemes.kLightIOSColorScheme.onSurface.withOpacity(0.5),
+    highlightColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.3),
+    splashColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.2),
+    tooltipColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.9),
+    tabBarIndicatorColor: ThisAppColors.kAppPrimaryColor,
+    tabBarLabelColor: ThisAppColorSchemes.kLightIOSColorScheme.onPrimary,
+    tabBarUnselectedLabelColor:
+        ThisAppColorSchemes.kLightIOSColorScheme.onSurface,
   );
 
   static final ThemeData kDarkIOSTheme = ThisAppThemesBuilder.buildThemeData(
     isDark: true,
-    colorScheme: ThisAppColors.kDarkIOSColorScheme,
+    colorScheme: ThisAppColorSchemes.kDarkIOSColorScheme,
     scaffoldBackgroundColor: ThisAppColors.kDarkIOSBackground,
     appBarBackgroundColor: ThisAppColors.kDarkIOSBackground,
     barBackgroundColor:
-        ThisAppColors.kDarkIOSColorScheme.surface.withOpacity(0.5),
-    dividerColor: ThisAppColors.kDarkIOSColorScheme.onSurface.withOpacity(0.5),
-    highlightColor: ThisAppColors.kPrimaryColor.withOpacity(0.3),
-    splashColor: ThisAppColors.kPrimaryColor.withOpacity(0.2),
-    tooltipColor: ThisAppColors.kPrimaryColor.withOpacity(0.9),
-    tabBarIndicatorColor: ThisAppColors.kPrimaryColor,
-    tabBarLabelColor: ThisAppColors.kDarkIOSColorScheme.onPrimary,
-    tabBarUnselectedLabelColor: ThisAppColors.kDarkIOSColorScheme.onSurface,
+        ThisAppColorSchemes.kDarkIOSColorScheme.surface.withOpacity(0.5),
+    dividerColor:
+        ThisAppColorSchemes.kDarkIOSColorScheme.onSurface.withOpacity(0.5),
+    highlightColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.3),
+    splashColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.2),
+    tooltipColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.9),
+    tabBarIndicatorColor: ThisAppColors.kAppPrimaryColor,
+    tabBarLabelColor: ThisAppColorSchemes.kDarkIOSColorScheme.onPrimary,
+    tabBarUnselectedLabelColor:
+        ThisAppColorSchemes.kDarkIOSColorScheme.onSurface,
   );
 
   // Android Themes
   static final ThemeData kLightAndroidTheme =
       ThisAppThemesBuilder.buildThemeData(
     isDark: false,
-    colorScheme: ThisAppColors.kLightAndroidColorScheme,
+    colorScheme: ThisAppColorSchemes.kLightAndroidColorScheme,
     scaffoldBackgroundColor: ThisAppColors.kLightAndroidBackground,
-    appBarBackgroundColor: ThisAppColors.kLightAndroidColorScheme.surface,
+    appBarBackgroundColor: ThisAppColorSchemes.kLightAndroidColorScheme.surface,
     barBackgroundColor:
-        ThisAppColors.kLightAndroidColorScheme.surface.withOpacity(0.3),
+        ThisAppColorSchemes.kLightAndroidColorScheme.surface.withOpacity(0.3),
     dividerColor:
-        ThisAppColors.kLightAndroidColorScheme.onSurface.withOpacity(0.5),
-    highlightColor: ThisAppColors.kPrimaryColor.withOpacity(0.3),
-    splashColor: ThisAppColors.kPrimaryColor.withOpacity(0.2),
-    tooltipColor: ThisAppColors.kPrimaryColor.withOpacity(0.9),
-    tabBarIndicatorColor: ThisAppColors.kPrimaryColor,
-    tabBarLabelColor: ThisAppColors.kLightAndroidColorScheme.onPrimary,
+        ThisAppColorSchemes.kLightAndroidColorScheme.onSurface.withOpacity(0.5),
+    highlightColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.3),
+    splashColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.2),
+    tooltipColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.9),
+    tabBarIndicatorColor: ThisAppColors.kAppPrimaryColor,
+    tabBarLabelColor: ThisAppColorSchemes.kLightAndroidColorScheme.onPrimary,
     tabBarUnselectedLabelColor:
-        ThisAppColors.kLightAndroidColorScheme.onSurface,
+        ThisAppColorSchemes.kLightAndroidColorScheme.onSurface,
   );
 
   static final ThemeData kDarkAndroidTheme =
       ThisAppThemesBuilder.buildThemeData(
     isDark: true,
-    colorScheme: ThisAppColors.kDarkAndroidColorScheme,
+    colorScheme: ThisAppColorSchemes.kDarkAndroidColorScheme,
     scaffoldBackgroundColor: ThisAppColors.kDarkAndroidBackground,
-    appBarBackgroundColor: ThisAppColors.kDarkAndroidColorScheme.surface,
+    appBarBackgroundColor: ThisAppColorSchemes.kDarkAndroidColorScheme.surface,
     barBackgroundColor:
-        ThisAppColors.kDarkAndroidColorScheme.surface.withOpacity(0.5),
+        ThisAppColorSchemes.kDarkAndroidColorScheme.surface.withOpacity(0.5),
     dividerColor:
-        ThisAppColors.kDarkAndroidColorScheme.onSurface.withOpacity(0.5),
-    highlightColor: ThisAppColors.kPrimaryColor.withOpacity(0.3),
-    splashColor: ThisAppColors.kPrimaryColor.withOpacity(0.2),
-    tooltipColor: ThisAppColors.kPrimaryColor.withOpacity(0.9),
-    tabBarIndicatorColor: ThisAppColors.kPrimaryColor,
-    tabBarLabelColor: ThisAppColors.kDarkAndroidColorScheme.onPrimary,
-    tabBarUnselectedLabelColor: ThisAppColors.kDarkAndroidColorScheme.onSurface,
+        ThisAppColorSchemes.kDarkAndroidColorScheme.onSurface.withOpacity(0.5),
+    highlightColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.3),
+    splashColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.2),
+    tooltipColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.9),
+    tabBarIndicatorColor: ThisAppColors.kAppPrimaryColor,
+    tabBarLabelColor: ThisAppColorSchemes.kDarkAndroidColorScheme.onPrimary,
+    tabBarUnselectedLabelColor:
+        ThisAppColorSchemes.kDarkAndroidColorScheme.onSurface,
   );
 
   // Dark Glass Theme
   static final ThemeData kDarkGlassTheme = ThisAppThemesBuilder.buildThemeData(
     isDark: true,
-    colorScheme: ThisAppColors.kDarkGlassColorScheme,
+    colorScheme: ThisAppColorSchemes.kDarkGlassColorScheme,
     scaffoldBackgroundColor:
         ThisAppColors.kDarkGlassBackground.withOpacity(0.9),
     appBarBackgroundColor: ThisAppColors.kDarkIOSBackground,
     barBackgroundColor:
-        ThisAppColors.kDarkGlassColorScheme.surface.withOpacity(0.5),
+        ThisAppColorSchemes.kDarkGlassColorScheme.surface.withOpacity(0.5),
     dividerColor:
-        ThisAppColors.kDarkGlassColorScheme.onSurface.withOpacity(0.5),
-    highlightColor: ThisAppColors.kPrimaryColor.withOpacity(0.3),
-    splashColor: ThisAppColors.kPrimaryColor.withOpacity(0.2),
-    tooltipColor: ThisAppColors.kPrimaryColor.withOpacity(0.9),
-    tabBarIndicatorColor: ThisAppColors.kPrimaryColor,
-    tabBarLabelColor: ThisAppColors.kDarkGlassColorScheme.onPrimary,
-    tabBarUnselectedLabelColor: ThisAppColors.kDarkGlassColorScheme.onSurface,
+        ThisAppColorSchemes.kDarkGlassColorScheme.onSurface.withOpacity(0.5),
+    highlightColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.3),
+    splashColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.2),
+    tooltipColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.9),
+    tabBarIndicatorColor: ThisAppColors.kAppPrimaryColor,
+    tabBarLabelColor: ThisAppColorSchemes.kDarkGlassColorScheme.onPrimary,
+    tabBarUnselectedLabelColor:
+        ThisAppColorSchemes.kDarkGlassColorScheme.onSurface,
   );
 }
 

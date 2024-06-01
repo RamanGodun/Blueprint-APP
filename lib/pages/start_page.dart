@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../State_management/Src/Helpers/helpers.dart';
-import '../Widgets/Buttons/static_buttons.dart';
+import '../UI_Components/Buttons/static_buttons.dart';
 import '../State_management/Src/Custom_icons/this_app_icons.dart';
 import '../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
 
