@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Widgets_STYLING/for_text_fields.dart';
-import '../../State_management/Theme_configuration/text_styles.dart';
+import '../Widgets_STYLING/0.text_styles_for_components.dart';
 
 class CustomTextFields {
   static Widget customTextField1({
@@ -18,7 +18,7 @@ class CustomTextFields {
         child: TextField(
           controller: controller,
           obscureText: isObscureText,
-          style: ThisAppTextStyles.bodyMedium(context),
+          style: TextStyle4Components.bodyMedium(context),
           decoration: StaticInputDecorations4Textfield1.inputDecoration(
             context,
             hintText,

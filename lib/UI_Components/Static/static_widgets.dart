@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../State_management/Const_data/strings_4_app.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
 import '../../State_management/Theme_configuration/App_colors_schemes/this_app_colors.dart';
 
 class StaticWidgets {
+/*
+  LOADING widget
+ */
   static const Widget loadingWidget = Material(
-    child: Center(
-      child: SizedBox(
-        height: 80,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CupertinoActivityIndicator(
-              radius: 20.0,
-              color: ThisAppColors.kSecondaryColor,
-            ),
-          ],
+    child: Material(
+      child: Center(
+        child: SizedBox(
+          height: 80,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CupertinoActivityIndicator(
+                radius: 20.0,
+                color: ThisAppColors.kSecondaryColor,
+              ),
+              SizedBox(height: 8.0),
+              Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: Text(AppStrings.loadingText)),
+            ],
+          ),
         ),
       ),
     ),
@@ -24,6 +34,9 @@ class StaticWidgets {
 
   static Widget getLoadingWidget() => loadingWidget;
 
+/*
+  ERROR TEXT  widget
+ */
   static Widget errorWidget(String errorText) {
     return Material(
       child: Center(
@@ -37,6 +50,9 @@ class StaticWidgets {
 
   static Widget getErrorWidget(String errorText) => errorWidget(errorText);
 
+/*
+  DIVIDER 4 Login page
+ */
   static const Widget divider4LoginPage = Padding(
     padding: EdgeInsets.only(left: 25.0, right: 25, bottom: 30),
     child: Row(
@@ -66,6 +82,9 @@ class StaticWidgets {
 
   static Widget getDivider4LoginPage() => divider4LoginPage;
 
+/*
+DIVIDER between Dialog Buttons 
+ */
   static Widget dividerBetweenDialogButtons(BuildContext context) {
     final colorScheme = Helpers.colorScheme(context);
     return Container(

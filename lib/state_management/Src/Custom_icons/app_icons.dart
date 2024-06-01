@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../Theme_configuration/App_colors_schemes/this_app_colors.dart';
+import 'custom_icons_list.dart';
 
 class AppIcons {
 /*
@@ -24,6 +25,9 @@ Icons
     Icons.home,
     Icons.category
   ];
+
+  static final List<IconData> customIcons =
+      ThisAppCustomIcons().myCustomIconsList;
 
   static Widget themeIcon(bool isDarkTheme) {
     return Padding(

@@ -24,7 +24,7 @@ class ThisAppThemesBuilder {
       visualDensity: VisualDensity.adaptivePlatformDensity,
       primarySwatch: ThisAppColors.kPrimarySwatch,
       colorScheme: colorScheme,
-      textTheme: ThisAppTextStyles.kTextThemeData(isDark),
+      textTheme: TextStyles4ThisAppThemes.kTextThemeData(isDark),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: colorScheme.primary,
@@ -36,14 +36,16 @@ class ThisAppThemesBuilder {
       appBarTheme: AppBarTheme(
         backgroundColor: appBarBackgroundColor,
         iconTheme: IconThemeData(color: colorScheme.onSurface),
-        titleTextStyle:
-            ThisAppTextStyles.kTextThemeData(isDark).titleLarge?.copyWith(
-                  color: colorScheme.onSurface,
-                ),
-        toolbarTextStyle:
-            ThisAppTextStyles.kTextThemeData(isDark).bodyMedium?.copyWith(
-                  color: colorScheme.onSurface,
-                ),
+        titleTextStyle: TextStyles4ThisAppThemes.kTextThemeData(isDark)
+            .titleLarge
+            ?.copyWith(
+              color: colorScheme.onSurface,
+            ),
+        toolbarTextStyle: TextStyles4ThisAppThemes.kTextThemeData(isDark)
+            .bodyMedium
+            ?.copyWith(
+              color: colorScheme.onSurface,
+            ),
       ),
       scaffoldBackgroundColor: scaffoldBackgroundColor,
       cupertinoOverrideTheme: NoDefaultCupertinoThemeData(
