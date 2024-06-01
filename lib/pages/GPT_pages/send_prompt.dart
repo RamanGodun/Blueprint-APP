@@ -1,8 +1,10 @@
+import 'package:blueprint_4app/Widgets/Static/static_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../State_management/Services/open_ai_service.dart';
+import '../../State_management/Src/Helpers/helpers.dart';
 
 class SendPromptPage extends StatefulWidget {
   static const routeName = '/start_page/send_prompt';
@@ -18,19 +20,14 @@ class _SendPromptPageState extends State<SendPromptPage> {
   String _response = '';
   bool _isLoading = false;
 
-  Future<void> _sendPrompt() async {
-    setState(() {
-      _isLoading = true;
-      _response = '';
-    });
+  late ColorScheme colorScheme;
+  late TextTheme textTheme;
 
-    final result = await _openAiService.sendPrompt(_promptController.text);
-
-    setState(() {
-      _isLoading = false;
-      _response =
-          result?['choices']?[0]?['message']?['content'] ?? 'No response';
-    });
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    colorScheme = Helpers.colorScheme(context);
+    textTheme = Helpers.textTheme(context);
   }
 
   @override
@@ -77,25 +74,22 @@ class _SendPromptPageState extends State<SendPromptPage> {
                       padding: const EdgeInsets.only(left: 16.0),
                       child: Text(
                         'Response:',
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: Theme.of(context).colorScheme.onSurface),
+                        style: textTheme.bodyLarge?.copyWith(
+                          color: colorScheme.onSurface,
+                        ),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 10),
                 _isLoading
-                    ? const Center(child: CupertinoActivityIndicator())
+                    ? const Center(child: StaticWidgets.loadingWidget)
                     : Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
                           _response,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(
-                                  color:
-                                      Theme.of(context).colorScheme.onSurface),
+                          style: textTheme.bodyMedium
+                              ?.copyWith(color: colorScheme.onSurface),
                         ),
                       ),
               ],
@@ -105,4 +99,24 @@ class _SendPromptPageState extends State<SendPromptPage> {
       ),
     );
   }
+
+/*
+METHODS of State Class
+ */
+  Future<void> _sendPrompt() async {
+    setState(() {
+      _isLoading = true;
+      _response = '';
+    });
+
+    final result = await _openAiService.sendPrompt(_promptController.text);
+
+    setState(() {
+      _isLoading = false;
+      _response =
+          result?['choices']?[0]?['message']?['content'] ?? 'No response';
+    });
+  }
+/*
+ */
 }

@@ -6,6 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import '../State_management/Services/animation_controller_service.dart';
+import '../State_management/Src/Helpers/helpers.dart';
 import '../Widgets/Buttons/static_buttons.dart';
 import '../Widgets/Buttons/theme_changing_button.dart';
 import '../Widgets/Dialogs/custom_dialog.dart';
@@ -39,15 +40,12 @@ class _SettingsPageState extends State<SettingsPage>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    textTheme = Theme.of(context).textTheme;
-    colorScheme = Theme.of(context).colorScheme;
+    textTheme = Helpers.textTheme(context);
+    colorScheme = Helpers.colorScheme(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         leading: CupertinoButton(
@@ -77,9 +75,7 @@ class _SettingsPageState extends State<SettingsPage>
               ),
               onPressed: () => showCustomCupertinoDialog(
                 context,
-                IconsGridView(
-                  colorScheme: colorScheme,
-                ),
+                const IconsGridView(),
               ),
             ),
             CupertinoButton(

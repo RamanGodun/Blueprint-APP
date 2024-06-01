@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import '../../State_management/Services/open_ai_service.dart';
+import '../../State_management/Src/Helpers/helpers.dart';
 
 class ApiKeyInputPage extends StatefulWidget {
   static const routeName = '/start_page/settings/enter_api_key';
@@ -16,6 +17,9 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
   final _apiKeyController = TextEditingController();
   final _secureStorage = GetIt.instance<FlutterSecureStorage>();
 
+  late ColorScheme colorScheme;
+  late TextTheme textTheme;
+
   @override
   void initState() {
     super.initState();
@@ -23,10 +27,14 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    colorScheme = Helpers.colorScheme(context);
+    textTheme = Helpers.textTheme(context);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(

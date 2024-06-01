@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../State_management/Src/Helpers/helpers.dart';
+
 class SquareTile extends StatelessWidget {
   final String imagePath;
   final Function() onTap;
@@ -28,7 +30,7 @@ class SquareTile extends StatelessWidget {
 class StaticDecorations {
   static Widget squareTileContainer(BuildContext context,
       {required Widget child}) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final colorScheme = Helpers.colorScheme(context);
 
     return Container(
       padding: const EdgeInsets.all(12),

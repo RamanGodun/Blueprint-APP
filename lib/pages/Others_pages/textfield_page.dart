@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../State_management/Src/Helpers/helpers.dart';
+
 class TextFieldPage extends HookWidget {
   static const routeName = '/start_page/new_screen';
 
@@ -10,6 +12,7 @@ class TextFieldPage extends HookWidget {
   Widget build(BuildContext context) {
     final textController = useTextEditingController();
     final isValid = useState(true);
+    final colorScheme = Helpers.colorScheme(context);
 
     void validateInput() {
       isValid.value = textController.text.isNotEmpty;
@@ -20,7 +23,7 @@ class TextFieldPage extends HookWidget {
         middle: Text(
           'New Screen',
           style: TextStyle(
-            color: CupertinoTheme.of(context).primaryColor,
+            color: colorScheme.onSurface,
             fontSize: 20,
           ),
         ),

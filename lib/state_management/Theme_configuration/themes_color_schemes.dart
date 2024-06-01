@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 abstract class ThisAppColors {
   // Primary and secondary colors
   static const Color kPrimaryColor = Color.fromARGB(255, 7, 131, 143);
+  static const Color kPrimaryVariant = Color.fromARGB(199, 14, 117, 91);
+  static final MaterialColor kPrimarySwatch =
+      createMaterialColor(kPrimaryColor);
   static const Color kSecondaryColor = Color.fromARGB(255, 69, 127, 155);
   static const Color kSecondaryDarkColor = Color.fromARGB(198, 124, 170, 194);
-
-  static const Color kPrimaryVariant = Color.fromARGB(199, 14, 117, 91);
   static const Color kSecondaryVariant = Color.fromARGB(198, 124, 170, 194);
+
   static const Color kErrorColor = Color(0xFFB00020);
 
   static MaterialColor createMaterialColor(Color color) {
@@ -29,9 +31,6 @@ abstract class ThisAppColors {
     }
     return MaterialColor(color.value, swatch);
   }
-
-  static final MaterialColor kPrimarySwatch =
-      createMaterialColor(kPrimaryColor);
 
   // iOS light theme colors
   static const Color kLightIOSBackground = Color.fromARGB(246, 236, 232, 232);

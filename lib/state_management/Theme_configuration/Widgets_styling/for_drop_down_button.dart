@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../Models/app_enums.dart';
 import '../../Src/Generated_code/by easy_localization/locale_keys.g.dart';
+import '../../Src/Helpers/helpers.dart';
 
 class StaticDecorations {
   static List<DropdownMenuItem<CustomThemeMode>> buildThemeModeItems(
@@ -24,15 +25,18 @@ class StaticDecorations {
       LocaleKeys.darkGlassTheme.tr(),
     ];
 
+    final textTheme = Helpers.textTheme(context);
+    final colorScheme = Helpers.colorScheme(context);
+
     return List<DropdownMenuItem<CustomThemeMode>>.generate(
       themeModes.length,
       (index) => DropdownMenuItem<CustomThemeMode>(
         value: themeModes[index],
         child: Text(
           themeModeTexts[index],
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
+          style: textTheme.bodyLarge?.copyWith(
+            color: colorScheme.onSurface,
+          ),
         ),
       ),
     );

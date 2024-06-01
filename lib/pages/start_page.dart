@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../State_management/Src/Helpers/helpers.dart';
 import '../Widgets/Buttons/static_buttons.dart';
 import '../State_management/Src/Custom_icons/this_app_icons.dart';
 import '../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
@@ -22,8 +23,8 @@ class _StartPageState extends State<StartPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    cupertinoTheme = CupertinoTheme.of(context);
-    colorScheme = Theme.of(context).colorScheme;
+    cupertinoTheme = Helpers.cupertinoThemeData(context);
+    colorScheme = Helpers.colorScheme(context);
   }
 
   @override

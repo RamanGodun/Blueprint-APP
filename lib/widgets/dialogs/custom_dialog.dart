@@ -4,21 +4,22 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../State_management/Services/animation_controller_service.dart';
+import '../../State_management/Src/Helpers/helpers.dart';
 import '../Buttons/dialog_action_buttons.dart';
 import '../Static/static_widgets.dart';
 
 class CustomCupertinoDialog extends HookWidget {
   final Widget contentWidget;
-  final double dialogWidth;
-  final double dialogHeight;
+  final double widthFraction;
+  final double heightFraction;
   final EdgeInsets contentPadding;
   final String dialogTitle;
 
   const CustomCupertinoDialog({
     super.key,
     required this.contentWidget,
-    this.dialogWidth = 0.8,
-    this.dialogHeight = 0.7,
+    this.widthFraction = 0.8,
+    this.heightFraction = 0.7,
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 8),
     this.dialogTitle = 'Custom Cupertino Dialog title',
   });
@@ -27,10 +28,11 @@ class CustomCupertinoDialog extends HookWidget {
   Widget build(BuildContext context) {
     final animationService = GetIt.instance<AnimationService>();
 
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-    final size = MediaQuery.of(context).size;
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final colorScheme = Helpers.colorScheme(context);
+    final textTheme = Helpers.textTheme(context);
+    final deviceHeight = Helpers.deviceHeight(context);
+    final deviceWidth = Helpers.deviceWidth(context);
+    final isDarkMode = Helpers.isDarkTheme(context);
 
     return SafeArea(
       child: Center(
@@ -42,8 +44,8 @@ class CustomCupertinoDialog extends HookWidget {
           child: FadeTransition(
             opacity: animationService.animation,
             child: Container(
-              width: size.width * dialogWidth,
-              height: size.height * dialogHeight,
+              width: deviceWidth * widthFraction,
+              height: deviceHeight * heightFraction,
               padding: const EdgeInsets.all(0),
               decoration: BoxDecoration(
                 color: colorScheme.surface,

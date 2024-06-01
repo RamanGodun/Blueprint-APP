@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../../Src/Helpers/helpers.dart';
+
 class StaticInputDecorations4Textfield1 {
   static InputDecoration inputDecoration(
     BuildContext context,
     String hintText,
     IconData icon,
   ) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Helpers.colorScheme(context);
+    final textTheme = Helpers.textTheme(context);
 
     return InputDecoration(
       contentPadding:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../State_management/Src/Helpers/helpers.dart';
 import '../../State_management/Theme_configuration/themes_color_schemes.dart';
 
 class StaticWidgets {
@@ -66,9 +67,10 @@ class StaticWidgets {
   static Widget getDivider4LoginPage() => divider4LoginPage;
 
   static Widget dividerBetweenDialogButtons(BuildContext context) {
+    final colorScheme = Helpers.colorScheme(context);
     return Container(
       width: 0.5,
-      color: Theme.of(context).colorScheme.inverseSurface.withOpacity(0.5),
+      color: colorScheme.inverseSurface.withOpacity(0.5),
     );
   }
 

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'themes_color_schemes.dart';
+import '../Src/Helpers/helpers.dart';
 
 abstract class ThisAppTextStyles {
-  static final darkScheme = ThisAppColors.kDarkIOSColorScheme;
-  static final lightScheme = ThisAppColors.kLightIOSColorScheme;
-
   static TextTheme kTextThemeData(bool isDarkTheme) {
     return GoogleFonts.montserratTextTheme().copyWith(
       titleLarge: _getTextStyle(isDarkTheme, FontWeight.w400, 22),
@@ -29,18 +26,15 @@ abstract class ThisAppTextStyles {
     return TextStyle(
       fontWeight: fontWeight,
       fontSize: fontSize,
-      color: _getTextColor(isDarkTheme),
     );
   }
 
-  static Color _getTextColor(bool isDarkTheme) {
-    return isDarkTheme ? darkScheme.onSurface : lightScheme.onSurface;
-  }
-
   static TextStyle? bodyMedium(BuildContext context) {
-    return Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: Theme.of(context).colorScheme.onSurface,
-          fontSize: 16.0,
-        );
+    final textTheme = Helpers.textTheme(context);
+    final colorScheme = Helpers.colorScheme(context);
+    return textTheme.bodyMedium?.copyWith(
+      color: colorScheme.onSurface,
+      fontSize: 16.0,
+    );
   }
 }

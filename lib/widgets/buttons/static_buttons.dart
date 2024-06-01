@@ -3,11 +3,12 @@ import 'package:flutter/cupertino.dart';
 
 import '../../State_management/Const_data/app_locales.dart';
 import '../../State_management/Src/Custom_icons/this_app_icons.dart';
+import '../../State_management/Src/Helpers/helpers.dart';
 
 class StaticCustomButtons {
   static Widget customButton(BuildContext context,
       {required VoidCallback onPressed, required String buttonText}) {
-    final textTheme = CupertinoTheme.of(context).textTheme;
+    final theme = Helpers.cupertinoThemeData(context);
 
     return GestureDetector(
       onTap: onPressed,
@@ -17,8 +18,8 @@ class StaticCustomButtons {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              CupertinoTheme.of(context).primaryColor.withOpacity(0.9),
-              CupertinoTheme.of(context).primaryColor.withOpacity(0.95),
+              theme.primaryColor.withOpacity(0.9),
+              theme.primaryColor.withOpacity(0.95),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -42,7 +43,7 @@ class StaticCustomButtons {
         child: Center(
           child: Text(
             buttonText,
-            style: textTheme.textStyle.copyWith(
+            style: theme.textTheme.textStyle.copyWith(
               color: CupertinoColors.white,
               fontWeight: FontWeight.w600,
               fontSize: 16,
@@ -55,7 +56,7 @@ class StaticCustomButtons {
 
   static Widget customButton2(BuildContext context,
       {required VoidCallback onPressed, required String buttonText}) {
-    final textTheme = CupertinoTheme.of(context).textTheme;
+    final theme = Helpers.cupertinoThemeData(context);
 
     return GestureDetector(
       onTap: onPressed,
@@ -65,8 +66,8 @@ class StaticCustomButtons {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              CupertinoTheme.of(context).primaryColor.withOpacity(0.9),
-              CupertinoTheme.of(context).primaryColor.withOpacity(0.95),
+              theme.primaryColor.withOpacity(0.9),
+              theme.primaryColor.withOpacity(0.95),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -90,7 +91,7 @@ class StaticCustomButtons {
         child: Center(
           child: Text(
             buttonText,
-            style: textTheme.textStyle.copyWith(
+            style: theme.textTheme.textStyle.copyWith(
               color: CupertinoColors.white,
               fontWeight: FontWeight.w600,
               fontSize: 16,
@@ -102,6 +103,7 @@ class StaticCustomButtons {
   }
 
   static Widget changeLanguageButton(BuildContext context) {
+    final theme = Helpers.cupertinoThemeData(context);
     final appLocales = AppLocales().appLocales;
 
     return CupertinoButton(
@@ -113,7 +115,7 @@ class StaticCustomButtons {
       },
       child: Icon(
         ThisAppIcons.globe,
-        color: CupertinoTheme.of(context).primaryColor,
+        color: theme.primaryColor,
         shadows: [
           BoxShadow(
             color: CupertinoColors.black.withOpacity(0.2),

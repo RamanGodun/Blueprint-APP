@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../State_management/Src/Helpers/helpers.dart';
+
 class StaticTextWidgets {
   static Widget themedText(
     BuildContext context,
@@ -9,8 +11,7 @@ class StaticTextWidgets {
     TextAlign? textAlign = TextAlign.center,
     FontWeight? fontWeight = FontWeight.w800,
   }) {
-    final textTheme = Theme.of(context).textTheme;
-
+    final textTheme = Helpers.textTheme(context);
     return Text(
       text,
       textAlign: textAlign,

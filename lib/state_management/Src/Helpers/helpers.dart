@@ -1,32 +1,60 @@
-// ignore_for_file: deprecated_member_use
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-// import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-
 import '../../Const_data/strings_4_app.dart';
-// import '../../Theme_configuration/themes_color_schemes.dart';
+import '../../Theme_configuration/themes_color_schemes.dart';
+import 'shared_prefs_helper.dart';
 
 /*
 Here some useful methods, used across all app
 */
 class Helpers {
+/*
+OFTEN USED
+ */
+// Styling and MQ methods
+  static bool isDarkTheme(BuildContext context) {
+    bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    return isDarkTheme;
+  }
+
+  static CupertinoThemeData cupertinoThemeData(BuildContext context) {
+    return CupertinoTheme.of(context);
+  }
+
+  static ColorScheme colorScheme(BuildContext context) {
+    return Theme.of(context).colorScheme;
+  }
+
+  static TextTheme textTheme(BuildContext context) {
+    return Theme.of(context).textTheme;
+  }
+
+  static double deviceHeight(BuildContext context) {
+    return MediaQuery.of(context).size.height;
+  }
+
+  static double deviceWidth(BuildContext context) {
+    return MediaQuery.of(context).size.width;
+  }
+
   //
-  // static Future<void> setSystemColors() async {
-  //   bool isDarkThemeMode =
-  //       await SharedPreferencesHelper.getThemeModeFromShPrefs();
-  //   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-  //     statusBarColor: Colors.transparent,
-  //     systemNavigationBarDividerColor: Colors.transparent,
-  //     statusBarBrightness: isDarkThemeMode ? Brightness.dark : Brightness.light,
-  //     systemNavigationBarColor: isDarkThemeMode
-  //         ? ThisAppColors.kDarkIOSBackground
-  //         : ThisAppColors.kLightIOSBackground,
-  //     systemNavigationBarIconBrightness:
-  //         isDarkThemeMode ? Brightness.light : Brightness.dark,
-  //   ));
-  // }
+  static Future<void> setSystemColors() async {
+    bool isDarkThemeMode =
+        await SharedPreferencesHelper.getThemeModeFromShPrefs();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+      statusBarBrightness: isDarkThemeMode ? Brightness.dark : Brightness.light,
+      systemNavigationBarColor: isDarkThemeMode
+          ? ThisAppColors.kDarkIOSBackground
+          : ThisAppColors.kLightIOSBackground,
+      systemNavigationBarIconBrightness:
+          isDarkThemeMode ? Brightness.light : Brightness.dark,
+    ));
+  }
 
 // Converting & formatting of data
   double convertStringToDouble(String inputString) {
@@ -115,7 +143,7 @@ class Helpers {
       SnackBar(
         backgroundColor: !isDarkTheme
             ? colorScheme(ctx).surface.withOpacity(0.75)
-            : colorScheme(ctx).background.withOpacity(0.9),
+            : colorScheme(ctx).surface.withOpacity(0.9),
         content: Padding(
           padding: const EdgeInsets.only(left: 50),
           child: Text(
@@ -123,31 +151,7 @@ class Helpers {
             style: Helpers.textTheme(ctx)
                 .titleSmall!
                 .copyWith(color: Helpers.colorScheme(ctx).secondary),
-            // textAlign: TextAlign.center,
           ),
-          //     Container(
-          //   margin: EdgeInsets.only(top: Helpers.deviceHeight(ctx) * 0.05),
-          //   height: Helpers.deviceHeight(ctx) * 0.1,
-          //   child: Row(
-          //     mainAxisSize: MainAxisSize.min,
-          //     children: [
-          //       Text(
-          //         content,
-          //         style: Helpers.textTheme(ctx)
-          //             .titleMedium!
-          //             .copyWith(color: Helpers.colorScheme(ctx).secondary),
-          //         textAlign: TextAlign.center,
-          //       ),
-          //       // const Spacer(),
-          //       TextButton(
-          //           onPressed: () => clearSnackBar(ctx),
-          //           child: Text(
-          //             "OK",
-          //             style: TextStyles.buttonTextStyle(),
-          //           ))
-          //     ],
-          //   ),
-          // ),
         ),
         duration: const Duration(milliseconds: 2350),
         behavior: SnackBarBehavior.floating,
@@ -156,26 +160,5 @@ class Helpers {
     );
   }
 
-// Styling and MQ methods
-  static bool isDarkTheme(BuildContext context) {
-    bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
-    return isDarkTheme;
-  }
-
-  static ColorScheme colorScheme(BuildContext context) {
-    return Theme.of(context).colorScheme;
-  }
-
-  static TextTheme textTheme(BuildContext context) {
-    return Theme.of(context).textTheme;
-  }
-
-  static double deviceHeight(BuildContext context) {
-    return MediaQuery.of(context).size.height;
-  }
-
-  static double deviceWidth(BuildContext context) {
-    return MediaQuery.of(context).size.width;
-  }
 //
 }

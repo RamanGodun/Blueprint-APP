@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../../State_management/Src/Custom_icons/custom_icons_list.dart';
+import '../../State_management/Src/Helpers/helpers.dart';
 
 class IconsGridView extends StatelessWidget {
-  final ColorScheme colorScheme;
-
-  const IconsGridView({super.key, required this.colorScheme});
+  const IconsGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ColorScheme colorScheme = Helpers.colorScheme(context);
+
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         final maxWidth = constraints.maxWidth;

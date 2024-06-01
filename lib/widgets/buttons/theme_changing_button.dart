@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../State_management/Models/app_enums.dart';
+import '../../State_management/Src/Helpers/helpers.dart';
 import '../../State_management/Theme_configuration/Widgets_styling/for_drop_down_button.dart';
 import '../../State_management/Theme_configuration/Themes_provider/manager_of_themes.dart';
 
@@ -15,9 +16,9 @@ class ThemeChangingButton extends StatelessWidget {
     return ValueListenableBuilder<CustomThemeMode>(
       valueListenable: themeProvider!,
       builder: (context, themeMode, _) {
-        final colorScheme = Theme.of(context).colorScheme;
-        final textTheme = Theme.of(context).textTheme;
-        final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+        final colorScheme = Helpers.colorScheme(context);
+        final textTheme = Helpers.textTheme(context);
+        final isDarkMode = Helpers.isDarkTheme(context);
 
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
