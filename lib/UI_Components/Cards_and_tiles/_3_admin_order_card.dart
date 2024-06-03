@@ -74,7 +74,7 @@ class _AdminOrderItemState extends State<AdminOrderItem> {
                       height: 25,
                       child: IconButton(
                           icon: const Icon(Icons.expand_more,
-                              size: 30, color: ThisAppColors.amber1),
+                              size: 30, color: ThisAppColors.kAppPrimaryColor),
                           onPressed: () {
                             // nextScreen(
                             //     context,
@@ -106,7 +106,8 @@ class _AdminOrderItemState extends State<AdminOrderItem> {
                   // showIsOrderFinishedDialog()
                   IconButton(
                       icon: Icon(Icons.delete,
-                          color: ThisAppColors.amber1.withOpacity(0.5)),
+                          color:
+                              ThisAppColors.kAppPrimaryColor.withOpacity(0.5)),
                       onPressed: () {
                         showDeleteConfirmationDialog();
                       }),

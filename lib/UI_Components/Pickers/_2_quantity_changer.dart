@@ -61,7 +61,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.5),
-                  color: ThisAppColors.yellow2,
+                  color: ThisAppColors.kAppPrimaryColor,
                 ),
                 child:
                     // "minus" IconButton
@@ -109,7 +109,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: ThisAppColors.yellow2,
+                  color: ThisAppColors.kAppPrimaryColor,
                 ),
                 child: IconButton(
                     onPressed: () {
@@ -165,7 +165,8 @@ class _QuantityChangerState extends State<QuantityChanger> {
                           child: const Text("Відміна",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: ThisAppColors.amber2, fontSize: 15)),
+                                  color: ThisAppColors.kAppPrimaryColor,
+                                  fontSize: 15)),
                         ),
                         TextButton(
                           onPressed: () {
@@ -176,7 +177,8 @@ class _QuantityChangerState extends State<QuantityChanger> {
                           child: const Text("Так, впевнений",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: ThisAppColors.yellow2, fontSize: 14)),
+                                  color: ThisAppColors.kAppPrimaryColor,
+                                  fontSize: 14)),
                         ),
                       ]),
                 ])),

@@ -144,7 +144,8 @@ class _StyledAlertDialogState extends State<StyledAlertDialog> {
                           widget.noButtonText,
                           style: TextStyle(
                               fontSize: 16,
-                              color: ThisAppColors.amber2.withOpacity(0.7)),
+                              color: ThisAppColors.kAppPrimaryColor
+                                  .withOpacity(0.7)),
                         ),
                         onPressed: () {
                           Navigator.of(context).pop();
@@ -155,7 +156,8 @@ class _StyledAlertDialogState extends State<StyledAlertDialog> {
                           widget.yesButtonText,
                           style: TextStyle(
                               fontSize: 16,
-                              color: ThisAppColors.yellow2.withOpacity(0.7)),
+                              color: ThisAppColors.kAppPrimaryColor
+                                  .withOpacity(0.7)),
                         ),
                         onPressed: () {
                           currentMethod(widget.mappingKey, mapping4Functions,

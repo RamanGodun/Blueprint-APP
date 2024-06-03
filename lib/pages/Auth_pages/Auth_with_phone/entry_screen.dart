@@ -114,7 +114,7 @@ class _EntryScreenState extends State<EntryScreen> {
                             ? "Зареєструватись"
                             : "Вхід до системи",
                         style: const TextStyle(
-                            color: ThisAppColors.yellow2,
+                            color: ThisAppColors.kAppPrimaryColor,
                             fontSize: 19,
                             fontWeight: FontWeight.w800),
                       ),

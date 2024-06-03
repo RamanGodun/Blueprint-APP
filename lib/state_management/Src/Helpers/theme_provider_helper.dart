@@ -13,6 +13,10 @@ class ThemeProviderHelper {
         return 'darkAndroid';
       case CustomThemeMode.darkGlass:
         return 'darkGlass';
+      case CustomThemeMode.customDark:
+        return 'customDark';
+      case CustomThemeMode.customLight:
+        return 'customLight';
       case CustomThemeMode.system:
       default:
         return 'system';
@@ -31,6 +35,10 @@ class ThemeProviderHelper {
         return CustomThemeMode.darkAndroid;
       case 'darkGlass':
         return CustomThemeMode.darkGlass;
+      case 'customDark':
+        return CustomThemeMode.customDark;
+      case 'customLight':
+        return CustomThemeMode.customLight;
       case 'system':
       default:
         return CustomThemeMode.system;

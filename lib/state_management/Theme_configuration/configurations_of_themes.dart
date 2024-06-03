@@ -4,7 +4,7 @@ import 'App_colors_palette/this_app_colors.dart';
 import 'Themes_provider/theme_builder.dart';
 
 class ThisAppThemes {
-// iOS Themes
+  // iOS Themes
   static final ThemeData kLightIOSTheme = ThisAppThemesBuilder.buildThemeData(
     isDark: false,
     colorScheme: ThisAppColorSchemes.kLightIOSColorScheme,
@@ -100,72 +100,43 @@ class ThisAppThemes {
         ThisAppColorSchemes.kDarkGlassColorScheme.onSurface,
   );
 
-/*MY Custom themes
- */
-  static final ThemeData customDarkTheme = ThemeData(
-    primaryColor: ThisAppColors.black1,
-    canvasColor: ThisAppColors.black,
-    hoverColor: ThisAppColors.hover,
-    focusColor: ThisAppColors.white,
-    shadowColor: ThisAppColors.shadow,
-    indicatorColor: ThisAppColors.yellow1,
-    primaryColorLight: ThisAppColors.yellow2.withOpacity(0.5),
-    colorScheme: ColorScheme.fromSwatch().copyWith(
-      secondary: ThisAppColors.grey2,
-    ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedItemColor: ThisAppColors.white,
-      selectedIconTheme: IconThemeData(color: ThisAppColors.white),
-      unselectedIconTheme: IconThemeData(color: ThisAppColors.hover),
-      unselectedLabelStyle: TextStyle(color: ThisAppColors.lightGrey),
-      selectedLabelStyle: TextStyle(color: ThisAppColors.white),
-      showUnselectedLabels: false,
-      backgroundColor: ThisAppColors.silver,
-      elevation: 0,
-    ),
-    fontFamily: 'Montserrat',
-    // тут можна додати інші параметри для цієї теми
+  // Custom themes
+  static final ThemeData kLightCustomIOSTheme =
+      ThisAppThemesBuilder.buildThemeData(
+    isDark: false,
+    colorScheme: ThisAppColorSchemes.kColorScheme,
+    scaffoldBackgroundColor: ThisAppColors.kLightCustomBackground,
+    appBarBackgroundColor: ThisAppColors.kLightCustomBackground,
+    barBackgroundColor:
+        ThisAppColorSchemes.kColorScheme.surface.withOpacity(0.3),
+    dividerColor: ThisAppColorSchemes.kColorScheme.onSurface.withOpacity(0.5),
+    highlightColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.3),
+    splashColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.2),
+    tooltipColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.9),
+    tabBarIndicatorColor: ThisAppColors.kAppPrimaryColor,
+    tabBarLabelColor: ThisAppColorSchemes.kColorScheme.onPrimary,
+    tabBarUnselectedLabelColor: ThisAppColorSchemes.kColorScheme.onSurface,
   );
 
-  static final ThemeData customLightTheme = ThemeData(
-    primaryColor: ThisAppColors.amber2,
-    colorScheme: ColorScheme.fromSwatch().copyWith(
-      secondary: ThisAppColors.grey1,
-    ),
-    fontFamily: 'Montserrat',
-    focusColor: ThisAppColors.grey1.withOpacity(0.5),
-    hoverColor: const Color.fromARGB(255, 224, 227, 207),
-    indicatorColor: ThisAppColors.amber2,
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedItemColor: ThisAppColors.amber2,
-    ),
-    // тут можна додати інші параметри для цієї теми
-  );
-
-  // деякі константи для оформлення
-  static const textInputDecoration = InputDecoration(
-    labelStyle: TextStyle(
-      color: ThisAppColors.white,
-      fontWeight: FontWeight.w300,
-    ),
-    hintStyle: TextStyle(
-      color: ThisAppColors.white,
-      fontWeight: FontWeight.w300,
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: ThisAppColors.amber1,
-        width: 0.5,
-      ),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: ThisAppColors.amber1,
-        width: 0.5,
-      ),
-    ),
+  static final ThemeData kDarkCustomIOSTheme =
+      ThisAppThemesBuilder.buildThemeData(
+    isDark: true,
+    colorScheme: ThisAppColorSchemes.kColorDarkScheme,
+    scaffoldBackgroundColor: ThisAppColors.kDarkCustomBackground,
+    appBarBackgroundColor: ThisAppColors.kDarkCustomBackground,
+    barBackgroundColor:
+        ThisAppColorSchemes.kColorDarkScheme.surface.withOpacity(0.5),
+    dividerColor:
+        ThisAppColorSchemes.kColorDarkScheme.onSurface.withOpacity(0.5),
+    highlightColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.3),
+    splashColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.2),
+    tooltipColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.9),
+    tabBarIndicatorColor: ThisAppColors.kAppPrimaryColor,
+    tabBarLabelColor: ThisAppColorSchemes.kColorDarkScheme.onPrimary,
+    tabBarUnselectedLabelColor: ThisAppColorSchemes.kColorDarkScheme.onSurface,
   );
 }
+
 
 /*
 1. проаналізуй свій останній код 
@@ -173,5 +144,6 @@ class ThisAppThemes {
 1.  світла та темна теми IOS мають бути стильними, елегантними, повітряними, мінімалістичними, легкими, нативними-природними для IOS
 2. світла та темна теми андроїд мають бути сучасними, молодіжними, обʼємними, глибокими, агресивними, чіткими
 3. тема kDarkGlassTheme має бути ідентична як остання темна операційна темна система на айфонах (тобто легка, стильна, трішечки прозоро-скляна, мінімалістична, сучасна)
+4. Кастомні теми мають виглядати як на сучасних молодіжних мінімалістичних, повітряних та легких іос чи макос додатках
  */
 

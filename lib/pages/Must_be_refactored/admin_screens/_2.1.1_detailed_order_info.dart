@@ -22,7 +22,8 @@ class ExpandedOrderInfo extends StatelessWidget {
     final List<String> listOfOrderedItems = gotCartItemById.itemsList;
     final List<double> listOfItemsQuantity = gotCartItemById.itemQuantity;
     const textStyle1 = TextStyle(color: ThisAppColors.white, fontSize: 13);
-    const textStyle2 = TextStyle(color: ThisAppColors.amber1, fontSize: 13);
+    const textStyle2 =
+        TextStyle(color: ThisAppColors.kAppPrimaryColor, fontSize: 13);
     Widget localDivider = const SizedBox(
         height: 5, child: DashedLineDivider(color: ThisAppColors.silver));
     List<String?> customerData = [

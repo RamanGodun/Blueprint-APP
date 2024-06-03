@@ -7,7 +7,9 @@ enum CustomThemeMode {
   system,
   lightAndroid,
   darkAndroid,
-  darkGlass
+  darkGlass,
+  customDark,
+  customLight
 }
 
 enum CategoriesEnum {

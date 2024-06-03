@@ -17,7 +17,7 @@ class _NoOtpScreenState extends State<NoOtpScreen> {
   late String adminsEmail;
 
   final textStyle1 = const TextStyle(
-    color: ThisAppColors.yellow1,
+    color: ThisAppColors.kAppPrimaryColor,
     fontSize: 25,
     fontWeight: FontWeight.w800,
   );

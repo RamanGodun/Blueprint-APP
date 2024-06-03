@@ -189,7 +189,7 @@ class _ProductsListViewItemState extends State<ProductsListViewItem> {
                   width: 20,
                   child: GestureDetector(
                     child: const Icon(Icons.edit,
-                        size: 20, color: ThisAppColors.yellow2),
+                        size: 20, color: ThisAppColors.kAppPrimaryColor),
                     onTap: () {
                       // nextScreen(
                       //   context,

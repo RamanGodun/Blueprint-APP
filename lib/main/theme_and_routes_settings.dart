@@ -37,6 +37,14 @@ class ThemeAndRoutesConfiguration extends StatelessWidget {
             selectedTheme = ThisAppThemes.kDarkGlassTheme;
             darkTheme = ThisAppThemes.kDarkGlassTheme;
             break;
+          case CustomThemeMode.customLight:
+            selectedTheme = ThisAppThemes.kLightCustomIOSTheme;
+            darkTheme = ThisAppThemes.kDarkGlassTheme;
+            break;
+          case CustomThemeMode.customDark:
+            selectedTheme = ThisAppThemes.kDarkGlassTheme;
+            darkTheme = ThisAppThemes.kDarkGlassTheme;
+            break;
           case CustomThemeMode.system:
           default:
             selectedTheme = ThisAppThemes.kLightIOSTheme;

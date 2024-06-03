@@ -49,6 +49,7 @@ class ThisAppThemesBuilder {
             ),
       ),
       scaffoldBackgroundColor: scaffoldBackgroundColor,
+      // fontFamily: 'Montserrat',
       cupertinoOverrideTheme: NoDefaultCupertinoThemeData(
         primaryColor: ThisAppColors.kAppPrimaryColor,
         barBackgroundColor: barBackgroundColor,

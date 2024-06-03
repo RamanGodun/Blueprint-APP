@@ -49,7 +49,7 @@ class _AdminsListOfProductsState extends State<AdminsListOfProducts> {
               : const Center(
                   child: Text(
                     "Додайте свій перший товар",
-                    style: TextStyle(color: ThisAppColors.amber1),
+                    style: TextStyle(color: ThisAppColors.kAppPrimaryColor),
                   ),
                 ),
           // layout for button next

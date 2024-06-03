@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'this_app_colors.dart';
 
 abstract class ThisAppColorSchemes {
-/* */
+  // Existing color schemes...
+
   /* IOS LIGHT color Scheme */
   static final kLightIOSColorScheme = ColorScheme.fromSwatch(
     primarySwatch: ThisAppColors.kPrimarySwatch,
@@ -89,7 +89,7 @@ abstract class ThisAppColorSchemes {
     onError: ThisAppColors.kDarkGlassOnPrimary,
   );
 
-/* MY CUSTOM LIGHT color Scheme */
+  /* MY CUSTOM LIGHT color Scheme */
   static final kColorScheme = ColorScheme.fromSwatch(
     brightness: Brightness.light,
     primarySwatch: ThisAppColors.kPrimarySwatch,
@@ -97,30 +97,19 @@ abstract class ThisAppColorSchemes {
     backgroundColor: ThisAppColors.kSurfaceColorLight,
     errorColor: ThisAppColors.kError2Color,
   ).copyWith(
-    primary: ThisAppColors.kAppPrimaryColor,
-    primaryContainer: ThisAppColors.kAppPrimaryColor,
-    secondary: ThisAppColors.kSecondaryColor,
-    secondaryContainer: ThisAppColors.kSecondaryColor,
-    surface: ThisAppColors.kSurfaceColorLight,
-    surfaceTint: Colors.white,
-    surfaceContainerHighest: Colors.white,
-    error: ThisAppColors.kError2Color,
-    errorContainer: ThisAppColors.kErrorColor,
-    onError: ThisAppColors.kOnErrorColor,
-    onErrorContainer: ThisAppColors.kOnErrorColor,
-    onPrimary: Colors.white,
-    onPrimaryContainer: Colors.white,
-    onSecondary: Colors.white,
-    onSurface: ThisAppColors.kOnSurfaceColor,
-    onSurfaceVariant: ThisAppColors.kOnSurfaceColor,
-    tertiary: ThisAppColors.kTertiaryColor,
-    tertiaryContainer: ThisAppColors.kTertiaryColor,
-    inversePrimary: Colors.white,
-    inverseSurface: Colors.white,
-    onInverseSurface: const Color.fromARGB(255, 255, 255, 255),
+    primary: ThisAppColors.kPrimarySwatch,
+    primaryContainer: ThisAppColors.kLightCustomPrimaryContainer,
+    secondary: ThisAppColors.kLightCustomSecondary,
+    secondaryContainer: ThisAppColors.kLightCustomSecondaryContainer,
+    surface: ThisAppColors.kLightCustomSurface,
+    onPrimary: ThisAppColors.kLightCustomOnPrimary,
+    onSecondary: ThisAppColors.kLightCustomOnSecondary,
+    onSurface: ThisAppColors.kLightCustomOnSurface,
+    onError: ThisAppColors.kLightCustomOnError,
+    brightness: Brightness.light,
   );
 
-/* MY CUSTOM DARK color Scheme */
+  /* MY CUSTOM DARK color Scheme */
   static final kColorDarkScheme = ColorScheme.fromSwatch(
     brightness: Brightness.dark,
     primarySwatch: ThisAppColors.kPrimarySwatch,
@@ -128,31 +117,15 @@ abstract class ThisAppColorSchemes {
     backgroundColor: ThisAppColors.kSurfaceColorDark,
     errorColor: ThisAppColors.kErrorColorDark,
   ).copyWith(
-    primary: ThisAppColors.kAppPrimaryColor.withOpacity(0.9),
-    primaryContainer: ThisAppColors.kAppPrimaryColor.withOpacity(0.8),
-    secondary: ThisAppColors.kSecondaryDarkColor,
-    secondaryContainer: ThisAppColors.kSecondaryDarkColor.withOpacity(0.8),
-    surface: ThisAppColors.kSurfaceColorDark.withOpacity(0.95),
-    surfaceTint: Colors.white,
-    surfaceContainerHighest: ThisAppColors.kSurfaceContainerHighestDark,
-    error: ThisAppColors.kErrorColorDark,
-    errorContainer: ThisAppColors.kErrorColorDark,
-    onError: ThisAppColors.kOnErrorColor,
-    onErrorContainer: ThisAppColors.kOnErrorColor,
-    onPrimary: Colors.white,
-    onPrimaryContainer: Colors.white,
-    onSecondary: const Color.fromARGB(255, 192, 192, 192),
-    onSecondaryContainer: const Color.fromARGB(255, 192, 192, 192),
-    onSurface: ThisAppColors.kOnSurfaceColorDark,
-    onSurfaceVariant: const Color.fromARGB(255, 115, 115, 115),
-    tertiary: ThisAppColors.kTertiaryColorDark,
-    tertiaryContainer: ThisAppColors.kTertiaryColorDark,
-    inversePrimary: Colors.white,
-    inverseSurface: Colors.white,
-    onInverseSurface: const Color.fromARGB(255, 115, 115, 115),
-    outline: const Color.fromARGB(255, 192, 192, 192),
-    outlineVariant: const Color.fromARGB(255, 192, 192, 192),
-    scrim: ThisAppColors.kScrimColorDark,
-    shadow: ThisAppColors.kShadowColorDark,
+    primary: ThisAppColors.kPrimarySwatch,
+    primaryContainer: ThisAppColors.kDarkCustomPrimaryContainer,
+    secondary: ThisAppColors.kDarkCustomSecondary,
+    secondaryContainer: ThisAppColors.kDarkCustomSecondaryContainer,
+    surface: ThisAppColors.kDarkCustomSurface,
+    onPrimary: ThisAppColors.kDarkCustomOnPrimary,
+    onSecondary: ThisAppColors.kDarkCustomOnSecondary,
+    onSurface: ThisAppColors.kDarkCustomOnSurface,
+    onError: ThisAppColors.kDarkCustomOnError,
+    brightness: Brightness.dark,
   );
 }

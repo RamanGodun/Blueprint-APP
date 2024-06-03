@@ -119,7 +119,7 @@ class _CardOfProductItem4GridViewState
                       style: const TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
-                          color: ThisAppColors.amber1)),
+                          color: ThisAppColors.kAppPrimaryColor)),
                   const Text("/ за 1 л",
                       style: TextStyle(color: Colors.white, fontSize: 10)),
                 ],

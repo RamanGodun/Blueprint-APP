@@ -93,7 +93,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
               },
               icon: const Icon(
                 Icons.delete,
-                color: ThisAppColors.darkAmber2,
+                color: ThisAppColors.kAppPrimaryColor,
               ),
             )
           ],
@@ -159,7 +159,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
                                           decoration: BoxDecoration(
                                             color: editingProductItem
                                                     .discountsLevel![index]
-                                                ? ThisAppColors.yellow2
+                                                ? ThisAppColors.kAppPrimaryColor
                                                 : ThisAppColors.grey2,
                                             borderRadius:
                                                 BorderRadius.circular(10),

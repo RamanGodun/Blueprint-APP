@@ -75,7 +75,7 @@ class _DeliverySelectionWidgetState extends State<DeliverySelectionWidget> {
             method,
             style: TextStyle(
                 color: (profileProvider.userProfileData.deliveryWay == method)
-                    ? ThisAppColors.yellow1
+                    ? ThisAppColors.kAppPrimaryColor
                     : ThisAppColors.white),
           ),
         ),

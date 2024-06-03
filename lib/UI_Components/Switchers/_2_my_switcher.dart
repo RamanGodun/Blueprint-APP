@@ -104,7 +104,8 @@ class _MyCustomizedSwitcherState extends State<MyCustomizedSwitcher> {
                             "Ні, дякую",
                             style: TextStyle(
                                 fontSize: 16,
-                                color: ThisAppColors.amber2.withOpacity(0.9)),
+                                color: ThisAppColors.kAppPrimaryColor
+                                    .withOpacity(0.9)),
                           ),
                           onPressed: () {
                             Navigator.of(context).pop();
@@ -115,7 +116,8 @@ class _MyCustomizedSwitcherState extends State<MyCustomizedSwitcher> {
                             "Так",
                             style: TextStyle(
                                 fontSize: 16,
-                                color: ThisAppColors.yellow2.withOpacity(0.7)),
+                                color: ThisAppColors.kAppPrimaryColor
+                                    .withOpacity(0.7)),
                           ),
                           onPressed: () async {
                             cartProvider.toggleAdminOrderIsFinished(

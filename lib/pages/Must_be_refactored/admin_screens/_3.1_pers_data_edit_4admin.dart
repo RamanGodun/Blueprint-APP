@@ -97,7 +97,8 @@ class _PersonalDataEditing4AdminState extends State<PersonalDataEditing4Admin> {
                                                     width: double.infinity,
                                                     height: double.infinity))
                                             : const Icon(Icons.add_a_photo,
-                                                color: ThisAppColors.yellow1,
+                                                color: ThisAppColors
+                                                    .kAppPrimaryColor,
                                                 size: 50)),
                               ))),
                       SizedBox(

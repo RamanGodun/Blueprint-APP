@@ -68,7 +68,8 @@ class _ProductsGridState extends State<ProductsGrid> {
                       : const Expanded(
                           child: Center(
                           child: Text("Продукти даної категорії відсутні",
-                              style: TextStyle(color: ThisAppColors.amber1)),
+                              style: TextStyle(
+                                  color: ThisAppColors.kAppPrimaryColor)),
                         )),
                   const SizedBox(height: 50),
                 ]),

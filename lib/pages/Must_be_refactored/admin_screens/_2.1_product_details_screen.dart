@@ -159,7 +159,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                         ),
                                         child: const Center(
                                           child: Icon(Icons.arrow_back_ios_new,
-                                              color: ThisAppColors.yellow1,
+                                              color: ThisAppColors
+                                                  .kAppPrimaryColor,
                                               size: 24),
                                         ))),
                               )),
@@ -195,7 +196,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                               fontSize: 17,
                               fontWeight: FontWeight.bold,
                               fontStyle: FontStyle.normal,
-                              color: ThisAppColors.amber1)),
+                              color: ThisAppColors.kAppPrimaryColor)),
                       if (product.isDiscount!)
                         Padding(
                           padding: const EdgeInsets.only(right: 25.0),
@@ -323,7 +324,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
-                            color: ThisAppColors.amber1)),
+                            color: ThisAppColors.kAppPrimaryColor)),
                     const SizedBox(height: 1),
                     Expanded(
                       child: Padding(
@@ -347,7 +348,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                       ),
                                       const SizedBox(height: 10),
                                       DashedLineDivider(
-                                        color: ThisAppColors.yellow1
+                                        color: ThisAppColors.kAppPrimaryColor
                                             .withOpacity(0.5),
                                       ),
                                     ],

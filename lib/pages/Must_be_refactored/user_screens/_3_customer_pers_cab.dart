@@ -70,13 +70,13 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
               child: Row(children: [
                 Icon(
                   Icons.local_shipping,
-                  color: ThisAppColors.yellow1,
+                  color: ThisAppColors.kAppPrimaryColor,
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 8.0),
                   child: Text("Інформація з доставки",
                       style: TextStyle(
-                          color: ThisAppColors.yellow1, fontSize: 14)),
+                          color: ThisAppColors.kAppPrimaryColor, fontSize: 14)),
                 ),
               ]),
             ),
@@ -118,13 +118,13 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                 children: [
                   Icon(
                     Icons.local_shipping,
-                    color: ThisAppColors.yellow1,
+                    color: ThisAppColors.kAppPrimaryColor,
                   ),
                   SizedBox(width: 10),
                   Text("Список моїх замовлень",
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                        color: ThisAppColors.yellow1,
+                        color: ThisAppColors.kAppPrimaryColor,
                         fontSize: 15,
                         // fontWeight: FontWeight.w500
                       )),
@@ -258,7 +258,8 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                               : (expandedOrder.isFinished == false)
                                   ? "Замовлення в процесі обробки..."
                                   : "Завершено, бонуси зараховані",
-                          style: const TextStyle(color: ThisAppColors.amber1),
+                          style: const TextStyle(
+                              color: ThisAppColors.kAppPrimaryColor),
                         ),
                       )
                     ]),

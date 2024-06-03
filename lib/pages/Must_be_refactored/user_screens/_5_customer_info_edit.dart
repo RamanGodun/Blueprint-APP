@@ -182,7 +182,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                               padding: EdgeInsets.only(left: 10.0),
                               child: Text("Загальна сума замовлення",
                                   style: TextStyle(
-                                      color: ThisAppColors.yellow1,
+                                      color: ThisAppColors.kAppPrimaryColor,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w800)),
                             ),

@@ -68,15 +68,11 @@ abstract class ThisAppColors {
 /*Added
  */
 
-  static const Color green = Color.fromARGB(177, 15, 108, 91);
-  static Color black54 = Colors.black54.withOpacity(0.6);
+  static const Color black54 = Colors.black54;
   static final Color grey200 = Colors.grey.shade200;
   static final Color grey300 = Colors.grey.shade300;
   static final Color grey500 = Colors.grey.shade500;
   static final Color grey600 = Colors.grey.shade600;
-  static final fon = const Color.fromARGB(117, 5, 6, 6).withOpacity(0.75);
-  static final Color fon2 =
-      const Color.fromARGB(255, 45, 45, 45).withOpacity(0.99);
 
   static const List<Color> categoriesColors = [
     Color.fromARGB(198, 15, 108, 91),
@@ -103,7 +99,7 @@ abstract class ThisAppColors {
   static const Color kScrimColorDark = Color.fromARGB(117, 5, 6, 6);
   static const Color kShadowColorDark = Color.fromARGB(255, 10, 10, 10);
 
-/* Colors fromm GG APP 
+/* Often Used in IOS Colors 
  */
   static const Color white = Color(0xFFFFFFFF);
   static const Color silver = Color(0xFF999A9B);
@@ -116,18 +112,39 @@ abstract class ThisAppColors {
   static const Color darkGrey4 = Color(0xFF1F1F1F);
   static const Color black1 = Color(0xFF000000);
   static const Color black = Color(0xFF1B1B1B);
-  static const Color amber1 = Colors.amber;
-  static const Color amber2 = Color(0xFFB56933);
-  static const Color darkAmber1 = Color(0xFF8F4E26);
-  static const Color darkAmber2 = Color(0xFF753B1F);
-  static const Color yellow1 = Color.fromARGB(255, 227, 171, 79);
-  static const Color yellow2 = Color.fromARGB(255, 255, 179, 0);
   static const Color shadow = Color(0xFF999A9B);
   static const Color hover = Color(0xFF525559);
-//
-  static const Color amber1ForLightTheme = Color(0xFFD17741);
-  static const Color amber2ForLightTheme = Color(0xFFB56933);
-  static const Color yellow2ForLightTheme = Color(0xFFBF8C55);
+
+/*
+GPT 
+ */
+// Light custom iOS theme colors
+  static const Color kLightCustomPrimary = Color(0xFF007AFF);
+  static const Color kLightCustomPrimaryContainer = Color(0xFF5AC8FA);
+  static const Color kLightCustomSecondary = Color(0xFF34C759);
+  static const Color kLightCustomSecondaryContainer = Color(0xFF4CD964);
+  static const Color kLightCustomSurface = Color(0xFFFFFFFF);
+  static const Color kLightCustomBackground = Color(0xFFF2F2F2);
+  static const Color kLightCustomError = Color(0xFFFF3B30);
+  static const Color kLightCustomOnPrimary = Color(0xFFFFFFFF);
+  static const Color kLightCustomOnSecondary = Color(0xFFFFFFFF);
+  static const Color kLightCustomOnSurface = Color(0xFF1C1C1E);
+  static const Color kLightCustomOnBackground = Color(0xFF1C1C1E);
+  static const Color kLightCustomOnError = Color(0xFFFFFFFF);
+
+  // Dark custom iOS theme colors
+  static const Color kDarkCustomPrimary = Color(0xFF0A84FF);
+  static const Color kDarkCustomPrimaryContainer = Color(0xFF64D2FF);
+  static const Color kDarkCustomSecondary = Color(0xFF32D74B);
+  static const Color kDarkCustomSecondaryContainer = Color(0xFF30D158);
+  static const Color kDarkCustomSurface = Color(0xFF1C1C1E);
+  static const Color kDarkCustomBackground = Color(0xFF2C2C2E);
+  static const Color kDarkCustomError = Color(0xFFFF453A);
+  static const Color kDarkCustomOnPrimary = Color(0xFFFFFFFF);
+  static const Color kDarkCustomOnSecondary = Color(0xFFFFFFFF);
+  static const Color kDarkCustomOnSurface = Color(0xFFD1D1D6);
+  static const Color kDarkCustomOnBackground = Color(0xFFD1D1D6);
+  static const Color kDarkCustomOnError = Color(0xFFFFFFFF);
 }
 
 /*

@@ -72,7 +72,8 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                               child: Text(
                             "Поки що немає обраних товарів",
                             style: TextStyle(
-                                color: ThisAppColors.amber1, fontSize: 15),
+                                color: ThisAppColors.kAppPrimaryColor,
+                                fontSize: 15),
                           )),
                         )
                       // List of items in cart next
@@ -127,7 +128,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                     const Text(
                       "Загальна сума замовлення",
                       style: TextStyle(
-                        color: ThisAppColors.yellow1,
+                        color: ThisAppColors.kAppPrimaryColor,
                         fontSize: 15,
                       ),
                     ),
@@ -165,7 +166,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                     Text(
                       "(${profileInfo.userProfileData.amountOfBonuses.toString()})",
                       style: const TextStyle(
-                        color: ThisAppColors.amber1,
+                        color: ThisAppColors.kAppPrimaryColor,
                         fontSize: 14,
                       ),
                     ),

@@ -40,7 +40,7 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: IconButton(
               icon: const Icon(Icons.article_outlined, size: 30),
-              color: ThisAppColors.amber1,
+              color: ThisAppColors.kAppPrimaryColor,
               onPressed: () {
                 // nextScreen(context, const DiscountSystem());
               },

@@ -49,7 +49,7 @@ class ProfileImageWidget extends StatelessWidget {
                     )
                   : const Icon(
                       Icons.add_a_photo,
-                      color: ThisAppColors.yellow1,
+                      color: ThisAppColors.kAppPrimaryColor,
                       size: 50,
                     ),
     );

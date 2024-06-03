@@ -108,7 +108,7 @@ class _StyledTextFormFieldState extends State<StyledTextFormField> {
             //
             style:
                 widget.textStyle!.copyWith(fontSize: widget.textFontSize ?? 15),
-            cursorColor: ThisAppColors.yellow1.withOpacity(0.5),
+            cursorColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.5),
             decoration: InputDecoration(
               suffixIcon: (widget.isNeedSuffixIcon == true)
                   ? (widget.controller.text.length > widget.suffixLength
@@ -167,13 +167,15 @@ class _StyledTextFormFieldState extends State<StyledTextFormField> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: ThisAppColors.yellow2, width: widget.borderWidth),
+                    color: ThisAppColors.kAppPrimaryColor,
+                    width: widget.borderWidth),
                 borderRadius:
                     BorderRadius.all(Radius.circular(widget.borderRadius)),
               ),
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: ThisAppColors.darkAmber2, width: widget.borderWidth),
+                    color: ThisAppColors.kAppPrimaryColor,
+                    width: widget.borderWidth),
                 borderRadius:
                     BorderRadius.all(Radius.circular(widget.borderRadius)),
               ),

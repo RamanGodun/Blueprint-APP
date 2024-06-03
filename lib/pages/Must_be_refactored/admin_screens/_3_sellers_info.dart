@@ -39,7 +39,7 @@ class _SellersInfoState extends State<SellersInfo> {
                 EdgeInsets.only(top: 3.0, bottom: 3.0, left: 130, right: 10),
             child: Text("Точки продажу",
                 style: TextStyle(
-                    color: ThisAppColors.amber1,
+                    color: ThisAppColors.kAppPrimaryColor,
                     fontSize: 15,
                     fontWeight: FontWeight.bold)),
           ),

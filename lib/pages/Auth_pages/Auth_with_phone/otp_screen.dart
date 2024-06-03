@@ -55,7 +55,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     const SizedBox(height: 80),
                     const Text("Перевірка",
                         style: TextStyle(
-                          color: ThisAppColors.yellow1,
+                          color: ThisAppColors.kAppPrimaryColor,
                           fontSize: 25,
                           fontWeight: FontWeight.w800,
                         )),
@@ -119,7 +119,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       child: const Text("не прийшов код",
                           style: TextStyle(
                             decoration: TextDecoration.underline,
-                            color: ThisAppColors.amber1,
+                            color: ThisAppColors.kAppPrimaryColor,
                           )),
                     ),
                     const SizedBox(height: 15),

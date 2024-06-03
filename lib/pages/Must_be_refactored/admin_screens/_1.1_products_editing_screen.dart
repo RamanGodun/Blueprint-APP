@@ -72,14 +72,14 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
             // deleting button
             IconButton(
                 onPressed: () => callDeleteAlertDialog(widget.isNewProductItem),
-                icon: const Icon(Icons.delete, color: ThisAppColors.darkAmber2))
+                icon: const Icon(Icons.delete, color: ThisAppColors.kAppPrimaryColor))
           ],
         ),
         // body next
         body: (isLoading == true)
             ? const Center(
                 child: CircularProgressIndicator(
-                color: ThisAppColors.amber1,
+                color: ThisAppColors.kAppPrimaryColor,
               ))
             : SingleChildScrollView(
                 child: Align(
@@ -140,7 +140,7 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
                                                                     .add_a_photo,
                                                                 color:
                                                                     ThisAppColors
-                                                                        .yellow1,
+                                                                        .kAppPrimaryColor,
                                                                 size: 50,
                                                               )),
                                           ))),

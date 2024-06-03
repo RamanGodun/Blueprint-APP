@@ -9,20 +9,24 @@ class DropButtonStyle {
   static List<DropdownMenuItem<CustomThemeMode>> buildThemeModeItems(
       BuildContext context) {
     final List<CustomThemeMode> themeModes = [
-      CustomThemeMode.system,
       CustomThemeMode.lightAndroid,
       CustomThemeMode.lightIOS,
+      CustomThemeMode.customLight,
+      CustomThemeMode.system,
+      CustomThemeMode.darkGlass,
       CustomThemeMode.darkAndroid,
       CustomThemeMode.darkIOS,
-      CustomThemeMode.darkGlass,
+      CustomThemeMode.customDark,
     ];
     final List<String> themeModeTexts = [
-      LocaleKeys.systemTheme.tr(),
       LocaleKeys.lightAndroidTheme.tr(),
       LocaleKeys.lightIOSTheme.tr(),
+      LocaleKeys.customLightTheme.tr(),
+      LocaleKeys.systemTheme.tr(),
+      LocaleKeys.darkGlassTheme.tr(),
       LocaleKeys.darkAndroidTheme.tr(),
       LocaleKeys.darkIOSTheme.tr(),
-      LocaleKeys.darkGlassTheme.tr(),
+      LocaleKeys.customDarkTheme.tr(),
     ];
     final textTheme = Helpers.textTheme(context);
     final colorScheme = Helpers.colorScheme(context);
