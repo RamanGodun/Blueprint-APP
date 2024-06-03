@@ -16,6 +16,8 @@ class CodegenLoader extends AssetLoader {
 
   static const Map<String, dynamic> uk_UA = {
     "appTitle": "Цей додаток",
+    "customDarkTheme": "власна темна тема",
+    "customLightTheme": "Власна світла тема",
     "darkIOSTheme": "Темна IOS тема",
     "darkAndroidTheme": "Темна андроїд тема",
     "darkGlassTheme": "Темна скляна тема",
@@ -29,6 +31,8 @@ class CodegenLoader extends AssetLoader {
   };
   static const Map<String, dynamic> en_US = {
     "appTitle": "This app",
+    "customDarkTheme": "Custom dark theme",
+    "customLightTheme": "Custom light theme",
     "darkIOSTheme": "Dark IOS theme",
     "darkAndroidTheme": "Dark android theme",
     "darkGlassTheme": "Dark glassy theme",

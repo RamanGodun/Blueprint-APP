@@ -2,6 +2,8 @@
 
 abstract class  LocaleKeys {
   static const appTitle = 'appTitle';
+  static const customDarkTheme = 'customDarkTheme';
+  static const customLightTheme = 'customLightTheme';
   static const darkIOSTheme = 'darkIOSTheme';
   static const darkAndroidTheme = 'darkAndroidTheme';
   static const darkGlassTheme = 'darkGlassTheme';
