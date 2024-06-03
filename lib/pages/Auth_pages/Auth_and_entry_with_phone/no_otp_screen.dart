@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../../../State_management/Src/Helpers/helpers.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
-import '../../../UI_Components/Buttons/custom_button_from_first.dart';
+import '../../../State_management/Models/_0_models.dart';
+import '../../../State_management/Src/Helpers/dm_methods.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../UI_Components/Buttons/_1_custom_button.dart';
 
 class NoOtpScreen extends StatefulWidget {
   const NoOtpScreen({super.key});
@@ -13,16 +13,16 @@ class NoOtpScreen extends StatefulWidget {
 
 class _NoOtpScreenState extends State<NoOtpScreen> {
   // vars
-  // late GeneralInfoData? fetchedData;
-  late String adminsEmail = "MyMail@gmail.com";
+  late GeneralInfoData? fetchedData;
+  late String adminsEmail;
 
   final textStyle1 = const TextStyle(
-    color: ThisAppColors.kAppPrimaryColor,
+    color: IOSDarkThemeColors.yellow1,
     fontSize: 25,
     fontWeight: FontWeight.w800,
   );
   final textStyle2 = const TextStyle(
-    color: Colors.white,
+    color: IOSDarkThemeColors.white,
     fontSize: 14,
   );
 
@@ -33,8 +33,8 @@ class _NoOtpScreenState extends State<NoOtpScreen> {
   }
 
   Future<void> _fetchGeneralData() async {
-    // fetchedData = await DMMethodsOnDB().fetchGeneralDataFromFirestore();
-    // adminsEmail = fetchedData?.adminsEmail ?? "MyMail@gmail.com";
+    fetchedData = await DMMethodsOnDB().fetchGeneralDataFromFirestore();
+    adminsEmail = fetchedData?.adminsEmail ?? "MyMail@gmail.com";
     if (mounted) {
       setState(() {});
     }
@@ -114,8 +114,8 @@ class _NoOtpScreenState extends State<NoOtpScreen> {
                     height: 50,
                     child: CustomButton(
                       text: "Повернутися до реєстрації",
-                      action: () {
-                        Helpers.pop(context);
+                      onPressed: () {
+                        // popScreen(context);
                       },
                     ),
                   ),

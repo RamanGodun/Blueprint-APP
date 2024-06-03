@@ -1,18 +1,16 @@
-// general
-// ignore_for_file: avoid_print
+// ignore_for_file: use_build_context_synchronously, unused_catch_clause
 
-import 'package:blueprint_4app/state_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
-import '../../../State_management/Src/Helpers/helpers.dart';
-import '../../../UI_Components/Buttons/custom_button_from_first.dart';
-import '../../tabs/app_tabs.dart';
-import 'no_otp_screen.dart';
-import 'providers/auth_profile_provider.dart';
 
-// ignore_for_file: use_build_context_synchronously
+import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
+import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
+import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../UI_Components/Buttons/_1_custom_button.dart';
+
 class OtpScreen extends StatefulWidget {
   final String verificationId;
   const OtpScreen({super.key, required this.verificationId});
@@ -27,6 +25,7 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     AuthProvider aP = Provider.of<AuthProvider>(context, listen: false);
+
     final isLoading = aP.isLoading;
 
     return Scaffold(
@@ -57,7 +56,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     const SizedBox(height: 80),
                     const Text("Перевірка",
                         style: TextStyle(
-                          color: ThisAppColors.kAppPrimaryColor,
+                          color: IOSDarkThemeColors.yellow1,
                           fontSize: 25,
                           fontWeight: FontWeight.w800,
                         )),
@@ -96,32 +95,32 @@ class _OtpScreenState extends State<OtpScreen> {
                       },
                     ),
                     const SizedBox(height: 120),
-//
+                    // button
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
                       height: 50,
                       child: CustomButton(
                         text: "Підтвердити",
-                        action: () {
+                        onPressed: () {
                           if (otpCode != null) {
                             verifyOtp(context, otpCode!);
                           } else {
-                            Helpers.showSnackBar(
-                                context, "Введіть 6-значний код");
+                            // showSnackbar(context,
+                            //     content: "Введіть 6-значний код");
                           }
                         },
                       ),
                     ),
                     const SizedBox(height: 20),
-                    //
+                    // text button
                     TextButton(
                       onPressed: () {
-                        Helpers.push(context, const NoOtpScreen());
+                        // nextScreen(context, const NoOtpScreen());
                       },
                       child: const Text("не прийшов код",
                           style: TextStyle(
                             decoration: TextDecoration.underline,
-                            color: ThisAppColors.kAppPrimaryColor,
+                            color: IOSDarkThemeColors.amber1,
                           )),
                     ),
                     const SizedBox(height: 15),
@@ -140,14 +139,12 @@ class _OtpScreenState extends State<OtpScreen> {
         verificationId: widget.verificationId,
         userOtp: userOtp,
         onSuccess: () async {
+          // Перевіряємо, чи користувач існує в базі даних
           bool userExists = await authProvider.checkIsUserExistingOnDB();
-          print("$userExists userExists");
-
           if (userExists) {
             await handleUserData(context, authProvider);
-            print("user exist onDB");
           } else {
-            print("user doesn't exist onDB");
+            // Користувач не існує, зберігаємо дані користувача в Firebase
             await authProvider.saveUserDataToFirebase(true);
             await handleUserData(context, authProvider);
           }
@@ -155,23 +152,33 @@ class _OtpScreenState extends State<OtpScreen> {
   }
 
   Future<void> handleUserData(
-      BuildContext cxt, AuthProvider authProvider) async {
+      BuildContext context, AuthProvider authProvider) async {
+    CommonDataProvider productProvider =
+        Provider.of<CommonDataProvider>(context, listen: false);
+    final cartProvider = Provider.of<CartsProvider>(context, listen: false);
     authProvider.setSignIn();
-    //
-    // next we fetch all data, for example:
-    // await productProvider.fetchProductsFromFirestore();
-
+    await productProvider.fetchProductsFromFirestore();
+    await productProvider.fetchSellerPointsInfoFromFirestore();
+    await productProvider.fetchBonusSystemFromFirestore();
+    await productProvider.fetchGeneralDataFromFirestore();
+    await cartProvider.fetchUserOrders(authProvider.userProfileData.userId);
+    await cartProvider.fetchAdminOrders();
     try {
+      // Отримуємо дані користувача з Firestore
       await authProvider.getUserDataFromFirestore();
+      // await authProvider.saveUserDataToSP();
     } on FirebaseException catch (e) {
-      Helpers.showSnackBar(cxt, e.message!);
+      // showSnackbar(context, content: e.message!);
       return;
     } catch (error) {
-      Helpers.showSnackBar(cxt, error.toString());
+      // if no connection get all data (user profile info, products info etc) from SP
+      // for example
+      //await authProvider.getDataFromSP();
+      // showSnackbar(context, content: error.toString());
       return;
     }
 
-    Helpers.push(context, const AppTabs(bottomTab: 1, appBarIndex: 0));
+    // nextScreen(context, const AppTabs(bottomTab: 1, appBarIndex: 0));
   }
 
   @override

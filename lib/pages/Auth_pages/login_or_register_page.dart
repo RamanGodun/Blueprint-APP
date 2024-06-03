@@ -9,7 +9,7 @@ import '../../State_management/Src/Helpers/helpers.dart';
 import '../../UI_Components/Buttons/static_buttons.dart';
 import '../../UI_Components/Others/square_tile.dart';
 import '../../UI_Components/Static/static_widgets.dart';
-import '../../UI_Components/Text_fields.dart/textfield1.dart';
+import '../../UI_Components/Text_fields/textfield1.dart';
 import '../../State_management/Src/Generated_code/by spider/resources.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {

@@ -6,11 +6,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../../State_management/Models/models_for_store/profile_data_model.dart';
-import '../../../../State_management/Src/Helpers/dm_methods.dart';
-import '../../../../State_management/Src/Helpers/helpers.dart';
+import '../../Models/models_for_store/profile_data_model.dart';
+import '../../Src/Helpers/dm_methods.dart';
+import '../../Src/Helpers/helpers.dart';
 
-import '../otp_screen.dart';
+import '../../../Pages/Auth_pages/Auth_and_entry_with_phone/otp_screen.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthProvider();
@@ -166,7 +166,7 @@ class AuthProvider extends ChangeNotifier {
   ) async {
     _isLoading = true;
     notifyListeners();
-    await DMMethodsOnDB().saveUserDataToFirebase(
+    await DMMethodsOnDB().saveUserDataToFirebase1(
         // userId: userProfileData.userId,
         userId: firebaseAuth.currentUser!.uid,
         userProfileData: userProfileData,
@@ -181,7 +181,7 @@ class AuthProvider extends ChangeNotifier {
     final userProfileData = await DMMethodsOnDB()
         .getUserDataFromFirestore(firebaseAuth.currentUser!.uid);
     if (userProfileData != null) {
-      _userProfileData = userProfileData;
+      // _userProfileData = userProfileData;
     }
     _isLoading = false;
     notifyListeners();
