@@ -1,61 +1,5 @@
 import 'package:flutter/material.dart';
 
-class MyFirstRTopThemes {
-  static final ThemeData darkTheme = ThemeData(
-    primaryColor: const Color(0xFF000000),
-    canvasColor: const Color(0xFF1B1B1B),
-    hoverColor: const Color(0xFF525559),
-    focusColor: const Color(0xFFFFFFFF),
-    shadowColor: const Color(0xFF999A9B),
-    indicatorColor: const Color.fromARGB(255, 227, 171, 79),
-    primaryColorLight: Colors.yellow.withOpacity(0.5),
-    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.grey),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedItemColor: IOSDarkThemeColors.white,
-      selectedIconTheme: IconThemeData(color: IOSDarkThemeColors.white),
-      unselectedIconTheme: IconThemeData(color: IOSDarkThemeColors.hover),
-      unselectedLabelStyle: TextStyle(color: IOSDarkThemeColors.lightGrey),
-      selectedLabelStyle: TextStyle(color: IOSDarkThemeColors.white),
-      showUnselectedLabels: false,
-      backgroundColor: IOSDarkThemeColors.silver,
-      elevation: 0,
-    ),
-
-    fontFamily: 'Montserrat',
-    //
-    // here I can add other parameters for this theme
-    //
-  );
-
-  static final ThemeData lightTheme = ThemeData(
-    primaryColor: Colors.yellow,
-    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black),
-    fontFamily: 'Montserrat',
-    focusColor: Colors.black.withOpacity(0.5),
-    hoverColor: const Color.fromARGB(255, 224, 227, 207),
-    indicatorColor: const Color(0xFFD17741),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Color(0xFFD17741)),
-    // here I can add other parameters for this theme
-  );
-
-  // some decoration const here
-  static const textInputDecoration = InputDecoration(
-    labelStyle:
-        TextStyle(color: IOSDarkThemeColors.white, fontWeight: FontWeight.w300),
-    hintStyle:
-        TextStyle(color: IOSDarkThemeColors.white, fontWeight: FontWeight.w300),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Color(0xFFee7b64), width: 0.5),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Color(0xFFee7b64), width: 0.5),
-    ),
-  );
-}
-
-// Color pallette for IOS
-
 class IOSDarkThemeColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color silver = Color(0xFF999A9B);
@@ -96,3 +40,5 @@ class IOSLightThemeColors {
   static const Color yellow2 = Color(0xFFBF8C55);
   static const Color shadow = Color(0xFF999A9B);
 }
+
+class MyFirstRTopThemes {}

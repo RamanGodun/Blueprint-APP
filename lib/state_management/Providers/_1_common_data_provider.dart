@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import '../../Models/_0_models.dart';
-import '../../Src/Helpers/dm_methods.dart';
+import '../Models/_0_models.dart';
+import '../Src/Helpers/dm_methods.dart';
 
 class CommonDataProvider with ChangeNotifier {
   CommonDataProvider();

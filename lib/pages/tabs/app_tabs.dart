@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../UI_Components/Switchers/switcher.dart';
+import '../Must_be_refactored/admin_screens/_2_products_grid.dart';
+import '../Must_be_refactored/admin_screens/_3_sellers_info.dart';
 import 'placeholder_screen.dart';
 
 class AppTabs extends StatefulWidget {
@@ -140,20 +142,20 @@ class _AppTabsState extends State<AppTabs> with SingleTickerProviderStateMixin {
                       // AdminsListOfProducts(
                       //     categoryOfProducts: _appBarTabIndex!),
                       const PlaceholderScreen(number: 1),
-                      // (_appBarTabIndex == 0)
-                      // ? const ProductsGrid(true)
-                      //     : const ProductsGrid(false),
+                      (_appBarTabIndex == 0)
+                          ? const ProductsGrid(true)
+                          : const ProductsGrid(false),
                       const PlaceholderScreen(number: 2)
                       // const SellersInfo(),
                       //
                     ]
                   : [
                       const PlaceholderScreen(number: 0),
-                      // const SellersInfo(),
+                      const SellersInfo(),
                       const PlaceholderScreen(number: 1),
-                      // (_appBarTabIndex == 0)
-                      //     ? const ProductsGrid(true)
-                      //     : const ProductsGrid(false),
+                      (_appBarTabIndex == 0)
+                          ? const ProductsGrid(true)
+                          : const ProductsGrid(false),
                       const PlaceholderScreen(number: 2)
                       // const PersonalCabinet4Customer(),
                     ],

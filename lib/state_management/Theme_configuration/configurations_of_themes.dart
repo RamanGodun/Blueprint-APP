@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'App_colors_palette/my_first_top_design.dart';
 import 'App_colors_palette/this_app_color_schemes.dart';
 import 'Themes_provider/theme_builder.dart';
 import 'App_colors_palette/this_app_colors.dart';
@@ -98,6 +99,72 @@ class ThisAppThemes {
     tabBarLabelColor: ThisAppColorSchemes.kDarkGlassColorScheme.onPrimary,
     tabBarUnselectedLabelColor:
         ThisAppColorSchemes.kDarkGlassColorScheme.onSurface,
+  );
+
+/*MY Custom themes
+ */
+  static final ThemeData customDarkTheme = ThemeData(
+    primaryColor: IOSDarkThemeColors.black1,
+    canvasColor: IOSDarkThemeColors.black,
+    hoverColor: IOSDarkThemeColors.hover,
+    focusColor: IOSDarkThemeColors.white,
+    shadowColor: IOSDarkThemeColors.shadow,
+    indicatorColor: IOSDarkThemeColors.yellow1,
+    primaryColorLight: IOSDarkThemeColors.yellow2.withOpacity(0.5),
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      secondary: IOSDarkThemeColors.grey2,
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedItemColor: IOSDarkThemeColors.white,
+      selectedIconTheme: IconThemeData(color: IOSDarkThemeColors.white),
+      unselectedIconTheme: IconThemeData(color: IOSDarkThemeColors.hover),
+      unselectedLabelStyle: TextStyle(color: IOSDarkThemeColors.lightGrey),
+      selectedLabelStyle: TextStyle(color: IOSDarkThemeColors.white),
+      showUnselectedLabels: false,
+      backgroundColor: IOSDarkThemeColors.silver,
+      elevation: 0,
+    ),
+    fontFamily: 'Montserrat',
+    // тут можна додати інші параметри для цієї теми
+  );
+
+  static final ThemeData customLightTheme = ThemeData(
+    primaryColor: IOSLightThemeColors.amber1,
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      secondary: IOSLightThemeColors.grey1,
+    ),
+    fontFamily: 'Montserrat',
+    focusColor: IOSLightThemeColors.grey1.withOpacity(0.5),
+    hoverColor: const Color.fromARGB(255, 224, 227, 207),
+    indicatorColor: IOSLightThemeColors.amber1,
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedItemColor: IOSLightThemeColors.amber1,
+    ),
+    // тут можна додати інші параметри для цієї теми
+  );
+
+  // деякі константи для оформлення
+  static const textInputDecoration = InputDecoration(
+    labelStyle: TextStyle(
+      color: IOSDarkThemeColors.white,
+      fontWeight: FontWeight.w300,
+    ),
+    hintStyle: TextStyle(
+      color: IOSDarkThemeColors.white,
+      fontWeight: FontWeight.w300,
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: IOSDarkThemeColors.amber1,
+        width: 0.5,
+      ),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: IOSDarkThemeColors.amber1,
+        width: 0.5,
+      ),
+    ),
   );
 }
 
