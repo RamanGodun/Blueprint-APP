@@ -94,8 +94,8 @@ abstract class ThisAppColorSchemes {
     brightness: Brightness.light,
     primarySwatch: ThisAppColors.kPrimarySwatch,
     accentColor: ThisAppColors.kSecondaryColor,
-    backgroundColor: ThisAppColors.kSurfaceColorLight,
-    errorColor: ThisAppColors.kError2Color,
+    backgroundColor: ThisAppColors.kLightIOSBackground,
+    errorColor: ThisAppColors.kErrorColor,
   ).copyWith(
     primary: ThisAppColors.kPrimarySwatch,
     primaryContainer: ThisAppColors.kLightCustomPrimaryContainer,

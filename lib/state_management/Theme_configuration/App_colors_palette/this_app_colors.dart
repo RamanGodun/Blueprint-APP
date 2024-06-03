@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 
 abstract class ThisAppColors {
 /* */
-/* Primary and secondary colors*/
+/* Primary colors*/
   static const Color kAppPrimaryColor = Color.fromARGB(199, 14, 117, 91);
   static const Color kPrimaryVariant = Color.fromARGB(199, 14, 117, 91);
   static final MaterialColor kPrimarySwatch =
       createMaterialColor(kAppPrimaryColor);
+
+/* Secondary colors*/
   static const Color kSecondaryColor = Color.fromARGB(255, 69, 127, 155);
   static const Color kSecondaryDarkColor = Color.fromARGB(198, 124, 170, 194);
   static const Color kSecondaryVariant = Color.fromARGB(198, 124, 170, 194);
+
 /* Error colors*/
   static const Color kErrorColor = Color(0xFFB00020);
-  static const Color kError2Color = Color.fromARGB(255, 207, 129, 129);
+  static const Color kLightCustomError = Color(0xFFFF3B30);
+  static const Color kDarkCustomError = Color(0xFFFF453A);
+  static const Color kErrorColorDark = Color.fromARGB(255, 255, 180, 180);
   static const Color kOnErrorColor = Color.fromARGB(255, 3, 40, 34);
 
   static MaterialColor createMaterialColor(Color color) {
@@ -68,12 +73,6 @@ abstract class ThisAppColors {
 /*Added
  */
 
-  static const Color black54 = Colors.black54;
-  static final Color grey200 = Colors.grey.shade200;
-  static final Color grey300 = Colors.grey.shade300;
-  static final Color grey500 = Colors.grey.shade500;
-  static final Color grey600 = Colors.grey.shade600;
-
   static const List<Color> categoriesColors = [
     Color.fromARGB(198, 15, 108, 91),
     Color.fromARGB(167, 224, 132, 12),
@@ -87,17 +86,7 @@ abstract class ThisAppColors {
   ];
 //
 
-  static const Color kOnSurfaceColor = Color.fromARGB(255, 75, 86, 87);
-  static const Color kTertiaryColor = Color.fromARGB(255, 198, 199, 200);
-  static const Color kSurfaceColorLight = Color(0xFFF5F5F5);
-  static const Color kErrorColorDark = Color.fromARGB(255, 255, 180, 180);
-  static const Color kOnSurfaceColorDark = Color.fromARGB(255, 145, 152, 143);
   static const Color kSurfaceColorDark = Color.fromARGB(255, 62, 61, 61);
-  static const Color kSurfaceContainerHighestDark =
-      Color.fromARGB(255, 46, 46, 46);
-  static const Color kTertiaryColorDark = Color.fromARGB(255, 100, 100, 100);
-  static const Color kScrimColorDark = Color.fromARGB(117, 5, 6, 6);
-  static const Color kShadowColorDark = Color.fromARGB(255, 10, 10, 10);
 
 /* Often Used in IOS Colors 
  */
@@ -114,18 +103,21 @@ abstract class ThisAppColors {
   static const Color black = Color(0xFF1B1B1B);
   static const Color shadow = Color(0xFF999A9B);
   static const Color hover = Color(0xFF525559);
+  static const Color black54 = Colors.black54;
+  static final Color grey200 = Colors.grey.shade200;
+  static final Color grey300 = Colors.grey.shade300;
+  static final Color grey500 = Colors.grey.shade500;
+  static final Color grey600 = Colors.grey.shade600;
 
 /*
 GPT 
  */
 // Light custom iOS theme colors
-  static const Color kLightCustomPrimary = Color(0xFF007AFF);
   static const Color kLightCustomPrimaryContainer = Color(0xFF5AC8FA);
   static const Color kLightCustomSecondary = Color(0xFF34C759);
   static const Color kLightCustomSecondaryContainer = Color(0xFF4CD964);
   static const Color kLightCustomSurface = Color(0xFFFFFFFF);
   static const Color kLightCustomBackground = Color(0xFFF2F2F2);
-  static const Color kLightCustomError = Color(0xFFFF3B30);
   static const Color kLightCustomOnPrimary = Color(0xFFFFFFFF);
   static const Color kLightCustomOnSecondary = Color(0xFFFFFFFF);
   static const Color kLightCustomOnSurface = Color(0xFF1C1C1E);
@@ -133,23 +125,14 @@ GPT
   static const Color kLightCustomOnError = Color(0xFFFFFFFF);
 
   // Dark custom iOS theme colors
-  static const Color kDarkCustomPrimary = Color(0xFF0A84FF);
   static const Color kDarkCustomPrimaryContainer = Color(0xFF64D2FF);
   static const Color kDarkCustomSecondary = Color(0xFF32D74B);
   static const Color kDarkCustomSecondaryContainer = Color(0xFF30D158);
   static const Color kDarkCustomSurface = Color(0xFF1C1C1E);
   static const Color kDarkCustomBackground = Color(0xFF2C2C2E);
-  static const Color kDarkCustomError = Color(0xFFFF453A);
   static const Color kDarkCustomOnPrimary = Color(0xFFFFFFFF);
   static const Color kDarkCustomOnSecondary = Color(0xFFFFFFFF);
   static const Color kDarkCustomOnSurface = Color(0xFFD1D1D6);
   static const Color kDarkCustomOnBackground = Color(0xFFD1D1D6);
   static const Color kDarkCustomOnError = Color(0xFFFFFFFF);
 }
-
-/*
-Відмінності:
-
-amber1, amber1, yellow2
-
- */
