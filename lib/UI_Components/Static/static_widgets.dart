@@ -95,4 +95,20 @@ DIVIDER between Dialog Buttons
 
   static Widget getDividerBetweenDialogButtons(BuildContext context) =>
       dividerBetweenDialogButtons(context);
+
+  static Border border4LightThemeGNavButton = Border.symmetric(
+    vertical: BorderSide(
+      color: const Color.fromARGB(114, 15, 108, 91).withOpacity(0.4),
+      width: 2.5,
+      style: BorderStyle.solid,
+    ),
+  );
+
+  static Border border4DarkThemeGNavButton = Border.symmetric(
+    vertical: BorderSide(
+      color: ThisAppColors.kAppPrimaryColor.withOpacity(0.3),
+      width: 2.5,
+      style: BorderStyle.solid,
+    ),
+  );
 }

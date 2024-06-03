@@ -56,4 +56,57 @@ TITLE For Result Screen
       // ),
     );
   }
+
+/*
+TEXT widgets
+ */
+  static Widget titleForPurchasePageWidget(BuildContext context) {
+    return Container(
+      color: Helpers.colorScheme(context)
+          .surface
+          .withOpacity(Helpers.isDarkTheme(context) ? 0.55 : 0.9),
+      // decoration: BoxDecoration(),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 17.0),
+            child: text4PurchasePageTitle(AppStrings.quantityText, context),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: text4PurchasePageTitle(AppStrings.nameText, context),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 23.0),
+            child: text4PurchasePageTitle(AppStrings.isBuyText, context),
+          ),
+        ],
+      ),
+    );
+  }
+
+  static Widget text4EmptyField(String text, BuildContext context) {
+    return Center(
+      child: Text(text, style: Theme.of(context).textTheme.labelMedium),
+    );
+  }
+
+  static Text text4PurchasePageTitle(String text, BuildContext context) {
+    return Text(text, style: Theme.of(context).textTheme.bodySmall);
+  }
+
+  static Text text4PurchaseListTitle(String text, BuildContext context) {
+    return Text(text, style: Theme.of(context).textTheme.bodySmall);
+  }
+
+  static Widget errorTextWidget(String errorText) {
+    return Center(
+      child: Text(
+          "$AppStrings.errorOcurredTextLoc $errorText$AppStrings.tryLaterTextLoc"),
+    );
+  }
 }
