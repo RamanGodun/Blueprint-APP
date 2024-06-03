@@ -1,15 +1,12 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:country_picker/country_picker.dart';
-
 import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../../State_management/Src/Helpers/dm_methods.dart';
 import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 import '../../../UI_Components/Text_fields/_3_custom_text_field.dart';
-// state management
 
 // ignore_for_file: use_build_context_synchronously
 class EntryScreen extends StatefulWidget {

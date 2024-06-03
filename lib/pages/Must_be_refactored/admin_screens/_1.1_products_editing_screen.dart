@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-import '../../State_management/Models/_0_models.dart';
-import '../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
-import '../../State_management/Src/Helpers/dm_methods.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
-import '../../UI_Components/Buttons/_1_custom_button.dart';
-import '../../UI_Components/Dialogs/general_alert_dialog.dart';
-import '../../UI_Components/Others/dashed_border_container.dart';
-import '../../UI_Components/Text_fields/_3_custom_text_field.dart';
+import '../../../State_management/Models/_0_models.dart';
+import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
+import '../../../State_management/Src/Helpers/dm_methods.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../UI_Components/Buttons/_1_custom_button.dart';
+import '../../../UI_Components/Dialogs/general_alert_dialog.dart';
+import '../../../UI_Components/Others/dashed_border_container.dart';
+import '../../../UI_Components/Text_fields/_3_custom_text_field.dart';
 
 // ignore_for_file: use_build_context_synchronously
 class ProductsEditingScreen extends StatefulWidget {

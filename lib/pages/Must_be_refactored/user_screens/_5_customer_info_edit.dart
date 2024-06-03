@@ -7,16 +7,16 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 // state management
 
-import '../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
-import '../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../State_management/Src/Helpers/dm_methods.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
-import '../../UI_Components/Buttons/_1_custom_button.dart';
-import '../../UI_Components/Dialogs/general_alert_dialog.dart';
-import '../../UI_Components/Images/_6_customer_pic_4edit_screen.dart';
-import '../../UI_Components/Others/dash_divider.dart';
-import '../../UI_Components/Others/dashed_border_container.dart';
-import '../../UI_Components/Text_fields/_3_custom_text_field.dart';
+import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
+import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
+import '../../../State_management/Src/Helpers/dm_methods.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../UI_Components/Buttons/_1_custom_button.dart';
+import '../../../UI_Components/Dialogs/general_alert_dialog.dart';
+import '../../../UI_Components/Images/_6_customer_pic_4edit_screen.dart';
+import '../../../UI_Components/Others/dash_divider.dart';
+import '../../../UI_Components/Others/dashed_border_container.dart';
+import '../../../UI_Components/Text_fields/_3_custom_text_field.dart';
 import '_5_delivery_selection.dart';
 // ignore_for_file: use_build_context_synchronously
 

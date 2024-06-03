@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:ui' as ui;
 
-import '../../State_management/Models/_0_models.dart';
-import '../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
-import '../../UI_Components/Others/dash_divider.dart';
+import '../../../State_management/Models/_0_models.dart';
+import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../UI_Components/Others/dash_divider.dart';
 import '_2.1_admin_orders_list.dart';
 
 class ExpandedOrderInfo extends StatelessWidget {

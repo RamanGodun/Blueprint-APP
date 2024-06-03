@@ -10,7 +10,7 @@ import '../../Models/models_for_store/profile_data_model.dart';
 import '../../Src/Helpers/dm_methods.dart';
 import '../../Src/Helpers/helpers.dart';
 
-import '../../../Pages/Auth_pages/Auth_and_entry_with_phone/otp_screen.dart';
+import '../../../Pages/Auth_pages/Auth_with_phone/otp_screen.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthProvider();

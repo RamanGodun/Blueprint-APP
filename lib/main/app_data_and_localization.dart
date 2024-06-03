@@ -37,8 +37,10 @@ class DataProviders extends StatelessWidget {
     return Material(
       child: MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => CategoriesProvider()),
-          ChangeNotifierProvider(create: (_) => ItemsDataBase()),
+          ChangeNotifierProvider<CategoriesProvider>(
+              create: (context) => CategoriesProvider()),
+          ChangeNotifierProvider<ItemsDataBase>(
+              create: (context) => ItemsDataBase()),
           ChangeNotifierProvider<AuthProvider>(
               create: (context) => AuthProvider()),
           ChangeNotifierProvider<CommonDataProvider>(

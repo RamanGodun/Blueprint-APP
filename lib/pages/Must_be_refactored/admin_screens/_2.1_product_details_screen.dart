@@ -2,13 +2,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../State_management/Models/_0_models.dart';
-import '../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
-import '../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
-import '../../UI_Components/Buttons/_1_custom_button.dart';
-import '../../UI_Components/Others/dash_divider.dart';
-import '../../UI_Components/Pickers/_2_quantity_changer.dart';
+import '../../../State_management/Models/_0_models.dart';
+import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
+import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../UI_Components/Buttons/_1_custom_button.dart';
+import '../../../UI_Components/Others/dash_divider.dart';
+import '../../../UI_Components/Pickers/_2_quantity_changer.dart';
 
 class ProductDetailPage extends StatefulWidget {
   final String productId;

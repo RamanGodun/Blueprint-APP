@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // state management
 
-import '../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
-import '../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
-import '../../UI_Components/Buttons/_1_custom_button.dart';
-import '../../UI_Components/Cards_and_tiles/_2_card_for_list_view.dart';
-import '../../UI_Components/Others/_3_check_box.dart';
-import '../../UI_Components/Others/dash_divider.dart';
-import '../../UI_Components/Pickers/_2_quantity_changer.dart';
+import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
+import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../UI_Components/Buttons/_1_custom_button.dart';
+import '../../../UI_Components/Cards_and_tiles/_2_card_for_list_view.dart';
+import '../../../UI_Components/Others/_3_check_box.dart';
+import '../../../UI_Components/Others/dash_divider.dart';
+import '../../../UI_Components/Pickers/_2_quantity_changer.dart';
 
 class CustomerCartScreen extends StatefulWidget {
   const CustomerCartScreen({

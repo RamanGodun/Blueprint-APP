@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../State_management/Models/_0_models.dart';
-import '../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
-import '../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
-import '../../UI_Components/Buttons/_1_custom_button.dart';
-import '../../UI_Components/Cards_and_tiles/_1_grid_view_card.dart';
+import '../../../State_management/Models/_0_models.dart';
+import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
+import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../UI_Components/Buttons/_1_custom_button.dart';
+import '../../../UI_Components/Cards_and_tiles/_1_grid_view_card.dart';
 
 class ProductsGrid extends StatefulWidget {
   final bool showMainCategory;

@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
 // state management
 
 class DeliverySelectionWidget extends StatefulWidget {
