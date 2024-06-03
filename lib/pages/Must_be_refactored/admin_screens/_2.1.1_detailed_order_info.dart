@@ -1,11 +1,9 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:ui' as ui;
-
 import '../../../State_management/Models/_0_models.dart';
 import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Others/dash_divider.dart';
 import '_2.1_admin_orders_list.dart';
 
@@ -23,11 +21,10 @@ class ExpandedOrderInfo extends StatelessWidget {
         .getOrderItemById4Admin(orderIdTaken)!;
     final List<String> listOfOrderedItems = gotCartItemById.itemsList;
     final List<double> listOfItemsQuantity = gotCartItemById.itemQuantity;
-    const textStyle1 = TextStyle(color: IOSDarkThemeColors.white, fontSize: 13);
-    const textStyle2 =
-        TextStyle(color: IOSDarkThemeColors.amber1, fontSize: 13);
+    const textStyle1 = TextStyle(color: ThisAppColors.white, fontSize: 13);
+    const textStyle2 = TextStyle(color: ThisAppColors.amber1, fontSize: 13);
     Widget localDivider = const SizedBox(
-        height: 5, child: DashedLineDivider(color: IOSDarkThemeColors.silver));
+        height: 5, child: DashedLineDivider(color: ThisAppColors.silver));
     List<String?> customerData = [
       gotCartItemById.customerId,
       gotCartItemById.customerPhone,
@@ -57,9 +54,8 @@ class ExpandedOrderInfo extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.97,
             height: MediaQuery.of(context).size.height * 0.7,
             decoration: BoxDecoration(
-                border:
-                    Border.all(width: 0.1, color: IOSDarkThemeColors.silver),
-                color: IOSDarkThemeColors.grey1.withOpacity(0.7)),
+                border: Border.all(width: 0.1, color: ThisAppColors.silver),
+                color: ThisAppColors.grey1.withOpacity(0.7)),
             // Order's content next
             child: Container(
               padding: const EdgeInsets.only(left: 30, right: 15),
@@ -139,7 +135,7 @@ class ExpandedOrderInfo extends StatelessWidget {
                               height: 20,
                               width: 100,
                               decoration: BoxDecoration(
-                                  color: IOSDarkThemeColors.black,
+                                  color: ThisAppColors.black,
                                   borderRadius: BorderRadius.circular(12.0)),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
@@ -147,7 +143,7 @@ class ExpandedOrderInfo extends StatelessWidget {
                                     "${gotCartItemById.totalSum.toString()} \u20B4",
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
-                                        color: IOSDarkThemeColors.white,
+                                        color: ThisAppColors.white,
                                         fontSize: 14)),
                               )),
                         ]),
@@ -183,7 +179,7 @@ class ExpandedOrderInfo extends StatelessWidget {
                                       gotCartItemById.amountOfBonusRequest
                                           .toString(),
                                     ),
-                                    color: IOSDarkThemeColors.white,
+                                    color: ThisAppColors.white,
                                     size: 18,
                                   ),
                                   const SizedBox(width: 10),

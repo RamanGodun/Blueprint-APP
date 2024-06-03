@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../State_management/Src/Helpers/dm_methods.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 
 class FuturePicture extends StatelessWidget {
   final String pictureTitle;
@@ -25,7 +25,7 @@ class FuturePicture extends StatelessWidget {
             height: double.infinity,
             child: Icon(
               Icons.error_outline,
-              color: IOSDarkThemeColors.amber2,
+              color: ThisAppColors.amber2,
             ),
           );
         } else {

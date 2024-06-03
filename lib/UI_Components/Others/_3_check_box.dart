@@ -1,10 +1,7 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
-// state management
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 
 class CheckboxWidget extends StatefulWidget {
   final VoidCallback? onPressed;
@@ -44,12 +41,12 @@ class _CheckboxWidgetState extends State<CheckboxWidget> {
             onTap: () {
               if (reservedAvailableBonuses == 0) {
                 // showSnackbar(context,
-                //     color: IOSDarkThemeColors.darkAmber2,
+                //     color: ThisAppColors.darkAmber2,
                 //     content: "бонуси відсутні");
               } else if (widget.totalSumOfOrder! < reservedAvailableBonuses) {
                 // if () {}else{}
                 // showSnackbar(context,
-                //     color: IOSDarkThemeColors.darkAmber2,
+                //     color: ThisAppColors.darkAmber2,
                 //     content:
                 //         "сума замовлення має бути більшої кількості використаних бонусів");
                 //
@@ -79,7 +76,7 @@ class _CheckboxWidgetState extends State<CheckboxWidget> {
                 border: Border.all(color: Colors.grey, width: 2),
                 borderRadius: BorderRadius.circular(4),
                 color: isChecked
-                    ? IOSDarkThemeColors.white.withOpacity(0.8)
+                    ? ThisAppColors.white.withOpacity(0.8)
                     : Colors.transparent,
               ),
               child: isChecked

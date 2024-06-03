@@ -1,15 +1,12 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
 import '../../Pages/tabs/app_tabs.dart';
 import '../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../Dialogs/general_alert_dialog.dart';
 import '../Others/dash_divider.dart';
 import '../Switchers/_2_my_switcher.dart';
-// state management
 
 class AdminOrderItem extends StatefulWidget {
   final String customerName;
@@ -66,18 +63,18 @@ class _AdminOrderItemState extends State<AdminOrderItem> {
                           style: const TextStyle(
                               fontSize: 13.0,
                               fontWeight: FontWeight.w700,
-                              color: IOSDarkThemeColors.white)),
+                              color: ThisAppColors.white)),
                     ),
                     Text('${widget.totalAmount.toStringAsFixed(0)}₴',
                         style: const TextStyle(
                             fontSize: 14.0,
-                            color: IOSDarkThemeColors.white,
+                            color: ThisAppColors.white,
                             fontWeight: FontWeight.bold)),
                     SizedBox(
                       height: 25,
                       child: IconButton(
                           icon: const Icon(Icons.expand_more,
-                              size: 30, color: IOSDarkThemeColors.amber1),
+                              size: 30, color: ThisAppColors.amber1),
                           onPressed: () {
                             // nextScreen(
                             //     context,
@@ -90,11 +87,11 @@ class _AdminOrderItemState extends State<AdminOrderItem> {
               ),
               Text(DateFormat('yyyy/MM/dd   HH:mm').format(widget.createdAt),
                   style: const TextStyle(
-                      fontSize: 12.0, color: IOSDarkThemeColors.white)),
+                      fontSize: 12.0, color: ThisAppColors.white)),
 
               //
               const SizedBox(height: 7),
-              const DashedLineDivider(color: IOSDarkThemeColors.white),
+              const DashedLineDivider(color: ThisAppColors.white),
               //
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,7 +106,7 @@ class _AdminOrderItemState extends State<AdminOrderItem> {
                   // showIsOrderFinishedDialog()
                   IconButton(
                       icon: Icon(Icons.delete,
-                          color: IOSDarkThemeColors.amber1.withOpacity(0.5)),
+                          color: ThisAppColors.amber1.withOpacity(0.5)),
                       onPressed: () {
                         showDeleteConfirmationDialog();
                       }),

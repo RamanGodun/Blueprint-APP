@@ -1,12 +1,9 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
 import '../../State_management/Src/Helpers/dm_methods.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
-// state management
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 
 class MyCustomizedSwitcher extends StatefulWidget {
   final double height;
@@ -89,7 +86,7 @@ class _MyCustomizedSwitcherState extends State<MyCustomizedSwitcher> {
           return Container(
             margin: const EdgeInsets.only(bottom: 150),
             child: AlertDialog(
-                backgroundColor: IOSDarkThemeColors.darkGrey3.withOpacity(0.97),
+                backgroundColor: ThisAppColors.darkGrey3.withOpacity(0.97),
                 elevation: 0,
                 content: Column(mainAxisSize: MainAxisSize.min, children: [
                   const Padding(
@@ -97,7 +94,7 @@ class _MyCustomizedSwitcherState extends State<MyCustomizedSwitcher> {
                     child: Text("Ви підтверджуєте, що це замовлення завершене?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: IOSDarkThemeColors.white, fontSize: 18)),
+                            color: ThisAppColors.white, fontSize: 18)),
                   ),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -107,8 +104,7 @@ class _MyCustomizedSwitcherState extends State<MyCustomizedSwitcher> {
                             "Ні, дякую",
                             style: TextStyle(
                                 fontSize: 16,
-                                color:
-                                    IOSDarkThemeColors.amber2.withOpacity(0.9)),
+                                color: ThisAppColors.amber2.withOpacity(0.9)),
                           ),
                           onPressed: () {
                             Navigator.of(context).pop();
@@ -119,8 +115,7 @@ class _MyCustomizedSwitcherState extends State<MyCustomizedSwitcher> {
                             "Так",
                             style: TextStyle(
                                 fontSize: 16,
-                                color: IOSDarkThemeColors.yellow2
-                                    .withOpacity(0.7)),
+                                color: ThisAppColors.yellow2.withOpacity(0.7)),
                           ),
                           onPressed: () async {
                             cartProvider.toggleAdminOrderIsFinished(

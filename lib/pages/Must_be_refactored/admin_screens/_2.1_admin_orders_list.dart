@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../State_management/Models/_0_models.dart';
 import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Cards_and_tiles/_3_admin_order_card.dart';
 
 class AdminOrdersList extends StatefulWidget {
@@ -30,7 +30,7 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 45,
-        backgroundColor: IOSDarkThemeColors.black,
+        backgroundColor: ThisAppColors.black,
         title: const Text(
           "Поточні замовлення",
           style: TextStyle(fontSize: 16),
@@ -40,7 +40,7 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: IconButton(
               icon: const Icon(Icons.article_outlined, size: 30),
-              color: IOSDarkThemeColors.amber1,
+              color: ThisAppColors.amber1,
               onPressed: () {
                 // nextScreen(context, const DiscountSystem());
               },
@@ -61,7 +61,7 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
                         child: Center(
                             child: Text(
                           "Поки що немає активних замовлень",
-                          style: TextStyle(color: IOSDarkThemeColors.white),
+                          style: TextStyle(color: ThisAppColors.white),
                         )),
                       )
                     // ListView builder next

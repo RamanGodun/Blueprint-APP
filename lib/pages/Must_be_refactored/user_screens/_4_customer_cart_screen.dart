@@ -1,11 +1,8 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-// state management
-
 import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 import '../../../UI_Components/Cards_and_tiles/_2_card_for_list_view.dart';
 import '../../../UI_Components/Others/_3_check_box.dart';
@@ -31,19 +28,19 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
         Provider.of<AuthProvider>(context, listen: false);
 
     return Scaffold(
-      backgroundColor: IOSDarkThemeColors.black1,
+      backgroundColor: ThisAppColors.black1,
       appBar: AppBar(
         leading: Align(
           alignment: Alignment.centerRight,
           child: IconButton(
               icon: const Icon(Icons.arrow_back_ios,
-                  size: 20, color: IOSDarkThemeColors.white),
+                  size: 20, color: ThisAppColors.white),
               onPressed: () {
                 // nextScreenReplace(
                 //     context, const AppTabs(bottomTab: 1, appBarIndex: 0));
               }),
         ),
-        backgroundColor: IOSDarkThemeColors.black1.withOpacity(0.3),
+        backgroundColor: ThisAppColors.black1.withOpacity(0.3),
       ),
 
       //
@@ -56,15 +53,14 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
               const SizedBox(width: 15),
               const Text("Кошик покупок",
                   style: TextStyle(
-                      color: IOSDarkThemeColors.white,
+                      color: ThisAppColors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.w700)),
               const SizedBox(width: 15),
               SizedBox(height: 20, child: Image.asset("assets/3sot up.png")),
             ]),
             const SizedBox(height: 15),
-            DashedLineDivider(
-                color: IOSDarkThemeColors.silver.withOpacity(0.7)),
+            DashedLineDivider(color: ThisAppColors.silver.withOpacity(0.7)),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.45,
               child:
@@ -76,7 +72,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                               child: Text(
                             "Поки що немає обраних товарів",
                             style: TextStyle(
-                                color: IOSDarkThemeColors.amber1, fontSize: 15),
+                                color: ThisAppColors.amber1, fontSize: 15),
                           )),
                         )
                       // List of items in cart next
@@ -120,7 +116,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                           },
                         ),
             ),
-            const DashedLineDivider(color: IOSDarkThemeColors.silver),
+            const DashedLineDivider(color: ThisAppColors.silver),
             const SizedBox(height: 17),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -131,7 +127,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                     const Text(
                       "Загальна сума замовлення",
                       style: TextStyle(
-                        color: IOSDarkThemeColors.yellow1,
+                        color: ThisAppColors.yellow1,
                         fontSize: 15,
                       ),
                     ),
@@ -141,12 +137,12 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                       width: 120,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.0),
-                        color: IOSDarkThemeColors.grey1,
+                        color: ThisAppColors.grey1,
                       ),
                       child: Text(cartProvider.localCart.totalSum.toString(),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                            color: IOSDarkThemeColors.white,
+                            color: ThisAppColors.white,
                           )),
                     ),
                   ]),
@@ -161,7 +157,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                     const Text(
                       "Використати доступні бонуси",
                       style: TextStyle(
-                        color: IOSDarkThemeColors.white,
+                        color: ThisAppColors.white,
                         fontSize: 14,
                       ),
                     ),
@@ -169,7 +165,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                     Text(
                       "(${profileInfo.userProfileData.amountOfBonuses.toString()})",
                       style: const TextStyle(
-                        color: IOSDarkThemeColors.amber1,
+                        color: ThisAppColors.amber1,
                         fontSize: 14,
                       ),
                     ),
@@ -182,7 +178,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                   ]),
             ),
             const SizedBox(height: 20),
-            const DashedLineDivider(color: IOSDarkThemeColors.silver),
+            const DashedLineDivider(color: ThisAppColors.silver),
             const SizedBox(height: 50),
             // button next
             Padding(

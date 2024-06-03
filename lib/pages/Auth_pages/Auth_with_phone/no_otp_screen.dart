@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../State_management/Models/_0_models.dart';
 import '../../../State_management/Src/Helpers/dm_methods.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 
 class NoOtpScreen extends StatefulWidget {
@@ -17,12 +17,12 @@ class _NoOtpScreenState extends State<NoOtpScreen> {
   late String adminsEmail;
 
   final textStyle1 = const TextStyle(
-    color: IOSDarkThemeColors.yellow1,
+    color: ThisAppColors.yellow1,
     fontSize: 25,
     fontWeight: FontWeight.w800,
   );
   final textStyle2 = const TextStyle(
-    color: IOSDarkThemeColors.white,
+    color: ThisAppColors.white,
     fontSize: 14,
   );
 

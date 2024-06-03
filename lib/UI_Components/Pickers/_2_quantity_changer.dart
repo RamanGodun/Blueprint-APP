@@ -1,12 +1,9 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../State_management/Models/_0_models.dart';
 import '../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
 import '../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
-// state management
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 
 class QuantityChanger extends StatefulWidget {
   final double totalWidth;
@@ -48,7 +45,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
           width: widget.totalWidth,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.0),
-            color: IOSDarkThemeColors.lightGrey.withOpacity(0.3),
+            color: ThisAppColors.lightGrey.withOpacity(0.3),
           ),
         ),
         SizedBox(
@@ -64,7 +61,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.5),
-                  color: IOSDarkThemeColors.yellow2,
+                  color: ThisAppColors.yellow2,
                 ),
                 child:
                     // "minus" IconButton
@@ -101,8 +98,8 @@ class _QuantityChangerState extends State<QuantityChanger> {
                         : cartProvider.localCart.itemQuantity[
                             cartProvider.getItemIndexInCart(widget.productId)])
                     .toString(),
-                style: const TextStyle(
-                    fontSize: 16, color: IOSDarkThemeColors.white),
+                style:
+                    const TextStyle(fontSize: 16, color: ThisAppColors.white),
               ),
               const SizedBox(width: 10),
               // "plus" IconButton
@@ -112,7 +109,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: IOSDarkThemeColors.yellow2,
+                  color: ThisAppColors.yellow2,
                 ),
                 child: IconButton(
                     onPressed: () {
@@ -143,11 +140,11 @@ class _QuantityChangerState extends State<QuantityChanger> {
       context: context,
       builder: (BuildContext context) {
         return Container(
-          color: IOSDarkThemeColors.black1.withOpacity(0.6),
+          color: ThisAppColors.black1.withOpacity(0.6),
           padding: const EdgeInsets.only(bottom: 100),
           child: AlertDialog(
             elevation: 0,
-            backgroundColor: IOSDarkThemeColors.darkGrey3.withOpacity(0.8),
+            backgroundColor: ThisAppColors.darkGrey3.withOpacity(0.8),
             contentPadding:
                 const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 5),
             content: SizedBox(
@@ -156,8 +153,8 @@ class _QuantityChangerState extends State<QuantityChanger> {
                   const Text(
                       "Ви впевнені, що бажаєте видалити цей товар з кошику?",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: IOSDarkThemeColors.white, fontSize: 16)),
+                      style:
+                          TextStyle(color: ThisAppColors.white, fontSize: 16)),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -168,8 +165,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                           child: const Text("Відміна",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: IOSDarkThemeColors.amber2,
-                                  fontSize: 15)),
+                                  color: ThisAppColors.amber2, fontSize: 15)),
                         ),
                         TextButton(
                           onPressed: () {
@@ -180,8 +176,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                           child: const Text("Так, впевнений",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: IOSDarkThemeColors.yellow2,
-                                  fontSize: 14)),
+                                  color: ThisAppColors.yellow2, fontSize: 14)),
                         ),
                       ]),
                 ])),

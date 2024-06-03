@@ -1,11 +1,9 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-// state management
 import '../../State_management/Models/_0_models.dart';
 import '../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../Others/dashed_border_container.dart';
 
 class UsersInfoCard extends StatelessWidget {
@@ -66,7 +64,7 @@ class UsersInfoCard extends StatelessWidget {
               const EdgeInsets.only(top: 5.0, bottom: 5.00, left: 8, right: 8),
           padding: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
-            color: IOSDarkThemeColors.hover.withOpacity(0.4),
+            color: ThisAppColors.hover.withOpacity(0.4),
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Row(
@@ -116,8 +114,7 @@ class UsersInfoCard extends StatelessWidget {
                                         height: double.infinity),
                                   )
                                 : const Icon(Icons.add_a_photo,
-                                    color: IOSDarkThemeColors.yellow1,
-                                    size: 50),
+                                    color: ThisAppColors.yellow1, size: 50),
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -133,7 +130,7 @@ class UsersInfoCard extends StatelessWidget {
                                   ? "Контактні дані"
                                   : "Персональні дані",
                               style: const TextStyle(
-                                  color: IOSDarkThemeColors.amber1,
+                                  color: ThisAppColors.amber1,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14),
                             )),
@@ -152,7 +149,7 @@ class UsersInfoCard extends StatelessWidget {
                                   (isSellersInfo == true)
                                       ? _getIconForIndex2(index)
                                       : _getIconForIndex1(index),
-                                  color: IOSDarkThemeColors.white,
+                                  color: ThisAppColors.white,
                                   size: 18,
                                 ),
                                 const SizedBox(width: 10),
@@ -165,8 +162,8 @@ class UsersInfoCard extends StatelessWidget {
                                     style: TextStyle(
                                         color: (isSellersInfo != true &&
                                                 index == 2)
-                                            ? IOSDarkThemeColors.amber1
-                                            : IOSDarkThemeColors.white,
+                                            ? ThisAppColors.amber1
+                                            : ThisAppColors.white,
                                         fontSize: 13)),
                               ]),
                             );
@@ -194,7 +191,7 @@ class UsersInfoCard extends StatelessWidget {
                       // );
                     },
                     icon: const Icon(Icons.edit,
-                        color: IOSDarkThemeColors.yellow2, size: 20),
+                        color: ThisAppColors.yellow2, size: 20),
                   ),
                 ],
               )

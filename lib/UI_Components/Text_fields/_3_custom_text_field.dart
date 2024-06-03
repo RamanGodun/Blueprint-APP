@@ -1,13 +1,9 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:country_picker/country_picker.dart';
-
 import '../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../Others/_3_check_box.dart';
-
-// state management
 
 class StyledTextFormField extends StatefulWidget {
   final TextEditingController controller;
@@ -60,7 +56,7 @@ class StyledTextFormField extends StatefulWidget {
     this.isNeedPrefixIcon = false,
     this.textStyle = const TextStyle(
       fontSize: 15,
-      color: IOSDarkThemeColors.white,
+      color: ThisAppColors.white,
       fontWeight: FontWeight.w700,
     ),
   });
@@ -112,7 +108,7 @@ class _StyledTextFormFieldState extends State<StyledTextFormField> {
             //
             style:
                 widget.textStyle!.copyWith(fontSize: widget.textFontSize ?? 15),
-            cursorColor: IOSDarkThemeColors.yellow1.withOpacity(0.5),
+            cursorColor: ThisAppColors.yellow1.withOpacity(0.5),
             decoration: InputDecoration(
               suffixIcon: (widget.isNeedSuffixIcon == true)
                   ? (widget.controller.text.length > widget.suffixLength
@@ -154,32 +150,30 @@ class _StyledTextFormFieldState extends State<StyledTextFormField> {
                   decorationStyle: TextDecorationStyle.solid,
                   // textBaseline: TextBaseline.ideographic,
                   fontSize: 12,
-                  color: IOSDarkThemeColors.white,
+                  color: ThisAppColors.white,
                   overflow: TextOverflow.ellipsis),
               hintText: widget.hintText,
               hintStyle: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
-                  color: IOSDarkThemeColors.white),
+                  color: ThisAppColors.white),
               errorStyle: const TextStyle(
                   debugLabel: "", overflow: TextOverflow.fade, fontSize: 0),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: IOSDarkThemeColors.white, width: widget.borderWidth),
+                    color: ThisAppColors.white, width: widget.borderWidth),
                 borderRadius:
                     BorderRadius.all(Radius.circular(widget.borderRadius)),
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: IOSDarkThemeColors.yellow2,
-                    width: widget.borderWidth),
+                    color: ThisAppColors.yellow2, width: widget.borderWidth),
                 borderRadius:
                     BorderRadius.all(Radius.circular(widget.borderRadius)),
               ),
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: IOSDarkThemeColors.darkAmber2,
-                    width: widget.borderWidth),
+                    color: ThisAppColors.darkAmber2, width: widget.borderWidth),
                 borderRadius:
                     BorderRadius.all(Radius.circular(widget.borderRadius)),
               ),

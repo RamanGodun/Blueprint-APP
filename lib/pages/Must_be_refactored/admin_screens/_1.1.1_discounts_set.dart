@@ -1,10 +1,8 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../State_management/Models/_0_models.dart';
 import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 import '../../../UI_Components/Cards_and_tiles/_2_card_for_list_view.dart';
 import '../../../UI_Components/Others/dashed_border_container.dart';
@@ -95,7 +93,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
               },
               icon: const Icon(
                 Icons.delete,
-                color: IOSDarkThemeColors.darkAmber2,
+                color: ThisAppColors.darkAmber2,
               ),
             )
           ],
@@ -161,8 +159,8 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
                                           decoration: BoxDecoration(
                                             color: editingProductItem
                                                     .discountsLevel![index]
-                                                ? IOSDarkThemeColors.yellow2
-                                                : IOSDarkThemeColors.grey2,
+                                                ? ThisAppColors.yellow2
+                                                : ThisAppColors.grey2,
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                             border: Border.all(
@@ -171,7 +169,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
                                         ),
                                         Text("${discountsValues[index]}%",
                                             style: const TextStyle(
-                                                color: IOSDarkThemeColors.white,
+                                                color: ThisAppColors.white,
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 16,
                                                 letterSpacing: 3)),
@@ -193,7 +191,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
                             const Text(
                               "Ціна по акції",
                               style: TextStyle(
-                                  color: IOSDarkThemeColors.white,
+                                  color: ThisAppColors.white,
                                   fontWeight: FontWeight.bold),
                             ),
                             Stack(alignment: Alignment.center, children: [
@@ -201,7 +199,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
                                 height: 30,
                                 width: 95,
                                 decoration: BoxDecoration(
-                                  color: IOSDarkThemeColors.grey2,
+                                  color: ThisAppColors.grey2,
                                   borderRadius: BorderRadius.circular(10),
                                   border:
                                       Border.all(color: Colors.black, width: 1),
@@ -210,7 +208,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
                               Text(
                                   "${productsIfo4Discounts.getProductItemById(widget.productsId)!.priceOfProduct * (100 - productsIfo4Discounts.getProductItemById(widget.productsId)!.discountAmount!) ~/ 100} \u20B4",
                                   style: const TextStyle(
-                                      color: IOSDarkThemeColors.white,
+                                      color: ThisAppColors.white,
                                       fontWeight: FontWeight.w600,
                                       letterSpacing: 1)),
                             ]),

@@ -1,13 +1,11 @@
-// general
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-
 import '../../../State_management/Models/_0_models.dart';
 import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
 import '../../../State_management/Src/Helpers/dm_methods.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 import '../../../UI_Components/Dialogs/general_alert_dialog.dart';
 import '../../../UI_Components/Others/dashed_border_container.dart';
@@ -74,15 +72,14 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
             // deleting button
             IconButton(
                 onPressed: () => callDeleteAlertDialog(widget.isNewProductItem),
-                icon: const Icon(Icons.delete,
-                    color: IOSDarkThemeColors.darkAmber2))
+                icon: const Icon(Icons.delete, color: ThisAppColors.darkAmber2))
           ],
         ),
         // body next
         body: (isLoading == true)
             ? const Center(
                 child: CircularProgressIndicator(
-                color: IOSDarkThemeColors.amber1,
+                color: ThisAppColors.amber1,
               ))
             : SingleChildScrollView(
                 child: Align(
@@ -142,7 +139,7 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
                                                                 Icons
                                                                     .add_a_photo,
                                                                 color:
-                                                                    IOSDarkThemeColors
+                                                                    ThisAppColors
                                                                         .yellow1,
                                                                 size: 50,
                                                               )),
@@ -247,17 +244,17 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
                                                             "Мед?",
                                                             style: TextStyle(
                                                               color:
-                                                                  IOSDarkThemeColors
+                                                                  ThisAppColors
                                                                       .white,
                                                               fontSize: 12,
                                                             ),
                                                           ),
                                                           Switch(
                                                               inactiveThumbColor:
-                                                                  IOSDarkThemeColors
+                                                                  ThisAppColors
                                                                       .hover,
                                                               activeColor:
-                                                                  IOSDarkThemeColors
+                                                                  ThisAppColors
                                                                       .white,
                                                               value: productsInfo
                                                                   .getProductItemById(
@@ -347,7 +344,7 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
                                 'Застосувати акцію',
                                 style: TextStyle(
                                   decoration: TextDecoration.underline,
-                                  color: IOSDarkThemeColors.white,
+                                  color: ThisAppColors.white,
                                 ),
                               ),
                             ),

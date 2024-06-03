@@ -1,14 +1,12 @@
-// general
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
 import '../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
 import '../../State_management/Src/Helpers/dm_methods.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 // state management
 
 // screens or widgets
@@ -119,13 +117,13 @@ class _StyledAlertDialogState extends State<StyledAlertDialog> {
 
     return Container(
         decoration: BoxDecoration(
-            color: IOSDarkThemeColors.black1.withOpacity(0.65),
+            color: ThisAppColors.black1.withOpacity(0.65),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(width: 0.1)),
         child: Padding(
           padding: const EdgeInsets.only(bottom: 100),
           child: AlertDialog(
-              backgroundColor: IOSDarkThemeColors.grey1.withOpacity(0.96),
+              backgroundColor: ThisAppColors.grey1.withOpacity(0.96),
               elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -136,7 +134,7 @@ class _StyledAlertDialogState extends State<StyledAlertDialog> {
                   child: Text(widget.text4Body,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                          color: IOSDarkThemeColors.white, fontSize: 18)),
+                          color: ThisAppColors.white, fontSize: 18)),
                 ),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -146,8 +144,7 @@ class _StyledAlertDialogState extends State<StyledAlertDialog> {
                           widget.noButtonText,
                           style: TextStyle(
                               fontSize: 16,
-                              color:
-                                  IOSDarkThemeColors.amber2.withOpacity(0.7)),
+                              color: ThisAppColors.amber2.withOpacity(0.7)),
                         ),
                         onPressed: () {
                           Navigator.of(context).pop();
@@ -158,8 +155,7 @@ class _StyledAlertDialogState extends State<StyledAlertDialog> {
                           widget.yesButtonText,
                           style: TextStyle(
                               fontSize: 16,
-                              color:
-                                  IOSDarkThemeColors.yellow2.withOpacity(0.7)),
+                              color: ThisAppColors.yellow2.withOpacity(0.7)),
                         ),
                         onPressed: () {
                           currentMethod(widget.mappingKey, mapping4Functions,

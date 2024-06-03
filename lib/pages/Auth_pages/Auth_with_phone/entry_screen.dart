@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:country_picker/country_picker.dart';
 import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../../State_management/Src/Helpers/dm_methods.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 import '../../../UI_Components/Text_fields/_3_custom_text_field.dart';
 
@@ -37,7 +37,7 @@ class _EntryScreenState extends State<EntryScreen> {
       e164Key: "");
   final textStyle = const TextStyle(
       fontSize: 18,
-      color: IOSDarkThemeColors.white,
+      color: Colors.white,
       fontWeight: FontWeight.w800,
       letterSpacing: 1);
 
@@ -114,7 +114,7 @@ class _EntryScreenState extends State<EntryScreen> {
                             ? "Зареєструватись"
                             : "Вхід до системи",
                         style: const TextStyle(
-                            color: IOSDarkThemeColors.yellow2,
+                            color: ThisAppColors.yellow2,
                             fontSize: 19,
                             fontWeight: FontWeight.w800),
                       ),
@@ -204,7 +204,7 @@ class _EntryScreenState extends State<EntryScreen> {
                                   : "зареєструвати новий номер телефону",
                               style: const TextStyle(
                                   decoration: TextDecoration.underline,
-                                  color: IOSDarkThemeColors.white)),
+                                  color: ThisAppColors.white)),
                         )),
                   ]),
             ),
@@ -223,12 +223,12 @@ class _EntryScreenState extends State<EntryScreen> {
       //
       if (isNumberIsRegisteredAlready == true && widget.isNewUser == true) {
         // showSnackbar(context,
-        //     color: IOSDarkThemeColors.darkAmber2,
+        //     color: ThisAppColors.darkAmber2,
         //     content: "Такий номер вже зареєстровано, увійдіть в аккаунт");
       } else {
         if (isNumberIsRegisteredAlready == false && widget.isNewUser == false) {
           // showSnackbar(context,
-          //     color: IOSDarkThemeColors.darkAmber2,
+          //     color: ThisAppColors.darkAmber2,
           //     content: "Такий номер не знайдено в базі, зареєструйтесь");
         } else {
           ap.signInWithPhone(
@@ -239,7 +239,7 @@ class _EntryScreenState extends State<EntryScreen> {
       }
     } else {
       // showSnackbar(context,
-      //     color: IOSDarkThemeColors.darkAmber2, content: "Заповніть всі поля");
+      //     color: ThisAppColors.darkAmber2, content: "Заповніть всі поля");
     }
   }
 

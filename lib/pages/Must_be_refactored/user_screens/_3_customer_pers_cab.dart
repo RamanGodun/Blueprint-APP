@@ -1,13 +1,11 @@
-// general
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
 import '../../../State_management/Models/_0_models.dart';
 import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Cards_and_tiles/_2_card_for_list_view.dart';
 import '../../../UI_Components/Cards_and_tiles/_4_customers_order_card.dart';
 import '../../../UI_Components/Cards_and_tiles/_5_users_info_card.dart';
@@ -62,7 +60,7 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
             //
             const UsersInfoCard(isSellersInfo: false, isAdmin: false),
             const SizedBox(height: 5),
-            const DashedLineDivider(color: IOSDarkThemeColors.hover),
+            const DashedLineDivider(color: ThisAppColors.hover),
 
             //
             // Delivery info next
@@ -72,13 +70,13 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
               child: Row(children: [
                 Icon(
                   Icons.local_shipping,
-                  color: IOSDarkThemeColors.yellow1,
+                  color: ThisAppColors.yellow1,
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 8.0),
                   child: Text("Інформація з доставки",
                       style: TextStyle(
-                          color: IOSDarkThemeColors.yellow1, fontSize: 14)),
+                          color: ThisAppColors.yellow1, fontSize: 14)),
                 ),
               ]),
             ),
@@ -95,13 +93,13 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                       children: [
                         Icon(
                           _getIconForIndex2(index),
-                          color: IOSDarkThemeColors.white,
+                          color: ThisAppColors.white,
                           size: 20,
                         ),
                         const SizedBox(width: 10),
                         Text(customerData2[index],
                             style: const TextStyle(
-                                color: IOSDarkThemeColors.white,
+                                color: ThisAppColors.white,
                                 fontSize: 13,
                                 fontStyle: FontStyle.normal)),
                       ],
@@ -112,7 +110,7 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
 
             //
             // Orders  next
-            const DashedLineDivider(color: IOSDarkThemeColors.hover),
+            const DashedLineDivider(color: ThisAppColors.hover),
             const SizedBox(height: 15),
             const Padding(
               padding: EdgeInsets.only(left: 70.0),
@@ -120,13 +118,13 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                 children: [
                   Icon(
                     Icons.local_shipping,
-                    color: IOSDarkThemeColors.yellow1,
+                    color: ThisAppColors.yellow1,
                   ),
                   SizedBox(width: 10),
                   Text("Список моїх замовлень",
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                        color: IOSDarkThemeColors.yellow1,
+                        color: ThisAppColors.yellow1,
                         fontSize: 15,
                         // fontWeight: FontWeight.w500
                       )),
@@ -151,7 +149,7 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                   : const Center(
                       child: Text("Замовлень поки що немає",
                           style: TextStyle(
-                              color: IOSDarkThemeColors.white, fontSize: 15)),
+                              color: ThisAppColors.white, fontSize: 15)),
                     ),
             ),
           ]),
@@ -189,7 +187,7 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                               const Spacer(),
                               IconButton(
                                   icon: const Icon(Icons.close, size: 20),
-                                  color: IOSDarkThemeColors.white,
+                                  color: ThisAppColors.white,
                                   onPressed: () => cartProvider
                                       .resetIsExpandedInUserCartList()),
                             ]),
@@ -222,12 +220,12 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                                   '${expandedOrder.totalSum!.toStringAsFixed(2)} \u20B4',
                                   style: const TextStyle(
                                       fontSize: 14.0,
-                                      color: IOSDarkThemeColors.silver,
+                                      color: ThisAppColors.silver,
                                       fontWeight: FontWeight.w800)),
                             ]),
                       ),
                       const SizedBox(height: 15),
-                      const DashedLineDivider(color: IOSDarkThemeColors.white),
+                      const DashedLineDivider(color: ThisAppColors.white),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.4,
                         // List of items in cart
@@ -248,7 +246,7 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                               );
                             }),
                       ),
-                      const DashedLineDivider(color: IOSDarkThemeColors.silver),
+                      const DashedLineDivider(color: ThisAppColors.silver),
                       const SizedBox(height: 10),
                       // text of status of order
                       Padding(
@@ -260,8 +258,7 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                               : (expandedOrder.isFinished == false)
                                   ? "Замовлення в процесі обробки..."
                                   : "Завершено, бонуси зараховані",
-                          style:
-                              const TextStyle(color: IOSDarkThemeColors.amber1),
+                          style: const TextStyle(color: ThisAppColors.amber1),
                         ),
                       )
                     ]),

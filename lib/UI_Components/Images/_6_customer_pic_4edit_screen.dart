@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 
 class ProfileImageWidget extends StatelessWidget {
   final bool isLoading;
@@ -49,7 +49,7 @@ class ProfileImageWidget extends StatelessWidget {
                     )
                   : const Icon(
                       Icons.add_a_photo,
-                      color: IOSDarkThemeColors.yellow1,
+                      color: ThisAppColors.yellow1,
                       size: 50,
                     ),
     );

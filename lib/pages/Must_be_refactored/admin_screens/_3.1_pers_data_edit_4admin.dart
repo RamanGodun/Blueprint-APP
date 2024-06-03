@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-
 import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
 import '../../../State_management/Src/Helpers/dm_methods.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 import '../../../UI_Components/Others/dashed_border_container.dart';
 import '../../../UI_Components/Switchers/_2_my_switcher.dart';
@@ -43,7 +42,7 @@ class _PersonalDataEditing4AdminState extends State<PersonalDataEditing4Admin> {
         Provider.of<CommonDataProvider>(context, listen: true);
 
     return Scaffold(
-      backgroundColor: IOSDarkThemeColors.black,
+      backgroundColor: ThisAppColors.black,
       appBar: AppBar(
           backgroundColor: Colors.grey[900],
           leading: Padding(
@@ -98,8 +97,7 @@ class _PersonalDataEditing4AdminState extends State<PersonalDataEditing4Admin> {
                                                     width: double.infinity,
                                                     height: double.infinity))
                                             : const Icon(Icons.add_a_photo,
-                                                color:
-                                                    IOSDarkThemeColors.yellow1,
+                                                color: ThisAppColors.yellow1,
                                                 size: 50)),
                               ))),
                       SizedBox(
@@ -135,7 +133,7 @@ class _PersonalDataEditing4AdminState extends State<PersonalDataEditing4Admin> {
                         child: const Text('Обрати сертифікат',
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
-                                color: IOSDarkThemeColors.white))),
+                                color: ThisAppColors.white))),
                   ]),
                 ),
                 SizedBox(height: mediaQuery.size.height * 0.03),

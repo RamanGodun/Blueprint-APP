@@ -1,10 +1,8 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 import '../../../UI_Components/Cards_and_tiles/_5_users_info_card.dart';
 import '../../../UI_Components/Others/dash_divider.dart';
@@ -33,7 +31,7 @@ class _SellersInfoState extends State<SellersInfo> {
           UsersInfoCard(isSellersInfo: true, isAdmin: profileData.isAdmin),
           //
           const SizedBox(height: 10),
-          const DashedLineDivider(color: IOSDarkThemeColors.hover),
+          const DashedLineDivider(color: ThisAppColors.hover),
           const SizedBox(height: 10),
           //
           const Padding(
@@ -41,7 +39,7 @@ class _SellersInfoState extends State<SellersInfo> {
                 EdgeInsets.only(top: 3.0, bottom: 3.0, left: 130, right: 10),
             child: Text("Точки продажу",
                 style: TextStyle(
-                    color: IOSDarkThemeColors.amber1,
+                    color: ThisAppColors.amber1,
                     fontSize: 15,
                     fontWeight: FontWeight.bold)),
           ),
@@ -64,7 +62,7 @@ class _SellersInfoState extends State<SellersInfo> {
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: IOSDarkThemeColors.hover.withOpacity(0.5),
+                        color: ThisAppColors.hover.withOpacity(0.5),
                       ),
                       child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +99,7 @@ class _SellersInfoState extends State<SellersInfo> {
                   },
                 ),
               )),
-          const DashedLineDivider(color: IOSDarkThemeColors.hover),
+          const DashedLineDivider(color: ThisAppColors.hover),
           const SizedBox(height: 10),
           const Padding(
               padding: EdgeInsets.all(10.0),
@@ -126,7 +124,7 @@ class _SellersInfoState extends State<SellersInfo> {
                   child: const Text('Дивитись сертифікат',
                       style: TextStyle(
                           decoration: TextDecoration.underline,
-                          color: IOSDarkThemeColors.white))),
+                          color: ThisAppColors.white))),
             ]),
           ),
           const SizedBox(height: 1),
@@ -204,7 +202,7 @@ class NoCertificate extends StatelessWidget {
       child: Center(
         child: Text(
           "На даний момент сертифікат відсутній",
-          style: TextStyle(color: IOSDarkThemeColors.white),
+          style: TextStyle(color: ThisAppColors.white),
         ),
       ),
     );

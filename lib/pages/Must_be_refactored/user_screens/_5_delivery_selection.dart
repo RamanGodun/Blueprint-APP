@@ -1,10 +1,7 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
-// state management
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 
 class DeliverySelectionWidget extends StatefulWidget {
   const DeliverySelectionWidget({super.key});
@@ -33,14 +30,14 @@ class _DeliverySelectionWidgetState extends State<DeliverySelectionWidget> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: IOSDarkThemeColors.white),
+                border: Border.all(color: ThisAppColors.white),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: ExpansionTile(
                   tilePadding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
-                  iconColor: IOSDarkThemeColors.white,
-                  collapsedIconColor: IOSDarkThemeColors.white,
+                  iconColor: ThisAppColors.white,
+                  collapsedIconColor: ThisAppColors.white,
                   title: Text(
                       (profileProvider.userProfileData.deliveryWay.isNotEmpty)
                           ? profileProvider.userProfileData.deliveryWay
@@ -48,7 +45,7 @@ class _DeliverySelectionWidgetState extends State<DeliverySelectionWidget> {
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: IOSDarkThemeColors.white,
+                        color: ThisAppColors.white,
                       )),
                   children: [
                     Column(
@@ -78,8 +75,8 @@ class _DeliverySelectionWidgetState extends State<DeliverySelectionWidget> {
             method,
             style: TextStyle(
                 color: (profileProvider.userProfileData.deliveryWay == method)
-                    ? IOSDarkThemeColors.yellow1
-                    : IOSDarkThemeColors.white),
+                    ? ThisAppColors.yellow1
+                    : ThisAppColors.white),
           ),
         ),
       ),

@@ -1,12 +1,9 @@
-// general
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../State_management/Models/_0_models.dart';
 import '../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../Others/dashed_border_container.dart';
-// state management
 
 class ProductsListViewItem extends StatefulWidget {
   final String productsId;
@@ -89,7 +86,7 @@ class _ProductsListViewItemState extends State<ProductsListViewItem> {
       margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 3),
       padding: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
-        color: IOSDarkThemeColors.hover.withOpacity(0.5),
+        color: ThisAppColors.hover.withOpacity(0.5),
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Stack(
@@ -156,13 +153,12 @@ class _ProductsListViewItemState extends State<ProductsListViewItem> {
                           children: [
                             const Text('скидка "+" ?',
                                 style: TextStyle(
-                                    color: IOSDarkThemeColors.white,
-                                    fontSize: 13)),
+                                    color: ThisAppColors.white, fontSize: 13)),
                             SizedBox(
                               height: 30,
                               child: Switch(
-                                inactiveThumbColor: IOSDarkThemeColors.hover,
-                                activeColor: IOSDarkThemeColors.white,
+                                inactiveThumbColor: ThisAppColors.hover,
+                                activeColor: ThisAppColors.white,
                                 value:
                                     (editedProductsItem.isDiscountPlus != null)
                                         ? editedProductsItem.isDiscountPlus!
@@ -193,7 +189,7 @@ class _ProductsListViewItemState extends State<ProductsListViewItem> {
                   width: 20,
                   child: GestureDetector(
                     child: const Icon(Icons.edit,
-                        size: 20, color: IOSDarkThemeColors.yellow2),
+                        size: 20, color: ThisAppColors.yellow2),
                     onTap: () {
                       // nextScreen(
                       //   context,

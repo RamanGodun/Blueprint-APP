@@ -1,16 +1,13 @@
-// general
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-// state management
-
 import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
 import '../../../State_management/Src/Helpers/dm_methods.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 import '../../../UI_Components/Dialogs/general_alert_dialog.dart';
 import '../../../UI_Components/Images/_6_customer_pic_4edit_screen.dart';
@@ -64,7 +61,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                   const Text(
                     "Особисті дані",
                     style: TextStyle(
-                        color: IOSDarkThemeColors.white,
+                        color: ThisAppColors.white,
                         fontSize: 14,
                         fontWeight: FontWeight.w700),
                   ),
@@ -134,7 +131,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                 // functionality of "go back button"
                 IconButton(
                     icon: const Icon(Icons.arrow_back_ios,
-                        size: 20, color: IOSDarkThemeColors.white),
+                        size: 20, color: ThisAppColors.white),
                     onPressed: () {
                       if (widget.isFromOrderScreen == true) {
                         final int amountOfBonuses =
@@ -156,7 +153,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                       ? "назад до деталей замовлення"
                       : "назад до особистого кабінету",
                   style: const TextStyle(
-                      color: IOSDarkThemeColors.white, fontSize: 13)),
+                      color: ThisAppColors.white, fontSize: 13)),
             ),
           )),
       //
@@ -185,7 +182,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                               padding: EdgeInsets.only(left: 10.0),
                               child: Text("Загальна сума замовлення",
                                   style: TextStyle(
-                                      color: IOSDarkThemeColors.yellow1,
+                                      color: ThisAppColors.yellow1,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w800)),
                             ),
@@ -195,15 +192,14 @@ class _CustomerInfoState extends State<CustomerInfo> {
                               width: 100,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12.0),
-                                  color: IOSDarkThemeColors.grey2
-                                      .withOpacity(0.5)),
+                                  color: ThisAppColors.grey2.withOpacity(0.5)),
                               child: Text(
                                   widget.totalSum == null
                                       ? "0"
                                       : widget.totalSum!.toString(),
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
-                                      color: IOSDarkThemeColors.white)),
+                                      color: ThisAppColors.white)),
                             ),
                           ],
                         ),
@@ -247,7 +243,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                       }
                     } else {
                       // showSnackbar(context,
-                      //     color: IOSDarkThemeColors.darkAmber1,
+                      //     color: ThisAppColors.darkAmber1,
                       //     content: "заповніть коректно всі поля");
                     }
                   }),

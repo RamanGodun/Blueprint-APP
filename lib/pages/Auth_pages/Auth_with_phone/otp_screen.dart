@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously, unused_catch_clause
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
@@ -8,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
 import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/my_first_top_design.dart';
+import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -56,7 +55,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     const SizedBox(height: 80),
                     const Text("Перевірка",
                         style: TextStyle(
-                          color: IOSDarkThemeColors.yellow1,
+                          color: ThisAppColors.yellow1,
                           fontSize: 25,
                           fontWeight: FontWeight.w800,
                         )),
@@ -120,7 +119,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       child: const Text("не прийшов код",
                           style: TextStyle(
                             decoration: TextDecoration.underline,
-                            color: IOSDarkThemeColors.amber1,
+                            color: ThisAppColors.amber1,
                           )),
                     ),
                     const SizedBox(height: 15),
