@@ -1,5 +1,7 @@
 {
 "appTitle": "This app",
+"customDarkTheme": "Custom dark theme",
+"customLightTheme": "Custom light theme",
 "darkIOSTheme": "Dark IOS theme",
 "darkAndroidTheme": "Dark android theme",
 "darkGlassTheme": "Dark glassy theme",

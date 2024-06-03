@@ -1,5 +1,7 @@
 {
 "appTitle": "Цей додаток",
+"customDarkTheme": "власна темна тема",
+"customLightTheme": "Власна світла тема",
 "darkIOSTheme": "Темна IOS тема",
 "darkAndroidTheme": "Темна андроїд тема",
 "darkGlassTheme": "Темна скляна тема",
