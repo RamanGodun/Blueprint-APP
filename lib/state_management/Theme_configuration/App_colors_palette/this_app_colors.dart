@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
 
 abstract class ThisAppColors {
-/* */
-/* Primary colors*/
   static const Color kAppPrimaryColor = Color.fromARGB(199, 14, 117, 91);
-  static const Color kPrimaryVariant = Color.fromARGB(199, 14, 117, 91);
   static final MaterialColor kPrimarySwatch =
       createMaterialColor(kAppPrimaryColor);
 
-/* Secondary colors*/
   static const Color kSecondaryColor = Color.fromARGB(255, 69, 127, 155);
   static const Color kSecondaryDarkColor = Color.fromARGB(198, 124, 170, 194);
   static const Color kSecondaryVariant = Color.fromARGB(198, 124, 170, 194);
 
-/* Error colors*/
-  static const Color kErrorColor = Color(0xFFB00020);
-  static const Color kLightCustomError = Color(0xFFFF3B30);
-  static const Color kDarkCustomError = Color(0xFFFF453A);
-  static const Color kErrorColorDark = Color.fromARGB(255, 255, 180, 180);
+  static const Color kErrorColor = Color(0xFFFF453A);
+  static const Color kErrorColorDark = Color.fromARGB(255, 231, 122, 122);
   static const Color kOnErrorColor = Color.fromARGB(255, 3, 40, 34);
 
   static MaterialColor createMaterialColor(Color color) {
@@ -39,39 +32,31 @@ abstract class ThisAppColors {
     return MaterialColor(color.value, swatch);
   }
 
-  // iOS light theme colors
   static const Color kLightIOSBackground = Color.fromARGB(246, 236, 232, 232);
   static const Color kLightIOSSurface = Color.fromARGB(255, 240, 234, 234);
   static const Color kLightIOSOnSurface = Color(0xFF1C1C1E);
   static const Color kLightIOSOnPrimary = Color(0xFFFFFFFF);
 
-  // iOS dark theme colors
   static const Color kDarkIOSBackground = Color(0xFF1C1C1E);
   static const Color kDarkIOSSurface = Color(0xFF2C2C2E);
   static const Color kDarkIOSOnSurface = Color(0xFFD1D1D6);
   static const Color kDarkIOSOnPrimary = Color(0xFFFFFFFF);
   static const Color kDarkIOSGrey = Color.fromARGB(255, 153, 153, 153);
 
-  // Android light theme colors
   static const Color kLightAndroidBackground = Color(0xFFFFFFFF);
   static const Color kLightAndroidSurface = Color(0xFFFFFFFF);
   static const Color kLightAndroidOnSurface = Color(0xFF000000);
   static const Color kLightAndroidOnPrimary = Color(0xFFFFFFFF);
 
-  // Android dark theme colors
   static const Color kDarkAndroidBackground = Color(0xFF121212);
   static const Color kDarkAndroidSurface = Color(0xFF1F1F1F);
   static const Color kDarkAndroidOnSurface = Color(0xFFFFFFFF);
   static const Color kDarkAndroidOnPrimary = Color(0xFFFFFFFF);
 
-  // Dark Glass theme colors
   static const Color kDarkGlassBackground = Color(0xFF1E1E1E);
   static const Color kDarkGlassSurface = Color(0xFF2A2A2A);
   static const Color kDarkGlassOnSurface = Color(0xFFD1D1D6);
   static const Color kDarkGlassOnPrimary = Color(0xFFFFFFFF);
-
-/*Added
- */
 
   static const List<Color> categoriesColors = [
     Color.fromARGB(198, 15, 108, 91),
@@ -84,12 +69,9 @@ abstract class ThisAppColors {
     Color.fromARGB(240, 120, 56, 10),
     Color.fromARGB(255, 114, 110, 107)
   ];
-//
 
   static const Color kSurfaceColorDark = Color.fromARGB(255, 62, 61, 61);
 
-/* Often Used in IOS Colors 
- */
   static const Color white = Color(0xFFFFFFFF);
   static const Color silver = Color(0xFF999A9B);
   static const Color lightGrey = Color(0xFF777777);
@@ -109,11 +91,9 @@ abstract class ThisAppColors {
   static final Color grey500 = Colors.grey.shade500;
   static final Color grey600 = Colors.grey.shade600;
 
-/*
-GPT 
- */
-// Light custom iOS theme colors
-  static const Color kLightCustomPrimaryContainer = Color(0xFF5AC8FA);
+  // Light custom iOS theme colors
+  static const Color kLightCustomPrimaryContainer =
+      Color.fromARGB(255, 90, 250, 167);
   static const Color kLightCustomSecondary = Color(0xFF34C759);
   static const Color kLightCustomSecondaryContainer = Color(0xFF4CD964);
   static const Color kLightCustomSurface = Color(0xFFFFFFFF);
@@ -125,7 +105,8 @@ GPT
   static const Color kLightCustomOnError = Color(0xFFFFFFFF);
 
   // Dark custom iOS theme colors
-  static const Color kDarkCustomPrimaryContainer = Color(0xFF64D2FF);
+  static const Color kDarkCustomPrimaryContainer =
+      Color.fromARGB(255, 85, 240, 155);
   static const Color kDarkCustomSecondary = Color(0xFF32D74B);
   static const Color kDarkCustomSecondaryContainer = Color(0xFF30D158);
   static const Color kDarkCustomSurface = Color(0xFF1C1C1E);

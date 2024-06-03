@@ -70,7 +70,7 @@ Checkbox
     final colorScheme = theme.colorScheme;
     final questionNumber = questionIndex + 1;
     final backgroundColor = isCorrectAnswer
-        ? ThisAppColors.kPrimaryVariant.withOpacity(0.2)
+        ? ThisAppColors.kAppPrimaryColor.withOpacity(0.2)
         : colorScheme.error.withOpacity(0.2);
 
     return Container(

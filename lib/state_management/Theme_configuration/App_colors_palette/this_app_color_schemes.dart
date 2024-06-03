@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'this_app_colors.dart';
 
 abstract class ThisAppColorSchemes {
-  // Existing color schemes...
-
   /* IOS LIGHT color Scheme */
   static final kLightIOSColorScheme = ColorScheme.fromSwatch(
     primarySwatch: ThisAppColors.kPrimarySwatch,
@@ -26,7 +24,7 @@ abstract class ThisAppColorSchemes {
     primarySwatch: ThisAppColors.kPrimarySwatch,
     accentColor: ThisAppColors.kSecondaryVariant,
     backgroundColor: ThisAppColors.kDarkIOSBackground,
-    errorColor: ThisAppColors.kErrorColor,
+    errorColor: ThisAppColors.kErrorColorDark,
   ).copyWith(
     primaryContainer: ThisAppColors.kAppPrimaryColor.withOpacity(0.2),
     secondaryContainer: ThisAppColors.kSecondaryColor.withOpacity(0.2),
@@ -78,7 +76,7 @@ abstract class ThisAppColorSchemes {
     primarySwatch: ThisAppColors.kPrimarySwatch,
     accentColor: ThisAppColors.kSecondaryVariant,
     backgroundColor: ThisAppColors.kDarkGlassBackground,
-    errorColor: ThisAppColors.kErrorColor,
+    errorColor: ThisAppColors.kErrorColorDark,
   ).copyWith(
     primaryContainer: ThisAppColors.kAppPrimaryColor.withOpacity(0.2),
     secondaryContainer: ThisAppColors.kSecondaryColor.withOpacity(0.2),
@@ -97,7 +95,7 @@ abstract class ThisAppColorSchemes {
     backgroundColor: ThisAppColors.kLightIOSBackground,
     errorColor: ThisAppColors.kErrorColor,
   ).copyWith(
-    primary: ThisAppColors.kPrimarySwatch,
+    primary: ThisAppColors.kAppPrimaryColor,
     primaryContainer: ThisAppColors.kLightCustomPrimaryContainer,
     secondary: ThisAppColors.kLightCustomSecondary,
     secondaryContainer: ThisAppColors.kLightCustomSecondaryContainer,
@@ -114,10 +112,10 @@ abstract class ThisAppColorSchemes {
     brightness: Brightness.dark,
     primarySwatch: ThisAppColors.kPrimarySwatch,
     accentColor: ThisAppColors.kSecondaryDarkColor,
-    backgroundColor: ThisAppColors.kSurfaceColorDark,
+    backgroundColor: ThisAppColors.kDarkCustomBackground,
     errorColor: ThisAppColors.kErrorColorDark,
   ).copyWith(
-    primary: ThisAppColors.kPrimarySwatch,
+    primary: ThisAppColors.kAppPrimaryColor,
     primaryContainer: ThisAppColors.kDarkCustomPrimaryContainer,
     secondary: ThisAppColors.kDarkCustomSecondary,
     secondaryContainer: ThisAppColors.kDarkCustomSecondaryContainer,

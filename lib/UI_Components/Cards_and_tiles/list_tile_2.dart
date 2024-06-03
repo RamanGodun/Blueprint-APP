@@ -93,7 +93,7 @@ class CustomListTile extends StatelessWidget {
                     itemData['user_answer'] as String,
                     style: textTheme.bodyMedium?.copyWith(
                       color: isCorrectAnswer
-                          ? ThisAppColors.kPrimaryVariant
+                          ? ThisAppColors.kAppPrimaryColor
                           : colorScheme.error,
                       height: 1.05,
                     ),

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../text_styles.dart';
 import '../App_colors_palette/this_app_colors.dart';
+import '../text_styles.dart';
 
 class ThisAppThemesBuilder {
   static ThemeData buildThemeData({
@@ -29,13 +29,14 @@ class ThisAppThemesBuilder {
         style: ElevatedButton.styleFrom(
           backgroundColor: colorScheme.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
           ),
+          textStyle: TextStyles4ThisAppThemes.kTextThemeData(isDark).labelLarge,
         ),
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: CupertinoColors.systemBackground,
-        elevation: 1,
+        elevation: 0,
         iconTheme: IconThemeData(color: colorScheme.onSurface),
         titleTextStyle: TextStyles4ThisAppThemes.kTextThemeData(isDark)
             .titleLarge
@@ -49,7 +50,6 @@ class ThisAppThemesBuilder {
             ),
       ),
       scaffoldBackgroundColor: scaffoldBackgroundColor,
-      // fontFamily: 'Montserrat',
       cupertinoOverrideTheme: NoDefaultCupertinoThemeData(
         primaryColor: ThisAppColors.kAppPrimaryColor,
         barBackgroundColor: barBackgroundColor,
@@ -57,11 +57,11 @@ class ThisAppThemesBuilder {
       ),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(color: colorScheme.onSurface),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: ThisAppColors.kAppPrimaryColor),
         ),
       ),
@@ -71,12 +71,12 @@ class ThisAppThemesBuilder {
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
           color: tooltipColor,
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(8),
         ),
       ),
       tabBarTheme: TabBarTheme(
         indicator: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(8),
           color: tabBarIndicatorColor,
         ),
         labelColor: tabBarLabelColor,
