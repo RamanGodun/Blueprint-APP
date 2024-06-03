@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
-import '../../State_management/Theme_configuration/App_colors_schemes/this_app_colors.dart';
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 
 class MiniWidgets {
   static Widget divider2(BuildContext context) {
@@ -55,6 +55,38 @@ Checkbox
       )),
       height: 25,
       width: 25,
+    );
+  }
+
+/*
+  "IsAnswerCorrectIdentifier" Widget
+ */
+  static Widget isAnswerCorrectIdentifier({
+    required int questionIndex,
+    required bool isCorrectAnswer,
+    required BuildContext context,
+  }) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final questionNumber = questionIndex + 1;
+    final backgroundColor = isCorrectAnswer
+        ? ThisAppColors.kPrimaryVariant.withOpacity(0.2)
+        : colorScheme.error.withOpacity(0.2);
+
+    return Container(
+      width: 100,
+      height: 18,
+      alignment: Alignment.topCenter,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(60), bottomRight: Radius.circular(50)),
+      ),
+      child: Text(
+        questionNumber.toString(),
+        style: theme.textTheme.displayLarge
+            ?.copyWith(fontSize: 16, color: colorScheme.onSurface),
+      ),
     );
   }
 

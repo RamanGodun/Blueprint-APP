@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../UI_Components/0_Widgets_STYLING/0.text_styles_for_components.dart';
 import '../../UI_Components/Text_fields.dart/cupertino_tf2.dart';
 import '../../state_management/src/custom_icons/app_icons.dart';
 import '../../state_management/src/helpers/helpers.dart';
 import '../../ui_components/buttons/static_buttons.dart';
-import '../../ui_components/widgets_styling/0.text_styles_for_components.dart';
 
 class TextFieldPage extends HookWidget {
   static const routeName = '/start_page/new_screen';

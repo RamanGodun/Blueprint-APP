@@ -7,7 +7,7 @@ import '../State_management/Src/Helpers/helpers.dart';
 import '../UI_Components/Buttons/static_buttons.dart';
 import '../State_management/Src/Custom_icons/this_app_icons.dart';
 import '../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../UI_Components/Widgets_STYLING/0.text_styles_for_components.dart';
+import '../UI_Components/0_Widgets_STYLING/0.text_styles_for_components.dart';
 
 class StartPage extends StatefulWidget {
   static const routeName = '/start_page';
@@ -30,21 +30,27 @@ class _StartPageState extends State<StartPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          middle: Text(LocaleKeys.startScreen.tr(),
-              style: TextStyle4Components.appBarTitle(
-                  cupertinoTheme: cupertinoTheme, colorScheme: colorScheme)),
-          trailing: CupertinoButton(
-            padding: EdgeInsets.zero,
-            child:
-                Icon(ThisAppIcons.settings, color: cupertinoTheme.primaryColor),
-            onPressed: () {
-              context.pushNamed('SettingsPage');
-            },
-          ),
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Row(
+          children: [
+            const SizedBox(width: 50),
+            Text(LocaleKeys.startScreen.tr(),
+                style: TextStyle4Components.appBarTitle(
+                    cupertinoTheme: cupertinoTheme, colorScheme: colorScheme)),
+            const Spacer(),
+          ],
         ),
+        trailing: CupertinoButton(
+          padding: EdgeInsets.zero,
+          child:
+              Icon(ThisAppIcons.settings, color: cupertinoTheme.primaryColor),
+          onPressed: () {
+            context.pushNamed('SettingsPage');
+          },
+        ),
+      ),
+      child: Material(
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 35),

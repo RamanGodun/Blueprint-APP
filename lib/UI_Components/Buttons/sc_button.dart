@@ -10,7 +10,7 @@ import '../../State_management/Providers/items_provider.dart';
 import '../../State_management/Src/Helpers/category_helpers.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
 import '../../State_management/Src/Helpers/sh_prefs_helper.dart';
-import '../Widgets_STYLING/0.text_styles_for_components.dart';
+import '../0_Widgets_STYLING/0.text_styles_for_components.dart';
 
 class ButtonForSubCategories extends StatelessWidget {
   const ButtonForSubCategories({

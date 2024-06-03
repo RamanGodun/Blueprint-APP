@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../State_management/Const_data/app_locales.dart';
 import '../../State_management/Src/Custom_icons/this_app_icons.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
-import '../Widgets_STYLING/0.text_styles_for_components.dart';
+import '../0_Widgets_STYLING/0.text_styles_for_components.dart';
 
 class StaticCustomButtons {
   static Widget customButton(BuildContext context,
@@ -149,6 +149,74 @@ class StaticCustomButtons {
             offset: const Offset(1, 3),
           ),
         ],
+      ),
+    );
+  }
+
+/*
+INIT BUTTON
+ */
+  static Widget startButton(
+      {required VoidCallback startQuiz,
+      required ColorScheme colorScheme,
+      required TextTheme textTheme,
+      required BuildContext context}) {
+    return SizedBox(
+      width: double.infinity,
+      child: CupertinoButton.filled(
+        onPressed: () {
+          startQuiz();
+          // final inheritedWidget = DataProviderInherited.of(context);
+          // if (inheritedWidget != null) {
+          //   inheritedWidget.setQuestionList(
+          //     QuestionAndAnswers.generateRandomQuestionsList(
+          //         selectedQuantity.toInt()),
+          //   );
+          // }
+        },
+        padding: const EdgeInsets.all(12),
+        borderRadius: BorderRadius.circular(8),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              CupertinoIcons.play_arrow,
+              color: colorScheme.onPrimary,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              "OK",
+              style: textTheme.displayMedium,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+/*
+ANSWER BUTTON
+ */
+  static Widget answerButton({
+    required BuildContext context,
+    required String answerText,
+    required VoidCallback onTap,
+  }) {
+    final theme = Theme.of(context);
+    return ElevatedButton(
+      style: OutlinedButton.styleFrom(
+          backgroundColor: theme.colorScheme.surface.withOpacity(0.4),
+          side: BorderSide(color: theme.colorScheme.primary, width: 0.7)),
+      onPressed: onTap,
+      child: Center(
+        child: Text(
+          answerText.substring(5),
+          textAlign: TextAlign.center,
+          style: theme.textTheme.labelMedium,
+          maxLines: 2,
+          softWrap: true,
+          selectionColor: theme.colorScheme.primary.withOpacity(0.6),
+        ),
       ),
     );
   }

@@ -6,7 +6,7 @@ import '../../Models/app_enums.dart';
 import '../../Models/models with isar and to json code generation/category_model.dart';
 import '../../Models/models with isar and to json code generation/db_item.dart';
 import '../../Providers/categories_provider.dart';
-import '../../Theme_configuration/App_colors_schemes/this_app_colors.dart';
+import '../../Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../Custom_icons/app_icons.dart';
 
 class CategoriesHelper {

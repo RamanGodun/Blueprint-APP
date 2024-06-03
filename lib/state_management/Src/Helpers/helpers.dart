@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import '../../Const_data/strings_4_app.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class Helpers {
 /*
@@ -109,6 +111,10 @@ Here some useful methods, used across all app
     Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }
 
+  static void pop(BuildContext context) {
+    Navigator.pop(context);
+  }
+
   void callSnackBar(BuildContext context, String content) {
     return SchedulerBinding.instance.addPostFrameCallback((_) {
       Helpers.showSnackBar(context, content);
@@ -144,26 +150,36 @@ Here some useful methods, used across all app
     );
   }
 
-/*
-  IF during APP loading need to paint system bars we can use next:
-import 'package:flutter/services.dart';
-
+//   IF during APP loading need to paint system bars we can use next:
+// import 'package:flutter/services.dart';
   static Future<void> setSystemColors() async {
-    bool isDarkThemeMode =
-        await SharedPreferencesHelper.getThemeModeFromShPrefs();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    // bool isDarkThemeMode =
+    //     await SharedPreferencesHelper.getThemeModeFromShPrefs();
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       systemNavigationBarDividerColor: Colors.transparent,
-      statusBarBrightness: isDarkThemeMode ? Brightness.dark : Brightness.light,
-      systemNavigationBarColor: isDarkThemeMode
-          ? ThisThisAppColors.kDarkIOSBackground
-          : ThisThisAppColors.kLightIOSBackground,
-      systemNavigationBarIconBrightness:
-          isDarkThemeMode ? Brightness.light : Brightness.dark,
+      statusBarBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.light,
     ));
   }
 
-WHERE
+  static Future<bool> checkInternetConnectivity(BuildContext context) async {
+    final scaffoldContext = ScaffoldMessenger.of(context);
+    final connectivityResult = await Connectivity().checkConnectivity();
+    // ignore: unrelated_type_equality_checks
+    final hasInternetConnection = connectivityResult != ConnectivityResult.none;
 
+    if (!hasInternetConnection) {
+      scaffoldContext.showSnackBar(
+        const SnackBar(
+          content: Text('Немає з\'єднання з Інтернетом'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+    }
+    return hasInternetConnection;
+  }
+/*
  */
 }

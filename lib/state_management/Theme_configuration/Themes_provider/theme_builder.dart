@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../text_styles.dart';
-import '../App_colors_schemes/this_app_colors.dart';
+import '../App_colors_palette/this_app_colors.dart';
 
 class ThisAppThemesBuilder {
   static ThemeData buildThemeData({
@@ -34,7 +34,8 @@ class ThisAppThemesBuilder {
         ),
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: appBarBackgroundColor,
+        backgroundColor: CupertinoColors.systemBackground,
+        elevation: 1,
         iconTheme: IconThemeData(color: colorScheme.onSurface),
         titleTextStyle: TextStyles4ThisAppThemes.kTextThemeData(isDark)
             .titleLarge

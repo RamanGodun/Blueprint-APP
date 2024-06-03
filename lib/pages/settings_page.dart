@@ -14,7 +14,7 @@ import '../UI_Components/Dialogs/custom_dialog.dart';
 import '../UI_Components/Others/icons_grid_view.dart';
 import '../State_management/Src/Custom_icons/this_app_icons.dart';
 import '../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../UI_Components/Widgets_STYLING/0.text_styles_for_components.dart';
+import '../UI_Components/0_Widgets_STYLING/0.text_styles_for_components.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/start_page/settings';
@@ -50,40 +50,44 @@ class _SettingsPageState extends State<SettingsPage>
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          leading: AppIcons.backIcon(context, colorScheme),
-          middle: Text(
-            LocaleKeys.startScreen.tr(),
-            style: TextStyle4Components.appBarTitle(
-                cupertinoTheme: cupertinoTheme, colorScheme: colorScheme),
-          ),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              StaticCustomButtons.changeLanguageButton(context),
-              CupertinoButton(
-                padding: EdgeInsets.zero,
-                child: Icon(
-                  ThisAppIcons.crown,
-                  color: colorScheme.onSurface,
-                  size: 25,
-                ),
-                onPressed: () => showCustomCupertinoDialog(
-                  context,
-                  const IconsGridView(),
-                ),
-              ),
-              CupertinoButton(
-                padding: EdgeInsets.zero,
-                onPressed: () => signUserOut(),
-                child:
-                    Icon(Icons.logout, color: colorScheme.onSurface, size: 25),
-              ),
-            ],
-          ),
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        leading: AppIcons.backIcon(context, colorScheme),
+        middle: Row(
+          children: [
+            Text(
+              LocaleKeys.startScreen.tr(),
+              style: TextStyle4Components.appBarTitle(
+                  cupertinoTheme: cupertinoTheme, colorScheme: colorScheme),
+            ),
+            const Spacer(),
+          ],
         ),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            StaticCustomButtons.changeLanguageButton(context),
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: Icon(
+                ThisAppIcons.crown,
+                color: colorScheme.onSurface,
+                size: 25,
+              ),
+              onPressed: () => showCustomCupertinoDialog(
+                context,
+                const IconsGridView(),
+              ),
+            ),
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              onPressed: () => signUserOut(),
+              child: Icon(Icons.logout, color: colorScheme.onSurface, size: 25),
+            ),
+          ],
+        ),
+      ),
+      child: Material(
         child: Center(
           child: user == null
               ? Text(

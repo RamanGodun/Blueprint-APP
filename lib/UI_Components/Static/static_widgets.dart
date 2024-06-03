@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../State_management/Const_data/strings_4_app.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
-import '../../State_management/Theme_configuration/App_colors_schemes/this_app_colors.dart';
+import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 
 class StaticWidgets {
 /*

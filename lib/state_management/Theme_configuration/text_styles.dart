@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Src/Helpers/helpers.dart';
 
 abstract class TextStyles4ThisAppThemes {
   static TextTheme kTextThemeData(bool isDarkTheme) {
@@ -24,6 +27,18 @@ abstract class TextStyles4ThisAppThemes {
     return TextStyle(
       fontWeight: fontWeight,
       fontSize: fontSize,
+    );
+  }
+
+  static CupertinoTextThemeData getCupertinoTextStyle(BuildContext context) {
+    final colorScheme = Helpers.colorScheme(context);
+    return CupertinoTextThemeData(
+      primaryColor: colorScheme.onSurface,
+      navTitleTextStyle: TextStyle(
+        color: colorScheme.onSurface,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }
