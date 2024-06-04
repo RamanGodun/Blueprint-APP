@@ -87,7 +87,7 @@ class _SendPromptPageState extends State<SendPromptPage> {
                 ),
                 const SizedBox(height: 10),
                 _isLoading
-                    ? const Center(child: StaticWidgets.loadingWidget)
+                    ? StaticWidgets.loadingWidget
                     : Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(

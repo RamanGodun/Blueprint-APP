@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../State_management/Const_data/strings_4_app.dart';
 import '../../State_management/Models/app_enums.dart';
 import '../../State_management/Models/models with isar and to json code generation/category_model.dart';

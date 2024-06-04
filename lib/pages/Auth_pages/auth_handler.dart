@@ -23,7 +23,7 @@ class _AuthHandlerState extends State<AuthHandler> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: StaticWidgets.loadingWidget);
+            return StaticWidgets.loadingWidget;
           }
 
           if (snapshot.hasData) {

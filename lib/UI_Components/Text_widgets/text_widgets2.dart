@@ -4,7 +4,7 @@ import '../../State_management/Src/Helpers/helpers.dart';
 
 class TextWidgets {
 /*
-TITLE For Result Screen
+Example of RICH TEXT
  */
   static Widget titleForResultScreen({
     required BuildContext context,
@@ -42,22 +42,6 @@ TITLE For Result Screen
   }
 
 /*
-"BUILD TEXT" Widget
- */
-  static Widget buildText({required String text, TextStyle? style}) {
-    return
-// Align(
-//       child:
-        FittedBox(
-      child: Text(
-        text,
-        style: style,
-      ),
-      // ),
-    );
-  }
-
-/*
 TEXT widgets
  */
   static Widget titleForPurchasePageWidget(BuildContext context) {
@@ -65,7 +49,6 @@ TEXT widgets
       color: Helpers.colorScheme(context)
           .surface
           .withOpacity(Helpers.isDarkTheme(context) ? 0.55 : 0.9),
-      // decoration: BoxDecoration(),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -107,6 +90,42 @@ TEXT widgets
     return Center(
       child: Text(
           "$AppStrings.errorOcurredTextLoc $errorText$AppStrings.tryLaterTextLoc"),
+    );
+  }
+
+  static Widget themedText(
+    BuildContext context,
+    String text, {
+    Color? color,
+    double? fontSize = 16,
+    TextAlign? textAlign = TextAlign.center,
+    FontWeight? fontWeight = FontWeight.w800,
+  }) {
+    final textTheme = Helpers.textTheme(context);
+    return Text(
+      text,
+      textAlign: textAlign,
+      style: textTheme.bodyMedium?.copyWith(
+        color: color ?? textTheme.bodyMedium?.color,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+      ),
+    );
+  }
+
+  static Widget getThemedText(
+    BuildContext context,
+    String text, {
+    Color? color,
+    double? fontSize = 16,
+    TextAlign? textAlign = TextAlign.center,
+  }) {
+    return themedText(
+      context,
+      text,
+      color: color,
+      fontSize: fontSize,
+      textAlign: textAlign,
     );
   }
 }

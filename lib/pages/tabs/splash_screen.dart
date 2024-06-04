@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../State_management/Src/Generated_code/by spider/resources.dart';
+
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
@@ -11,7 +13,7 @@ class SplashScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/loading screen.png'),
+                image: AssetImage(ThisAppImages.downloadPicture),
                 fit: BoxFit.cover,
               ),
             ),
@@ -20,8 +22,8 @@ class SplashScreen extends StatelessWidget {
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/Logo for loading screen.png'),
-                  fit: BoxFit.fitWidth,
+                  image: AssetImage(ThisAppImages.apple),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
