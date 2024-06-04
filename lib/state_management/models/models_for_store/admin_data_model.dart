@@ -1,45 +1,22 @@
-class AdminDataModel1 {
-  final String adminPhoneNumber;
-  final String adminName;
-  final String adminEmail;
-  final String adminImageURL;
-  final String certificateURL;
-  final String aboutStore;
-  final List<Map<String, dynamic>> salePoints;
+class AdminDataModel {
+  String adminName;
+  String adminEmail;
+  String adminImageURL;
+  String adminPhoneNumber;
+  String certificateURL;
+  String aboutStore;
+  List<Map<String, dynamic>> sellerPoints;
+  // final List<SellerPointsInfo> sellerPoints;
 
-  AdminDataModel1({
+  AdminDataModel({
     required this.adminPhoneNumber,
     required this.adminName,
     required this.adminEmail,
     required this.adminImageURL,
     required this.certificateURL,
     required this.aboutStore,
-    required this.salePoints,
+    required this.sellerPoints,
   });
-
-  factory AdminDataModel1.fromMap(Map<String, dynamic> map) {
-    final List<Map<String, dynamic>> salePointsList =
-        List<Map<String, dynamic>>.from(map['salePoints'] ?? []);
-
-    return AdminDataModel1(
-      adminPhoneNumber: map['adminPhoneNumber'] ?? '',
-      adminName: map['adminName'] ?? '',
-      adminEmail: map['adminEmail'] ?? '',
-      adminImageURL: map['adminImageURL'] ?? '',
-      certificateURL: map['certificateURL'] ?? '',
-      aboutStore: map['aboutStore'] ?? '',
-      salePoints: salePointsList,
-    );
-  }
-
-  AdminDataModel1.initial()
-      : adminPhoneNumber = '',
-        adminName = '',
-        adminEmail = '',
-        adminImageURL = '',
-        certificateURL = '',
-        aboutStore = '',
-        salePoints = [];
 
   Map<String, dynamic> toMap() {
     return {
@@ -49,7 +26,52 @@ class AdminDataModel1 {
       'adminImageURL': adminImageURL,
       'certificateURL': certificateURL,
       'aboutStore': aboutStore,
-      'salePoints': salePoints,
+      'salePoints': sellerPoints,
     };
+  }
+
+  factory AdminDataModel.fromMap(Map<String, dynamic> map) {
+    final List<Map<String, dynamic>> salePointsList =
+        List<Map<String, dynamic>>.from(map['salePoints'] ?? []);
+    return AdminDataModel(
+      adminPhoneNumber: map['adminPhoneNumber'] ?? '',
+      adminName: map['adminName'] ?? '',
+      adminEmail: map['adminEmail'] ?? '',
+      adminImageURL: map['adminImageURL'] ?? '',
+      certificateURL: map['certificateURL'] ?? '',
+      aboutStore: map['aboutStore'] ?? '',
+      sellerPoints: salePointsList,
+    );
+  }
+
+  AdminDataModel.initial()
+      : adminPhoneNumber = '',
+        adminName = '',
+        adminEmail = '',
+        adminImageURL = '',
+        certificateURL = '',
+        aboutStore = '',
+        sellerPoints = [];
+}
+
+class SellerPointsInfo {
+  List<String> sellerPointsTowns;
+  List<String> sellerPointsStreets;
+  SellerPointsInfo(
+      {this.sellerPointsTowns = const ["Почаїв", "", "", "", "", ""],
+      this.sellerPointsStreets = const ["Лосятинська 11", "", "", "", "", ""]});
+
+  Map<String, dynamic> toMap() {
+    return {
+      'sellerPointsTowns': sellerPointsTowns,
+      'sellerPointsStreets': sellerPointsStreets,
+    };
+  }
+
+  factory SellerPointsInfo.fromMap(Map<String, dynamic> map) {
+    return SellerPointsInfo(
+      sellerPointsTowns: List<String>.from(map['sellerPointsTowns'] ?? []),
+      sellerPointsStreets: List<String>.from(map['sellerPointsStreets'] ?? []),
+    );
   }
 }
