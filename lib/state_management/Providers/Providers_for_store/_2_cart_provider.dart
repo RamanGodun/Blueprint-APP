@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../Models/_0_models.dart';
+import '../../Models/models_for_store/cart_item_model.dart';
 import '../../Src/Helpers/dm_methods.dart';
 
 class CartsProvider with ChangeNotifier {

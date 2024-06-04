@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../State_management/Models/_0_models.dart';
+import '../../State_management/Models/models_for_store/profile_data_model.dart';
 import '../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
 import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
@@ -24,31 +24,30 @@ class UsersInfoCard extends StatelessWidget {
         Provider.of<CommonDataProvider>(context, listen: false);
     final AuthProvider proFile =
         Provider.of<AuthProvider>(context, listen: false);
-    final ProfileInfoModel proFileInfo = proFile.userProfileData;
+    final UserDataModel proFileInfo = proFile.userProfileData;
 
     List<String> customerData = [
-      (proFileInfo.personalNickName!.isNotEmpty)
-          ? proFileInfo.personalNickName!
+      (proFileInfo.userAccountName!.isNotEmpty)
+          ? proFileInfo.userAccountName!
           : "Дані ще не введено",
-      (proFileInfo.phoneNumber!.isNotEmpty)
-          ? proFileInfo.phoneNumber!
+      (proFileInfo.userPhoneNumber!.isNotEmpty)
+          ? proFileInfo.userPhoneNumber!
           : "Дані ще не введено",
-      proFileInfo.amountOfBonuses.toString(),
+      proFileInfo.userBonuses.toString(),
     ];
     List<String> sellerData = [
-      (isAdmin == true && proFileInfo.personalNickName!.isNotEmpty ||
+      (isAdmin == true && proFileInfo.userAccountName!.isNotEmpty ||
               isAdmin == false &&
-                  productsProviderInfo
-                      .generalInfoData.adminsNickName.isNotEmpty)
-          ? productsProviderInfo.generalInfoData.adminsNickName
+                  productsProviderInfo.generalInfoData.adminName.isNotEmpty)
+          ? productsProviderInfo.generalInfoData.adminName
           : "Продавець ще не вів дані",
       (isAdmin == true &&
-                  productsProviderInfo.generalInfoData.adminsEmail.isNotEmpty ||
+                  productsProviderInfo.generalInfoData.adminEmail.isNotEmpty ||
               isAdmin == false &&
-                  productsProviderInfo.generalInfoData.adminsEmail.isNotEmpty)
-          ? productsProviderInfo.generalInfoData.adminsEmail
+                  productsProviderInfo.generalInfoData.adminEmail.isNotEmpty)
+          ? productsProviderInfo.generalInfoData.adminEmail
           : "е-пошта не введена",
-      (isAdmin == true && proFileInfo.phoneNumber!.isNotEmpty ||
+      (isAdmin == true && proFileInfo.userPhoneNumber!.isNotEmpty ||
               isAdmin == false &&
                   productsProviderInfo
                       .generalInfoData.adminPhoneNumber.isNotEmpty)
@@ -85,18 +84,18 @@ class UsersInfoCard extends StatelessWidget {
                     child:
                         //
                         (isAdmin == true &&
-                                    proFile.userProfileData.profilePicture!
+                                    proFile.userProfileData.userImageURL!
                                         .isNotEmpty ||
                                 isAdmin == false &&
                                     isSellersInfo == false &&
-                                    proFile.userProfileData.profilePicture!
+                                    proFile.userProfileData.userImageURL!
                                         .isNotEmpty)
                             ? ClipRRect(
                                 borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(7),
                                     bottomLeft: Radius.circular(7)),
                                 child: Image.network(
-                                    proFile.userProfileData.profilePicture!,
+                                    proFile.userProfileData.userImageURL!,
                                     fit: BoxFit.cover,
                                     width: double.infinity,
                                     height: double.infinity),
@@ -108,7 +107,7 @@ class UsersInfoCard extends StatelessWidget {
                                         bottomLeft: Radius.circular(7)),
                                     child: Image.network(
                                         productsProviderInfo
-                                            .generalInfoData.adminPicture,
+                                            .generalInfoData.adminImageURL,
                                         fit: BoxFit.cover,
                                         width: double.infinity,
                                         height: double.infinity),

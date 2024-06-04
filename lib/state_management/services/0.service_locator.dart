@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../UI_Components/Static/widgets_on_get_it.dart';
-import '../Models/model_4_hive.dart';
+import '../Models/models_on_hive/model_4_hive.dart';
 import 'animation_controller_service.dart';
 
 class DIServiceLocator {

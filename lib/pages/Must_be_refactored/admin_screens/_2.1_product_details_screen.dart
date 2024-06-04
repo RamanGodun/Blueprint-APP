@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../State_management/Models/_0_models.dart';
+import '../../../State_management/Models/models_for_store/product_model.dart';
 import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
 import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
 import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';

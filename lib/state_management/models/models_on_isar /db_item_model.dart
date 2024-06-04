@@ -1,6 +1,6 @@
 import 'package:isar/isar.dart';
 import '../../../state_management/const_data/strings_4_app.dart';
-part 'db_item.g.dart';
+part 'db_item_model.g.dart';
 
 @Collection()
 class DBItem {
@@ -30,6 +30,22 @@ class DBItem {
     this.categoryName = AppStrings.other,
     this.subCategoryName = AppStrings.withoutSubCategory,
   });
+
+  // DBItem updateSubCategoryName(String newSubCategoryName) {
+  //   return DBItem(
+  //     name: name,
+  //     id4Order: id4Order,
+  //     quantity: quantity,
+  //     measurementUnit: measurementUnit,
+  //     amount: amount,
+  //     totalAmount: totalAmount,
+  //     date: date,
+  //     categoryName: categoryName,
+  //     isPurchase: isPurchase,
+  //     isBlueprint: isBlueprint,
+  //     subCategoryName: newSubCategoryName,
+  //   );
+  // }
 }
 
 /*

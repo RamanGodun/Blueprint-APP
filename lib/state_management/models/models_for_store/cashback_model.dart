@@ -1,27 +1,24 @@
-class CashbackModel {
-  final List<int> discountPercentage;
+//
+class BonusSystem {
+  // rename to cashBackAmount
+  final List<double> discountAmount;
   final List<int> spentMoneyLevel;
 
-  CashbackModel({
-    required this.discountPercentage,
+  BonusSystem({
+    required this.discountAmount,
     required this.spentMoneyLevel,
   });
-
-  CashbackModel.initial()
-      : discountPercentage = [0, 0, 0, 0],
-        spentMoneyLevel = [0, 0, 0, 0];
-
-  factory CashbackModel.fromMap(Map<String, dynamic> map) {
-    return CashbackModel(
-      discountPercentage: List<int>.from(map['discountPercentage']),
-      spentMoneyLevel: List<int>.from(map['spentMoneyLevel']),
-    );
-  }
-
   Map<String, dynamic> toMap() {
     return {
-      'discountPercentage': discountPercentage,
+      'discountAmount': discountAmount,
       'spentMoneyLevel': spentMoneyLevel,
     };
+  }
+
+  factory BonusSystem.fromMap(Map<String, dynamic> map) {
+    return BonusSystem(
+      discountAmount: List<double>.from(map['discountAmount']),
+      spentMoneyLevel: List<int>.from(map['spentMoneyLevel']),
+    );
   }
 }

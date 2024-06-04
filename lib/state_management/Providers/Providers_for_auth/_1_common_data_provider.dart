@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../Models/_0_models.dart';
+import '../../Models/models_for_store/cashback_model.dart';
+import '../../Models/models_for_store/product_model.dart';
 import '../../Src/Helpers/dm_methods.dart';
 
 class CommonDataProvider with ChangeNotifier {
@@ -145,14 +147,21 @@ class CommonDataProvider with ChangeNotifier {
   //
   // GENERAL DATA MANAGING
   //
-  GeneralInfoData? _generalInfoData;
-  GeneralInfoData get generalInfoData {
+  AdminDataModel? _generalInfoData;
+  AdminDataModel get generalInfoData {
     return _generalInfoData ?? newGeneralInfoDatModel();
   }
 
-  GeneralInfoData newGeneralInfoDatModel() {
-    return GeneralInfoData(
-        adminPicture: "", certificateURL: "", adminsEmail: "");
+  AdminDataModel newGeneralInfoDatModel() {
+    return AdminDataModel(
+      adminImageURL: "",
+      certificateURL: "",
+      adminEmail: "",
+      adminPhoneNumber: "",
+      adminName: "",
+      aboutStore: "",
+      sellerPoints: [],
+    );
   }
 
   void updateGeneralInfoDataInProvider(
@@ -165,13 +174,13 @@ class CommonDataProvider with ChangeNotifier {
     notifyListeners();
     if (_generalInfoData != null) {
       if (newAdminsNickName != null) {
-        _generalInfoData!.adminsNickName = newAdminsNickName;
+        _generalInfoData!.adminName = newAdminsNickName;
       }
       if (newAdminPicture != null) {
-        _generalInfoData!.adminPicture = newAdminPicture;
+        _generalInfoData!.adminImageURL = newAdminPicture;
       }
       if (newAdminsEmail != null) {
-        _generalInfoData!.adminsEmail = newAdminsEmail;
+        _generalInfoData!.adminEmail = newAdminsEmail;
       }
       if (newAdminPhoneNumber != null) {
         _generalInfoData!.adminPhoneNumber = newAdminPhoneNumber;

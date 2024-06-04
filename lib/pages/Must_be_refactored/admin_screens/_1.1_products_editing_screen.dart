@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import '../../../State_management/Models/_0_models.dart';
+import '../../../State_management/Models/models_for_store/product_model.dart';
 import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
 import '../../../State_management/Src/Helpers/dm_methods.dart';
 import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
@@ -72,7 +72,8 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
             // deleting button
             IconButton(
                 onPressed: () => callDeleteAlertDialog(widget.isNewProductItem),
-                icon: const Icon(Icons.delete, color: ThisAppColors.kAppPrimaryColor))
+                icon: const Icon(Icons.delete,
+                    color: ThisAppColors.kAppPrimaryColor))
           ],
         ),
         // body next
@@ -138,9 +139,8 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
                                                             : const Icon(
                                                                 Icons
                                                                     .add_a_photo,
-                                                                color:
-                                                                    ThisAppColors
-                                                                        .kAppPrimaryColor,
+                                                                color: ThisAppColors
+                                                                    .kAppPrimaryColor,
                                                                 size: 50,
                                                               )),
                                           ))),
@@ -483,16 +483,16 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
 
     for (int i = 0; i < 9; i++) {
       textEditingControllers[i] = TextEditingController(
-        text: (!widget.isNewProductItem && editedProductsItem != null)
+        text: (!widget.isNewProductItem)
             ? (i == 0)
-                ? editedProductsItem.nameOfProduct
+                ? editedProductsItem?.nameOfProduct
                 : (i == 1)
-                    ? editedProductsItem.calculatedNewPrice.toString()
+                    ? editedProductsItem?.calculatedNewPrice.toString()
                     : (i == 2)
-                        ? editedProductsItem.quantityLeft.toString()
+                        ? editedProductsItem?.quantityLeft.toString()
                         : (i == 3)
-                            ? editedProductsItem.shortDescription
-                            : editedProductsItem.longDescription![i - 4]
+                            ? editedProductsItem?.shortDescription
+                            : editedProductsItem?.longDescription![i - 4]
             : '',
       );
     }

@@ -1,4 +1,4 @@
-class AdminDataModel {
+class AdminDataModel1 {
   final String adminPhoneNumber;
   final String adminName;
   final String adminEmail;
@@ -7,7 +7,7 @@ class AdminDataModel {
   final String aboutStore;
   final List<Map<String, dynamic>> salePoints;
 
-  AdminDataModel({
+  AdminDataModel1({
     required this.adminPhoneNumber,
     required this.adminName,
     required this.adminEmail,
@@ -17,11 +17,11 @@ class AdminDataModel {
     required this.salePoints,
   });
 
-  factory AdminDataModel.fromMap(Map<String, dynamic> map) {
+  factory AdminDataModel1.fromMap(Map<String, dynamic> map) {
     final List<Map<String, dynamic>> salePointsList =
         List<Map<String, dynamic>>.from(map['salePoints'] ?? []);
 
-    return AdminDataModel(
+    return AdminDataModel1(
       adminPhoneNumber: map['adminPhoneNumber'] ?? '',
       adminName: map['adminName'] ?? '',
       adminEmail: map['adminEmail'] ?? '',
@@ -32,7 +32,7 @@ class AdminDataModel {
     );
   }
 
-  AdminDataModel.initial()
+  AdminDataModel1.initial()
       : adminPhoneNumber = '',
         adminName = '',
         adminEmail = '',

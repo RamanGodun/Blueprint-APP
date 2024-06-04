@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:collection/collection.dart';
 import '../../Models/app_enums.dart';
-import '../../Models/models with isar and to json code generation/category_model.dart';
+import '../../Models/models_on_isar /model_of_subcategory.dart';
 import '../Custom_icons/this_app_icons.dart';
 import 'category_helpers.dart';
 

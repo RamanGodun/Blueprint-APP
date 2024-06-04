@@ -164,7 +164,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                     ),
                     //
                     Text(
-                      "(${profileInfo.userProfileData.amountOfBonuses.toString()})",
+                      "(${profileInfo.userProfileData.userBonuses.toString()})",
                       style: const TextStyle(
                         color: ThisAppColors.kAppPrimaryColor,
                         fontSize: 14,
@@ -173,7 +173,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                     const SizedBox(width: 50),
                     CheckboxWidget(
                       availableBonuses:
-                          profileInfo.userProfileData.amountOfBonuses!,
+                          profileInfo.userProfileData.userBonuses!,
                       totalSumOfOrder: cartProvider.localCart.totalSum,
                     ),
                   ]),

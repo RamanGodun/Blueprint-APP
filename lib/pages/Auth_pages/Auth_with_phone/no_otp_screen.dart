@@ -13,7 +13,7 @@ class NoOtpScreen extends StatefulWidget {
 
 class _NoOtpScreenState extends State<NoOtpScreen> {
   // vars
-  late GeneralInfoData? fetchedData;
+  late AdminDataModel? fetchedData;
   late String adminsEmail;
 
   final textStyle1 = const TextStyle(
@@ -34,7 +34,7 @@ class _NoOtpScreenState extends State<NoOtpScreen> {
 
   Future<void> _fetchGeneralData() async {
     fetchedData = await DMMethodsOnDB().fetchGeneralDataFromFirestore();
-    adminsEmail = fetchedData?.adminsEmail ?? "MyMail@gmail.com";
+    adminsEmail = fetchedData?.adminEmail ?? "MyMail@gmail.com";
     if (mounted) {
       setState(() {});
     }

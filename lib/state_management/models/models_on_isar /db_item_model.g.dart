@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'db_item.dart';
+part of 'db_item_model.dart';
 
 // **************************************************************************
 // IsarCollectionGenerator
@@ -163,15 +163,14 @@ P _dBItemDeserializeProp<P>(
     case 5:
       return (reader.readBoolOrNull(offset) ?? true) as P;
     case 6:
-      return (reader.readStringOrNull(offset) ?? AppStrings.pieces)
-          as P;
+      return (reader.readStringOrNull(offset) ?? AppStrings.pieces) as P;
     case 7:
       return (reader.readString(offset)) as P;
     case 8:
       return (reader.readDoubleOrNull(offset) ?? 1) as P;
     case 9:
-      return (reader.readStringOrNull(offset) ??
-          AppStrings.withoutSubCategory) as P;
+      return (reader.readStringOrNull(offset) ?? AppStrings.withoutSubCategory)
+          as P;
     case 10:
       return (reader.readDoubleOrNull(offset) ?? 0) as P;
     default:

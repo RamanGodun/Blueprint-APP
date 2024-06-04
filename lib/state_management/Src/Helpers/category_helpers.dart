@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../../Const_data/strings_4_app.dart';
 import '../../Models/app_enums.dart';
-import '../../Models/models with isar and to json code generation/category_model.dart';
-import '../../Models/models with isar and to json code generation/db_item.dart';
+import '../../Models/models_on_isar /model_of_category.dart';
+import '../../Models/models_on_isar /db_item_model.dart';
+import '../../Models/models_on_isar /model_of_subcategory.dart';
 import '../../Providers/providers/categories_provider.dart';
 import '../../Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../Custom_icons/app_icons.dart';

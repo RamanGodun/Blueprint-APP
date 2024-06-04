@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../State_management/Const_data/strings_4_app.dart';
-import '../../State_management/Models/models with isar and to json code generation/category_model.dart';
-import '../../State_management/Models/models with isar and to json code generation/item_model.dart';
+import '../../State_management/Models/models_on_isar /item_model.dart';
+import '../../State_management/Models/models_on_isar /model_of_subcategory.dart';
 import '../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
 import '../Static/mini_widgets.dart';

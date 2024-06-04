@@ -85,7 +85,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                                       selectedImageOfCustomer:
                                           selectedImageOfCustomer,
                                       profilePictureUrl: profileInfo
-                                          .userProfileData.profilePicture,
+                                          .userProfileData.userImageURL,
                                       onTap: () => selectImageOfCustomer()),
                                 ),
                               )),
@@ -271,7 +271,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
         newPictureURL: userPictureURL ?? "",
         isProfilePicture: true,
       );
-      profileInfo.userProfileData.profilePicture = userPictureURL;
+      profileInfo.userProfileData.userImageURL = userPictureURL;
     }
 
     await profileInfo.saveUserDataToFirebase(false);
@@ -286,11 +286,11 @@ class _CustomerInfoState extends State<CustomerInfo> {
       DateTime createdAt) async {
     cartProvider.setUserDataFromProfileProvider(
       userID: profileInfo.userProfileData.userId,
-      customerId: profileInfo.userProfileData.personalId,
-      customerPhone: profileInfo.userProfileData.phone4Delivery,
-      location: (profileInfo.userProfileData.deliveryPoint!.isNotEmpty)
-          ? "${profileInfo.userProfileData.town}. ${profileInfo.userProfileData.deliveryPoint}"
-          : "${profileInfo.userProfileData.town}",
+      customerId: profileInfo.userProfileData.userFullName,
+      customerPhone: profileInfo.userProfileData.userPhoneNumberForDelivery,
+      location: (profileInfo.userProfileData.userPostOfficeData!.isNotEmpty)
+          ? "${profileInfo.userProfileData.userAddress}. ${profileInfo.userProfileData.userPostOfficeData}"
+          : "${profileInfo.userProfileData.userAddress}",
       deliveryWay: profileInfo.userProfileData.deliveryWay,
       createdAt: createdAt,
       comments: profileInfo.userProfileData.comments,
@@ -351,22 +351,22 @@ class _CustomerInfoState extends State<CustomerInfo> {
     super.initState();
     final profileInfo = Provider.of<AuthProvider>(context, listen: false);
     textEditingControllers[0] =
-        TextEditingController(text: profileInfo.userProfileData.personalId);
+        TextEditingController(text: profileInfo.userProfileData.userFullName);
     textEditingControllers[1] = TextEditingController(
-        text: profileInfo.userProfileData.phone4Delivery!);
+        text: profileInfo.userProfileData.userPhoneNumberForDelivery!);
     textEditingControllers[2] = TextEditingController(
-        text: profileInfo.userProfileData.town!.isNotEmpty
-            ? profileInfo.userProfileData.town
+        text: profileInfo.userProfileData.userAddress!.isNotEmpty
+            ? profileInfo.userProfileData.userAddress
             : "");
     textEditingControllers[3] = TextEditingController(
         text: profileInfo.userProfileData.comments!.isNotEmpty
             ? profileInfo.userProfileData.comments
             : "відсутні");
     textEditingControllers[4] = TextEditingController(
-        text: profileInfo.userProfileData.personalNickName);
+        text: profileInfo.userProfileData.userAccountName);
     textEditingControllers[5] = TextEditingController(
-        text: profileInfo.userProfileData.deliveryPoint!.isNotEmpty
-            ? profileInfo.userProfileData.deliveryPoint
+        text: profileInfo.userProfileData.userPostOfficeData!.isNotEmpty
+            ? profileInfo.userProfileData.userPostOfficeData
             : null);
   }
 

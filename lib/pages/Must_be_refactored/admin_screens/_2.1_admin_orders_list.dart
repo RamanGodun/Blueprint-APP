@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../State_management/Models/_0_models.dart';
+import '../../../State_management/Models/models_for_store/cart_item_model.dart';
 import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
 import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Cards_and_tiles/_3_admin_order_card.dart';

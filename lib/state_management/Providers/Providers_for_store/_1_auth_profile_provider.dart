@@ -6,9 +6,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Models/_0_models.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+import '../../Models/models_for_store/profile_data_model.dart';
 import '../../Src/Helpers/dm_methods.dart';
 
 class AuthProvider extends ChangeNotifier {
@@ -25,23 +25,23 @@ class AuthProvider extends ChangeNotifier {
   bool get isAdmin => firebaseAuth.currentUser?.phoneNumber == "+381234567890";
   bool _isSignedIn = false;
   bool get isSignedIn => _isSignedIn;
-  ProfileInfoModel? _userProfileData;
-  ProfileInfoModel get userProfileData => _userProfileData ?? newProfileModel();
+  UserDataModel? _userProfileData;
+  UserDataModel get userProfileData => _userProfileData ?? newProfileModel();
 
-  ProfileInfoModel newProfileModel() {
-    return ProfileInfoModel(
+  UserDataModel newProfileModel() {
+    return UserDataModel(
       userId: firebaseAuth.currentUser!.uid,
-      personalId: "",
-      personalNickName: "",
-      phoneNumber: firebaseAuth.currentUser!.phoneNumber,
-      phone4Delivery: "",
-      profilePicture: "",
-      deliveryPoint: "",
-      town: "",
-      wayOfDelivery: "",
+      userFullName: "",
+      userAccountName: "",
+      userPhoneNumber: firebaseAuth.currentUser!.phoneNumber,
+      userPhoneNumberForDelivery: "",
+      userImageURL: "",
+      userPostOfficeData: "",
+      userAddress: "",
+      userSelectedWayOfDelivery: "",
       comments: "",
-      amountOfBonuses: 0,
-      totalSumOfOrders: 0.0,
+      userBonuses: 0,
+      usersSumOfAllOrders: 0.0,
     );
   }
 
@@ -74,10 +74,10 @@ class AuthProvider extends ChangeNotifier {
       print('ProfileInfoModel is empty, cannot save data to SharedPreferences');
     }
     // get rid of it in the future
-    if (_userProfileData?.personalNickName?.isNotEmpty == true &&
-        _userProfileData?.phoneNumber?.isNotEmpty == true) {
-      await sP.setString('account', _userProfileData!.personalNickName!);
-      await sP.setString('phoneNumber', _userProfileData!.phoneNumber!);
+    if (_userProfileData?.userAccountName?.isNotEmpty == true &&
+        _userProfileData?.userPhoneNumber?.isNotEmpty == true) {
+      await sP.setString('account', _userProfileData!.userAccountName!);
+      await sP.setString('phoneNumber', _userProfileData!.userPhoneNumber!);
     }
   }
 
@@ -124,8 +124,8 @@ class AuthProvider extends ChangeNotifier {
   Future<void> signInWithPhone(
       BuildContext context, String phoneNumber, String? userName) async {
     try {
-      _userProfileData?.personalNickName = userName ?? "";
-      _userProfileData?.phoneNumber = phoneNumber;
+      _userProfileData?.userAccountName = userName ?? "";
+      _userProfileData?.userPhoneNumber = phoneNumber;
       await firebaseAuth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         codeSent: (verificationId, forceResendingToken) {
@@ -182,28 +182,28 @@ class AuthProvider extends ChangeNotifier {
       String? newDeliveryMethod,
       int? newAmountOfBonuses}) {
     if (newPersonalId != null) {
-      _userProfileData?.personalId = newPersonalId;
+      _userProfileData?.userFullName = newPersonalId;
     }
     if (newPhoneNumber != null) {
-      _userProfileData?.phone4Delivery = newPhoneNumber;
+      _userProfileData?.userPhoneNumberForDelivery = newPhoneNumber;
     }
     if (newTown != null) {
-      _userProfileData?.town = newTown;
+      _userProfileData?.userAddress = newTown;
     }
     if (newDeliveryPoint != null) {
-      _userProfileData?.deliveryPoint = newDeliveryPoint;
+      _userProfileData?.userPostOfficeData = newDeliveryPoint;
     }
     if (newComments != null) {
       _userProfileData?.comments = newComments;
     }
     if (newPersonalNickName != null) {
-      _userProfileData?.personalNickName = newPersonalNickName;
+      _userProfileData?.userAccountName = newPersonalNickName;
     }
     if (newDeliveryMethod != null) {
-      _userProfileData?.wayOfDelivery = newDeliveryMethod;
+      _userProfileData?.userSelectedWayOfDelivery = newDeliveryMethod;
     }
     if (newAmountOfBonuses != null) {
-      _userProfileData?.amountOfBonuses = newAmountOfBonuses;
+      _userProfileData?.userBonuses = newAmountOfBonuses;
     }
     notifyListeners();
   }

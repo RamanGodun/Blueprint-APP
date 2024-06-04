@@ -87,12 +87,12 @@ class _PersonalDataEditing4AdminState extends State<PersonalDataEditing4Admin> {
                                     onTap: () => selectImage4Admin(),
                                     child: (selectedImageOfAdmin != null)
                                         ? Image.file(selectedImageOfAdmin!)
-                                        : (profile.userProfileData
-                                                .profilePicture!.isNotEmpty)
+                                        : (profile.userProfileData.userImageURL!
+                                                .isNotEmpty)
                                             ? SizedBox(
                                                 child: Image.network(
                                                     profile.userProfileData
-                                                        .profilePicture!,
+                                                        .userImageURL!,
                                                     fit: BoxFit.cover,
                                                     width: double.infinity,
                                                     height: double.infinity))
@@ -158,11 +158,11 @@ class _PersonalDataEditing4AdminState extends State<PersonalDataEditing4Admin> {
                       // saving profile data on DB
                       generalData.updateGeneralInfoDataInProvider(
                           newAdminPhoneNumber:
-                              profileInfo.userProfileData.phoneNumber,
+                              profileInfo.userProfileData.userPhoneNumber,
                           newAdminPicture:
-                              profileInfo.userProfileData.profilePicture,
+                              profileInfo.userProfileData.userImageURL,
                           newAdminsNickName:
-                              profileInfo.userProfileData.personalNickName);
+                              profileInfo.userProfileData.userAccountName);
                       await generalData.saveGeneralDataToFirebase();
 
                       await profile.saveUserDataToFirebase(false);
@@ -229,7 +229,7 @@ class _PersonalDataEditing4AdminState extends State<PersonalDataEditing4Admin> {
         fileNameOnStorage: profileInfo.userProfileData.userId,
         isProduct: false,
         isCertificate: false);
-    profileInfo.userProfileData.profilePicture = adminPictureURL;
+    profileInfo.userProfileData.userImageURL = adminPictureURL;
     await DMMethodsOnDB().updateProfileOrCertificatePictureURLonDB(
         context: context,
         userId: profileInfo.userProfileData.userId,
@@ -261,9 +261,9 @@ class _PersonalDataEditing4AdminState extends State<PersonalDataEditing4Admin> {
     generalInfo = Provider.of<CommonDataProvider>(context, listen: false);
 
     textEditingController1 = TextEditingController(
-        text: profileInfo.userProfileData.personalNickName);
+        text: profileInfo.userProfileData.userAccountName);
     textEditingController2 =
-        TextEditingController(text: generalInfo.generalInfoData.adminsEmail);
+        TextEditingController(text: generalInfo.generalInfoData.adminEmail);
 
     for (int i = 0;
         i < generalInfo.sellerPointsInfo.sellerPointsTowns.length;

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../../../State_management/Models/_0_models.dart';
+import '../../../State_management/Models/models_for_store/cart_item_model.dart';
+import '../../../State_management/Models/models_for_store/profile_data_model.dart';
 import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
 import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
 import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
@@ -26,20 +27,22 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
     //vars
     final AuthProvider proFile =
         Provider.of<AuthProvider>(context, listen: true);
-    final ProfileInfoModel proFileInfo = proFile.userProfileData;
+    final UserDataModel proFileInfo = proFile.userProfileData;
     final CartsProvider cartProvider =
         Provider.of<CartsProvider>(context, listen: true);
 
     List<String> customerData2 = [
-      (proFileInfo.personalId!.isNotEmpty)
-          ? proFileInfo.personalId!
+      (proFileInfo.userFullName!.isNotEmpty)
+          ? proFileInfo.userFullName!
           : "Дані ще не введено",
-      (proFileInfo.phone4Delivery!.isNotEmpty)
-          ? proFileInfo.phone4Delivery!
+      (proFileInfo.userPhoneNumberForDelivery!.isNotEmpty)
+          ? proFileInfo.userPhoneNumberForDelivery!
           : "Телефон не вказаний",
-      (proFileInfo.town!.isNotEmpty) ? proFileInfo.town! : "Адреса не вказана",
-      (proFileInfo.wayOfDelivery!.isNotEmpty)
-          ? proFileInfo.wayOfDelivery!
+      (proFileInfo.userAddress!.isNotEmpty)
+          ? proFileInfo.userAddress!
+          : "Адреса не вказана",
+      (proFileInfo.userSelectedWayOfDelivery!.isNotEmpty)
+          ? proFileInfo.userSelectedWayOfDelivery!
           : "Спосіб доставки не обрано",
     ];
 

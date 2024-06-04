@@ -10,6 +10,9 @@ import 'package:provider/provider.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 import '../../Models/_0_models.dart';
+import '../../Models/models_for_store/cart_item_model.dart';
+import '../../Models/models_for_store/cashback_model.dart';
+import '../../Models/models_for_store/product_model.dart';
 import '../../Models/models_for_store/profile_data_model.dart';
 import '../../Providers/Providers_for_store/_1_common_data_provider.dart';
 
@@ -33,7 +36,7 @@ class DMMethodsOnDB {
   //
   Future<void> saveUserDataToFirebase1({
     required String userId,
-    required ProfileDataModel userProfileData,
+    required UserDataModel userProfileData,
     required bool isRegistration,
   }) async {
     try {
@@ -53,13 +56,13 @@ class DMMethodsOnDB {
     }
   }
 
-  Future<ProfileDataModel?> getUserDataFromFirestore1(String userId) async {
+  Future<UserDataModel?> getUserDataFromFirestore1(String userId) async {
     try {
       final snapshotOfProfileData = await profilesCollection.doc(userId).get();
 
       if (snapshotOfProfileData.exists) {
         final data = snapshotOfProfileData.data() as Map<String, dynamic>;
-        final userProfileData = ProfileDataModel.fromMap(data);
+        final userProfileData = UserDataModel.fromMap(data);
         return userProfileData;
       } else {
         // print('Такого профілю не існує');
@@ -131,7 +134,7 @@ class DMMethodsOnDB {
 //
 
   Future<void> updateGeneralInfoOnFirebase(
-      BuildContext context, GeneralInfoData generalInfoData) async {
+      BuildContext context, AdminDataModel generalInfoData) async {
     try {
       final docSnapshot = await FirebaseFirestore.instance
           .collection('General/')
@@ -232,7 +235,7 @@ class DMMethodsOnDB {
     }
   }
 
-  Future<void> saveGeneralDataToFirebase(GeneralInfoData generalData) async {
+  Future<void> saveGeneralDataToFirebase(AdminDataModel generalData) async {
     try {
       await generalInfoCollection.doc('general data').set(generalData.toMap());
       print('General data saved successfully');
@@ -365,7 +368,7 @@ class DMMethodsOnDB {
     }
   }
 
-  Future<GeneralInfoData?> fetchGeneralDataFromFirestore() async {
+  Future<AdminDataModel?> fetchGeneralDataFromFirestore() async {
     try {
       final docSnapshot = await FirebaseFirestore.instance
           .collection('General/')
@@ -374,7 +377,7 @@ class DMMethodsOnDB {
 
       if (docSnapshot.exists) {
         final data = docSnapshot.data() as Map<String, dynamic>;
-        final generalData = GeneralInfoData.fromMap(data);
+        final generalData = AdminDataModel.fromMap(data);
         return generalData;
       } else {
         return null;
@@ -652,7 +655,7 @@ class DMMethodsOnDB {
   //
   Future<void> saveUserDataToFirebase({
     required String userId,
-    required ProfileInfoModel userProfileData,
+    required UserDataModel userProfileData,
     required bool isNewUser,
   }) async {
     try {
@@ -677,13 +680,13 @@ class DMMethodsOnDB {
     }
   }
 
-  Future<ProfileInfoModel?> getUserDataFromFirestore(String userId) async {
+  Future<UserDataModel?> getUserDataFromFirestore(String userId) async {
     try {
       final snapshotOfProfileData = await profilesCollection.doc(userId).get();
 
       if (snapshotOfProfileData.exists) {
         final data = snapshotOfProfileData.data() as Map<String, dynamic>;
-        final userProfileData = ProfileInfoModel.fromMap(data);
+        final userProfileData = UserDataModel.fromMap(data);
         return userProfileData;
       } else {
         print('Profile document does not exist');

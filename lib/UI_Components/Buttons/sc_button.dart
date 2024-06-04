@@ -4,7 +4,8 @@ import 'package:flutter/scheduler.dart';
 
 import '../../State_management/Const_data/strings_4_app.dart';
 import '../../State_management/Models/app_enums.dart';
-import '../../State_management/Models/models with isar and to json code generation/category_model.dart';
+import '../../State_management/Models/models_on_isar /model_of_category.dart';
+import '../../State_management/Models/models_on_isar /model_of_subcategory.dart';
 import '../../State_management/Providers/providers/categories_provider.dart';
 import '../../State_management/Providers/providers/items_provider.dart';
 import '../../State_management/Src/Helpers/category_helpers.dart';

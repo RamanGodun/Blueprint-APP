@@ -1,48 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
-
-import 'category_model.dart';
-part 'item_model.g.dart';
-
-/*
-for code generation run in terminal: 
-flutter pub run build_runner build --delete-conflicting-outputs 
- */
-@JsonSerializable()
-class ItemModel {
-  // @JsonKey()
-  int id;
-  final String name;
-  double quantity;
-  final String measurementUnit;
-  double totalAmount;
-  final DateTime date;
-  bool isPurchase;
-  bool isBlueprint;
-  Category? selectedCategory;
-
-  ItemModel({
-    this.id = -1,
-    required this.name,
-    this.quantity = 1,
-    this.measurementUnit = "шт",
-    this.totalAmount = 0,
-    required this.date,
-    this.isPurchase = true,
-    this.isBlueprint = false,
-    this.selectedCategory,
-  });
-
-  factory ItemModel.fromJson(Map<String, dynamic> json) =>
-      _$ItemModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ItemModelToJson(this);
-}
-
-/*
-import '../../src/utils/categories_helper.dart';
-import '../../src/utils/text_4_localization.dart';
-import 'category_model.dart';
-import 'db_item.dart';
+import '../../Const_data/strings_4_app.dart';
+import '../../Src/Helpers/category_helpers.dart';
+import 'model_of_category.dart';
+import 'db_item_model.dart';
+import 'model_of_subcategory.dart';
 
 class ItemModel {
   int id;
@@ -88,7 +48,7 @@ class ItemModel {
       isPurchase: isPurchase,
       isBlueprint: isBlueprint,
       subCategoryName:
-          selectedSubCategory?.title ?? TextForLocalization.withoutSubCategory,
+          selectedSubCategory?.title ?? AppStrings.withoutSubCategory,
     );
   }
 
@@ -148,5 +108,3 @@ class ItemModel {
   }
 //
 }
-
- */

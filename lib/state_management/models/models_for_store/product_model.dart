@@ -1,65 +1,82 @@
 class ProductModel {
-  String productId;
-  String productName;
-  double productPrice;
-  String productImageURL;
-  int productQuantity;
-  String productDescription;
-  bool isHoney;
+  final String id;
+  String nameOfProduct;
+  String pictureOfProduct;
+  int priceOfProduct;
+  double quantityLeft;
+  bool isMainCategory;
+  String shortDescription;
+  List<String>? longDescription;
   bool? isDiscount;
-  int? discountPercentage;
-  double? discountPrice;
+  int? discountAmount;
+  bool? isDiscountPlus;
+  List<bool>? discountsLevel;
 
   ProductModel({
-    required this.productId,
-    required this.productName,
-    required this.productPrice,
-    required this.productImageURL,
-    required this.productQuantity,
-    required this.productDescription,
-    required this.isHoney,
-    this.isDiscount,
-    this.discountPercentage,
-    this.discountPrice,
+    required this.id,
+    this.nameOfProduct = "",
+    this.pictureOfProduct = "",
+    this.priceOfProduct = 0,
+    this.quantityLeft = 0.0,
+    this.isMainCategory = false,
+    this.shortDescription = "",
+    this.longDescription = const ["", "", "", "", ""],
+    this.isDiscount = false,
+    this.discountAmount = 0,
+    this.isDiscountPlus = false,
+    this.discountsLevel = const [false, false, false, false, false],
   });
 
-  double get calculatedNewPrice {
+  // розрахунок акційної ціни
+  int get calculatedNewPrice {
     if (isDiscount == true) {
-      double discountPercentage2 = (100 - discountPercentage!) / 100;
-      double newPrice = (productPrice * discountPercentage2);
+      double discountPercentage = (100 - discountAmount!) / 100;
+      int newPrice = (priceOfProduct * discountPercentage).round();
       return newPrice;
     } else {
-      return productPrice;
+      return priceOfProduct;
     }
   }
 
+  // Метод для перетворення об'єкту ProductModel на Map<String, dynamic>
   Map<String, dynamic> toMap() {
     return {
-      'productId': productId,
-      'productName': productName,
-      'productPrice': productPrice,
-      'productImageURL': productImageURL,
-      'productQuantity': productQuantity,
-      'productDescription': productDescription,
-      'isHoney': isHoney,
+      'id': id,
+      'nameOfProduct': nameOfProduct,
+      'isMainCategory': isMainCategory,
+      'pictureOfProduct': pictureOfProduct,
+      'priceOfProduct': priceOfProduct,
+      'quantityLeft': quantityLeft,
+      'shortDescription': shortDescription,
+      'longDescription': longDescription,
       'isDiscount': isDiscount,
-      'discountPercentage': discountPercentage,
-      'discountPrice': discountPrice,
+      'discountAmount': discountAmount,
+      'isDiscountPlus': isDiscountPlus,
+      'discountsLevel': discountsLevel,
     };
   }
 
+// Метод для перетворення Map<String, dynamic> об'єкту на ProductModel
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      productId: map['productId'] ?? '',
-      productName: map['productName'] ?? '',
-      productPrice: (map['productPrice']) ?? 0,
-      productImageURL: map['productImageURL'] ?? '',
-      productQuantity: map['productQuantity'] ?? 0,
-      productDescription: map['productDescription'] ?? '',
-      isHoney: map['isHoney'] ?? true,
+      id: map['id'],
+      nameOfProduct: map['nameOfProduct'] ?? "",
+      isMainCategory: map['isMainCategory'] ?? true,
+      pictureOfProduct: map['pictureOfProduct'] ?? "",
+      priceOfProduct: (map['priceOfProduct']) ?? 5,
+      quantityLeft: map['quantityLeft'] ?? 0.0,
+      shortDescription: map['shortDescription'] ?? "",
+      longDescription: (map['longDescription'] as List<dynamic>?)
+              ?.map((item) => item as String)
+              .toList() ??
+          ["", "", "", "", ""],
       isDiscount: map['isDiscount'] ?? false,
-      discountPercentage: map['discountPercentage'] ?? 0,
-      discountPrice: map['discountPrice'] ?? 0,
+      discountAmount: map['discountAmount'] ?? 0,
+      isDiscountPlus: map['isDiscountPlus'] ?? true,
+      discountsLevel: (map['discountsLevel'] as List<dynamic>?)
+              ?.map((item) => item as bool)
+              .toList() ??
+          const [false, false, false, false, false],
     );
   }
 }

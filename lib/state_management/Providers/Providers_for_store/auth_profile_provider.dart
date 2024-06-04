@@ -27,23 +27,23 @@ class AuthProvider extends ChangeNotifier {
   bool _isSignedIn = false;
   bool get isSignedIn => _isSignedIn;
   late String _nameOfAccount;
-  ProfileDataModel? _userProfileData;
-  ProfileDataModel get userProfileData => _userProfileData ?? newProfileModel();
+  UserDataModel? _userProfileData;
+  UserDataModel get userProfileData => _userProfileData ?? newProfileModel();
 
-  ProfileDataModel newProfileModel() {
-    return ProfileDataModel(
-      userId: firebaseAuth.currentUser!.uid,
-      phoneNumber: firebaseAuth.currentUser!.phoneNumber,
-      deliveryPhoneNumber: "",
-      nameOfAccount: _nameOfAccount,
-      fullName: "",
-      userImageURL: "",
-      userAddress: "",
-      userPostOfficeData: "",
-      selectedWayOfDelivery: "",
-      bonuses: 0,
-      ordersTotalSum: 0.0,
-    );
+  UserDataModel newProfileModel() {
+    return UserDataModel(
+        userId: firebaseAuth.currentUser!.uid,
+        userPhoneNumber: firebaseAuth.currentUser!.phoneNumber,
+        userPhoneNumberForDelivery: "",
+        userAccountName: _nameOfAccount,
+        userFullName: "",
+        userImageURL: "",
+        userAddress: "",
+        userPostOfficeData: "",
+        userSelectedWayOfDelivery: "",
+        userBonuses: 0,
+        usersSumOfAllOrders: 0.0,
+        comments: "");
   }
 
   //
@@ -70,9 +70,9 @@ class AuthProvider extends ChangeNotifier {
 
   Future<void> saveUserDataToSP() async {
     SharedPreferences sP = await SharedPreferences.getInstance();
-    await sP.setString('account', _userProfileData!.nameOfAccount!);
+    await sP.setString('account', _userProfileData!.userAccountName!);
     await sP.setString(
-        'phoneNumber', _userProfileData!.phoneNumber!.substring(3));
+        'phoneNumber', _userProfileData!.userPhoneNumber!.substring(3));
     final String q = sP.getString('phoneNumber') ?? "phoneNumber is null";
     final String w = sP.getString('account') ?? "account is null";
     print(q);
@@ -111,8 +111,8 @@ class AuthProvider extends ChangeNotifier {
 
   Future<void> signInWithPhone(
       BuildContext context, String phoneNumber, String? nameOfAccount) async {
-    _userProfileData?.nameOfAccount = nameOfAccount ?? "";
-    _userProfileData?.phoneNumber = phoneNumber;
+    _userProfileData?.userAccountName = nameOfAccount ?? "";
+    _userProfileData?.userPhoneNumber = phoneNumber;
 
     try {
       await firebaseAuth.verifyPhoneNumber(
@@ -190,10 +190,10 @@ class AuthProvider extends ChangeNotifier {
   void updateProfileData({String? nameOfAccount, String? phoneNumber}) {
     if (phoneNumber != nameOfAccount) {
       _nameOfAccount = nameOfAccount!;
-      _userProfileData?.nameOfAccount = _nameOfAccount;
+      _userProfileData?.userAccountName = _nameOfAccount;
     }
     if (phoneNumber != null) {
-      _userProfileData?.phoneNumber = phoneNumber;
+      _userProfileData?.userPhoneNumber = phoneNumber;
     }
 
     notifyListeners();
