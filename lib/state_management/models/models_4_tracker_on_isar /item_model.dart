@@ -1,7 +1,8 @@
-import '../../Const_data/strings_4_app.dart';
+import 'package:blueprint_4app/State_management/Const_data/strings_4_app.dart';
+
 import '../../Src/Helpers/category_helpers.dart';
-import 'model_of_category.dart';
 import 'db_item_model.dart';
+import 'model_of_category.dart';
 import 'model_of_subcategory.dart';
 
 class ItemModel {

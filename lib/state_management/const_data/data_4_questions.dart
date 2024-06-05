@@ -3,8 +3,8 @@ import '../Models/models_4_FI_on_hive/question_model.dart';
 class QuestionAndAnswers {
   static final listOfQuestionsAndAnswers = [
     QuestionAndAnswersModel(
-      '     What are the main building blocks of Flutter UIs?',
-      [
+      questionText: '     What are the main building blocks of Flutter UIs?',
+      answers: [
         '     Widgets',
         '     Components',
         '     Blocks',
@@ -12,8 +12,8 @@ class QuestionAndAnswers {
       ],
     ),
     QuestionAndAnswersModel(
-      '     How are Flutter UIs built?',
-      [
+      questionText: '     How are Flutter UIs built?',
+      answers: [
         '     By combining widgets in code',
         '     By combining widgets in a visual editor',
         '     By defining widgets in config files',
@@ -21,8 +21,8 @@ class QuestionAndAnswers {
       ],
     ),
     QuestionAndAnswersModel(
-      '     What\'s the purpose of a StatefulWidget?',
-      [
+      questionText: '     What\'s the purpose of a StatefulWidget?',
+      answers: [
         '     Update UI as data changes',
         '     Update data as UI changes',
         '     Ignore data changes',
@@ -30,8 +30,9 @@ class QuestionAndAnswers {
       ],
     ),
     QuestionAndAnswersModel(
-      '     Which widget should you try to use more often: StatelessWidget or StatefulWidget?',
-      [
+      questionText:
+          '     Which widget should you try to use more often: StatelessWidget or StatefulWidget?',
+      answers: [
         '     StatelessWidget',
         '     StatefulWidget',
         '     Both are equally good',
@@ -39,8 +40,9 @@ class QuestionAndAnswers {
       ],
     ),
     QuestionAndAnswersModel(
-      '     Which widget should you try to use more often: StatelessWidget or StatefulWidget? This must be long question',
-      [
+      questionText:
+          '     Which widget should you try to use more often: StatelessWidget or StatefulWidget? This must be long question',
+      answers: [
         '     Here must be max long answer to check the UI rendering, ok?',
         '     StatefulWidget',
         '     Both are equally good',
@@ -48,8 +50,9 @@ class QuestionAndAnswers {
       ],
     ),
     QuestionAndAnswersModel(
-      '     What happens if you change data in a StatelessWidget?',
-      [
+      questionText:
+          '     What happens if you change data in a StatelessWidget?',
+      answers: [
         '     The UI is not updated',
         '     The UI is updated',
         '     The closest StatefulWidget is updated',
@@ -57,8 +60,9 @@ class QuestionAndAnswers {
       ],
     ),
     QuestionAndAnswersModel(
-      '     How should you update data inside of StatefulWidgets?',
-      [
+      questionText:
+          '     How should you update data inside of StatefulWidgets?',
+      answers: [
         '     By calling setState()',
         '     By calling updateData()',
         '     By calling updateUI()',

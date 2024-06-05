@@ -121,7 +121,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
       summary.add(
         {
           'question_index': i,
-          'question': QuestionAndAnswers.listOfQuestionsAndAnswers[i].text,
+          'question':
+              QuestionAndAnswers.listOfQuestionsAndAnswers[i].questionText,
           'correct_answer':
               QuestionAndAnswers.listOfQuestionsAndAnswers[i].answers[0],
           'user_answer': widget.chosenAnswers[i],
