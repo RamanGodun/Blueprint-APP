@@ -90,24 +90,6 @@ class AppRoutes {
           );
         },
       ),
-      // GoRoute(
-      //   path: '/start_page/hive_box',
-      //   name: 'HiveBoxPage',
-      //   pageBuilder: (context, state) {
-      //     return CustomTransitionPage(
-      //       key: state.pageKey,
-      //       child: HiveBoxPage(box: DIServiceLocator.instance.personBox),
-      //       transitionsBuilder:
-      //           (context, animation, secondaryAnimation, child) {
-      //         return CupertinoPageTransition(
-      //           primaryRouteAnimation: animation,
-      //           secondaryRouteAnimation: secondaryAnimation,
-      //           child: child,
-      //         );
-      //       },
-      //     );
-      //   },
-      // ),
       GoRoute(
         path: '/start_page/hive_box',
         name: 'HiveBoxPage',

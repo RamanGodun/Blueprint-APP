@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +86,7 @@ class _MyAnimatedBottomNavigationBarState
       // next is bottomNavigation for all app
       bottomNavigationBar: Container(
         padding: const EdgeInsets.only(right: 55, left: 55, bottom: 8),
-        color: colorScheme.background.withOpacity(isDarkScheme ? 0.5 : 0.87),
+        // color: colorScheme.surface.withOpacity(isDarkScheme ? 0.5 : 0.87),
         child: GNav(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 19),
           textStyle: Theme.of(context).textTheme.displaySmall,
@@ -131,7 +129,7 @@ class _MyAnimatedBottomNavigationBarState
       duration: const Duration(milliseconds: 750),
       activeBorder: activeBorderStyle,
       iconActiveColor: themeData.focusColor.withOpacity(0.5),
-      iconColor: themeData.colorScheme.onBackground.withOpacity(0.2),
+      // iconColor: themeData.colorScheme.onSurface.withOpacity(0.2),
       icon: icon,
       text: text,
       textStyle: themeData.textTheme.titleSmall!.copyWith(
