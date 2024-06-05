@@ -1,4 +1,4 @@
-import '../Models/models 4 interviewer app/question_model.dart';
+import '../Models/models_4_FI_on_hive/question_model.dart';
 
 class QuestionAndAnswers {
   static final listOfQuestionsAndAnswers = [

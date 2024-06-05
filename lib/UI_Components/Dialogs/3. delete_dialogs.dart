@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../State_management/Const_data/strings_4_app.dart';
-import '../../State_management/Models/models_on_isar /model_of_category.dart';
-import '../../State_management/Models/models_on_isar /model_of_subcategory.dart';
+import '../../State_management/Models/models_4_tracker_on_isar /model_of_category.dart';
+import '../../State_management/Models/models_4_tracker_on_isar /model_of_subcategory.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
 
 class DeleteDialog {

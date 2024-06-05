@@ -1,5 +1,6 @@
 import 'package:blueprint_4app/State_management/Src/App_routing/cupertino_page_transition.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../Pages/Auth_pages/auth_handler.dart';
 import '../../../Pages/GPT_pages/api_key_page.dart';
@@ -9,7 +10,11 @@ import '../../../Pages/SM _pages/hive_box.dart';
 import '../../../Pages/settings_page.dart';
 import '../../../Pages/start_page.dart';
 import '../../../State_management/Services/0.service_locator.dart';
+import '../../Models/models_4_FI_on_hive/model_4_hive.dart';
 
+/*
+Для уникнення ручного додавання кожного роуту, можна використовувати бібліотеки для кодогенерації роутів, наприклад auto_route.
+ */
 class AppRoutes {
   static final GoRouter router = GoRouter(
     routes: [
@@ -85,13 +90,32 @@ class AppRoutes {
           );
         },
       ),
+      // GoRoute(
+      //   path: '/start_page/hive_box',
+      //   name: 'HiveBoxPage',
+      //   pageBuilder: (context, state) {
+      //     return CustomTransitionPage(
+      //       key: state.pageKey,
+      //       child: HiveBoxPage(box: DIServiceLocator.instance.personBox),
+      //       transitionsBuilder:
+      //           (context, animation, secondaryAnimation, child) {
+      //         return CupertinoPageTransition(
+      //           primaryRouteAnimation: animation,
+      //           secondaryRouteAnimation: secondaryAnimation,
+      //           child: child,
+      //         );
+      //       },
+      //     );
+      //   },
+      // ),
       GoRoute(
         path: '/start_page/hive_box',
         name: 'HiveBoxPage',
         pageBuilder: (context, state) {
+          final personBox = DIServiceLocator.instance.get<Box<Person>>();
           return CustomTransitionPage(
             key: state.pageKey,
-            child: HiveBoxPage(box: DIServiceLocator.instance.personBox),
+            child: HiveBoxPage(box: personBox),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               return CupertinoPageTransition(

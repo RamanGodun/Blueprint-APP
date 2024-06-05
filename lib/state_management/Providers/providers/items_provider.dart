@@ -7,10 +7,10 @@ import 'package:path_provider/path_provider.dart';
 // import 'dart:async';
 
 import '../../Models/app_enums.dart';
-import '../../Models/models_on_isar /model_of_category.dart';
-import '../../Models/models_on_isar /db_item_model.dart';
-import '../../Models/models_on_isar /item_model.dart';
-import '../../Models/models_on_isar /model_of_subcategory.dart';
+import '../../Models/models_4_tracker_on_isar /model_of_category.dart';
+import '../../Models/models_4_tracker_on_isar /db_item_model.dart';
+import '../../Models/models_4_tracker_on_isar /item_model.dart';
+import '../../Models/models_4_tracker_on_isar /model_of_subcategory.dart';
 import '../../Src/Helpers/category_helpers.dart';
 import '../../Src/Helpers/helpers.dart';
 import '../../Src/Helpers/sh_prefs_helper.dart';

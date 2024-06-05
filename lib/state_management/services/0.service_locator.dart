@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../UI_Components/Static/widgets_on_get_it.dart';
-import '../Models/models_on_hive/model_4_hive.dart';
+import '../Models/models_4_FI_on_hive/model_4_hive.dart';
 import 'animation_controller_service.dart';
 
 class DIServiceLocator {
@@ -20,29 +20,50 @@ class DIServiceLocator {
   GetIt get getIt => _getIt;
 
   Future<void> setupDependencies() async {
+    await _setupSharedPreferences();
+    _setupSecureStorage();
+    _setupOpenAiService();
+    _setupStaticWidgets();
+    await _setupIsarService();
+    await _setupHiveBox();
+    _setupAnimationService();
+  }
+
+  Future<void> _setupSharedPreferences() async {
     if (!_getIt.isRegistered<SharedPreferences>()) {
       final prefs = await SharedPreferences.getInstance();
       _getIt.registerSingleton<SharedPreferences>(prefs);
     }
+  }
+
+  void _setupSecureStorage() {
     if (!_getIt.isRegistered<FlutterSecureStorage>()) {
       const secureStorage = FlutterSecureStorage();
       _getIt.registerSingleton<FlutterSecureStorage>(secureStorage);
     }
+  }
 
+  void _setupOpenAiService() {
     if (!_getIt.isRegistered<OpenAiService>()) {
       _getIt.registerSingleton<OpenAiService>(OpenAiService());
     }
+  }
 
+  void _setupStaticWidgets() {
     if (!_getIt.isRegistered<StaticWidgetsOnGetIt>()) {
       getIt.registerSingleton<StaticWidgetsOnGetIt>(StaticWidgetsOnGetIt());
     }
+  }
 
+  Future<void> _setupIsarService() async {
     if (!_getIt.isRegistered<IsarService>()) {
       final isarService = IsarService();
       await isarService.initializeIsar();
       _getIt.registerSingleton<IsarService>(isarService);
     }
+  }
 
+  Future<void> _setupHiveBox() async {
     if (!_getIt.isRegistered<Box<Person>>()) {
       final appDocumentDir = await getApplicationDocumentsDirectory();
       await Hive.initFlutter(appDocumentDir.path);
@@ -50,7 +71,9 @@ class DIServiceLocator {
       var personBox = await Hive.openBox<Person>('personBox');
       _getIt.registerSingleton<Box<Person>>(personBox);
     }
+  }
 
+  void _setupAnimationService() {
     if (!_getIt.isRegistered<AnimationService>()) {
       _getIt.registerSingleton<AnimationService>(AnimationService());
     }
