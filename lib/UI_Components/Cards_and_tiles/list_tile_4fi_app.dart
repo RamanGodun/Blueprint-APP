@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../../State_management/Models/models_4_FI_on_hive/question_model.dart';
 import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../Static/mini_widgets.dart';
 import '../0_Widgets_STYLING/list_tile_layouts.dart';
 
 class CustomListTile extends StatelessWidget {
-  final void Function(BuildContext)? onEditPressed;
+  final void Function(BuildContext) onEditPressed;
+
   final bool isCorrectAnswer;
-  final Map<String, Object> itemData;
-  const CustomListTile(
-      {super.key,
-      required this.onEditPressed,
-      required this.isCorrectAnswer,
-      required this.itemData});
+  final QuestionAndAnswersModel itemData;
+  final int questionIndex;
+
+  const CustomListTile({
+    super.key,
+    required this.onEditPressed,
+    required this.isCorrectAnswer,
+    required this.itemData,
+    required this.questionIndex,
+  });
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
     final TextTheme textTheme = theme.textTheme;
+
     return Material(
       color: Colors.transparent,
       child: Stack(children: [
@@ -31,7 +38,7 @@ class CustomListTile extends StatelessWidget {
                 backgroundColor: colorScheme.surface.withOpacity(0.57),
                 foregroundColor: colorScheme.primary.withOpacity(0.9),
                 borderRadius: BorderRadius.circular(5),
-                onPressed: onEditPressed,
+                onPressed: onEditPressed, // Правильний виклик
                 icon: Icons.query_stats_outlined,
               ),
             ],
@@ -61,13 +68,13 @@ class CustomListTile extends StatelessWidget {
                   child: MiniWidgets.isAnswerCorrectIdentifier(
                     context: context,
                     isCorrectAnswer: isCorrectAnswer,
-                    questionIndex: itemData['question_index'] as int,
+                    questionIndex: questionIndex + 1,
                   ),
                 ),
                 LayoutId(
                   id: "question",
                   child: Text(
-                    itemData['question'] as String,
+                    itemData.questionText,
                     style: textTheme.labelSmall?.copyWith(
                       height: 1.15,
                     ),
@@ -77,7 +84,7 @@ class CustomListTile extends StatelessWidget {
                 LayoutId(
                   id: "answer label",
                   child: Text(
-                    "your answer:  ",
+                    "Your answer:",
                     style: textTheme.bodySmall?.copyWith(
                       color: colorScheme.onSurface.withOpacity(0.55),
                       height: 0.95,
@@ -90,7 +97,7 @@ class CustomListTile extends StatelessWidget {
                 LayoutId(
                   id: "answer",
                   child: Text(
-                    itemData['user_answer'] as String,
+                    itemData.userAnswer,
                     style: textTheme.bodyMedium?.copyWith(
                       color: isCorrectAnswer
                           ? ThisAppColors.kAppPrimaryColor

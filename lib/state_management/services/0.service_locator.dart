@@ -7,7 +7,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../UI_Components/Static/widgets_on_get_it.dart';
-import '../Models/models_4_FI_on_hive/model_4_hive.dart';
+import '../Models/models_4_FI_on_hive/model_4_hive.dart' as model_hive;
+import '../Models/models_4_FI_on_hive/model_4fi_on_hive.dart'
+    as question_model_hive; // Переконайтеся, що це правильний шлях до файлу моделі
 import 'animation_controller_service.dart';
 
 class DIServiceLocator {
@@ -64,12 +66,24 @@ class DIServiceLocator {
   }
 
   Future<void> _setupHiveBox() async {
-    if (!_getIt.isRegistered<Box<Person>>()) {
-      final appDocumentDir = await getApplicationDocumentsDirectory();
-      await Hive.initFlutter(appDocumentDir.path);
-      Hive.registerAdapter(PersonAdapter());
-      var personBox = await Hive.openBox<Person>('personBox');
-      _getIt.registerSingleton<Box<Person>>(personBox);
+    final appDocumentDir = await getApplicationDocumentsDirectory();
+    await Hive.initFlutter(appDocumentDir.path);
+
+    if (!_getIt.isRegistered<Box<model_hive.Person>>()) {
+      Hive.registerAdapter(model_hive.PersonAdapter());
+      var personBox = await Hive.openBox<model_hive.Person>('personBox');
+      _getIt.registerSingleton<Box<model_hive.Person>>(personBox);
+    }
+
+    if (!_getIt
+        .isRegistered<Box<question_model_hive.QuestionAndAnswersModelHive>>()) {
+      Hive.registerAdapter(question_model_hive
+          .QuestionAndAnswersModelHiveAdapter()); // Переконайтеся, що цей адаптер існує і правильно імпортований
+      var questionBox =
+          await Hive.openBox<question_model_hive.QuestionAndAnswersModelHive>(
+              'questionBox');
+      _getIt.registerSingleton<
+          Box<question_model_hive.QuestionAndAnswersModelHive>>(questionBox);
     }
   }
 
@@ -83,5 +97,7 @@ class DIServiceLocator {
     return _getIt.get<T>();
   }
 
-  Box<Person> get personBox => _getIt.get<Box<Person>>();
+  Box<model_hive.Person> get personBox => _getIt.get<Box<model_hive.Person>>();
+  Box<question_model_hive.QuestionAndAnswersModelHive> get questionBox =>
+      _getIt.get<Box<question_model_hive.QuestionAndAnswersModelHive>>();
 }

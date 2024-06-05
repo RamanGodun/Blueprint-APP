@@ -6,9 +6,10 @@ abstract class ThisAppColors {
       createMaterialColor(kAppPrimaryColor);
 
   static const Color kSecondaryColor = Color.fromARGB(255, 69, 127, 155);
-  static const Color kSecondaryDarkColor = Color.fromARGB(198, 124, 170, 194);
-  static const Color kSecondaryVariant = Color.fromARGB(198, 124, 170, 194);
+  static const Color kSecondaryDarkColor = Color.fromARGB(255, 124, 170, 194);
+  static const Color kSecondaryVariant = Color.fromARGB(255, 124, 170, 194);
 
+  static const Color green = Colors.green;
   static const Color kErrorColor = Color(0xFFFF453A);
   static const Color kErrorColorDark = Color.fromARGB(255, 231, 122, 122);
   static const Color kOnErrorColor = Color.fromARGB(255, 3, 40, 34);

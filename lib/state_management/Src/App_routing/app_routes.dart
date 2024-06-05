@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../Pages/Auth_pages/auth_handler.dart';
+import '../../../Pages/FI/2.results_screen.dart';
+import '../../../Pages/FI/question_handler.dart';
 import '../../../Pages/GPT_pages/api_key_page.dart';
 import '../../../Pages/GPT_pages/send_prompt.dart';
 import '../../../Pages/Others_pages/textfield_page.dart';
@@ -134,6 +136,42 @@ class AppRoutes {
           return CustomTransitionPage(
             key: state.pageKey,
             child: const SendPromptPage(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return CupertinoPageTransition(
+                primaryRouteAnimation: animation,
+                secondaryRouteAnimation: secondaryAnimation,
+                child: child,
+              );
+            },
+          );
+        },
+      ),
+      GoRoute(
+        path: '/start_page/question_handler',
+        name: 'QuestionHandler',
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const QuestionHandler(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return CupertinoPageTransition(
+                primaryRouteAnimation: animation,
+                secondaryRouteAnimation: secondaryAnimation,
+                child: child,
+              );
+            },
+          );
+        },
+      ),
+      GoRoute(
+        path: '/start_page/question_handler/fi_results',
+        name: 'ResultsScreen',
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const ResultsScreen(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               return CupertinoPageTransition(

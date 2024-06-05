@@ -9,17 +9,14 @@ flutter pub run build_runner build --delete-conflicting-outputs
 class QuestionAndAnswersModel {
   final String questionText;
   final List<String> answers;
-  int currentQuestion;
   String userAnswer;
   bool isUserAnswerIsCorrect;
-  List<int>
-      quantityOfCorrectAndTotalAnswersOfCurrentQuestion; // in such way will be [1, 5]
+  List<int> quantityOfCorrectAndTotalAnswersOfCurrentQuestion;
   double correctAnswerPercentage;
 
   QuestionAndAnswersModel({
     required this.questionText,
     required this.answers,
-    this.currentQuestion = 0,
     this.userAnswer = '',
     this.isUserAnswerIsCorrect = false,
     this.quantityOfCorrectAndTotalAnswersOfCurrentQuestion = const [0, 0],
@@ -61,6 +58,10 @@ class QuestionAndAnswersModel {
 
   Map<String, dynamic> toJson() => _$QuestionAndAnswersModelToJson(this);
 }
+
+
+
+
 
 
 /*

@@ -80,6 +80,14 @@ class _StartPageState extends State<StartPage> {
                   },
                   buttonText: "To Chat GPT prompts",
                 ),
+                const SizedBox(height: 20),
+                StaticCustomButtons.customButton(
+                  context,
+                  onPressed: () {
+                    context.pushNamed('QuestionHandler');
+                  },
+                  buttonText: "To Questions Manager",
+                ),
               ],
             ),
           ),
