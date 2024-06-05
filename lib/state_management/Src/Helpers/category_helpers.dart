@@ -6,7 +6,7 @@ import '../../Models/app_enums.dart';
 import '../../Models/models_4_tracker_on_isar /model_of_category.dart';
 import '../../Models/models_4_tracker_on_isar /db_item_model.dart';
 import '../../Models/models_4_tracker_on_isar /model_of_subcategory.dart';
-import '../../Providers/providers/categories_provider.dart';
+import '../../Providers/Provider_4_tracker/categories_provider.dart';
 import '../../Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../Custom_icons/app_icons.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:ui' as ui;
 import '../../../State_management/Models/models_for_store/cart_item_model.dart';
-import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
+import '../../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Others/dash_divider.dart';
 import '_2.1_admin_orders_list.dart';

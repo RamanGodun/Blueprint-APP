@@ -5,7 +5,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../State_management/Const_data/strings_4_app.dart';
-import '../../State_management/Providers/providers/items_provider.dart';
+import '../../State_management/Providers/Provider_4_tracker/items_provider.dart';
 import '../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
 import '../../UI_Components/Dialogs/4.pie_chart_dialog.dart';

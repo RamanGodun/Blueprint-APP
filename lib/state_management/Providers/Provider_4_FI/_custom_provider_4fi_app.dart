@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/foundation.dart';
-import '../Models/models_4_FI_on_hive/question_model.dart';
+import '../../Models/models_4_FI_on_hive/question_model.dart';
 
 class QuestionAndAnswersProvider extends ChangeNotifier {
   QuestionAndAnswersProvider() {

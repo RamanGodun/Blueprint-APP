@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import '../../State_management/Providers/_custom_provider_4fi_app.dart';
+import '../../State_management/Providers/Provider_4_FI/_custom_provider_4fi_app.dart';
 import '../../UI_Components/Cards_and_tiles/list_tile_4fi_app.dart';
 import 'manager_of_questions.dart';
 

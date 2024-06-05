@@ -9,7 +9,7 @@ import '../../State_management/Models/models_4_FI_on_hive/hive_adapter.dart';
 import '../../State_management/Models/models_4_FI_on_hive/model_4fi_on_hive.dart';
 import '../../State_management/Services/0.service_locator.dart';
 import '../../State_management/Src/Helpers/my_change_notifier_provider.dart';
-import '../../State_management/Providers/_custom_provider_4fi_app.dart';
+import '../../State_management/Providers/Provider_4_FI/_custom_provider_4fi_app.dart';
 import '../../State_management/Models/models_4_FI_on_hive/question_model.dart';
 
 class InheritedQuestionManager extends StatefulWidget {

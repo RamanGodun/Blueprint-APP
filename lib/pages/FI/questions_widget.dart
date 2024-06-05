@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../State_management/Providers/_custom_provider_4fi_app.dart';
+import '../../State_management/Providers/Provider_4_FI/_custom_provider_4fi_app.dart';
 import '../../State_management/Src/Helpers/helpers.dart';
 import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
-import '2.results_screen.dart';
 import 'manager_of_questions.dart';
 
 class QuestionWidget extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:country_picker/country_picker.dart';
-import '../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
+import '../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../Others/_3_check_box.dart';
 

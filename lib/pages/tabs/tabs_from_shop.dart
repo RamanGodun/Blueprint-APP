@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../UI_Components/Switchers/switcher.dart';
-import '../Must_be_refactored/admin_screens/_2_products_grid.dart';
-import '../Must_be_refactored/admin_screens/_3_sellers_info.dart';
+import '../Store_pages/admin_screens/_2_products_grid.dart';
+import '../Store_pages/admin_screens/_3_sellers_info.dart';
 import 'placeholder_screen.dart';
 
 class AppTabs extends StatefulWidget {

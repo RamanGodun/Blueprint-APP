@@ -6,7 +6,7 @@ import '../State_management/Src/Custom_icons/app_icons.dart';
 import '../State_management/Src/Generated_code/by spider/resources.dart';
 import '../State_management/Src/Helpers/helpers.dart';
 import '../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
-import 'tabs/tabs_from_tracker.dart';
+import 'Tabs/tabs_from_tracker.dart';
 
 class EntryScreen extends StatelessWidget {
   const EntryScreen({super.key});

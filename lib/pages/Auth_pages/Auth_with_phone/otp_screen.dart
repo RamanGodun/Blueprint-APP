@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 
-import '../../../State_management/Providers/Providers_for_store/_1_auth_profile_provider.dart';
-import '../../../State_management/Providers/Providers_for_store/_1_common_data_provider.dart';
-import '../../../State_management/Providers/Providers_for_store/_2_cart_provider.dart';
+import '../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
+import '../../../State_management/Providers/Providers_for_store/cart_provider.dart';
+import '../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 
