@@ -1,6 +1,31 @@
+import 'package:flutter/material.dart';
+
 import '../../Models/app_enums.dart';
+import '../../Theme_configuration/configurations_of_themes.dart';
 
 class ThemeProviderHelper {
+  static ThemeData? getSelectedTheme(CustomThemeMode themeMode) {
+    switch (themeMode) {
+      case CustomThemeMode.lightIOS:
+        return ThisAppThemes.kLightIOSTheme;
+      case CustomThemeMode.darkIOS:
+        return ThisAppThemes.kDarkIOSTheme;
+      case CustomThemeMode.lightAndroid:
+        return ThisAppThemes.kLightAndroidTheme;
+      case CustomThemeMode.darkAndroid:
+        return ThisAppThemes.kDarkAndroidTheme;
+      case CustomThemeMode.darkGlass:
+        return ThisAppThemes.kDarkGlassTheme;
+      case CustomThemeMode.customLight:
+        return ThisAppThemes.kLightCustomIOSTheme;
+      case CustomThemeMode.customDark:
+        return ThisAppThemes.kDarkGlassTheme;
+      case CustomThemeMode.system:
+      default:
+        return ThisAppThemes.kLightIOSTheme;
+    }
+  }
+
   static String customThemeModeToString(CustomThemeMode themeMode) {
     switch (themeMode) {
       case CustomThemeMode.lightIOS:

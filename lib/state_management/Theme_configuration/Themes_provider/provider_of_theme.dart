@@ -1,4 +1,3 @@
-// theme_provider.dart
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,6 +15,13 @@ class ThemeProvider extends ValueNotifier<CustomThemeMode> {
   ThemeProvider._internal()
       : prefs = DIServiceLocator.instance.get<SharedPreferences>(),
         super(CustomThemeMode.system);
+
+  // Ініціалізація themeProvider ліниво
+  static ThemeProvider? _lazyInstance;
+  static ThemeProvider get lazyInstance {
+    _lazyInstance ??= ThemeProvider._internal();
+    return _lazyInstance!;
+  }
 
   Future<void> loadSettings() async {
     final themeModeString = prefs.getString(AppConstants.themeModeKey);
