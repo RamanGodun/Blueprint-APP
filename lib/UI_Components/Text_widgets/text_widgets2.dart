@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../State_management/Const_data/strings_4_app.dart';
-import '../../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 
 class TextWidgets {
 /*

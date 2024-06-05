@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../State_management/Src/Helpers/helpers.dart';
-import '../UI_Components/Buttons/static_buttons.dart';
-import '../State_management/Src/Custom_icons/this_app_icons.dart';
-import '../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../UI_Components/0_Widgets_STYLING/0.text_styles_for_components.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
+import '../../UI_Components/Buttons/static_buttons.dart';
+import '../../State_management/Src/Custom_icons/this_app_icons.dart';
+import '../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
+import '../../UI_Components/0_Widgets_STYLING/0.text_styles_for_components.dart';
 
 class StartPage extends StatefulWidget {
   static const routeName = '/start_page';

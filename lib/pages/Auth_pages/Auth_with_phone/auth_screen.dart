@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
 import '../../../State_management/Src/Helpers/dm_methods.dart';
-import '../../../State_management/Src/Helpers/helpers.dart';
+import '../../../State_management/Src/Helpers/Common/helpers.dart';
 import '../../../UI_Components/Buttons/custom_button_from_first.dart';
 import '../../../UI_Components/Text_fields/my_custom_text_field.dart';
 

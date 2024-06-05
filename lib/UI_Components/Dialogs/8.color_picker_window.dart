@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 import '../../State_management/Src/Custom_icons/app_icons.dart';
-import '../../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 import '../0_Widgets_STYLING/0.text_styles_for_components.dart';
 
 class ColorPickerWidget extends StatefulWidget {

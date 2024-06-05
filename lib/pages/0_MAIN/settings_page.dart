@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
-import '../State_management/Services/animation_controller_service.dart';
-import '../State_management/Src/Custom_icons/app_icons.dart';
-import '../State_management/Src/Helpers/helpers.dart';
-import '../UI_Components/Buttons/static_buttons.dart';
-import '../UI_Components/Buttons/theme_changing_button.dart';
-import '../UI_Components/Dialogs/custom_dialog.dart';
-import '../UI_Components/Others/icons_grid_view.dart';
-import '../State_management/Src/Custom_icons/this_app_icons.dart';
-import '../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../UI_Components/0_Widgets_STYLING/0.text_styles_for_components.dart';
+import '../../State_management/Services/animation_controller_service.dart';
+import '../../State_management/Src/Custom_icons/app_icons.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
+import '../../UI_Components/Buttons/static_buttons.dart';
+import '../../UI_Components/Buttons/theme_changing_button.dart';
+import '../../UI_Components/Dialogs/custom_dialog.dart';
+import '../../UI_Components/Others/icons_grid_view.dart';
+import '../../State_management/Src/Custom_icons/this_app_icons.dart';
+import '../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
+import '../../UI_Components/0_Widgets_STYLING/0.text_styles_for_components.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/start_page/settings';

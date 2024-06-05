@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../State_management/Services/google_signing_service.dart';
-import '../../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 import '../../UI_Components/Buttons/static_buttons.dart';
 import '../../UI_Components/Others/square_tile.dart';
 import '../../UI_Components/Static/static_widgets.dart';

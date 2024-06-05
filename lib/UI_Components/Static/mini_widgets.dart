@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 
 class MiniWidgets {

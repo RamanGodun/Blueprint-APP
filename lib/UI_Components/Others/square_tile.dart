@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 
 class SquareTile extends StatelessWidget {
   final String imagePath;

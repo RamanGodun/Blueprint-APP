@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../State_management/Src/Custom_icons/custom_icons_list.dart';
-import '../../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 
 class IconsGridView extends StatelessWidget {
   const IconsGridView({super.key});

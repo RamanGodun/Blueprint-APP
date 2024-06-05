@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import '../../Const_data/strings_4_app.dart';
+import '../../../Const_data/strings_4_app.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 class Helpers {

@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../State_management/Services/animation_controller_service.dart';
-import '../../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 import '../Buttons/dialog_action_buttons.dart';
 import '../Static/static_widgets.dart';
 

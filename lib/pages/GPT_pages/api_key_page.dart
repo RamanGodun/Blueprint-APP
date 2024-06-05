@@ -4,7 +4,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import '../../State_management/Services/open_ai_service.dart';
 import '../../State_management/Src/Custom_icons/app_icons.dart';
-import '../../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 import '../../UI_Components/Text_fields/cupertino_tf3.dart';
 import '../../UI_Components/0_Widgets_STYLING/0.text_styles_for_components.dart';
 

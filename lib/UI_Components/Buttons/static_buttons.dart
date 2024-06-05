@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../State_management/Const_data/app_locales.dart';
 import '../../State_management/Src/Custom_icons/this_app_icons.dart';
-import '../../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 import '../0_Widgets_STYLING/0.text_styles_for_components.dart';
 
 class StaticCustomButtons {

@@ -1,17 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:provider/provider.dart';
 
 import '../../State_management/Const_data/strings_4_app.dart';
-import '../../State_management/Providers/Provider_4_tracker/items_provider.dart';
 import '../../State_management/Src/Custom_icons/app_icons.dart';
-import '../../State_management/Src/Helpers/helpers.dart';
-import '../../UI_Components/Dialogs/4.pie_chart_dialog.dart';
-import '../../UI_Components/Dialogs/5.info_dialog.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 import '../../UI_Components/Static/static_widgets.dart';
-
 import 'placeholder_screen.dart';
 
 class MyAnimatedBottomNavigationBar extends StatefulWidget {
@@ -30,7 +24,7 @@ class _MyAnimatedBottomNavigationBarState
     const PlaceholderScreen(number: 3),
   ];
   int _currentIndex = 1;
-  bool _showAllExpenses = true;
+  // bool _showAllExpenses = true;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +32,6 @@ class _MyAnimatedBottomNavigationBarState
     final bool isDarkScheme = Helpers.isDarkTheme(context);
 
     return Scaffold(
-      // next is appBar for all app
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
@@ -139,54 +132,54 @@ class _MyAnimatedBottomNavigationBarState
   }
 
   void _showInfoDialog(BuildContext context) async {
-    showCupertinoModalPopup(
-      context: context,
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            return InfoDialog().show(
-              context,
-              (bool newValue) {
-                setState(() {
-                  //
-                });
-              },
-            );
-          },
-        );
-      },
-    );
+    // showCupertinoModalPopup(
+    //   context: context,
+    //   builder: (context) {
+    //     return StatefulBuilder(
+    //       builder: (BuildContext context, StateSetter setState) {
+    //         return InfoDialog().show(
+    //           context,
+    //           (bool newValue) {
+    //             setState(() {
+    //               //
+    //             });
+    //           },
+    //         );
+    //       },
+    //     );
+    //   },
+    // );
   }
 
   void _showPieChartDialog(BuildContext context) async {
-    _loadPieChartCategoriesFromShPrefs();
-    final pieChartDialog = PieChartDialog();
-    showCupertinoModalPopup(
-      context: context,
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            return pieChartDialog.build(
-              context,
-              _showAllExpenses,
-              (bool newValue) {
-                setState(() {
-                  _showAllExpenses = newValue;
-                  pieChartDialog.updateReorderableListKey();
-                });
-              },
-            );
-          },
-        );
-      },
-    );
+    // _loadPieChartCategoriesFromShPrefs();
+    // final pieChartDialog = PieChartDialog();
+    // showCupertinoModalPopup(
+    //   context: context,
+    //   builder: (context) {
+    //     return StatefulBuilder(
+    //       builder: (BuildContext context, StateSetter setState) {
+    //         return pieChartDialog.build(
+    //           context,
+    //           _showAllExpenses,
+    //           (bool newValue) {
+    //             setState(() {
+    //               _showAllExpenses = newValue;
+    //               pieChartDialog.updateReorderableListKey();
+    //             });
+    //           },
+    //         );
+    //       },
+    //     );
+    //   },
+    // );
   }
 
-  Future<void> _loadPieChartCategoriesFromShPrefs() async {
-    await Provider.of<ItemsDataBase>(context, listen: false)
-        .loadCategoriesFromShPrefs(false);
-    setState(() {});
-  }
+  // Future<void> _loadPieChartCategoriesFromShPrefs() async {
+  //   await Provider.of<ItemsDataBase>(context, listen: false)
+  //       .loadCategoriesFromShPrefs(false);
+  //   setState(() {});
+  // }
 
 //
 }

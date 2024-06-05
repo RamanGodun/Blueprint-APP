@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../State_management/Src/Helpers/helpers.dart';
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 
 class StaticButtons4Dialogs {
   static Widget actionButtonForDialog(BuildContext context,

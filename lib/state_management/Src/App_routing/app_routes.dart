@@ -8,9 +8,9 @@ import '../../../Pages/FI/question_handler.dart';
 import '../../../Pages/GPT_pages/api_key_page.dart';
 import '../../../Pages/GPT_pages/send_prompt.dart';
 import '../../../Pages/Others_pages/textfield_page.dart';
-import '../../../Pages/SM _pages/hive_box.dart';
-import '../../../Pages/settings_page.dart';
-import '../../../Pages/start_page.dart';
+import '../../../Pages/DB_pages/hive_box.dart';
+import '../../../Pages/0_MAIN/settings_page.dart';
+import '../../../Pages/0_MAIN/start_page.dart';
 import '../../../State_management/Services/0.service_locator.dart';
 import '../../Models/models_4_FI_on_hive/model_4_hive.dart';
 

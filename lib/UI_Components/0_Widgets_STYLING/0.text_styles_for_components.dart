@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../State_management/Src/Helpers/helpers.dart';
+
+import '../../State_management/Src/Helpers/Common/helpers.dart';
 
 class TextStyle4Components {
   static TextStyle? bodyMedium(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../UI_Components/Static/static_widgets.dart';
-import '../start_page.dart';
+import '../0_MAIN/start_page.dart';
 import 'login_or_register_page.dart';
 
 class AuthHandler extends StatefulWidget {

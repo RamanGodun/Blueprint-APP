@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../../Pages/Tabs/tabs_from_shop.dart';
+import '../../Pages/0_MAIN/tabs_from_shop.dart';
 import '../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
 import '../Dialogs/general_alert_dialog.dart';
