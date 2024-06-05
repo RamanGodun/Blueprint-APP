@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../../State_management/Providers/Providers_for_store/cart_provider.dart';
-import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
+import '../../State_management/Theme_configuration/this_app_colors.dart';
 import '../Others/dash_divider.dart';
 
 class CustomersOrderItem extends StatefulWidget {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../State_management/Models/app_enums.dart';
 import '../../State_management/Src/Helpers/Common/helpers.dart';
 import '../0_Widgets_STYLING/for_theme_drop_down_button.dart';
-import '../../State_management/Theme_configuration/Themes_provider/manager_of_themes.dart';
+import '../../State_management/Providers/Themes_provider/manager_of_themes.dart';
 
 class ThemeChangingButton extends StatelessWidget {
   const ThemeChangingButton({super.key});

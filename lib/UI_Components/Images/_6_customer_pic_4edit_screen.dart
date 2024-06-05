@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 
-import '../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
+import '../../State_management/Theme_configuration/this_app_colors.dart';
 
 class ProfileImageWidget extends StatelessWidget {
   final bool isLoading;

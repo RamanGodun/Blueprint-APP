@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../Models/models_for_store/user_data_model.dart';
-import '../../Src/Helpers/dm_methods.dart';
+import '../../Src/Helpers/For_auth/dm_methods.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthProvider();

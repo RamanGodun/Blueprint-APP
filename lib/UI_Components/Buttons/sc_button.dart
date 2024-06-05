@@ -9,8 +9,8 @@ import '../../State_management/Models/models_4_tracker_on_isar /model_of_subcate
 import '../../State_management/Providers/Provider_4_tracker/categories_provider.dart';
 import '../../State_management/Providers/Provider_4_tracker/items_provider.dart';
 import '../../State_management/Src/Helpers/Common/helpers.dart';
-import '../../State_management/Src/Helpers/category_helpers.dart';
-import '../../State_management/Src/Helpers/sh_prefs_helper.dart';
+import '../../State_management/Src/Helpers/For_tracker/category_helpers.dart';
+import '../../State_management/Src/Helpers/For_tracker/sh_prefs_helper.dart';
 import '../0_Widgets_STYLING/0.text_styles_for_components.dart';
 
 class ButtonForSubCategories extends StatelessWidget {

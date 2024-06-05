@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'App_colors_palette/this_app_color_schemes.dart';
-import 'App_colors_palette/this_app_colors.dart';
-import 'Themes_provider/theme_builder.dart';
+import 'this_app_color_schemes.dart';
+import 'this_app_colors.dart';
+import '../Providers/Themes_provider/theme_builder.dart';
 
 class ThisAppThemes {
   // iOS Themes

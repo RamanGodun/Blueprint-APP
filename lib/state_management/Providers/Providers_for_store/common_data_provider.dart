@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../Models/models_for_store/admin_data_model.dart';
 import '../../Models/models_for_store/cashback_model.dart';
 import '../../Models/models_for_store/product_model.dart';
-import '../../Src/Helpers/dm_methods.dart';
+import '../../Src/Helpers/For_auth/dm_methods.dart';
 
 class CommonDataProvider with ChangeNotifier {
   CommonDataProvider();

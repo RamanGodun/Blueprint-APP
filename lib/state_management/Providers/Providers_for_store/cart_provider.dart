@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../Models/models_for_store/cart_item_model.dart';
-import '../../Src/Helpers/dm_methods.dart';
+import '../../Src/Helpers/For_auth/dm_methods.dart';
 
 class CartsProvider with ChangeNotifier {
   CartsProvider(this.context) {

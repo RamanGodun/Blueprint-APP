@@ -1,10 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'question_model.g.dart';
 
-/*
-for code generation run in terminal: 
-flutter pub run build_runner build --delete-conflicting-outputs 
-*/
 @JsonSerializable()
 class QuestionAndAnswersModel {
   final String questionText;
@@ -58,28 +54,3 @@ class QuestionAndAnswersModel {
 
   Map<String, dynamic> toJson() => _$QuestionAndAnswersModelToJson(this);
 }
-
-
-
-
-
-
-/*
-Оновлення завантаження даних з локальної бази
-Future<List<QuestionAndAnswersModel>> loadQuestionsFromDatabase() async {
-  // Завантажте JSON з локальної бази даних
-  final jsonData = await fetchJsonFromDatabase();
-  // Конвертуйте JSON у список моделей
-  final questions = (jsonData as List)
-      .map((json) => QuestionAndAnswersModel.fromJson(json))
-      .toList();
-  return questions;
-}
-
-Future<List<Map<String, dynamic>>> fetchJsonFromDatabase() async {
-  // Реалізуйте цей метод для отримання JSON з вашої бази даних
-  // Це може бути Hive, SQLite або будь-яка інша база даних
-  return [];
-}
-
- */

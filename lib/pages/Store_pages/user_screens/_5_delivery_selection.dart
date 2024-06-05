@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
+import '../../../State_management/Theme_configuration/this_app_colors.dart';
 
 class DeliverySelectionWidget extends StatefulWidget {
   const DeliverySelectionWidget({super.key});

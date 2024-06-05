@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../State_management/Models/models_for_store/product_model.dart';
 import '../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
-import '../../../State_management/Src/Helpers/dm_methods.dart';
-import '../../../State_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
+import '../../../State_management/Src/Helpers/For_auth/dm_methods.dart';
+import '../../../State_management/Theme_configuration/this_app_colors.dart';
 import '../../../UI_Components/Buttons/_1_custom_button.dart';
 import '../../../UI_Components/Cards_and_tiles/_2_card_for_list_view.dart';
 

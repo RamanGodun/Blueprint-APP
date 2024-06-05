@@ -9,12 +9,12 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
-import '../../Models/models_for_store/admin_data_model.dart';
-import '../../Models/models_for_store/cart_item_model.dart';
-import '../../Models/models_for_store/cashback_model.dart';
-import '../../Models/models_for_store/product_model.dart';
-import '../../Models/models_for_store/user_data_model.dart';
-import '../../Providers/Providers_for_store/common_data_provider.dart';
+import '../../../Models/models_for_store/admin_data_model.dart';
+import '../../../Models/models_for_store/cart_item_model.dart';
+import '../../../Models/models_for_store/cashback_model.dart';
+import '../../../Models/models_for_store/product_model.dart';
+import '../../../Models/models_for_store/user_data_model.dart';
+import '../../../Providers/Providers_for_store/common_data_provider.dart';
 
 class DMMethodsOnDB {
   late FirebaseFirestore firestore;
