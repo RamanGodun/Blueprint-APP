@@ -15,8 +15,8 @@ library;
 
 import 'package:flutter/widgets.dart';
 
-class ThisAppIcons {
-  ThisAppIcons._();
+class ThisAppCustomIconsSource {
+  ThisAppCustomIconsSource._();
 
   static int getCodePointForIconData(IconData iconData) {
     return iconData.codePoint;
@@ -25,6 +25,33 @@ class ThisAppIcons {
   static const _kFontFam = 'ThisAppIcons';
   static const String? _kFontPkg = null;
 
+  static const IconData accessTime =
+      IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData accountBalance =
+      IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData addAPhoto =
+      IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData addAlert =
+      IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData addShoppingCart =
+      IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData attachment =
+      IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData brightnessMedium =
+      IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData brightnessLow =
+      IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData brightnessHigh =
+      IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData create =
+      IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData thumbDown =
+      IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData thumbUp =
+      IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData accountBalanceWallet =
+      IconData(0xf008, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+//
   static const IconData alert =
       IconData(0xf848, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData anchor =
@@ -131,8 +158,8 @@ class ThisAppIcons {
       IconData(0xf870, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData connectedObject =
       IconData(0xef36, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  // static const IconData console =
-  //     IconData(0xf120, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData console =
+      IconData(0xf120, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData coverFlow =
       IconData(0xf353, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData coverFlowEmpty =
@@ -145,8 +172,8 @@ class ThisAppIcons {
       IconData(0xeba9, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData crownPlus =
       IconData(0xeba8, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  // static const IconData css =
-  //     IconData(0xf13c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData css =
+      IconData(0xf13c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData dataScience =
       IconData(0xef30, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData dataScienceInv =
@@ -347,8 +374,8 @@ class ThisAppIcons {
       IconData(0xf761, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData helpCircled =
       IconData(0xf2df, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData helpCircledAlt =
-      IconData(0xf2e1, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData helpCircledAlt =
+  //     IconData(0xf2e1, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData history =
       IconData(0xf7d1, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData home =
@@ -509,8 +536,8 @@ class ThisAppIcons {
       IconData(0xf2f7, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData microphoneAlt8 =
       IconData(0xf2f8, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  // static const IconData microphoneAlt9 =
-  //     IconData(0xf2f9, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData microphoneAlt9 =
+      IconData(0xf2f9, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData microphoneOff =
       IconData(0xf31a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData microphoneSlash =
@@ -521,8 +548,8 @@ class ThisAppIcons {
       IconData(0xf2fc, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData microphoneSlash4 =
       IconData(0xf2fd, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  // static const IconData microphoneSlash5 =
-  //     IconData(0xf2fe, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData microphoneSlash5 =
+      IconData(0xf2fe, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData mic =
       IconData(0xf317, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData micOff =
@@ -851,8 +878,8 @@ class ThisAppIcons {
       IconData(0xf76d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData radioTower =
       IconData(0xf82d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  // static const IconData rainbow =
-  //     IconData(0xeb85, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData rainbow =
+      IconData(0xeb85, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   // static const IconData rainbowAlt =
   //     IconData(0xeb86, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   // static const IconData rainbowAlt2 =
@@ -921,8 +948,8 @@ class ThisAppIcons {
       IconData(0xeba3, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData retinaSlash4 =
       IconData(0xeba4, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  // static const IconData retinaSlash5 =
-  //     IconData(0xeba5, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData retinaSlash5 =
+      IconData(0xeba5, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData report =
       IconData(0xf795, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData repo =
@@ -961,8 +988,8 @@ class ThisAppIcons {
       IconData(0xf878, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData saved =
       IconData(0xf76f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  // static const IconData scale =
-  //     IconData(0xeba6, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData scale =
+      IconData(0xeba6, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData scaleAlt =
       IconData(0xeba7, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData scaleAlt2 =
@@ -977,10 +1004,10 @@ class ThisAppIcons {
       IconData(0xebac, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData scaleAlt7 =
       IconData(0xebad, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData scaleAlt8 =
-      IconData(0xebae, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData scaleAlt9 =
-      IconData(0xebaf, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData scaleAlt8 =
+  //     IconData(0xebae, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData scaleAlt9 =
+  //     IconData(0xebaf, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData scaleAlt10 =
       IconData(0xebb0, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData scaleSlash =

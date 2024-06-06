@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 // general
-import 'package:blueprint_4app/state_management/Theme_configuration/App_colors_palette/this_app_colors.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
 import '../../../State_management/Src/Helpers/For_auth/dm_methods.dart';
 import '../../../State_management/Src/Helpers/Common/helpers.dart';
+import '../../../State_management/Theme_configuration/this_app_colors.dart';
 import '../../../UI_Components/Buttons/custom_button_from_first.dart';
 import '../../../UI_Components/Text_fields/my_custom_text_field.dart';
 
