@@ -1,3 +1,4 @@
+import 'package:blueprint_4app/UI_layout/Components/Buttons/icon_buttons.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,15 +7,13 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../State_management/Services/animation_controller_service.dart';
-import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/static_buttons.dart';
 import '../../Components/Buttons/theme_changing_button.dart';
 import '../../Components/Dialogs/custom_dialog.dart';
 import '../../Components/Others/icons_grid_view.dart';
-import '../../../State_management/Src/Custom_icons/custom_icons_src.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../../Components/_Widgets_STYLING/0.text_styles_for_components.dart';
+import '../../Components/_Widgets_STYLING/_text_styles_for_components.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/start_page/settings';
@@ -52,7 +51,7 @@ class _SettingsPageState extends State<SettingsPage>
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        leading: AppIcons.backIcon(context, colorScheme),
+        leading: AppIconButtons.backIcon(context, colorScheme: colorScheme),
         middle: Row(
           children: [
             Text(
@@ -66,24 +65,14 @@ class _SettingsPageState extends State<SettingsPage>
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            StaticCustomButtons.changeLanguageButton(context),
-            CupertinoButton(
-              padding: EdgeInsets.zero,
-              child: Icon(
-                ThisAppIcons.crown,
-                color: colorScheme.onSurface,
-                size: 25,
-              ),
-              onPressed: () => showCustomCupertinoDialog(
-                context,
-                const IconsGridView(),
-              ),
-            ),
-            CupertinoButton(
-              padding: EdgeInsets.zero,
-              onPressed: () => signUserOut(),
-              child: Icon(Icons.logout, color: colorScheme.onSurface, size: 25),
-            ),
+            AppIconButtons.changeLanguageButton(context),
+            AppIconButtons.dialogIconButton(context,
+                onPressed: () => showCustomCupertinoDialog(
+                      context,
+                      const IconsGridView(),
+                    )),
+            AppIconButtons.signOutButton(context,
+                onPressed: () => signUserOut()),
           ],
         ),
       ),
@@ -101,7 +90,7 @@ class _SettingsPageState extends State<SettingsPage>
                     const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: StaticCustomButtons.customButton2(
+                      child: AppCustomButtons.likeIOS(
                         context,
                         onPressed: () {
                           context.pushNamed('ApiKeyInputPage');

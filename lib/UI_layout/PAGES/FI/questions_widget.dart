@@ -81,7 +81,7 @@ class QuestionWidget extends StatelessWidget {
             currentQuestion.isUserAnswerIsCorrect ? 'Correct!' : 'Incorrect',
             style: textTheme.titleMedium?.copyWith(
               color: currentQuestion.isUserAnswerIsCorrect
-                  ? ThisAppColors.green
+                  ? AppColors.green
                   : colorScheme.error,
             ),
           ),
@@ -102,8 +102,8 @@ class QuestionWidget extends StatelessWidget {
                 children: [
                   Text(
                     ' ${currentQuestion.correctAnswer()}',
-                    style: textTheme.titleMedium
-                        ?.copyWith(color: ThisAppColors.green),
+                    style:
+                        textTheme.titleMedium?.copyWith(color: AppColors.green),
                   ),
                 ],
               ),
@@ -116,8 +116,8 @@ class QuestionWidget extends StatelessWidget {
                     TextSpan(
                       text:
                           '${currentQuestion.correctAnswerPercentage.toStringAsFixed(1)}%',
-                      style: textTheme.bodySmall
-                          ?.copyWith(color: ThisAppColors.green),
+                      style:
+                          textTheme.bodySmall?.copyWith(color: AppColors.green),
                     ),
                     TextSpan(text: ' of cases.', style: textTheme.bodySmall),
                   ],

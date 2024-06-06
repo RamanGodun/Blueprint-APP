@@ -23,8 +23,8 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.9),
-          foregroundColor: ThisAppColors.black,
+          backgroundColor: AppColors.kAppPrimaryColor.withOpacity(0.9),
+          foregroundColor: AppColors.black,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
@@ -34,7 +34,7 @@ class CustomButton extends StatelessWidget {
           style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
-            color: ThisAppColors.black,
+            color: AppColors.black,
           ),
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../Components/Static/static_widgets.dart';
+import '../../Components/Static/cashed_widgets.dart';
 import '../0_MAIN/start_page.dart';
 import 'login_or_register_page.dart';
 
@@ -23,7 +23,7 @@ class _AuthHandlerState extends State<AuthHandler> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return StaticWidgets.loadingWidget;
+            return AppCashedWidgets.loadingWidget;
           }
 
           if (snapshot.hasData) {

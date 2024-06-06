@@ -46,7 +46,7 @@ class _EditFormImageState extends State<EditFormImage> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: ThisAppColors.kAppPrimaryColor,
+          color: AppColors.kAppPrimaryColor,
         ),
       ),
       child: _pickedImage == null

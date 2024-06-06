@@ -17,8 +17,8 @@ class ThemeSwitcher extends StatelessWidget {
             // final newMode = isLightMode ? ThemeMode.light : ThemeMode.dark;
             // themeProvider.setThemeMode(newMode);
           },
-          inactiveTrackColor: ThisAppColors.black54,
-          activeColor: ThisAppColors.kPrimarySwatch.withOpacity(0.3),
+          inactiveTrackColor: AppColors.black54,
+          activeColor: AppColors.kPrimarySwatch.withOpacity(0.3),
           inactiveThumbImage: const AssetImage('assets/img/moon.png'),
           activeThumbImage: const AssetImage('assets/img/sun.png'),
         ),

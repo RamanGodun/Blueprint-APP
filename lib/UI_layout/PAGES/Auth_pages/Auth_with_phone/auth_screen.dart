@@ -89,7 +89,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             ? "Зареєструватись"
                             : "Вхід до системи",
                         style: const TextStyle(
-                            color: ThisAppColors.kAppPrimaryColor,
+                            color: AppColors.kAppPrimaryColor,
                             fontSize: 19,
                             fontWeight: FontWeight.w800),
                       ),

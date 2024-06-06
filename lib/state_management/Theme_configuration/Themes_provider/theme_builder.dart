@@ -22,7 +22,7 @@ class ThisAppThemesBuilder {
     return ThemeData(
       brightness: isDark ? Brightness.dark : Brightness.light,
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      primarySwatch: ThisAppColors.kPrimarySwatch,
+      primarySwatch: AppColors.kPrimarySwatch,
       colorScheme: colorScheme,
       textTheme: TextStyles4ThisAppThemes.kTextThemeData(isDark),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -51,7 +51,7 @@ class ThisAppThemesBuilder {
       ),
       scaffoldBackgroundColor: scaffoldBackgroundColor,
       cupertinoOverrideTheme: NoDefaultCupertinoThemeData(
-        primaryColor: ThisAppColors.kAppPrimaryColor,
+        primaryColor: AppColors.kAppPrimaryColor,
         barBackgroundColor: barBackgroundColor,
         scaffoldBackgroundColor: scaffoldBackgroundColor,
       ),
@@ -62,7 +62,7 @@ class ThisAppThemesBuilder {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: ThisAppColors.kAppPrimaryColor),
+          borderSide: const BorderSide(color: AppColors.kAppPrimaryColor),
         ),
       ),
       dividerColor: dividerColor,
@@ -84,7 +84,7 @@ class ThisAppThemesBuilder {
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: appBarBackgroundColor,
-        selectedItemColor: ThisAppColors.kAppPrimaryColor,
+        selectedItemColor: AppColors.kAppPrimaryColor,
         unselectedItemColor: colorScheme.onSurface,
       ),
     );

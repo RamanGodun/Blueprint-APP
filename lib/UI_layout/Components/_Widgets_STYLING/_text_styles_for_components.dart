@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
 
-class TextStyle4Components {
+abstract class TextStyle4Components {
   static TextStyle? bodyMedium(BuildContext context) {
     final textTheme = Helpers.textTheme(context);
     final colorScheme = Helpers.colorScheme(context);

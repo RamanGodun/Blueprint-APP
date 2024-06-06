@@ -4,7 +4,7 @@ import '../../../../State_management/Models/models_for_store/product_model.dart'
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 import '../../../Components/Cards_and_tiles/_2_card_for_list_view.dart';
 
 class AdminsListOfProducts extends StatefulWidget {
@@ -49,7 +49,7 @@ class _AdminsListOfProductsState extends State<AdminsListOfProducts> {
               : const Center(
                   child: Text(
                     "Додайте свій перший товар",
-                    style: TextStyle(color: ThisAppColors.kAppPrimaryColor),
+                    style: TextStyle(color: AppColors.kAppPrimaryColor),
                   ),
                 ),
           // layout for button next

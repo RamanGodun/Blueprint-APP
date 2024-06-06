@@ -11,7 +11,7 @@ import '../../../../State_management/Providers/Provider_4_tracker/items_provider
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../../../State_management/Helpers/For_tracker/category_helpers.dart';
 import '../../../../State_management/Helpers/For_tracker/sh_prefs_helper.dart';
-import '../../_Widgets_STYLING/0.text_styles_for_components.dart';
+import '../../_Widgets_STYLING/_text_styles_for_components.dart';
 
 class ButtonForSubCategories extends StatelessWidget {
   const ButtonForSubCategories({

@@ -1,6 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
-import 'package:blueprint_4app/UI_layout/Components/Static/mini_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -16,6 +13,7 @@ import '../../../State_management/Helpers/For_tracker/category_helpers.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Theme_configuration/this_app_colors.dart';
 import '../Cards_and_tiles/list_tile.dart';
+import '../Static/dividers.dart';
 import '../Text_widgets/text_widgets2.dart';
 
 class PieChartDialog {
@@ -45,7 +43,7 @@ class PieChartDialog {
         : "${AppStrings.expensesIn} ${Helpers().getCurrentMonthName()}";
 
     return Material(
-      color: ThisAppColors.kDarkAndroidBackground
+      color: AppColors.kDarkAndroidBackground
           .withOpacity(Helpers.isDarkTheme(context) ? 0.2 : 0.05),
       child: Padding(
         padding: EdgeInsets.only(bottom: mQHeight / 100),
@@ -69,7 +67,7 @@ class PieChartDialog {
                     icon: const Icon(
                       Icons.flip_camera_android_outlined,
                       size: 15,
-                      color: ThisAppColors.kAppPrimaryColor,
+                      color: AppColors.kAppPrimaryColor,
                     ),
                     onPressed: () {
                       setShowAllExpenses(!showAllExpenses);
@@ -137,7 +135,7 @@ class PieChartDialog {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          MiniWidgets.divider(isDarkTheme, true),
+                          AppDividers.divider(isDarkTheme, true),
                           const SizedBox(height: 5),
                           Expanded(
                             child: ReorderableListView.builder(
@@ -293,7 +291,7 @@ class PieChartDialog {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      child: MiniWidgets.divider(isDarkTheme, true),
+                      child: AppDividers.divider(isDarkTheme, true),
                     ),
                   ],
                 ),

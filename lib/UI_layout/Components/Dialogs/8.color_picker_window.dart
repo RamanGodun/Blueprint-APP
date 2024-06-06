@@ -1,10 +1,10 @@
-import 'package:blueprint_4app/UI_layout/Components/Static/mini_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../_Widgets_STYLING/0.text_styles_for_components.dart';
+import '../Static/dividers.dart';
+import '../_Widgets_STYLING/_text_styles_for_components.dart';
 
 class ColorPickerWidget extends StatefulWidget {
   const ColorPickerWidget({
@@ -48,8 +48,8 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
                     Text("Вибір кольору",
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.labelLarge),
-                    MiniWidgets.boldDivider(Helpers.isDarkTheme(context)),
-                    MiniWidgets.boldDivider(Helpers.isDarkTheme(context)),
+                    AppDividers.boldDivider(Helpers.isDarkTheme(context)),
+                    AppDividers.boldDivider(Helpers.isDarkTheme(context)),
                   ],
                 ),
                 content: SingleChildScrollView(
@@ -78,8 +78,8 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
                     height: 60,
                     child: Column(
                       children: [
-                        MiniWidgets.boldDivider(Helpers.isDarkTheme(context)),
-                        MiniWidgets.boldDivider(Helpers.isDarkTheme(context)),
+                        AppDividers.boldDivider(Helpers.isDarkTheme(context)),
+                        AppDividers.boldDivider(Helpers.isDarkTheme(context)),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../../State_management/Models/models_for_store/product_model.dart';
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 import '../../../Components/Cards_and_tiles/_2_card_for_list_view.dart';
 import '../../../Components/Others/dashed_border_container.dart';
 // state management
@@ -93,7 +93,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
               },
               icon: const Icon(
                 Icons.delete,
-                color: ThisAppColors.kAppPrimaryColor,
+                color: AppColors.kAppPrimaryColor,
               ),
             )
           ],
@@ -159,8 +159,8 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
                                           decoration: BoxDecoration(
                                             color: editingProductItem
                                                     .discountsLevel![index]
-                                                ? ThisAppColors.kAppPrimaryColor
-                                                : ThisAppColors.grey2,
+                                                ? AppColors.kAppPrimaryColor
+                                                : AppColors.grey2,
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                             border: Border.all(
@@ -169,7 +169,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
                                         ),
                                         Text("${discountsValues[index]}%",
                                             style: const TextStyle(
-                                                color: ThisAppColors.white,
+                                                color: AppColors.white,
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 16,
                                                 letterSpacing: 3)),
@@ -191,7 +191,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
                             const Text(
                               "Ціна по акції",
                               style: TextStyle(
-                                  color: ThisAppColors.white,
+                                  color: AppColors.white,
                                   fontWeight: FontWeight.bold),
                             ),
                             Stack(alignment: Alignment.center, children: [
@@ -199,7 +199,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
                                 height: 30,
                                 width: 95,
                                 decoration: BoxDecoration(
-                                  color: ThisAppColors.grey2,
+                                  color: AppColors.grey2,
                                   borderRadius: BorderRadius.circular(10),
                                   border:
                                       Border.all(color: Colors.black, width: 1),
@@ -208,7 +208,7 @@ class _DiscountsSetScreenState extends State<DiscountsSetScreen> {
                               Text(
                                   "${productsIfo4Discounts.getProductItemById(widget.productsId)!.priceOfProduct * (100 - productsIfo4Discounts.getProductItemById(widget.productsId)!.discountAmount!) ~/ 100} \u20B4",
                                   style: const TextStyle(
-                                      color: ThisAppColors.white,
+                                      color: AppColors.white,
                                       fontWeight: FontWeight.w600,
                                       letterSpacing: 1)),
                             ]),

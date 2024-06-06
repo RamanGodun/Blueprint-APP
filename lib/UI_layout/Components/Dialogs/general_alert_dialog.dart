@@ -117,13 +117,13 @@ class _StyledAlertDialogState extends State<StyledAlertDialog> {
 
     return Container(
         decoration: BoxDecoration(
-            color: ThisAppColors.black1.withOpacity(0.65),
+            color: AppColors.black1.withOpacity(0.65),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(width: 0.1)),
         child: Padding(
           padding: const EdgeInsets.only(bottom: 100),
           child: AlertDialog(
-              backgroundColor: ThisAppColors.grey1.withOpacity(0.96),
+              backgroundColor: AppColors.grey1.withOpacity(0.96),
               elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -134,7 +134,7 @@ class _StyledAlertDialogState extends State<StyledAlertDialog> {
                   child: Text(widget.text4Body,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                          color: ThisAppColors.white, fontSize: 18)),
+                          color: AppColors.white, fontSize: 18)),
                 ),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -144,8 +144,8 @@ class _StyledAlertDialogState extends State<StyledAlertDialog> {
                           widget.noButtonText,
                           style: TextStyle(
                               fontSize: 16,
-                              color: ThisAppColors.kAppPrimaryColor
-                                  .withOpacity(0.7)),
+                              color:
+                                  AppColors.kAppPrimaryColor.withOpacity(0.7)),
                         ),
                         onPressed: () {
                           Navigator.of(context).pop();
@@ -156,8 +156,8 @@ class _StyledAlertDialogState extends State<StyledAlertDialog> {
                           widget.yesButtonText,
                           style: TextStyle(
                               fontSize: 16,
-                              color: ThisAppColors.kAppPrimaryColor
-                                  .withOpacity(0.7)),
+                              color:
+                                  AppColors.kAppPrimaryColor.withOpacity(0.7)),
                         ),
                         onPressed: () {
                           currentMethod(widget.mappingKey, mapping4Functions,

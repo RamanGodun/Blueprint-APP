@@ -8,20 +8,6 @@ class AppIcons {
 /*
 GENERAL Icons 
 */
-  static Widget backIcon(BuildContext context, ColorScheme colorScheme) {
-    return CupertinoButton(
-      padding: EdgeInsets.zero,
-      child: Icon(
-        // CupertinoIcons.back,
-        customIcons[5],
-        color: colorScheme.onSurface,
-      ),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    );
-  }
-
   static Icon toolTipIcon(BuildContext context, ColorScheme colorScheme) {
     return Icon(
       CupertinoIcons.info,
@@ -32,7 +18,7 @@ GENERAL Icons
   static Widget flipIcon(double? size) {
     return Icon(
       Icons.flip_camera_android_outlined,
-      color: ThisAppColors.kAppPrimaryColor,
+      color: AppColors.kAppPrimaryColor,
       size: (size != null) ? size : 15,
     );
   }
@@ -42,8 +28,8 @@ GENERAL Icons
       Icons.info_outlined,
       size: 20,
       color: isDarkTheme
-          ? ThisAppColors.kSecondaryDarkColor
-          : ThisAppColors.kSecondaryColor,
+          ? AppColors.kSecondaryDarkColor
+          : AppColors.kSecondaryColor,
     );
   }
 
@@ -79,8 +65,8 @@ Icons FOR JBnTrackeR
       Icons.edit,
       size: 18,
       color: isDarkTheme
-          ? ThisAppColors.kSecondaryDarkColor
-          : ThisAppColors.kSecondaryColor,
+          ? AppColors.kSecondaryDarkColor
+          : AppColors.kSecondaryColor,
     );
   }
 
@@ -89,15 +75,15 @@ Icons FOR JBnTrackeR
       Icons.pie_chart,
       size: 25,
       color: isDarkTheme
-          ? ThisAppColors.kSecondaryDarkColor
-          : ThisAppColors.kSecondaryColor,
+          ? AppColors.kSecondaryDarkColor
+          : AppColors.kSecondaryColor,
     );
   }
 
   static Widget calendar() {
     return const Icon(
       Icons.calendar_month,
-      color: ThisAppColors.kAppPrimaryColor,
+      color: AppColors.kAppPrimaryColor,
       size: 20,
     );
   }
@@ -106,7 +92,7 @@ Icons FOR JBnTrackeR
   static Widget arrowIcon() {
     return Icon(
       Icons.arrow_forward_ios,
-      color: ThisAppColors.grey300,
+      color: AppColors.grey300,
       size: 27,
     );
   }
@@ -115,7 +101,7 @@ Icons FOR JBnTrackeR
     return Icon(
       Icons.check_circle_outline_sharp,
       size: 50,
-      color: ThisAppColors.kAppPrimaryColor.withOpacity(0.6),
+      color: AppColors.kAppPrimaryColor.withOpacity(0.6),
     );
   }
 
@@ -138,7 +124,7 @@ Icons FOR JBnTrackeR
             Icon(
               Icons.touch_app,
               size: (isForInfoDialog == null) ? 15 : 25,
-              color: ThisAppColors.grey600.withOpacity(0.13),
+              color: AppColors.grey600.withOpacity(0.13),
             ),
           if (isDropAndDrugAble)
             Padding(
@@ -148,7 +134,7 @@ Icons FOR JBnTrackeR
                 Icons.swap_vert_sharp,
                 size: (isForInfoDialog == null) ? 15 : 25,
                 color: (isForInfoDialog == null)
-                    ? ThisAppColors.grey600.withOpacity(0.13)
+                    ? AppColors.grey600.withOpacity(0.13)
                     : Theme.of(context!).colorScheme.onSurface.withOpacity(0.2),
               ),
             ),
@@ -161,7 +147,7 @@ Icons FOR JBnTrackeR
                 Icons.keyboard_double_arrow_left_sharp,
                 size: (isForInfoDialog == null) ? 15 : 25,
                 color: (isForInfoDialog == null)
-                    ? ThisAppColors.grey600.withOpacity(0.13)
+                    ? AppColors.grey600.withOpacity(0.13)
                     : Theme.of(context!).colorScheme.onSurface.withOpacity(0.2),
               ),
             ),
@@ -174,7 +160,7 @@ Icons FOR JBnTrackeR
   static Widget chooseCategoryIcon() {
     return const Icon(
       Icons.add_task_sharp,
-      color: ThisAppColors.kAppPrimaryColor,
+      color: AppColors.kAppPrimaryColor,
       size: 20,
     );
   }

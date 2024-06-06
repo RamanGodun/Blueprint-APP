@@ -8,7 +8,7 @@ import '../../../State_management/Services/google_signing_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/static_buttons.dart';
 import '../../Components/Others/square_tile.dart';
-import '../../Components/Static/static_widgets.dart';
+import '../../Components/Static/cashed_widgets.dart';
 import '../../Components/Text_fields/textfield1.dart';
 import '../../../State_management/Src/Generated_code/by spider/resources.dart';
 
@@ -52,7 +52,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? StaticWidgets.loadingWidget
+        ? AppCashedWidgets.loadingWidget
         : Scaffold(
             backgroundColor: colorScheme.surface,
             body: SafeArea(
@@ -125,7 +125,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                         ),
                       const SizedBox(height: 35),
                       // sign in/sign up button
-                      StaticCustomButtons.customButton(
+                      AppCustomButtons.withShadows(
                         context,
                         buttonText: widget.isLoginPage ? 'Sign In' : 'Sign Up',
                         onPressed: () => signUserInOrUp(widget.isLoginPage),

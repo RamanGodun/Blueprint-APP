@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-abstract class DropButtonStyle1 {
+abstract class DropButtonStyle {
 //
   static InputDecoration getInputDecoration(
-      BuildContext context, bool isDarkTheme) {
+    BuildContext context,
+    bool isDarkTheme,
+  ) {
     final colorScheme = Theme.of(context).colorScheme;
     return InputDecoration(
       isDense: true,

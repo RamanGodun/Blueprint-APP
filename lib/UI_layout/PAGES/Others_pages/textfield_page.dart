@@ -1,11 +1,11 @@
+import 'package:blueprint_4app/UI_layout/Components/Buttons/icon_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../Components/_Widgets_STYLING/0.text_styles_for_components.dart';
+import '../../Components/_Widgets_STYLING/_text_styles_for_components.dart';
 import '../../Components/Buttons/static_buttons.dart';
 import '../../Components/Text_fields/cupertino_tf2.dart';
-import '../../../state_management/src/custom_icons/app_icons.dart';
 
 class TextFieldPage extends HookWidget {
   static const routeName = '/start_page/new_screen';
@@ -25,7 +25,7 @@ class TextFieldPage extends HookWidget {
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        leading: AppIcons.backIcon(context, colorScheme),
+        leading: AppIconButtons.backIcon(context, colorScheme: colorScheme),
         middle: Text('New Screen',
             style: TextStyle4Components.appBarTitle(
                 cupertinoTheme: cupertinoTheme, colorScheme: colorScheme)),
@@ -52,7 +52,7 @@ class TextFieldPage extends HookWidget {
                 ),
               ),
             const SizedBox(height: 20),
-            StaticCustomButtons.cupertinoButton1(context, buttonText: 'Submit'),
+            AppCustomButtons.cupertinoButton1(context, buttonText: 'Submit'),
           ],
         ),
       ),

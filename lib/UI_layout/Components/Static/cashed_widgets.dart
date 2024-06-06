@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../State_management/Src/Generated_code/by spider/resources.dart';
-import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Theme_configuration/this_app_colors.dart';
 
-class StaticWidgets {
+class AppCashedWidgets {
 /*
   LOADING widget
  */
@@ -19,7 +18,7 @@ class StaticWidgets {
             children: [
               CupertinoActivityIndicator(
                 radius: 20.0,
-                color: ThisAppColors.kSecondaryColor,
+                color: AppColors.kSecondaryColor,
               ),
               // SizedBox(height: 8.0),
               // Directionality(
@@ -90,66 +89,4 @@ class StaticWidgets {
   }
 
   static Widget getErrorWidget(String errorText) => errorWidget(errorText);
-
-/*
-  DIVIDER 4 Login page
- */
-  static const Widget divider4LoginPage = Padding(
-    padding: EdgeInsets.only(left: 25.0, right: 25, bottom: 30),
-    child: Row(
-      children: [
-        Expanded(
-          child: Divider(
-            thickness: 0.5,
-            color: Colors.grey,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
-          child: Text(
-            'Or continue with',
-            style: TextStyle(color: Colors.grey),
-          ),
-        ),
-        Expanded(
-          child: Divider(
-            thickness: 0.5,
-            color: Colors.grey,
-          ),
-        ),
-      ],
-    ),
-  );
-
-  static Widget getDivider4LoginPage() => divider4LoginPage;
-
-/*
-DIVIDER between Dialog Buttons 
- */
-  static Widget dividerBetweenDialogButtons(BuildContext context) {
-    final colorScheme = Helpers.colorScheme(context);
-    return Container(
-      width: 0.5,
-      color: colorScheme.inverseSurface.withOpacity(0.5),
-    );
-  }
-
-  static Widget getDividerBetweenDialogButtons(BuildContext context) =>
-      dividerBetweenDialogButtons(context);
-
-  static Border border4LightThemeGNavButton = Border.symmetric(
-    vertical: BorderSide(
-      color: const Color.fromARGB(114, 15, 108, 91).withOpacity(0.4),
-      width: 2.5,
-      style: BorderStyle.solid,
-    ),
-  );
-
-  static Border border4DarkThemeGNavButton = Border.symmetric(
-    vertical: BorderSide(
-      color: ThisAppColors.kAppPrimaryColor.withOpacity(0.3),
-      width: 2.5,
-      style: BorderStyle.solid,
-    ),
-  );
 }

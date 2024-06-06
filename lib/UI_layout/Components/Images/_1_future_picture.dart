@@ -25,7 +25,7 @@ class FuturePicture extends StatelessWidget {
             height: double.infinity,
             child: Icon(
               Icons.error_outline,
-              color: ThisAppColors.kAppPrimaryColor,
+              color: AppColors.kAppPrimaryColor,
             ),
           );
         } else {

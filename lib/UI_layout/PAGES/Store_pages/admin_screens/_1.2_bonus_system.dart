@@ -4,7 +4,7 @@ import 'dart:ui' as ui;
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 import '../../../Components/Text_fields/_my_first_tf.dart';
 import '_2.1_admin_orders_list.dart';
 
@@ -58,7 +58,7 @@ class _DiscountSystemState extends State<DiscountSystem> {
     ];
 
     return Scaffold(
-      backgroundColor: ThisAppColors.black,
+      backgroundColor: AppColors.black,
       body: Stack(
         children: [
           const AdminOrdersList(),
@@ -66,7 +66,7 @@ class _DiscountSystemState extends State<DiscountSystem> {
               child: BackdropFilter(
                   filter: ui.ImageFilter.blur(sigmaX: 5, sigmaY: 7),
                   child: Container(
-                    color: ThisAppColors.hover.withOpacity(0.6),
+                    color: AppColors.hover.withOpacity(0.6),
                   ))),
           SafeArea(
               child: Container(
@@ -77,7 +77,7 @@ class _DiscountSystemState extends State<DiscountSystem> {
                   widthFactor: 0.85,
                   heightFactor: 0.65,
                   child: Container(
-                    color: ThisAppColors.darkGrey4.withOpacity(0.6),
+                    color: AppColors.darkGrey4.withOpacity(0.6),
                     child: Form(
                       key: formKey,
                       child: SingleChildScrollView(

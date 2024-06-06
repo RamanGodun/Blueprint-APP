@@ -1,3 +1,4 @@
+import 'package:blueprint_4app/UI_layout/Components/Static/dividers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -6,7 +7,6 @@ import '../../../State_management/Models/models_4_tracker_on_isar /item_model.da
 import '../../../State_management/Models/models_4_tracker_on_isar /model_of_subcategory.dart';
 import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../Static/mini_widgets.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
@@ -203,7 +203,7 @@ class CustomListTile extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            child: MiniWidgets.divider(isDarkTheme, true),
+            child: AppDividers.divider(isDarkTheme, true),
           ),
         ],
       );
@@ -294,7 +294,7 @@ class CustomListTile extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            child: MiniWidgets.divider(isDarkTheme, true),
+            child: AppDividers.divider(isDarkTheme, true),
           ),
         ],
       );

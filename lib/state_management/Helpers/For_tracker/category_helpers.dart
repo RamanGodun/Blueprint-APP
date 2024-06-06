@@ -65,7 +65,7 @@ class CategoriesHelper {
       CategoriesEnum.values[i]: [
         SubCategory(
           title: AppStrings.withoutSubCategory,
-          color: ThisAppColors.categoriesColors[i],
+          color: AppColors.categoriesColors[i],
           iconData: AppIcons.categoryIcon[i],
         ),
       ],

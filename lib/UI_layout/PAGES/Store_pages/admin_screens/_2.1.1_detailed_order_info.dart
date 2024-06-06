@@ -21,11 +21,11 @@ class ExpandedOrderInfo extends StatelessWidget {
         .getOrderItemById4Admin(orderIdTaken)!;
     final List<String> listOfOrderedItems = gotCartItemById.itemsList;
     final List<double> listOfItemsQuantity = gotCartItemById.itemQuantity;
-    const textStyle1 = TextStyle(color: ThisAppColors.white, fontSize: 13);
+    const textStyle1 = TextStyle(color: AppColors.white, fontSize: 13);
     const textStyle2 =
-        TextStyle(color: ThisAppColors.kAppPrimaryColor, fontSize: 13);
+        TextStyle(color: AppColors.kAppPrimaryColor, fontSize: 13);
     Widget localDivider = const SizedBox(
-        height: 5, child: DashedLineDivider(color: ThisAppColors.silver));
+        height: 5, child: DashedLineDivider(color: AppColors.silver));
     List<String?> customerData = [
       gotCartItemById.customerId,
       gotCartItemById.customerPhone,
@@ -55,8 +55,8 @@ class ExpandedOrderInfo extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.97,
             height: MediaQuery.of(context).size.height * 0.7,
             decoration: BoxDecoration(
-                border: Border.all(width: 0.1, color: ThisAppColors.silver),
-                color: ThisAppColors.grey1.withOpacity(0.7)),
+                border: Border.all(width: 0.1, color: AppColors.silver),
+                color: AppColors.grey1.withOpacity(0.7)),
             // Order's content next
             child: Container(
               padding: const EdgeInsets.only(left: 30, right: 15),
@@ -136,7 +136,7 @@ class ExpandedOrderInfo extends StatelessWidget {
                               height: 20,
                               width: 100,
                               decoration: BoxDecoration(
-                                  color: ThisAppColors.black,
+                                  color: AppColors.black,
                                   borderRadius: BorderRadius.circular(12.0)),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
@@ -144,8 +144,7 @@ class ExpandedOrderInfo extends StatelessWidget {
                                     "${gotCartItemById.totalSum.toString()} \u20B4",
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
-                                        color: ThisAppColors.white,
-                                        fontSize: 14)),
+                                        color: AppColors.white, fontSize: 14)),
                               )),
                         ]),
                     //
@@ -180,7 +179,7 @@ class ExpandedOrderInfo extends StatelessWidget {
                                       gotCartItemById.amountOfBonusRequest
                                           .toString(),
                                     ),
-                                    color: ThisAppColors.white,
+                                    color: AppColors.white,
                                     size: 18,
                                   ),
                                   const SizedBox(width: 10),

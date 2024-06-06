@@ -5,7 +5,7 @@ import '../../../../State_management/Models/models_for_store/product_model.dart'
 import '../../../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 import '../../../Components/Others/dash_divider.dart';
 import '../../../Components/Pickers/_2_quantity_changer.dart';
 
@@ -57,7 +57,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         style: const TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.normal,
-            color: ThisAppColors.white),
+            color: AppColors.white),
         children: [
           TextSpan(
               text: product.shortDescription
@@ -65,13 +65,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.normal,
-                  color: ThisAppColors.white,
+                  color: AppColors.white,
                   decoration: TextDecoration.underline),
               recognizer: TapGestureRecognizer()..onTap = toggleDetails)
         ]);
 
     return Scaffold(
-      backgroundColor: ThisAppColors.black,
+      backgroundColor: AppColors.black,
       appBar: null,
       body: Stack(children: [
         Column(
@@ -154,13 +154,12 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                     child: Container(
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
-                                          color: ThisAppColors.silver
-                                              .withOpacity(0.5),
+                                          color:
+                                              AppColors.silver.withOpacity(0.5),
                                         ),
                                         child: const Center(
                                           child: Icon(Icons.arrow_back_ios_new,
-                                              color: ThisAppColors
-                                                  .kAppPrimaryColor,
+                                              color: AppColors.kAppPrimaryColor,
                                               size: 24),
                                         ))),
                               )),
@@ -182,13 +181,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                               style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  color: ThisAppColors.white)),
+                                  color: AppColors.white)),
                           const SizedBox(height: 5),
                           Text('Залишилось: ${product.quantityLeft} л',
                               style: const TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
-                                  color: ThisAppColors.silver)),
+                                  color: AppColors.silver)),
                         ]),
                     Column(mainAxisSize: MainAxisSize.min, children: [
                       Text('${product.calculatedNewPrice} \u20B4',
@@ -196,7 +195,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                               fontSize: 17,
                               fontWeight: FontWeight.bold,
                               fontStyle: FontStyle.normal,
-                              color: ThisAppColors.kAppPrimaryColor)),
+                              color: AppColors.kAppPrimaryColor)),
                       if (product.isDiscount!)
                         Padding(
                           padding: const EdgeInsets.only(right: 25.0),
@@ -206,7 +205,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
                                   fontStyle: FontStyle.normal,
-                                  color: ThisAppColors.white,
+                                  color: AppColors.white,
                                   decoration: TextDecoration.lineThrough)),
                         ),
                     ]),
@@ -219,7 +218,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: ThisAppColors.silver)),
+                      color: AppColors.silver)),
             ),
             const SizedBox(height: 5),
             // textSpan
@@ -251,13 +250,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       width: 120,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.0),
-                          color: ThisAppColors.lightGrey.withOpacity(0.3)),
+                          color: AppColors.lightGrey.withOpacity(0.3)),
                       // local sum
                       child: Text(
                           "${getLocalSum(localCart, product).toStringAsFixed(1)} \u20B4",
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                              color: ThisAppColors.white, fontSize: 15)),
+                              color: AppColors.white, fontSize: 15)),
                     ),
                   ]),
             ),
@@ -315,7 +314,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         const SizedBox(width: 291),
                         IconButton(
                             icon: const Icon(Icons.close, size: 25),
-                            color: ThisAppColors.white,
+                            color: AppColors.white,
                             onPressed: toggleDetails),
                       ]),
                     ),
@@ -324,7 +323,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
-                            color: ThisAppColors.kAppPrimaryColor)),
+                            color: AppColors.kAppPrimaryColor)),
                     const SizedBox(height: 1),
                     Expanded(
                       child: Padding(
@@ -343,12 +342,12 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                         style: const TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.normal,
-                                          color: ThisAppColors.white,
+                                          color: AppColors.white,
                                         ),
                                       ),
                                       const SizedBox(height: 10),
                                       DashedLineDivider(
-                                        color: ThisAppColors.kAppPrimaryColor
+                                        color: AppColors.kAppPrimaryColor
                                             .withOpacity(0.5),
                                       ),
                                     ],

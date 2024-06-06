@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 import '../../../Components/Cards_and_tiles/_5_users_info_card.dart';
 import '../../../Components/Others/dash_divider.dart';
 
@@ -31,7 +31,7 @@ class _SellersInfoState extends State<SellersInfo> {
           UsersInfoCard(isSellersInfo: true, isAdmin: profileData.isAdmin),
           //
           const SizedBox(height: 10),
-          const DashedLineDivider(color: ThisAppColors.hover),
+          const DashedLineDivider(color: AppColors.hover),
           const SizedBox(height: 10),
           //
           const Padding(
@@ -39,7 +39,7 @@ class _SellersInfoState extends State<SellersInfo> {
                 EdgeInsets.only(top: 3.0, bottom: 3.0, left: 130, right: 10),
             child: Text("Точки продажу",
                 style: TextStyle(
-                    color: ThisAppColors.kAppPrimaryColor,
+                    color: AppColors.kAppPrimaryColor,
                     fontSize: 15,
                     fontWeight: FontWeight.bold)),
           ),
@@ -62,7 +62,7 @@ class _SellersInfoState extends State<SellersInfo> {
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: ThisAppColors.hover.withOpacity(0.5),
+                        color: AppColors.hover.withOpacity(0.5),
                       ),
                       child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +99,7 @@ class _SellersInfoState extends State<SellersInfo> {
                   },
                 ),
               )),
-          const DashedLineDivider(color: ThisAppColors.hover),
+          const DashedLineDivider(color: AppColors.hover),
           const SizedBox(height: 10),
           const Padding(
               padding: EdgeInsets.all(10.0),
@@ -124,7 +124,7 @@ class _SellersInfoState extends State<SellersInfo> {
                   child: const Text('Дивитись сертифікат',
                       style: TextStyle(
                           decoration: TextDecoration.underline,
-                          color: ThisAppColors.white))),
+                          color: AppColors.white))),
             ]),
           ),
           const SizedBox(height: 1),
@@ -202,7 +202,7 @@ class NoCertificate extends StatelessWidget {
       child: Center(
         child: Text(
           "На даний момент сертифікат відсутній",
-          style: TextStyle(color: ThisAppColors.white),
+          style: TextStyle(color: AppColors.white),
         ),
       ),
     );

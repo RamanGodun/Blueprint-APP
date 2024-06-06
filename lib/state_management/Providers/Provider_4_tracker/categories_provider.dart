@@ -62,7 +62,7 @@ class CategoriesProvider extends ChangeNotifier {
     for (var i = 0; i < CategoriesEnum.values.length; i++)
       CategoriesEnum.values[i]: Category(
         title: AppStrings.categoryNames[i],
-        color: ThisAppColors.categoriesColors[i],
+        color: AppColors.categoriesColors[i],
         iconData: AppIcons.categoryIcon[i],
       ),
   };

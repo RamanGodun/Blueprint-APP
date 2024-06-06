@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
 import '../../../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 import '../../../Components/Cards_and_tiles/_2_card_for_list_view.dart';
 import '../../../Components/Others/_3_check_box.dart';
 import '../../../Components/Others/dash_divider.dart';
@@ -28,19 +28,19 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
         Provider.of<AuthProvider>(context, listen: false);
 
     return Scaffold(
-      backgroundColor: ThisAppColors.black1,
+      backgroundColor: AppColors.black1,
       appBar: AppBar(
         leading: Align(
           alignment: Alignment.centerRight,
           child: IconButton(
               icon: const Icon(Icons.arrow_back_ios,
-                  size: 20, color: ThisAppColors.white),
+                  size: 20, color: AppColors.white),
               onPressed: () {
                 // nextScreenReplace(
                 //     context, const AppTabs(bottomTab: 1, appBarIndex: 0));
               }),
         ),
-        backgroundColor: ThisAppColors.black1.withOpacity(0.3),
+        backgroundColor: AppColors.black1.withOpacity(0.3),
       ),
 
       //
@@ -53,14 +53,14 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
               const SizedBox(width: 15),
               const Text("Кошик покупок",
                   style: TextStyle(
-                      color: ThisAppColors.white,
+                      color: AppColors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.w700)),
               const SizedBox(width: 15),
               SizedBox(height: 20, child: Image.asset("assets/3sot up.png")),
             ]),
             const SizedBox(height: 15),
-            DashedLineDivider(color: ThisAppColors.silver.withOpacity(0.7)),
+            DashedLineDivider(color: AppColors.silver.withOpacity(0.7)),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.45,
               child:
@@ -72,7 +72,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                               child: Text(
                             "Поки що немає обраних товарів",
                             style: TextStyle(
-                                color: ThisAppColors.kAppPrimaryColor,
+                                color: AppColors.kAppPrimaryColor,
                                 fontSize: 15),
                           )),
                         )
@@ -117,7 +117,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                           },
                         ),
             ),
-            const DashedLineDivider(color: ThisAppColors.silver),
+            const DashedLineDivider(color: AppColors.silver),
             const SizedBox(height: 17),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -128,7 +128,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                     const Text(
                       "Загальна сума замовлення",
                       style: TextStyle(
-                        color: ThisAppColors.kAppPrimaryColor,
+                        color: AppColors.kAppPrimaryColor,
                         fontSize: 15,
                       ),
                     ),
@@ -138,12 +138,12 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                       width: 120,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.0),
-                        color: ThisAppColors.grey1,
+                        color: AppColors.grey1,
                       ),
                       child: Text(cartProvider.localCart.totalSum.toString(),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                            color: ThisAppColors.white,
+                            color: AppColors.white,
                           )),
                     ),
                   ]),
@@ -158,7 +158,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                     const Text(
                       "Використати доступні бонуси",
                       style: TextStyle(
-                        color: ThisAppColors.white,
+                        color: AppColors.white,
                         fontSize: 14,
                       ),
                     ),
@@ -166,7 +166,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                     Text(
                       "(${profileInfo.userProfileData.userBonuses.toString()})",
                       style: const TextStyle(
-                        color: ThisAppColors.kAppPrimaryColor,
+                        color: AppColors.kAppPrimaryColor,
                         fontSize: 14,
                       ),
                     ),
@@ -179,7 +179,7 @@ class _CustomerCartScreenState extends State<CustomerCartScreen> {
                   ]),
             ),
             const SizedBox(height: 20),
-            const DashedLineDivider(color: ThisAppColors.silver),
+            const DashedLineDivider(color: AppColors.silver),
             const SizedBox(height: 50),
             // button next
             Padding(

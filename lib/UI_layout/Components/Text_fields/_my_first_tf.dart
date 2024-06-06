@@ -56,7 +56,7 @@ class StyledTextFormField extends StatefulWidget {
     this.isNeedPrefixIcon = false,
     this.textStyle = const TextStyle(
       fontSize: 15,
-      color: ThisAppColors.white,
+      color: AppColors.white,
       fontWeight: FontWeight.w700,
     ),
   });
@@ -108,7 +108,7 @@ class _StyledTextFormFieldState extends State<StyledTextFormField> {
             //
             style:
                 widget.textStyle!.copyWith(fontSize: widget.textFontSize ?? 15),
-            cursorColor: ThisAppColors.kAppPrimaryColor.withOpacity(0.5),
+            cursorColor: AppColors.kAppPrimaryColor.withOpacity(0.5),
             decoration: InputDecoration(
               suffixIcon: (widget.isNeedSuffixIcon == true)
                   ? (widget.controller.text.length > widget.suffixLength
@@ -150,31 +150,31 @@ class _StyledTextFormFieldState extends State<StyledTextFormField> {
                   decorationStyle: TextDecorationStyle.solid,
                   // textBaseline: TextBaseline.ideographic,
                   fontSize: 12,
-                  color: ThisAppColors.white,
+                  color: AppColors.white,
                   overflow: TextOverflow.ellipsis),
               hintText: widget.hintText,
               hintStyle: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
-                  color: ThisAppColors.white),
+                  color: AppColors.white),
               errorStyle: const TextStyle(
                   debugLabel: "", overflow: TextOverflow.fade, fontSize: 0),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: ThisAppColors.white, width: widget.borderWidth),
+                    color: AppColors.white, width: widget.borderWidth),
                 borderRadius:
                     BorderRadius.all(Radius.circular(widget.borderRadius)),
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: ThisAppColors.kAppPrimaryColor,
+                    color: AppColors.kAppPrimaryColor,
                     width: widget.borderWidth),
                 borderRadius:
                     BorderRadius.all(Radius.circular(widget.borderRadius)),
               ),
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                    color: ThisAppColors.kAppPrimaryColor,
+                    color: AppColors.kAppPrimaryColor,
                     width: widget.borderWidth),
                 borderRadius:
                     BorderRadius.all(Radius.circular(widget.borderRadius)),

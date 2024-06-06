@@ -86,15 +86,14 @@ class _MyCustomizedSwitcherState extends State<MyCustomizedSwitcher> {
           return Container(
             margin: const EdgeInsets.only(bottom: 150),
             child: AlertDialog(
-                backgroundColor: ThisAppColors.darkGrey3.withOpacity(0.97),
+                backgroundColor: AppColors.darkGrey3.withOpacity(0.97),
                 elevation: 0,
                 content: Column(mainAxisSize: MainAxisSize.min, children: [
                   const Padding(
                     padding: EdgeInsets.all(20),
                     child: Text("Ви підтверджуєте, що це замовлення завершене?",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: ThisAppColors.white, fontSize: 18)),
+                        style: TextStyle(color: AppColors.white, fontSize: 18)),
                   ),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -104,7 +103,7 @@ class _MyCustomizedSwitcherState extends State<MyCustomizedSwitcher> {
                             "Ні, дякую",
                             style: TextStyle(
                                 fontSize: 16,
-                                color: ThisAppColors.kAppPrimaryColor
+                                color: AppColors.kAppPrimaryColor
                                     .withOpacity(0.9)),
                           ),
                           onPressed: () {
@@ -116,7 +115,7 @@ class _MyCustomizedSwitcherState extends State<MyCustomizedSwitcher> {
                             "Так",
                             style: TextStyle(
                                 fontSize: 16,
-                                color: ThisAppColors.kAppPrimaryColor
+                                color: AppColors.kAppPrimaryColor
                                     .withOpacity(0.7)),
                           ),
                           onPressed: () async {

@@ -30,14 +30,14 @@ class _DeliverySelectionWidgetState extends State<DeliverySelectionWidget> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: ThisAppColors.white),
+                border: Border.all(color: AppColors.white),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: ExpansionTile(
                   tilePadding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
-                  iconColor: ThisAppColors.white,
-                  collapsedIconColor: ThisAppColors.white,
+                  iconColor: AppColors.white,
+                  collapsedIconColor: AppColors.white,
                   title: Text(
                       (profileProvider.userProfileData.deliveryWay.isNotEmpty)
                           ? profileProvider.userProfileData.deliveryWay
@@ -45,7 +45,7 @@ class _DeliverySelectionWidgetState extends State<DeliverySelectionWidget> {
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: ThisAppColors.white,
+                        color: AppColors.white,
                       )),
                   children: [
                     Column(
@@ -75,8 +75,8 @@ class _DeliverySelectionWidgetState extends State<DeliverySelectionWidget> {
             method,
             style: TextStyle(
                 color: (profileProvider.userProfileData.deliveryWay == method)
-                    ? ThisAppColors.kAppPrimaryColor
-                    : ThisAppColors.white),
+                    ? AppColors.kAppPrimaryColor
+                    : AppColors.white),
           ),
         ),
       ),

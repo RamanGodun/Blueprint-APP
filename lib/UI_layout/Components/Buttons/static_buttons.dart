@@ -1,17 +1,16 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../State_management/Src/Const_data/app_locales.dart';
-import '../../../State_management/Src/Custom_icons/custom_icons_src.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../_Widgets_STYLING/0.text_styles_for_components.dart';
+import '../_Widgets_STYLING/_text_styles_for_components.dart';
 
-class StaticCustomButtons {
-  static Widget customButton(BuildContext context,
-      {required VoidCallback onPressed, required String buttonText}) {
+class AppCustomButtons {
+  static Widget withShadows(
+    BuildContext context, {
+    required VoidCallback onPressed,
+    required String buttonText,
+  }) {
     final theme = Helpers.cupertinoThemeData(context);
-
     return Material(
       child: GestureDetector(
         onTap: onPressed,
@@ -54,10 +53,12 @@ class StaticCustomButtons {
     );
   }
 
-  static Widget customButton2(BuildContext context,
-      {required VoidCallback onPressed, required String buttonText}) {
+  static Widget likeIOS(
+    BuildContext context, {
+    required VoidCallback onPressed,
+    required String buttonText,
+  }) {
     final theme = Helpers.cupertinoThemeData(context);
-
     return Material(
       child: GestureDetector(
         onTap: onPressed,
@@ -123,32 +124,6 @@ class StaticCustomButtons {
           child: Text(buttonText,
               style: TextStyle4Components.buttonTextStyle(context)),
         ),
-      ),
-    );
-  }
-
-  static Widget changeLanguageButton(BuildContext context) {
-    final theme = Helpers.cupertinoThemeData(context);
-    final appLocales = AppLocales().appLocales;
-
-    return CupertinoButton(
-      padding: EdgeInsets.zero,
-      onPressed: () {
-        Locale newLocale =
-            context.locale == appLocales[0] ? appLocales[1] : appLocales[0];
-        context.setLocale(newLocale);
-      },
-      child: Icon(
-        ThisAppIcons.globe,
-        color: theme.primaryColor,
-        shadows: [
-          BoxShadow(
-            color: CupertinoColors.black.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(1, 3),
-          ),
-        ],
       ),
     );
   }

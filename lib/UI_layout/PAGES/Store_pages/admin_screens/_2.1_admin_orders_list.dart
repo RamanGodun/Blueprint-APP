@@ -30,7 +30,7 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 45,
-        backgroundColor: ThisAppColors.black,
+        backgroundColor: AppColors.black,
         title: const Text(
           "Поточні замовлення",
           style: TextStyle(fontSize: 16),
@@ -40,7 +40,7 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: IconButton(
               icon: const Icon(Icons.article_outlined, size: 30),
-              color: ThisAppColors.kAppPrimaryColor,
+              color: AppColors.kAppPrimaryColor,
               onPressed: () {
                 // nextScreen(context, const DiscountSystem());
               },
@@ -61,7 +61,7 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
                         child: Center(
                             child: Text(
                           "Поки що немає активних замовлень",
-                          style: TextStyle(color: ThisAppColors.white),
+                          style: TextStyle(color: AppColors.white),
                         )),
                       )
                     // ListView builder next

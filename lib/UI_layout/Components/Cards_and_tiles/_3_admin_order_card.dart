@@ -6,7 +6,7 @@ import '../../../State_management/Theme_configuration/this_app_colors.dart';
 import '../Dialogs/general_alert_dialog.dart';
 import '../Others/dash_divider.dart';
 import '../Switchers/_2_my_switcher.dart';
-import '../Tabs/default_tabs_from_shop.dart';
+import '../../PAGES/Tabs/default_tabs_from_shop.dart';
 
 class AdminOrderItem extends StatefulWidget {
   final String customerName;
@@ -63,18 +63,18 @@ class _AdminOrderItemState extends State<AdminOrderItem> {
                           style: const TextStyle(
                               fontSize: 13.0,
                               fontWeight: FontWeight.w700,
-                              color: ThisAppColors.white)),
+                              color: AppColors.white)),
                     ),
                     Text('${widget.totalAmount.toStringAsFixed(0)}₴',
                         style: const TextStyle(
                             fontSize: 14.0,
-                            color: ThisAppColors.white,
+                            color: AppColors.white,
                             fontWeight: FontWeight.bold)),
                     SizedBox(
                       height: 25,
                       child: IconButton(
                           icon: const Icon(Icons.expand_more,
-                              size: 30, color: ThisAppColors.kAppPrimaryColor),
+                              size: 30, color: AppColors.kAppPrimaryColor),
                           onPressed: () {
                             // nextScreen(
                             //     context,
@@ -86,12 +86,12 @@ class _AdminOrderItemState extends State<AdminOrderItem> {
                 ),
               ),
               Text(DateFormat('yyyy/MM/dd   HH:mm').format(widget.createdAt),
-                  style: const TextStyle(
-                      fontSize: 12.0, color: ThisAppColors.white)),
+                  style:
+                      const TextStyle(fontSize: 12.0, color: AppColors.white)),
 
               //
               const SizedBox(height: 7),
-              const DashedLineDivider(color: ThisAppColors.white),
+              const DashedLineDivider(color: AppColors.white),
               //
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -106,8 +106,7 @@ class _AdminOrderItemState extends State<AdminOrderItem> {
                   // showIsOrderFinishedDialog()
                   IconButton(
                       icon: Icon(Icons.delete,
-                          color:
-                              ThisAppColors.kAppPrimaryColor.withOpacity(0.5)),
+                          color: AppColors.kAppPrimaryColor.withOpacity(0.5)),
                       onPressed: () {
                         showDeleteConfirmationDialog();
                       }),

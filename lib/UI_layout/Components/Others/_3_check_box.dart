@@ -76,7 +76,7 @@ class _CheckboxWidgetState extends State<CheckboxWidget> {
                 border: Border.all(color: Colors.grey, width: 2),
                 borderRadius: BorderRadius.circular(4),
                 color: isChecked
-                    ? ThisAppColors.white.withOpacity(0.8)
+                    ? AppColors.white.withOpacity(0.8)
                     : Colors.transparent,
               ),
               child: isChecked

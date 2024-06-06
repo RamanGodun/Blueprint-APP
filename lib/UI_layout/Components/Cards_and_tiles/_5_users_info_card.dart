@@ -63,7 +63,7 @@ class UsersInfoCard extends StatelessWidget {
               const EdgeInsets.only(top: 5.0, bottom: 5.00, left: 8, right: 8),
           padding: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
-            color: ThisAppColors.hover.withOpacity(0.4),
+            color: AppColors.hover.withOpacity(0.4),
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Row(
@@ -113,7 +113,7 @@ class UsersInfoCard extends StatelessWidget {
                                         height: double.infinity),
                                   )
                                 : const Icon(Icons.add_a_photo,
-                                    color: ThisAppColors.kAppPrimaryColor,
+                                    color: AppColors.kAppPrimaryColor,
                                     size: 50),
                   ),
                 ),
@@ -130,7 +130,7 @@ class UsersInfoCard extends StatelessWidget {
                                   ? "Контактні дані"
                                   : "Персональні дані",
                               style: const TextStyle(
-                                  color: ThisAppColors.kAppPrimaryColor,
+                                  color: AppColors.kAppPrimaryColor,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14),
                             )),
@@ -149,7 +149,7 @@ class UsersInfoCard extends StatelessWidget {
                                   (isSellersInfo == true)
                                       ? _getIconForIndex2(index)
                                       : _getIconForIndex1(index),
-                                  color: ThisAppColors.white,
+                                  color: AppColors.white,
                                   size: 18,
                                 ),
                                 const SizedBox(width: 10),
@@ -162,8 +162,8 @@ class UsersInfoCard extends StatelessWidget {
                                     style: TextStyle(
                                         color: (isSellersInfo != true &&
                                                 index == 2)
-                                            ? ThisAppColors.kAppPrimaryColor
-                                            : ThisAppColors.white,
+                                            ? AppColors.kAppPrimaryColor
+                                            : AppColors.white,
                                         fontSize: 13)),
                               ]),
                             );
@@ -191,7 +191,7 @@ class UsersInfoCard extends StatelessWidget {
                       // );
                     },
                     icon: const Icon(Icons.edit,
-                        color: ThisAppColors.kAppPrimaryColor, size: 20),
+                        color: AppColors.kAppPrimaryColor, size: 20),
                   ),
                 ],
               )

@@ -8,7 +8,7 @@ import '../../../../State_management/Providers/Providers_for_store/auth_profile_
 import '../../../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 
 class OtpScreen extends StatefulWidget {
   final String verificationId;
@@ -55,7 +55,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     const SizedBox(height: 80),
                     const Text("Перевірка",
                         style: TextStyle(
-                          color: ThisAppColors.kAppPrimaryColor,
+                          color: AppColors.kAppPrimaryColor,
                           fontSize: 25,
                           fontWeight: FontWeight.w800,
                         )),
@@ -119,7 +119,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       child: const Text("не прийшов код",
                           style: TextStyle(
                             decoration: TextDecoration.underline,
-                            color: ThisAppColors.kAppPrimaryColor,
+                            color: AppColors.kAppPrimaryColor,
                           )),
                     ),
                     const SizedBox(height: 15),

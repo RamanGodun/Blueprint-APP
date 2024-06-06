@@ -33,7 +33,7 @@ class _CustomersOrderItemState extends State<CustomersOrderItem> {
           padding:
               const EdgeInsets.only(top: 15.0, right: 10, bottom: 10, left: 15),
           decoration: BoxDecoration(
-            color: ThisAppColors.hover.withOpacity(0.5),
+            color: AppColors.hover.withOpacity(0.5),
             borderRadius: BorderRadius.circular(7.0),
           ),
           child: Wrap(children: [
@@ -67,7 +67,7 @@ class _CustomersOrderItemState extends State<CustomersOrderItem> {
                           '${widget.totalAmount.toStringAsFixed(2)} \u20B4',
                           style: const TextStyle(
                             fontSize: 14.0,
-                            color: ThisAppColors.white,
+                            color: AppColors.white,
                             fontWeight: FontWeight.w800,
                           ),
                         ),
@@ -80,7 +80,7 @@ class _CustomersOrderItemState extends State<CustomersOrderItem> {
                           },
                         ),
                       ]),
-                  const DashedLineDivider(color: ThisAppColors.silver)
+                  const DashedLineDivider(color: AppColors.silver)
                 ]),
           ]),
         ));

@@ -5,7 +5,7 @@ import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 
-class DropButtonStyle {
+abstract class DropButtonStyle {
   static List<DropdownMenuItem<CustomThemeMode>> buildThemeModeItems(
       BuildContext context) {
     final List<CustomThemeMode> themeModes = [

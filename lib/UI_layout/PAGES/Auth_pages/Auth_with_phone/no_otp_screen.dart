@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../State_management/Models/models_for_store/admin_data_model.dart';
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 
 class NoOtpScreen extends StatefulWidget {
   const NoOtpScreen({super.key});
@@ -17,12 +17,12 @@ class _NoOtpScreenState extends State<NoOtpScreen> {
   late String adminsEmail;
 
   final textStyle1 = const TextStyle(
-    color: ThisAppColors.kAppPrimaryColor,
+    color: AppColors.kAppPrimaryColor,
     fontSize: 25,
     fontWeight: FontWeight.w800,
   );
   final textStyle2 = const TextStyle(
-    color: ThisAppColors.white,
+    color: AppColors.white,
     fontSize: 14,
   );
 

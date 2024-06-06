@@ -86,7 +86,7 @@ class _ProductsListViewItemState extends State<ProductsListViewItem> {
       margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 3),
       padding: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
-        color: ThisAppColors.hover.withOpacity(0.5),
+        color: AppColors.hover.withOpacity(0.5),
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Stack(
@@ -153,12 +153,12 @@ class _ProductsListViewItemState extends State<ProductsListViewItem> {
                           children: [
                             const Text('скидка "+" ?',
                                 style: TextStyle(
-                                    color: ThisAppColors.white, fontSize: 13)),
+                                    color: AppColors.white, fontSize: 13)),
                             SizedBox(
                               height: 30,
                               child: Switch(
-                                inactiveThumbColor: ThisAppColors.hover,
-                                activeColor: ThisAppColors.white,
+                                inactiveThumbColor: AppColors.hover,
+                                activeColor: AppColors.white,
                                 value:
                                     (editedProductsItem.isDiscountPlus != null)
                                         ? editedProductsItem.isDiscountPlus!
@@ -189,7 +189,7 @@ class _ProductsListViewItemState extends State<ProductsListViewItem> {
                   width: 20,
                   child: GestureDetector(
                     child: const Icon(Icons.edit,
-                        size: 20, color: ThisAppColors.kAppPrimaryColor),
+                        size: 20, color: AppColors.kAppPrimaryColor),
                     onTap: () {
                       // nextScreen(
                       //   context,

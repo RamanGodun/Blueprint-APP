@@ -63,7 +63,7 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
             //
             const UsersInfoCard(isSellersInfo: false, isAdmin: false),
             const SizedBox(height: 5),
-            const DashedLineDivider(color: ThisAppColors.hover),
+            const DashedLineDivider(color: AppColors.hover),
 
             //
             // Delivery info next
@@ -73,13 +73,13 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
               child: Row(children: [
                 Icon(
                   Icons.local_shipping,
-                  color: ThisAppColors.kAppPrimaryColor,
+                  color: AppColors.kAppPrimaryColor,
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 8.0),
                   child: Text("Інформація з доставки",
                       style: TextStyle(
-                          color: ThisAppColors.kAppPrimaryColor, fontSize: 14)),
+                          color: AppColors.kAppPrimaryColor, fontSize: 14)),
                 ),
               ]),
             ),
@@ -96,13 +96,13 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                       children: [
                         Icon(
                           _getIconForIndex2(index),
-                          color: ThisAppColors.white,
+                          color: AppColors.white,
                           size: 20,
                         ),
                         const SizedBox(width: 10),
                         Text(customerData2[index],
                             style: const TextStyle(
-                                color: ThisAppColors.white,
+                                color: AppColors.white,
                                 fontSize: 13,
                                 fontStyle: FontStyle.normal)),
                       ],
@@ -113,7 +113,7 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
 
             //
             // Orders  next
-            const DashedLineDivider(color: ThisAppColors.hover),
+            const DashedLineDivider(color: AppColors.hover),
             const SizedBox(height: 15),
             const Padding(
               padding: EdgeInsets.only(left: 70.0),
@@ -121,13 +121,13 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                 children: [
                   Icon(
                     Icons.local_shipping,
-                    color: ThisAppColors.kAppPrimaryColor,
+                    color: AppColors.kAppPrimaryColor,
                   ),
                   SizedBox(width: 10),
                   Text("Список моїх замовлень",
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                        color: ThisAppColors.kAppPrimaryColor,
+                        color: AppColors.kAppPrimaryColor,
                         fontSize: 15,
                         // fontWeight: FontWeight.w500
                       )),
@@ -151,8 +151,8 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                     )
                   : const Center(
                       child: Text("Замовлень поки що немає",
-                          style: TextStyle(
-                              color: ThisAppColors.white, fontSize: 15)),
+                          style:
+                              TextStyle(color: AppColors.white, fontSize: 15)),
                     ),
             ),
           ]),
@@ -190,7 +190,7 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                               const Spacer(),
                               IconButton(
                                   icon: const Icon(Icons.close, size: 20),
-                                  color: ThisAppColors.white,
+                                  color: AppColors.white,
                                   onPressed: () => cartProvider
                                       .resetIsExpandedInUserCartList()),
                             ]),
@@ -223,12 +223,12 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                                   '${expandedOrder.totalSum!.toStringAsFixed(2)} \u20B4',
                                   style: const TextStyle(
                                       fontSize: 14.0,
-                                      color: ThisAppColors.silver,
+                                      color: AppColors.silver,
                                       fontWeight: FontWeight.w800)),
                             ]),
                       ),
                       const SizedBox(height: 15),
-                      const DashedLineDivider(color: ThisAppColors.white),
+                      const DashedLineDivider(color: AppColors.white),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.4,
                         // List of items in cart
@@ -249,7 +249,7 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                               );
                             }),
                       ),
-                      const DashedLineDivider(color: ThisAppColors.silver),
+                      const DashedLineDivider(color: AppColors.silver),
                       const SizedBox(height: 10),
                       // text of status of order
                       Padding(
@@ -262,7 +262,7 @@ class _PersonalCabinet4CustomerState extends State<PersonalCabinet4Customer> {
                                   ? "Замовлення в процесі обробки..."
                                   : "Завершено, бонуси зараховані",
                           style: const TextStyle(
-                              color: ThisAppColors.kAppPrimaryColor),
+                              color: AppColors.kAppPrimaryColor),
                         ),
                       )
                     ]),

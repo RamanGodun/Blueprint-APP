@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../Static/mini_widgets.dart';
-import '../_Widgets_STYLING/0.text_styles_for_components.dart';
+import '../Static/dividers.dart';
+import '../_Widgets_STYLING/_text_styles_for_components.dart';
 
 class IconPickerWidget extends StatefulWidget {
   final ValueChanged<IconData> onIconSelected;
@@ -94,10 +94,10 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
                     height: 60,
                     child: Column(
                       children: [
-                        MiniWidgets.boldDivider(
+                        AppDividers.boldDivider(
                           Helpers.isDarkTheme(context),
                         ),
-                        MiniWidgets.boldDivider(
+                        AppDividers.boldDivider(
                           Helpers.isDarkTheme(context),
                         ),
                         Padding(

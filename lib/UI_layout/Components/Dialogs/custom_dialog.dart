@@ -5,8 +5,8 @@ import 'package:get_it/get_it.dart';
 
 import '../../../State_management/Services/animation_controller_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../Buttons/dialog_action_buttons.dart';
-import '../Static/static_widgets.dart';
+import '../Buttons/_dialog_action_buttons.dart';
+import '../Static/dividers.dart';
 
 class CustomCupertinoDialog extends HookWidget {
   final Widget contentWidget;
@@ -108,11 +108,9 @@ class CustomCupertinoDialog extends HookWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            StaticButtons4Dialogs.cancelButtonForDialog(
-                                context),
-                            StaticWidgets.dividerBetweenDialogButtons(context),
-                            StaticButtons4Dialogs.actionButtonForDialog(
-                                context),
+                            AppDialogButtons.cancelButton(context),
+                            AppDividers.dividerBetweenDialogButtons(context),
+                            AppDialogButtons.actionButton(context),
                           ],
                         ),
                       ),

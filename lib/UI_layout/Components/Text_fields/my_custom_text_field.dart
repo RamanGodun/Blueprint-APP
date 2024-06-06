@@ -120,7 +120,7 @@ class CustomTextField extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: ThisAppColors.kAppPrimaryColor.withOpacity(0.7),
+                color: AppColors.kAppPrimaryColor.withOpacity(0.7),
               ),
               borderRadius: BorderRadius.circular(8.0),
             ),

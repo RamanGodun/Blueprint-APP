@@ -140,7 +140,7 @@ class _StartScreenState extends State<StartScreen> {
                 /* 
                 Start button
                 */
-                StaticCustomButtons.startButton(
+                AppCustomButtons.startButton(
                   startQuiz: widget.startQuiz,
                   colorScheme: colorScheme,
                   textTheme: textTheme,

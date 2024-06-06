@@ -4,7 +4,7 @@ import '../../../../State_management/Models/models_for_store/product_model.dart'
 import '../../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 import '../../../Components/Cards_and_tiles/_1_grid_view_card.dart';
 
 class ProductsGrid extends StatefulWidget {
@@ -33,7 +33,7 @@ class _ProductsGridState extends State<ProductsGrid> {
 
     //
     return Container(
-      decoration: BoxDecoration(color: ThisAppColors.black.withOpacity(0.5)),
+      decoration: BoxDecoration(color: AppColors.black.withOpacity(0.5)),
       width: mQ.width * 0.82,
       child: Stack(
         children: [
@@ -68,8 +68,8 @@ class _ProductsGridState extends State<ProductsGrid> {
                       : const Expanded(
                           child: Center(
                           child: Text("Продукти даної категорії відсутні",
-                              style: TextStyle(
-                                  color: ThisAppColors.kAppPrimaryColor)),
+                              style:
+                                  TextStyle(color: AppColors.kAppPrimaryColor)),
                         )),
                   const SizedBox(height: 50),
                 ]),

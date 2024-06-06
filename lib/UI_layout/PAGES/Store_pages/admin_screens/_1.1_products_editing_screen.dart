@@ -6,7 +6,7 @@ import '../../../../State_management/Models/models_for_store/product_model.dart'
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 import '../../../Components/Dialogs/general_alert_dialog.dart';
 import '../../../Components/Others/dashed_border_container.dart';
 import '../../../Components/Text_fields/_my_first_tf.dart';
@@ -72,15 +72,15 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
             // deleting button
             IconButton(
                 onPressed: () => callDeleteAlertDialog(widget.isNewProductItem),
-                icon: const Icon(Icons.delete,
-                    color: ThisAppColors.kAppPrimaryColor))
+                icon:
+                    const Icon(Icons.delete, color: AppColors.kAppPrimaryColor))
           ],
         ),
         // body next
         body: (isLoading == true)
             ? const Center(
                 child: CircularProgressIndicator(
-                color: ThisAppColors.kAppPrimaryColor,
+                color: AppColors.kAppPrimaryColor,
               ))
             : SingleChildScrollView(
                 child: Align(
@@ -139,7 +139,7 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
                                                             : const Icon(
                                                                 Icons
                                                                     .add_a_photo,
-                                                                color: ThisAppColors
+                                                                color: AppColors
                                                                     .kAppPrimaryColor,
                                                                 size: 50,
                                                               )),
@@ -243,18 +243,17 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
                                                           const Text(
                                                             "Мед?",
                                                             style: TextStyle(
-                                                              color:
-                                                                  ThisAppColors
-                                                                      .white,
+                                                              color: AppColors
+                                                                  .white,
                                                               fontSize: 12,
                                                             ),
                                                           ),
                                                           Switch(
                                                               inactiveThumbColor:
-                                                                  ThisAppColors
+                                                                  AppColors
                                                                       .hover,
                                                               activeColor:
-                                                                  ThisAppColors
+                                                                  AppColors
                                                                       .white,
                                                               value: productsInfo
                                                                   .getProductItemById(
@@ -344,7 +343,7 @@ class _ProductsEditingScreenState extends State<ProductsEditingScreen> {
                                 'Застосувати акцію',
                                 style: TextStyle(
                                   decoration: TextDecoration.underline,
-                                  color: ThisAppColors.white,
+                                  color: AppColors.white,
                                 ),
                               ),
                             ),

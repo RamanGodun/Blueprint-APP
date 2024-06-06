@@ -6,7 +6,7 @@ import '../../../../State_management/Providers/Providers_for_store/auth_profile_
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 import '../../../Components/Others/dashed_border_container.dart';
 import '../../../Components/Switchers/_2_my_switcher.dart';
 
@@ -42,7 +42,7 @@ class _PersonalDataEditing4AdminState extends State<PersonalDataEditing4Admin> {
         Provider.of<CommonDataProvider>(context, listen: true);
 
     return Scaffold(
-      backgroundColor: ThisAppColors.black,
+      backgroundColor: AppColors.black,
       appBar: AppBar(
           backgroundColor: Colors.grey[900],
           leading: Padding(
@@ -97,8 +97,8 @@ class _PersonalDataEditing4AdminState extends State<PersonalDataEditing4Admin> {
                                                     width: double.infinity,
                                                     height: double.infinity))
                                             : const Icon(Icons.add_a_photo,
-                                                color: ThisAppColors
-                                                    .kAppPrimaryColor,
+                                                color:
+                                                    AppColors.kAppPrimaryColor,
                                                 size: 50)),
                               ))),
                       SizedBox(
@@ -134,7 +134,7 @@ class _PersonalDataEditing4AdminState extends State<PersonalDataEditing4Admin> {
                         child: const Text('Обрати сертифікат',
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
-                                color: ThisAppColors.white))),
+                                color: AppColors.white))),
                   ]),
                 ),
                 SizedBox(height: mediaQuery.size.height * 0.03),

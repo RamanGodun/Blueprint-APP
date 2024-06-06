@@ -31,7 +31,7 @@ class _CardOfProductItem4GridViewState
         width: MediaQuery.of(context).size.width * 0.41,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.0),
-          color: ThisAppColors.hover.withOpacity(0.4),
+          color: AppColors.hover.withOpacity(0.4),
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Stack(
@@ -119,7 +119,7 @@ class _CardOfProductItem4GridViewState
                       style: const TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
-                          color: ThisAppColors.kAppPrimaryColor)),
+                          color: AppColors.kAppPrimaryColor)),
                   const Text("/ за 1 л",
                       style: TextStyle(color: Colors.white, fontSize: 10)),
                 ],
@@ -131,7 +131,7 @@ class _CardOfProductItem4GridViewState
                   style: const TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.w500,
-                      color: ThisAppColors.white,
+                      color: AppColors.white,
                       decoration: TextDecoration.lineThrough)),
               const SizedBox(height: 10),
               // Quantity changer next

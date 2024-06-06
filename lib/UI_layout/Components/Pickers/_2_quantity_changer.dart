@@ -45,7 +45,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
           width: widget.totalWidth,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.0),
-            color: ThisAppColors.lightGrey.withOpacity(0.3),
+            color: AppColors.lightGrey.withOpacity(0.3),
           ),
         ),
         SizedBox(
@@ -61,7 +61,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.5),
-                  color: ThisAppColors.kAppPrimaryColor,
+                  color: AppColors.kAppPrimaryColor,
                 ),
                 child:
                     // "minus" IconButton
@@ -98,8 +98,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                         : cartProvider.localCart.itemQuantity[
                             cartProvider.getItemIndexInCart(widget.productId)])
                     .toString(),
-                style:
-                    const TextStyle(fontSize: 16, color: ThisAppColors.white),
+                style: const TextStyle(fontSize: 16, color: AppColors.white),
               ),
               const SizedBox(width: 10),
               // "plus" IconButton
@@ -109,7 +108,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: ThisAppColors.kAppPrimaryColor,
+                  color: AppColors.kAppPrimaryColor,
                 ),
                 child: IconButton(
                     onPressed: () {
@@ -140,11 +139,11 @@ class _QuantityChangerState extends State<QuantityChanger> {
       context: context,
       builder: (BuildContext context) {
         return Container(
-          color: ThisAppColors.black1.withOpacity(0.6),
+          color: AppColors.black1.withOpacity(0.6),
           padding: const EdgeInsets.only(bottom: 100),
           child: AlertDialog(
             elevation: 0,
-            backgroundColor: ThisAppColors.darkGrey3.withOpacity(0.8),
+            backgroundColor: AppColors.darkGrey3.withOpacity(0.8),
             contentPadding:
                 const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 5),
             content: SizedBox(
@@ -153,8 +152,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                   const Text(
                       "Ви впевнені, що бажаєте видалити цей товар з кошику?",
                       textAlign: TextAlign.center,
-                      style:
-                          TextStyle(color: ThisAppColors.white, fontSize: 16)),
+                      style: TextStyle(color: AppColors.white, fontSize: 16)),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -165,7 +163,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                           child: const Text("Відміна",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: ThisAppColors.kAppPrimaryColor,
+                                  color: AppColors.kAppPrimaryColor,
                                   fontSize: 15)),
                         ),
                         TextButton(
@@ -177,7 +175,7 @@ class _QuantityChangerState extends State<QuantityChanger> {
                           child: const Text("Так, впевнений",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: ThisAppColors.kAppPrimaryColor,
+                                  color: AppColors.kAppPrimaryColor,
                                   fontSize: 14)),
                         ),
                       ]),

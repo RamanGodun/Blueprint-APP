@@ -65,7 +65,7 @@ class CustomListTile extends StatelessWidget {
               children: [
                 LayoutId(
                   id: "question ID",
-                  child: MiniWidgets.isAnswerCorrectIdentifier(
+                  child: AppMiniWidgets.isAnswerCorrectIdentifier(
                     context: context,
                     isCorrectAnswer: isCorrectAnswer,
                     questionIndex: questionIndex + 1,
@@ -100,7 +100,7 @@ class CustomListTile extends StatelessWidget {
                     itemData.userAnswer,
                     style: textTheme.bodyMedium?.copyWith(
                       color: isCorrectAnswer
-                          ? ThisAppColors.kAppPrimaryColor
+                          ? AppColors.kAppPrimaryColor
                           : colorScheme.error,
                       height: 1.05,
                     ),

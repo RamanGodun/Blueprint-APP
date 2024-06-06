@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
+import '../../Components/Buttons/icon_buttons.dart';
 import '../../Components/Buttons/static_buttons.dart';
-import '../../../State_management/Src/Custom_icons/custom_icons_src.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../../Components/_Widgets_STYLING/0.text_styles_for_components.dart';
+import '../../Components/_Widgets_STYLING/_text_styles_for_components.dart';
 
 class StartPage extends StatefulWidget {
   static const routeName = '/start_page';
@@ -41,14 +41,7 @@ class _StartPageState extends State<StartPage> {
             const Spacer(),
           ],
         ),
-        trailing: CupertinoButton(
-          padding: EdgeInsets.zero,
-          child:
-              Icon(ThisAppIcons.settings, color: cupertinoTheme.primaryColor),
-          onPressed: () {
-            context.pushNamed('SettingsPage');
-          },
-        ),
+        trailing: AppIconButtons.toSettingsPageIconButton(context),
       ),
       child: Material(
         child: Center(
@@ -57,7 +50,7 @@ class _StartPageState extends State<StartPage> {
             child: ListView(
               children: [
                 const SizedBox(height: 20),
-                StaticCustomButtons.customButton(
+                AppCustomButtons.withShadows(
                   context,
                   onPressed: () {
                     context.pushNamed('TextFieldPage');
@@ -65,7 +58,7 @@ class _StartPageState extends State<StartPage> {
                   buttonText: LocaleKeys.goToTextfield.tr(),
                 ),
                 const SizedBox(height: 20),
-                StaticCustomButtons.customButton(
+                AppCustomButtons.withShadows(
                   context,
                   onPressed: () {
                     context.pushNamed('HiveBoxPage');
@@ -73,7 +66,7 @@ class _StartPageState extends State<StartPage> {
                   buttonText: LocaleKeys.goToHiveBox.tr(),
                 ),
                 const SizedBox(height: 20),
-                StaticCustomButtons.customButton(
+                AppCustomButtons.withShadows(
                   context,
                   onPressed: () {
                     context.pushNamed('SendPromptPage');
@@ -81,7 +74,7 @@ class _StartPageState extends State<StartPage> {
                   buttonText: "To Chat GPT prompts",
                 ),
                 const SizedBox(height: 20),
-                StaticCustomButtons.customButton(
+                AppCustomButtons.withShadows(
                   context,
                   onPressed: () {
                     context.pushNamed('QuestionHandler');

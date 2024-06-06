@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:blueprint_4app/UI_layout/Components/Static/static_widgets.dart';
+import 'package:blueprint_4app/UI_layout/Components/Static/cashed_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -62,7 +62,7 @@ class InheritedQuestionManagerState extends State<InheritedQuestionManager> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           print('Still waiting for questions to load...');
-          return const Center(child: StaticWidgets.loadingWidget);
+          return const Center(child: AppCashedWidgets.loadingWidget);
         }
         if (snapshot.hasError) {
           print('Error loading questions: ${snapshot.error}');

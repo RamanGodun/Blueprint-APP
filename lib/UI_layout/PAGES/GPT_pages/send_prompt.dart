@@ -1,11 +1,11 @@
-import 'package:blueprint_4app/UI_layout/Components/Static/static_widgets.dart';
+import 'package:blueprint_4app/UI_layout/Components/Static/cashed_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../State_management/Services/open_ai_service.dart';
-import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
+import '../../Components/Buttons/icon_buttons.dart';
 
 class SendPromptPage extends StatefulWidget {
   static const routeName = '/start_page/send_prompt';
@@ -37,7 +37,7 @@ class _SendPromptPageState extends State<SendPromptPage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        leading: AppIcons.backIcon(context, colorScheme),
+        leading: AppIconButtons.backIcon(context, colorScheme: colorScheme),
         middle: const Text('Send Prompt'),
       ),
       child: Material(
@@ -87,7 +87,7 @@ class _SendPromptPageState extends State<SendPromptPage> {
                 ),
                 const SizedBox(height: 10),
                 _isLoading
-                    ? StaticWidgets.loadingWidget
+                    ? AppCashedWidgets.loadingWidget
                     : Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(

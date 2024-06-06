@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../PAGES/0_MAIN/placeholder_screen.dart';
-import '../../PAGES/Store_pages/admin_screens/_2_products_grid.dart';
-import '../Switchers/switcher.dart';
+import '../0_MAIN/placeholder_screen.dart';
+import '../Store_pages/admin_screens/_2_products_grid.dart';
+import '../../Components/Switchers/switcher.dart';
 
 class AppTabs extends StatefulWidget {
   final int bottomTab;

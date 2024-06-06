@@ -8,7 +8,7 @@ import '../../../../State_management/Providers/Providers_for_store/auth_profile_
 import '../../../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/_1_custom_button.dart';
+import '../../../Components/Buttons/custom_button.dart';
 import '../../../Components/Dialogs/general_alert_dialog.dart';
 import '../../../Components/Images/_6_customer_pic_4edit_screen.dart';
 import '../../../Components/Others/dash_divider.dart';
@@ -61,7 +61,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                   const Text(
                     "Особисті дані",
                     style: TextStyle(
-                        color: ThisAppColors.white,
+                        color: AppColors.white,
                         fontSize: 14,
                         fontWeight: FontWeight.w700),
                   ),
@@ -131,7 +131,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                 // functionality of "go back button"
                 IconButton(
                     icon: const Icon(Icons.arrow_back_ios,
-                        size: 20, color: ThisAppColors.white),
+                        size: 20, color: AppColors.white),
                     onPressed: () {
                       if (widget.isFromOrderScreen == true) {
                         final int amountOfBonuses =
@@ -152,8 +152,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                   (widget.isFromOrderScreen == true)
                       ? "назад до деталей замовлення"
                       : "назад до особистого кабінету",
-                  style: const TextStyle(
-                      color: ThisAppColors.white, fontSize: 13)),
+                  style: const TextStyle(color: AppColors.white, fontSize: 13)),
             ),
           )),
       //
@@ -182,7 +181,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                               padding: EdgeInsets.only(left: 10.0),
                               child: Text("Загальна сума замовлення",
                                   style: TextStyle(
-                                      color: ThisAppColors.kAppPrimaryColor,
+                                      color: AppColors.kAppPrimaryColor,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w800)),
                             ),
@@ -192,14 +191,14 @@ class _CustomerInfoState extends State<CustomerInfo> {
                               width: 100,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12.0),
-                                  color: ThisAppColors.grey2.withOpacity(0.5)),
+                                  color: AppColors.grey2.withOpacity(0.5)),
                               child: Text(
                                   widget.totalSum == null
                                       ? "0"
                                       : widget.totalSum!.toString(),
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      color: ThisAppColors.white)),
+                                  style:
+                                      const TextStyle(color: AppColors.white)),
                             ),
                           ],
                         ),
