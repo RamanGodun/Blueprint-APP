@@ -15,7 +15,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'Main/app_data_and_localization.dart';
+import 'setting_of_localization_and_providers.dart';
 import 'State_management/Services/0.service_locator.dart';
 import 'State_management/Src/Generated_code/firebase_options.dart';
 

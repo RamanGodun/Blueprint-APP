@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'this_app_icons.dart';
+import 'custom_icons_src.dart';
 
 class ThisAppCustomIcons {
   static const List<IconData> _myCustomIconList = [

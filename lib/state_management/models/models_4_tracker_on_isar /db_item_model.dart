@@ -1,5 +1,6 @@
 import 'package:isar/isar.dart';
-import '../../../state_management/const_data/strings_4_app.dart';
+
+import '../../Src/Const_data/strings_4_app.dart';
 part 'db_item_model.g.dart';
 
 @Collection()

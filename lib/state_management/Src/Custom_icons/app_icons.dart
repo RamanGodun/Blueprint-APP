@@ -6,45 +6,26 @@ import 'custom_icons_list.dart';
 
 class AppIcons {
 /*
-Icons 
+GENERAL Icons 
 */
+  static Widget backIcon(BuildContext context, ColorScheme colorScheme) {
+    return CupertinoButton(
+      padding: EdgeInsets.zero,
+      child: Icon(
+        // CupertinoIcons.back,
+        customIcons[5],
+        color: colorScheme.onSurface,
+      ),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+  }
 
   static Icon toolTipIcon(BuildContext context, ColorScheme colorScheme) {
     return Icon(
       CupertinoIcons.info,
       color: colorScheme.primary,
-    );
-  }
-
-// icons 4 bottom tab bar
-  static const List<IconData> icons = [
-    Icons.account_balance_wallet,
-    Icons.shopping_cart,
-    Icons.format_list_bulleted
-  ];
-
-  static const List<IconData> categoryIcon = [
-    Icons.local_dining,
-    Icons.directions_car,
-    Icons.work,
-    Icons.local_hotel,
-    Icons.devices,
-    Icons.favorite,
-    Icons.local_hospital,
-    Icons.home,
-    Icons.category
-  ];
-
-  static final List<IconData> customIcons =
-      ThisAppCustomIcons().myCustomIconsList;
-
-  static Widget themeIcon(bool isDarkTheme) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: Icon(
-        !isDarkTheme ? Icons.nightlight_round_sharp : Icons.wb_sunny,
-        color: ThisAppColors.kAppPrimaryColor,
-      ),
     );
   }
 
@@ -65,6 +46,33 @@ Icons
           : ThisAppColors.kSecondaryColor,
     );
   }
+
+/*
+CUSTOM Icons LIST
+*/
+  static final List<IconData> customIcons =
+      ThisAppCustomIcons().myCustomIconsList;
+
+/* 
+Icons FOR JBnTrackeR
+ */
+  static const List<IconData> icons = [
+    Icons.account_balance_wallet,
+    Icons.shopping_cart,
+    Icons.format_list_bulleted
+  ];
+
+  static const List<IconData> categoryIcon = [
+    Icons.local_dining,
+    Icons.directions_car,
+    Icons.work,
+    Icons.local_hotel,
+    Icons.devices,
+    Icons.favorite,
+    Icons.local_hospital,
+    Icons.home,
+    Icons.category
+  ];
 
   static Widget addSubCategory(bool isDarkTheme) {
     return Icon(
@@ -168,19 +176,6 @@ Icons
       Icons.add_task_sharp,
       color: ThisAppColors.kAppPrimaryColor,
       size: 20,
-    );
-  }
-
-  static Widget backIcon(BuildContext context, ColorScheme colorScheme) {
-    return CupertinoButton(
-      padding: EdgeInsets.zero,
-      child: Icon(
-        CupertinoIcons.back,
-        color: colorScheme.onSurface,
-      ),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
     );
   }
 

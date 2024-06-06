@@ -6,7 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../UI_Components/Static/widgets_on_get_it.dart';
+import '../../UI_layout/Components/Static/widgets_on_get_it.dart';
 import '../Models/models_4_FI_on_hive/model_4_hive.dart' as model_hive;
 import '../Models/models_4_FI_on_hive/model_4fi_on_hive.dart'
     as question_model_hive; // Переконайтеся, що це правильний шлях до файлу моделі
