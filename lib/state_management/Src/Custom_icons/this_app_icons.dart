@@ -977,10 +977,10 @@ class ThisAppIcons {
       IconData(0xebac, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData scaleAlt7 =
       IconData(0xebad, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData scaleAlt8 =
-      IconData(0xebae, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData scaleAlt9 =
-      IconData(0xebaf, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData scaleAlt8 =
+  //     IconData(0xebae, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData scaleAlt9 =
+  //     IconData(0xebaf, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData scaleAlt10 =
       IconData(0xebb0, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData scaleSlash =
@@ -1039,8 +1039,8 @@ class ThisAppIcons {
       IconData(0xf398, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData spinnerAlt =
       IconData(0xf39b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData square =
-      IconData(0xf0c8, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData square =
+  //     IconData(0xf0c8, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData squirrel =
       IconData(0xf79e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData star =
