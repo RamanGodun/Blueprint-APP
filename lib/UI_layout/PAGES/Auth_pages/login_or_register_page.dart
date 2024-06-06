@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../../../State_management/Services/google_signing_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../Components/Buttons/static_buttons.dart';
+import '../../Components/Buttons/_app_buttons.dart';
 import '../../Components/Others/square_tile.dart';
 import '../../Components/Static/cashed_widgets.dart';
 import '../../Components/Text_fields/textfield1.dart';

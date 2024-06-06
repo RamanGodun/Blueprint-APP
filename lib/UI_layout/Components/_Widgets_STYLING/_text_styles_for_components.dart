@@ -16,8 +16,9 @@ abstract class AppTextStyles {
   static TextStyle forButtons(BuildContext context) {
     final colorScheme = Helpers.colorScheme(context);
     final textTheme = Helpers.textTheme(context);
-    final buttonsTextStyle = textTheme.titleSmall?.copyWith(
+    final buttonsTextStyle = textTheme.titleMedium?.copyWith(
       fontWeight: FontWeight.w400,
+      fontSize: 18,
       letterSpacing: 1.03,
       wordSpacing: 1.76,
       color: colorScheme.onPrimary,

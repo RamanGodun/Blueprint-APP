@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/custom_button.dart';
+import '../../../Components/Buttons/for_shop/custom_button.dart';
 import '../../../Components/Cards_and_tiles/_5_users_info_card.dart';
 import '../../../Components/Others/dash_divider.dart';
 

@@ -7,7 +7,7 @@ import '../../../State_management/Models/models_4_tracker_on_isar /model_of_subc
 import '../../../State_management/Src/Custom_icons/custom_icons_src.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../_Widgets_STYLING/textfield_styling.dart';
-import '../Buttons/drop_button2.dart';
+import '../Buttons/for_tracker/drop_button2.dart';
 import '../Pickers/icon_picker.dart';
 import '8.color_picker_window.dart';
 

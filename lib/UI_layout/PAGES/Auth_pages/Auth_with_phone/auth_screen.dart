@@ -9,7 +9,7 @@ import '../../../../State_management/Providers/Providers_for_store/auth_profile_
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/custom_button_from_first.dart';
+import '../../../Components/Buttons/_app_buttons.dart';
 import '../../../Components/Text_fields/my_custom_text_field.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -59,6 +59,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     _phoneController.selection = TextSelection.fromPosition(
         TextPosition(offset: _phoneController.text.length));
+    final colorScheme = Helpers.colorScheme(context);
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
@@ -157,14 +158,17 @@ class _AuthScreenState extends State<AuthScreen> {
                     SizedBox(
                       width: double.infinity,
                       height: 50,
-                      child: CustomButton(
-                          text: (_isNeedRegistration == true)
-                              ? "Зареєструватись"
-                              : "Увійти в застосунок",
-                          action: () {
-                            BuildContext ctx = context;
-                            sendPhoneNumberAndSaveName(ctx);
-                          }),
+                      child: AppCustomButtons.enterButton4GG(
+                        context,
+                        colorScheme: colorScheme,
+                        buttonText: (_isNeedRegistration == true)
+                            ? "Зареєструватись"
+                            : "Увійти в застосунок",
+                        onPressed: () {
+                          BuildContext ctx = context;
+                          sendPhoneNumberAndSaveName(ctx);
+                        },
+                      ),
                     ),
                     const SizedBox(height: 20),
 

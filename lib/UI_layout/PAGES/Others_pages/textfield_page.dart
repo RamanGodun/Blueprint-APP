@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/_Widgets_STYLING/_text_styles_for_components.dart';
-import '../../Components/Buttons/static_buttons.dart';
+import '../../Components/Buttons/_app_buttons.dart';
 import '../../Components/Text_fields/cupertino_tf2.dart';
 
 class TextFieldPage extends HookWidget {
@@ -52,7 +52,8 @@ class TextFieldPage extends HookWidget {
                 ),
               ),
             const SizedBox(height: 20),
-            AppCustomButtons.cupertinoButton1(context, buttonText: 'Submit'),
+            AppCustomButtons.submitButton(context,
+                colorScheme: colorScheme, onPressed: () {}),
           ],
         ),
       ),

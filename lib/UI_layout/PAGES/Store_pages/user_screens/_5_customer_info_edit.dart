@@ -8,7 +8,7 @@ import '../../../../State_management/Providers/Providers_for_store/auth_profile_
 import '../../../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/custom_button.dart';
+import '../../../Components/Buttons/for_shop/custom_button.dart';
 import '../../../Components/Dialogs/general_alert_dialog.dart';
 import '../../../Components/Images/_6_customer_pic_4edit_screen.dart';
 import '../../../Components/Others/dash_divider.dart';

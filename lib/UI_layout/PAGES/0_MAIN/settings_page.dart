@@ -8,8 +8,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../State_management/Services/animation_controller_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../Components/Buttons/static_buttons.dart';
-import '../../Components/Buttons/theme_changing_button.dart';
+import '../../Components/Buttons/_app_buttons.dart';
+import '../../Components/Buttons/_theme_changing_button.dart';
 import '../../Components/Dialogs/custom_dialog.dart';
 import '../../Components/Others/icons_grid_view.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
@@ -90,13 +90,8 @@ class _SettingsPageState extends State<SettingsPage>
                     const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: AppCustomButtons.withGradient(
-                        context,
-                        onPressed: () {
-                          context.pushNamed('ApiKeyInputPage');
-                        },
-                        buttonText: "To enter GPT API key",
-                      ),
+                      child: AppCustomButtons.goToGPTApiKeyPage(context,
+                          colorScheme: colorScheme),
                     ),
                   ],
                 ),

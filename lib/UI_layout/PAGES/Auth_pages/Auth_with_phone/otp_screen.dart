@@ -8,7 +8,7 @@ import '../../../../State_management/Providers/Providers_for_store/auth_profile_
 import '../../../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/custom_button.dart';
+import '../../../Components/Buttons/for_shop/custom_button.dart';
 
 class OtpScreen extends StatefulWidget {
   final String verificationId;

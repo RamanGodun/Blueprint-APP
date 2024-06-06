@@ -5,7 +5,7 @@ import 'package:country_picker/country_picker.dart';
 import '../../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/this_app_colors.dart';
-import '../../../Components/Buttons/custom_button.dart';
+import '../../../Components/Buttons/for_shop/custom_button.dart';
 import '../../../Components/Text_fields/_my_first_tf.dart';
 
 // ignore_for_file: use_build_context_synchronously

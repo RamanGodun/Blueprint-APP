@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/_icon_buttons.dart';
-import '../../Components/Buttons/static_buttons.dart';
+import '../../Components/Buttons/_app_buttons.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
 import '../../Components/_Widgets_STYLING/_text_styles_for_components.dart';
 
@@ -42,21 +42,24 @@ class _StartPageState extends State<StartPage> {
         ),
         trailing: AppIconButtons.toSettingsPageIconButton(context),
       ),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 35),
-          child: ListView(
-            children: [
-              const SizedBox(height: 20),
-              AppCustomButtons.goToTextFieldPage(context,
-                  colorScheme: colorScheme),
-              const SizedBox(height: 20),
-              AppCustomButtons.goToHivePage(context, colorScheme: colorScheme),
-              const SizedBox(height: 20),
-              AppCustomButtons.goToGPTPage(context, colorScheme),
-              const SizedBox(height: 20),
-              AppCustomButtons.goToQuestionManager(context, colorScheme),
-            ],
+      child: Material(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 35),
+            child: ListView(
+              children: [
+                const SizedBox(height: 20),
+                AppCustomButtons.goToTextFieldPage(context,
+                    colorScheme: colorScheme),
+                const SizedBox(height: 20),
+                AppCustomButtons.goToHivePage(context,
+                    colorScheme: colorScheme),
+                const SizedBox(height: 20),
+                AppCustomButtons.goToGPTPage(context, colorScheme),
+                const SizedBox(height: 20),
+                AppCustomButtons.goToQuestionManager(context, colorScheme),
+              ],
+            ),
           ),
         ),
       ),
