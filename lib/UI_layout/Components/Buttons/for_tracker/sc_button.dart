@@ -140,7 +140,7 @@ class ButtonForSubCategories extends StatelessWidget {
             : (isDeleting == true)
                 ? AppStrings.delete
                 : AppStrings.change,
-        style: TextStyle4Components.buttonTextStyle(context),
+        style: AppTextStyles.forButtons(context),
       ),
     );
   }

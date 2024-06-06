@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 
 import '../../../State_management/Services/open_ai_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../Components/Buttons/icon_buttons.dart';
+import '../../Components/Buttons/_icon_buttons.dart';
 
 class SendPromptPage extends StatefulWidget {
   static const routeName = '/start_page/send_prompt';

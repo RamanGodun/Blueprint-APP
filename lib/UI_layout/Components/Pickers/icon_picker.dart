@@ -108,9 +108,7 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
                             },
                             child: Text(
                               "Закрити",
-                              style:
-                                  TextStyle4Components.buttonTextStyle(context)
-                                      .copyWith(
+                              style: AppTextStyles.forButtons(context).copyWith(
                                 color: Theme.of(context).primaryColor,
                               ),
                             ),

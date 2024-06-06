@@ -1,59 +1,92 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
+import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
+import '../_Widgets_STYLING/_custom_button_style.dart';
 import '../_Widgets_STYLING/_text_styles_for_components.dart';
 
 class AppCustomButtons {
-  static Widget withShadows(
-    BuildContext context, {
-    required VoidCallback onPressed,
-    required String buttonText,
-  }) {
-    final theme = Helpers.cupertinoThemeData(context);
-    return Material(
-      child: GestureDetector(
-        onTap: onPressed,
-        child: Container(
-          height: 50,
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                theme.primaryColor.withOpacity(0.9),
-                theme.primaryColor.withOpacity(0.95),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-            borderRadius: BorderRadius.circular(8),
-            boxShadow: [
-              BoxShadow(
-                color: CupertinoColors.black.withOpacity(0.1),
-                spreadRadius: 1,
-                blurRadius: 5,
-                offset: const Offset(0, 2),
-              ),
-              BoxShadow(
-                color: CupertinoColors.black.withOpacity(0.05),
-                spreadRadius: 0.5,
-                blurRadius: 2,
-                offset: const Offset(0, 1),
-              ),
-            ],
-          ),
-          child: Center(
-            child: Text(
-              buttonText,
-              style: TextStyle4Components.buttonTextStyle(context),
-            ),
-          ),
-        ),
-      ),
+/* WITH SHADOWS
+ */
+  static Widget goToQuestionManager(
+    BuildContext context,
+    ColorScheme colorScheme,
+  ) {
+    return AppButtonsStyle.withShadows(
+      context,
+      onPressed: () {
+        context.pushNamed('QuestionHandler');
+      },
+      buttonText: "To Questions Manager",
+      colorScheme: colorScheme,
     );
   }
 
-  static Widget likeIOS(
+  static Widget goToGPTPage(
+    BuildContext context,
+    ColorScheme colorScheme,
+  ) {
+    return AppButtonsStyle.withShadows(
+      context,
+      onPressed: () {
+        context.pushNamed('SendPromptPage');
+      },
+      buttonText: "To Chat GPT prompts",
+      colorScheme: colorScheme,
+    );
+  }
+
+  static Widget signInUp(
+    BuildContext context, {
+    required bool isLoginPage,
+    required ColorScheme colorScheme,
+    required void Function()? onPressed,
+  }) {
+    return AppButtonsStyle.withShadows(
+      context,
+      onPressed: onPressed,
+      buttonText: isLoginPage ? 'Sign In' : 'Sign Up',
+      colorScheme: colorScheme,
+    );
+  }
+
+  static Widget goToTextFieldPage(
+    BuildContext context, {
+    required ColorScheme colorScheme,
+    // required void Function()? onPressed,
+  }) {
+    return AppButtonsStyle.withShadows(
+      context,
+      onPressed: () {
+        context.pushNamed('TextFieldPage');
+      },
+      buttonText: LocaleKeys.goToTextfield.tr(),
+      colorScheme: colorScheme,
+    );
+  }
+
+  static Widget goToHivePage(
+    BuildContext context, {
+    required ColorScheme colorScheme,
+    // required void Function()? onPressed,
+  }) {
+    return AppButtonsStyle.withShadows(
+      context,
+      onPressed: () {
+        context.pushNamed('HiveBoxPage');
+      },
+      buttonText: LocaleKeys.goToHiveBox.tr(),
+      colorScheme: colorScheme,
+    );
+  }
+
+/*
+
+ */
+  static Widget withGradient(
     BuildContext context, {
     required VoidCallback onPressed,
     required String buttonText,
@@ -91,14 +124,7 @@ class AppCustomButtons {
             ],
           ),
           child: Center(
-            child: Text(buttonText,
-                style: TextStyle4Components.buttonTextStyle(context)
-                //  theme.textTheme.textStyle.copyWith(
-                //               color: CupertinoColors.white,
-                //               fontWeight: FontWeight.w600,
-                //               fontSize: 16,
-                //             ),
-                ),
+            child: Text(buttonText, style: AppTextStyles.forButtons(context)),
           ),
         ),
       ),
@@ -109,20 +135,14 @@ class AppCustomButtons {
     BuildContext context, {
     required String buttonText,
   }) {
-    return Material(
-      child: SizedBox(
-        width: double.infinity,
-        child: CupertinoButton.filled(
-          pressedOpacity: 0.8,
-          onPressed: () {
-            // if (isValid.value) {
-            //   // Handle the submit action
-            // } else {
-            //   validateInput();
-            // }
-          },
-          child: Text(buttonText,
-              style: TextStyle4Components.buttonTextStyle(context)),
+    return SizedBox(
+      width: double.infinity,
+      child: CupertinoButton.filled(
+        pressedOpacity: 0.8,
+        onPressed: () {},
+        child: Text(
+          buttonText,
+          style: AppTextStyles.forButtons(context),
         ),
       ),
     );
@@ -141,13 +161,6 @@ INIT BUTTON
       child: CupertinoButton.filled(
         onPressed: () {
           startQuiz();
-          // final inheritedWidget = DataProviderInherited.of(context);
-          // if (inheritedWidget != null) {
-          //   inheritedWidget.setQuestionList(
-          //     QuestionAndAnswers.generateRandomQuestionsList(
-          //         selectedQuantity.toInt()),
-          //   );
-          // }
         },
         padding: const EdgeInsets.all(12),
         borderRadius: BorderRadius.circular(8),
@@ -170,9 +183,9 @@ INIT BUTTON
   }
 
 /*
-ANSWER BUTTON
+OUTLINED Button
  */
-  static Widget answerButton({
+  static Widget answerButton4FIApp({
     required BuildContext context,
     required String answerText,
     required VoidCallback onTap,
@@ -185,7 +198,7 @@ ANSWER BUTTON
       onPressed: onTap,
       child: Center(
         child: Text(
-          answerText.substring(5),
+          answerText,
           textAlign: TextAlign.center,
           style: theme.textTheme.labelMedium,
           maxLines: 2,

@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 import '../../../State_management/Services/open_ai_service.dart';
 import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../Components/Buttons/icon_buttons.dart';
+import '../../Components/Buttons/_icon_buttons.dart';
 import '../../Components/Text_fields/cupertino_tf3.dart';
 import '../../Components/_Widgets_STYLING/_text_styles_for_components.dart';
 
@@ -46,7 +46,7 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
         navigationBar: CupertinoNavigationBar(
           leading: AppIconButtons.backIcon(context, colorScheme: colorScheme),
           middle: Text('Enter OpenAI API Key',
-              style: TextStyle4Components.appBarTitle(
+              style: AppTextStyles.appBarTitle(
                   cupertinoTheme: cupertinoTheme, colorScheme: colorScheme)),
           trailing: CupertinoButton(
             padding: EdgeInsets.zero,

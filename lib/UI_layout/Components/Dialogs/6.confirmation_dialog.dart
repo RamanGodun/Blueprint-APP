@@ -54,7 +54,7 @@ class _ConfirmationDialogState extends State<ConfirmationDialog> {
         ),
         actions: [
           CupertinoDialogAction(
-            textStyle: TextStyle4Components.buttonTextStyle(context),
+            textStyle: AppTextStyles.forButtons(context),
             isDefaultAction: true,
             onPressed: () {
               Navigator.pop(context);

@@ -1,4 +1,4 @@
-import 'package:blueprint_4app/UI_layout/Components/Buttons/icon_buttons.dart';
+import 'package:blueprint_4app/UI_layout/Components/Buttons/_icon_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -27,7 +27,7 @@ class TextFieldPage extends HookWidget {
       navigationBar: CupertinoNavigationBar(
         leading: AppIconButtons.backIcon(context, colorScheme: colorScheme),
         middle: Text('New Screen',
-            style: TextStyle4Components.appBarTitle(
+            style: AppTextStyles.appBarTitle(
                 cupertinoTheme: cupertinoTheme, colorScheme: colorScheme)),
       ),
       child: Padding(

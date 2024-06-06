@@ -34,10 +34,14 @@ GENERAL Icons
   }
 
 /*
-CUSTOM Icons LIST
+CUSTOM Icons LISTS
 */
   static final List<IconData> customIcons =
       ThisAppCustomIcons().myCustomIconsList;
+
+  static final List<IconData> niceIcons = [
+    CupertinoIcons.play_arrow,
+  ];
 
 /* 
 Icons FOR JBnTrackeR

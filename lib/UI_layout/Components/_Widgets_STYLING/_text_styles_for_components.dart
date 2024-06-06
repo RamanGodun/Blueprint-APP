@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
 
-abstract class TextStyle4Components {
+abstract class AppTextStyles {
   static TextStyle? bodyMedium(BuildContext context) {
     final textTheme = Helpers.textTheme(context);
     final colorScheme = Helpers.colorScheme(context);
@@ -13,15 +13,23 @@ abstract class TextStyle4Components {
     );
   }
 
-  static TextStyle buttonTextStyle(BuildContext context) {
+  static TextStyle forButtons(BuildContext context) {
     final colorScheme = Helpers.colorScheme(context);
-    return TextStyle(
-      fontWeight: FontWeight.w500,
-      letterSpacing: 0.95,
-      wordSpacing: 1.01,
-      fontSize: 15,
+    final textTheme = Helpers.textTheme(context);
+    final buttonsTextStyle = textTheme.titleSmall?.copyWith(
+      fontWeight: FontWeight.w400,
+      letterSpacing: 1.03,
+      wordSpacing: 1.76,
       color: colorScheme.onPrimary,
     );
+    return buttonsTextStyle ??
+        TextStyle(
+          fontWeight: FontWeight.w500,
+          letterSpacing: 1.03,
+          wordSpacing: 1.76,
+          fontSize: 16,
+          color: colorScheme.onPrimary,
+        );
   }
 
   static TextStyle appBarTitle(

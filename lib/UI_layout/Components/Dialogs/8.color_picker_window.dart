@@ -91,8 +91,7 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
                                 },
                                 child: Text(
                                   "Відміна",
-                                  style: TextStyle4Components.buttonTextStyle(
-                                          context)
+                                  style: AppTextStyles.forButtons(context)
                                       .copyWith(
                                           color: Theme.of(context)
                                               .colorScheme
@@ -110,8 +109,7 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
                                 },
                                 child: Text(
                                   "Обрати",
-                                  style: TextStyle4Components.buttonTextStyle(
-                                          context)
+                                  style: AppTextStyles.forButtons(context)
                                       .copyWith(
                                           color:
                                               Theme.of(context).primaryColor),

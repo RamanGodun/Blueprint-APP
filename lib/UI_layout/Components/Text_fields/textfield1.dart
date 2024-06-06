@@ -18,7 +18,7 @@ class CustomTextFields {
         child: TextField(
           controller: controller,
           obscureText: isObscureText,
-          style: TextStyle4Components.bodyMedium(context),
+          style: AppTextStyles.bodyMedium(context),
           decoration: AppTextFieldsStyling.cupertinoLikeInputDecoration(
             context,
             hintText,

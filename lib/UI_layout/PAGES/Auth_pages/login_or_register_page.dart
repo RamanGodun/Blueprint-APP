@@ -125,9 +125,10 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                         ),
                       const SizedBox(height: 35),
                       // sign in/sign up button
-                      AppCustomButtons.withShadows(
+                      AppCustomButtons.signInUp(
                         context,
-                        buttonText: widget.isLoginPage ? 'Sign In' : 'Sign Up',
+                        isLoginPage: widget.isLoginPage,
+                        colorScheme: colorScheme,
                         onPressed: () => signUserInOrUp(widget.isLoginPage),
                       ),
                       const SizedBox(height: 50),

@@ -1,4 +1,4 @@
-import 'package:blueprint_4app/UI_layout/Components/Buttons/icon_buttons.dart';
+import 'package:blueprint_4app/UI_layout/Components/Buttons/_icon_buttons.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -56,7 +56,7 @@ class _SettingsPageState extends State<SettingsPage>
           children: [
             Text(
               LocaleKeys.startScreen.tr(),
-              style: TextStyle4Components.appBarTitle(
+              style: AppTextStyles.appBarTitle(
                   cupertinoTheme: cupertinoTheme, colorScheme: colorScheme),
             ),
             const Spacer(),
@@ -90,7 +90,7 @@ class _SettingsPageState extends State<SettingsPage>
                     const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: AppCustomButtons.likeIOS(
+                      child: AppCustomButtons.withGradient(
                         context,
                         onPressed: () {
                           context.pushNamed('ApiKeyInputPage');
