@@ -2,8 +2,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../State_management/Src/Const_data/strings_4_app.dart';
-import '../../../State_management/Helpers/Common/helpers.dart';
+import '../../../../State_management/Src/Const_data/strings_4_app.dart';
+import '../../../../State_management/Helpers/Common/helpers.dart';
 
 class BarGraph extends StatefulWidget {
   const BarGraph(

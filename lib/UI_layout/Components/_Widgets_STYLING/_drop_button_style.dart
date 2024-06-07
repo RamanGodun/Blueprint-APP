@@ -1,12 +1,42 @@
 import 'package:flutter/material.dart';
 
-abstract class DropButtonStyle {
+abstract class AppDropButtonStyle {
 //
+/* For THEME CHANGING button
+ */
+  static BoxDecoration forThemeChangingDB(
+      ColorScheme colorScheme, bool isDarkMode) {
+    return BoxDecoration(
+      color: colorScheme.surface,
+      borderRadius: BorderRadius.circular(12.0),
+      boxShadow: [
+        BoxShadow(
+          color: isDarkMode
+              ? Colors.black
+              : colorScheme.inverseSurface.withOpacity(0.3),
+          spreadRadius: 2,
+          blurRadius: 10,
+          offset: const Offset(2, 4),
+        ),
+        BoxShadow(
+          color: isDarkMode
+              ? Colors.black
+              : colorScheme.inverseSurface.withOpacity(0.1),
+          spreadRadius: 1,
+          blurRadius: 5,
+          offset: const Offset(0, 2),
+        ),
+      ],
+    );
+  }
+
+/* INPUT DECORATION for DD button
+ */
   static InputDecoration getInputDecoration(
     BuildContext context,
-    bool isDarkTheme,
-  ) {
-    final colorScheme = Theme.of(context).colorScheme;
+    bool isDarkTheme, {
+    required ColorScheme colorScheme,
+  }) {
     return InputDecoration(
       isDense: true,
       filled: true,

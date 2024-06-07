@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
-import '../../../State_management/Helpers/Common/helpers.dart';
+import 'package:flutter/material.dart';
 
 class AppDialogButtons {
   static Widget actionButton(
     BuildContext context, {
     VoidCallback? onPressed,
+    required CupertinoTextThemeData textTheme,
+    required ColorScheme colorScheme,
   }) {
-    final textTheme = Helpers.cupertinoThemeData(context).textTheme;
-    final colorScheme = Helpers.colorScheme(context);
     return Expanded(
       child: CupertinoDialogAction(
         onPressed: onPressed ??
@@ -15,7 +15,8 @@ class AppDialogButtons {
               Navigator.of(context).pop();
             },
         child: Text(
-          'OK',
+          // LocaleKeys.ok.tr(),
+          "Ok",
           style: textTheme.actionTextStyle.copyWith(
             fontSize: 17,
             color: colorScheme.primary,
@@ -30,9 +31,9 @@ class AppDialogButtons {
   static Widget cancelButton(
     BuildContext context, {
     VoidCallback? onPressed,
+    required CupertinoTextThemeData textTheme,
+    required ColorScheme colorScheme,
   }) {
-    final textTheme = Helpers.cupertinoThemeData(context).textTheme;
-    final colorScheme = Helpers.colorScheme(context);
     return Expanded(
       child: CupertinoDialogAction(
         onPressed: onPressed ??
@@ -53,8 +54,10 @@ class AppDialogButtons {
     );
   }
 
-  static Widget defaultActionButton(BuildContext context) {
-    final theme = Helpers.cupertinoThemeData(context);
+  static Widget defaultActionButton(
+    BuildContext context, {
+    required CupertinoThemeData theme,
+  }) {
     return Expanded(
       child: CupertinoDialogAction(
         onPressed: null,
@@ -69,8 +72,10 @@ class AppDialogButtons {
     );
   }
 
-  static Widget defaultCancelButton(BuildContext context) {
-    final theme = Helpers.cupertinoThemeData(context);
+  static Widget defaultCancelButton(
+    BuildContext context, {
+    required CupertinoThemeData theme,
+  }) {
     return Expanded(
       child: CupertinoDialogAction(
         onPressed: null,

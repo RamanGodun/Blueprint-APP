@@ -9,7 +9,7 @@ import 'package:go_router/go_router.dart';
 import '../../../State_management/Services/animation_controller_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/_app_buttons.dart';
-import '../../Components/Buttons/_theme_changing_button.dart';
+import '../../Components/Buttons/_dd_buttons.dart';
 import '../../Components/Dialogs/custom_dialog.dart';
 import '../../Components/Others/icons_grid_view.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
@@ -27,8 +27,10 @@ class _SettingsPageState extends State<SettingsPage>
     with TickerProviderStateMixin {
   User? user;
   late CupertinoThemeData cupertinoTheme;
+  late ThemeData theme;
   late ColorScheme colorScheme;
   late TextTheme textTheme;
+  late bool isDark;
   late AnimationService animationService;
 
   @override
@@ -42,9 +44,11 @@ class _SettingsPageState extends State<SettingsPage>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    cupertinoTheme = Helpers.cupertinoThemeData(context);
+    cupertinoTheme = Helpers.cupertinoTheme(context);
+    theme = Helpers.theme(context);
     textTheme = Helpers.textTheme(context);
     colorScheme = Helpers.colorScheme(context);
+    isDark = Helpers.isDarkTheme(context);
   }
 
   @override
@@ -86,7 +90,11 @@ class _SettingsPageState extends State<SettingsPage>
               : Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const ThemeChangingButton(),
+                    AppDDButtons.forThemeChanging(
+                      context,
+                      theme: theme,
+                      isDarkMode: isDark,
+                    ),
                     const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),

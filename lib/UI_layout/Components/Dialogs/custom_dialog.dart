@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 
 import '../../../State_management/Services/animation_controller_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../Buttons/_dialog_action_buttons.dart';
+import '../Buttons/dialog_action_buttons.dart';
 import '../Static/dividers.dart';
 
 class CustomCupertinoDialog extends HookWidget {
@@ -30,6 +30,7 @@ class CustomCupertinoDialog extends HookWidget {
 
     final colorScheme = Helpers.colorScheme(context);
     final textTheme = Helpers.textTheme(context);
+    final cupertinoTextTheme = Helpers.cupertinoTheme(context).textTheme;
     final deviceHeight = Helpers.deviceHeight(context);
     final deviceWidth = Helpers.deviceWidth(context);
     final isDarkMode = Helpers.isDarkTheme(context);
@@ -108,9 +109,17 @@ class CustomCupertinoDialog extends HookWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            AppDialogButtons.cancelButton(context),
+                            AppDialogButtons.cancelButton(
+                              context,
+                              textTheme: cupertinoTextTheme,
+                              colorScheme: colorScheme,
+                            ),
                             AppDividers.dividerBetweenDialogButtons(context),
-                            AppDialogButtons.actionButton(context),
+                            AppDialogButtons.actionButton(
+                              context,
+                              textTheme: cupertinoTextTheme,
+                              colorScheme: colorScheme,
+                            ),
                           ],
                         ),
                       ),

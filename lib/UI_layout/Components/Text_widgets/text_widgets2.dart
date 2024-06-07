@@ -13,7 +13,7 @@ Example of RICH TEXT
     required ColorScheme colorScheme,
     required TextTheme textTheme,
   }) {
-    final theme = Helpers.cupertinoThemeData(context);
+    final theme = Helpers.cupertinoTheme(context);
     TextStyle? textStyle =
         textTheme.displayLarge?.copyWith(color: colorScheme.onPrimary);
     return Padding(

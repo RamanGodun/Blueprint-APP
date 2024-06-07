@@ -17,7 +17,7 @@ class TextFieldPage extends HookWidget {
     final textController = useTextEditingController();
     final isValid = useState(true);
     final colorScheme = Helpers.colorScheme(context);
-    final cupertinoTheme = Helpers.cupertinoThemeData(context);
+    final cupertinoTheme = Helpers.cupertinoTheme(context);
 
     void validateInput() {
       isValid.value = textController.text.isNotEmpty;

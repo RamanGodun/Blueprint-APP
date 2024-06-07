@@ -18,8 +18,12 @@ Here some useful methods, used across all app
     return isDarkTheme;
   }
 
-  static CupertinoThemeData cupertinoThemeData(BuildContext context) {
+  static CupertinoThemeData cupertinoTheme(BuildContext context) {
     return CupertinoTheme.of(context);
+  }
+
+  static ThemeData theme(BuildContext context) {
+    return Theme.of(context);
   }
 
   static ColorScheme colorScheme(BuildContext context) {
