@@ -1,10 +1,9 @@
-import 'package:blueprint_4app/UI_layout/Components/Buttons/_icon_buttons.dart';
+import 'package:blueprint_4app/UI_layout/Components/Buttons/icon_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../Components/_Widgets_STYLING/_text_styles_for_components.dart';
-import '../../Components/Buttons/_app_buttons.dart';
+import '../../Components/_Widgets_STYLING/text_styles_for_components.dart';
+import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Text_fields/cupertino_tf2.dart';
 
 class TextFieldPage extends HookWidget {
@@ -16,8 +15,7 @@ class TextFieldPage extends HookWidget {
   Widget build(BuildContext context) {
     final textController = useTextEditingController();
     final isValid = useState(true);
-    final colorScheme = Helpers.colorScheme(context);
-    final cupertinoTheme = Helpers.cupertinoTheme(context);
+    // final colorScheme = Helpers.colorScheme(context);
 
     void validateInput() {
       isValid.value = textController.text.isNotEmpty;
@@ -25,10 +23,8 @@ class TextFieldPage extends HookWidget {
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        leading: AppIconButtons.backIcon(context, colorScheme: colorScheme),
-        middle: Text('New Screen',
-            style: AppTextStyles.appBarTitle(
-                cupertinoTheme: cupertinoTheme, colorScheme: colorScheme)),
+        leading: AppIconButtons.backIcon(context),
+        middle: Text('New Screen', style: AppTextStyles.appBarTitle(context)),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -52,8 +48,10 @@ class TextFieldPage extends HookWidget {
                 ),
               ),
             const SizedBox(height: 20),
-            AppCustomButtons.submitButton(context,
-                colorScheme: colorScheme, onPressed: () {}),
+            AppCustomButtons.submitButton(
+              context,
+              onPressed: () {},
+            ),
           ],
         ),
       ),

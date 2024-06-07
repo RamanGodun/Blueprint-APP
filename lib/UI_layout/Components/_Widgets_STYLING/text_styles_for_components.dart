@@ -4,18 +4,10 @@ import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 
 abstract class AppTextStyles {
-  static TextStyle? bodyMedium(BuildContext context) {
-    final textTheme = Helpers.textTheme(context);
-    final colorScheme = Helpers.colorScheme(context);
-    return textTheme.bodyMedium?.copyWith(
-      color: colorScheme.onSurface,
-      fontSize: 16.0,
-    );
-  }
-
   static TextStyle forButtons(BuildContext context) {
-    final colorScheme = Helpers.colorScheme(context);
-    final textTheme = Helpers.textTheme(context);
+    final theme = Helpers.theme(context);
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
     final buttonsTextStyle = textTheme.titleMedium?.copyWith(
       fontWeight: FontWeight.w400,
       fontSize: 18,
@@ -33,10 +25,19 @@ abstract class AppTextStyles {
         );
   }
 
-  static TextStyle appBarTitle(
-      {required CupertinoThemeData cupertinoTheme,
-      required ColorScheme colorScheme}) {
+  static TextStyle appBarTitle(BuildContext context) {
+    final cupertinoTheme = Helpers.cupertinoTheme(context);
+    final colorScheme = Helpers.colorScheme(context);
     return cupertinoTheme.textTheme.navTitleTextStyle
         .copyWith(color: colorScheme.onSurface);
+  }
+
+  static TextStyle? bodyMedium(BuildContext context) {
+    final textTheme = Helpers.textTheme(context);
+    final colorScheme = Helpers.colorScheme(context);
+    return textTheme.bodyMedium?.copyWith(
+      color: colorScheme.onSurface,
+      fontSize: 16.0,
+    );
   }
 }

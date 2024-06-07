@@ -68,6 +68,7 @@ abstract class ThisAppColorSchemes {
     onSecondary: AppColors.kDarkAndroidOnPrimary,
     onSurface: AppColors.kDarkAndroidOnSurface,
     onError: AppColors.kDarkAndroidOnPrimary,
+    error: AppColors.kErrorColor,
   );
 
   /* HALF-GLASSY IOS DARK color Scheme */

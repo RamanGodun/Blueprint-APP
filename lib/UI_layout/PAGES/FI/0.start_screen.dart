@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../Components/Buttons/_app_buttons.dart';
+import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Images/pictures_widgets.dart';
 import '../../Components/Pickers/complexity_picker.dart';
 import '../../Components/Pickers/custom_picker.dart';
@@ -142,7 +142,6 @@ class _StartScreenState extends State<StartScreen> {
                 */
                 AppCustomButtons.startButtonForInterviewerAPP(
                   context,
-                  colorScheme: colorScheme,
                   onPressed: widget.startQuiz,
                 )
               ],

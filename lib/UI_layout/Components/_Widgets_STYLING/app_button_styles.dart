@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '_text_styles_for_components.dart';
+import 'text_styles_for_components.dart';
 
 abstract class AppButtonsStyle {
 //
@@ -11,7 +12,6 @@ abstract class AppButtonsStyle {
     BuildContext context, {
     void Function()? onPressed,
     required String buttonText,
-    required ColorScheme colorScheme,
     double height = 44,
     EdgeInsets padding =
         const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
@@ -37,7 +37,6 @@ abstract class AppButtonsStyle {
     BuildContext context, {
     void Function()? onPressed,
     required String buttonText,
-    required ColorScheme colorScheme,
     double height = 44,
     EdgeInsets padding =
         const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
@@ -47,7 +46,7 @@ abstract class AppButtonsStyle {
       child: Container(
         height: height,
         padding: padding,
-        decoration: commonDecoration(colorScheme),
+        decoration: commonDecoration(context),
         child: Center(
           child: Text(
             buttonText,
@@ -64,8 +63,8 @@ abstract class AppButtonsStyle {
     BuildContext context, {
     void Function()? onPressed,
     required String buttonText,
-    required ColorScheme colorScheme,
   }) {
+    final ColorScheme colorScheme = Helpers.colorScheme(context);
     return SizedBox(
       width: double.infinity,
       child: CupertinoButton.filled(
@@ -97,8 +96,8 @@ abstract class AppButtonsStyle {
     BuildContext context, {
     void Function()? onPressed,
     required String buttonText,
-    required ThemeData theme,
   }) {
+    final ThemeData theme = Helpers.theme(context);
     return ElevatedButton(
       style: OutlinedButton.styleFrom(
           backgroundColor: theme.colorScheme.surface.withOpacity(0.4),
@@ -124,8 +123,8 @@ abstract class AppButtonsStyle {
     BuildContext context, {
     void Function()? onPressed,
     required String buttonText,
-    required ColorScheme colorScheme,
   }) {
+    final ColorScheme colorScheme = Helpers.colorScheme(context);
     return ElevatedButton(
       style: ButtonStyle(
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
@@ -152,7 +151,8 @@ abstract class AppButtonsStyle {
 
 /*
  */
-  static BoxDecoration commonDecoration(ColorScheme colorScheme) {
+  static BoxDecoration commonDecoration(BuildContext context) {
+    final ColorScheme colorScheme = Helpers.colorScheme(context);
     return BoxDecoration(
       gradient: LinearGradient(
         colors: [

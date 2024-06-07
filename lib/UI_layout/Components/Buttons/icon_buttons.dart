@@ -2,9 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Src/Const_data/app_locales.dart';
 import '../../../State_management/Src/Custom_icons/custom_icons_src.dart';
-import '../_Widgets_STYLING/_icon_button_style.dart';
+import '../_Widgets_STYLING/icon_button_style.dart';
 
 class AppIconButtons {
   static Widget changeLanguageButton(BuildContext context) {
@@ -40,10 +41,8 @@ class AppIconButtons {
     );
   }
 
-  static Widget backIcon(
-    BuildContext context, {
-    required ColorScheme colorScheme,
-  }) {
+  static Widget backIcon(BuildContext context) {
+    final ColorScheme colorScheme = Helpers.colorScheme(context);
     return AppIconButtonStyle.withoutShadows(
       context,
       iconColor: colorScheme.onSurface,

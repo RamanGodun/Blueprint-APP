@@ -11,7 +11,7 @@ abstract class AppColors {
   static const Color kSecondaryVariant = Color.fromARGB(255, 124, 170, 194);
 
   static const Color green = Colors.green;
-  static const Color kErrorColor = Color(0xFFFF453A);
+  static const Color kErrorColor = CupertinoColors.destructiveRed;
   static const Color kErrorColorDark = Color.fromARGB(255, 231, 122, 122);
   static const Color kOnErrorColor = Color.fromARGB(255, 3, 40, 34);
 

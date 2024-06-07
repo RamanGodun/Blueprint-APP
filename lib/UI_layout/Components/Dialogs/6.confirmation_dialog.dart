@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../_Widgets_STYLING/_text_styles_for_components.dart';
+import '../_Widgets_STYLING/text_styles_for_components.dart';
 
 class ConfirmationDialog extends StatefulWidget {
   const ConfirmationDialog({super.key});

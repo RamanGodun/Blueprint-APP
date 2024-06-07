@@ -9,7 +9,7 @@ import '../../../State_management/Models/models_4_tracker_on_isar /model_of_subc
 import '../../../State_management/Providers/Provider_4_tracker/categories_provider.dart';
 import '../../../State_management/Helpers/For_tracker/category_helpers.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../_Widgets_STYLING/textfield_styling.dart';
+import '../_Widgets_STYLING/_textfield_styling.dart';
 import '../Buttons/for_tracker/drop_button2.dart';
 import '../Buttons/for_tracker/sc_drop_button.dart';
 import '../Pickers/cupertino_date_picker.dart';

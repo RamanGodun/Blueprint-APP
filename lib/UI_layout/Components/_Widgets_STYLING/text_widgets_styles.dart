@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../_Widgets_STYLING/_text_styles_for_components.dart';
+import 'text_styles_for_components.dart';
 
-class TextWidgets {
-  static Widget appBarTitle(BuildContext context, String text) {
-    final colorScheme = Helpers.colorScheme(context);
-    final cupertinoTheme = Helpers.cupertinoTheme(context);
+class AppTextWidgetsStyles {
+/* 
+   OFTEN USED Text widgets
+ */
+  static Widget forAppBarTitle(
+    BuildContext context, {
+    required String text,
+  }) {
     return Text(
       text,
-      style: AppTextStyles.appBarTitle(
-          cupertinoTheme: cupertinoTheme, colorScheme: colorScheme),
+      style: AppTextStyles.appBarTitle(context),
     );
   }
 
 /*
 Example of RICH TEXT
  */
-  static Widget titleForResultScreen({
-    required BuildContext context,
+  static Widget forResultScreenTitle(
+    BuildContext context, {
     required int numCorrectQuestions,
     required int numTotalQuestions,
-    required ColorScheme colorScheme,
-    required TextTheme textTheme,
   }) {
-    final theme = Helpers.cupertinoTheme(context);
+    final theme = Helpers.theme(context);
+    final TextTheme textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
     TextStyle? textStyle =
         textTheme.displayLarge?.copyWith(color: colorScheme.onPrimary);
     return Padding(
@@ -83,7 +86,7 @@ TEXT widgets
     );
   }
 
-  static Widget text4EmptyField(String text, BuildContext context) {
+  static Widget forEmptyPageText(BuildContext context, String text) {
     return Center(
       child: Text(text, style: Theme.of(context).textTheme.labelMedium),
     );
@@ -101,42 +104,6 @@ TEXT widgets
     return Center(
       child: Text(
           "$AppStrings.errorOcurredTextLoc $errorText$AppStrings.tryLaterTextLoc"),
-    );
-  }
-
-  static Widget themedText(
-    BuildContext context,
-    String text, {
-    Color? color,
-    double? fontSize = 16,
-    TextAlign? textAlign = TextAlign.center,
-    FontWeight? fontWeight = FontWeight.w800,
-  }) {
-    final textTheme = Helpers.textTheme(context);
-    return Text(
-      text,
-      textAlign: textAlign,
-      style: textTheme.bodyMedium?.copyWith(
-        color: color ?? textTheme.bodyMedium?.color,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-      ),
-    );
-  }
-
-  static Widget getThemedText(
-    BuildContext context,
-    String text, {
-    Color? color,
-    double? fontSize = 16,
-    TextAlign? textAlign = TextAlign.center,
-  }) {
-    return themedText(
-      context,
-      text,
-      color: color,
-      fontSize: fontSize,
-      textAlign: textAlign,
     );
   }
 }

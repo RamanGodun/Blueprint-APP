@@ -14,7 +14,7 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../Cards_and_tiles/list_tile.dart';
 import '../Static/dividers.dart';
-import '../Text_widgets/text_widgets2.dart';
+import '../_Widgets_STYLING/text_widgets_styles.dart';
 
 class PieChartDialog {
   Key _reorderableListKey = GlobalKey();
@@ -103,9 +103,8 @@ class PieChartDialog {
                       ? const SizedBox()
                       : (provider.calculatedCurrentMonthTotal == 0 &&
                               !showAllExpenses)
-                          ? TextWidgets.text4EmptyField(
-                              AppStrings.textForEmptyPages["pieChart"]!,
-                              context)
+                          ? AppTextWidgetsStyles.forEmptyPageText(context,
+                              AppStrings.textForEmptyPages["pieChart"]!)
                           : Text(
                               showAllExpenses
                                   ? "${NumberFormat.compact().format(provider.totalSumOfAllExpenses)} ${AppStrings.localCurrencySymbol1}"
@@ -119,8 +118,8 @@ class PieChartDialog {
                 SizedBox(
                   height: mQHeight / 2,
                   child: Center(
-                    child: TextWidgets.text4EmptyField(
-                        AppStrings.textForEmptyPages["expenses"]!, context),
+                    child: AppTextWidgetsStyles.forEmptyPageText(
+                        context, AppStrings.textForEmptyPages["expenses"]!),
                   ),
                 ),
               const SizedBox(height: 20),

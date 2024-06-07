@@ -9,7 +9,7 @@ import '../../../../State_management/Providers/Providers_for_store/auth_profile_
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../../../State_management/Theme_configuration/app_colors.dart';
-import '../../../Components/Buttons/_app_buttons.dart';
+import '../../../Components/Buttons/app_buttons.dart';
 import '../../../Components/Text_fields/my_custom_text_field.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -59,7 +59,6 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     _phoneController.selection = TextSelection.fromPosition(
         TextPosition(offset: _phoneController.text.length));
-    final colorScheme = Helpers.colorScheme(context);
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
@@ -160,7 +159,6 @@ class _AuthScreenState extends State<AuthScreen> {
                       height: 50,
                       child: AppCustomButtons.enterButton4GG(
                         context,
-                        colorScheme: colorScheme,
                         buttonText: (_isNeedRegistration == true)
                             ? "Зареєструватись"
                             : "Увійти в застосунок",

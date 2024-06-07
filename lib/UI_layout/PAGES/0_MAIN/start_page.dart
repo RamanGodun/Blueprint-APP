@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../Components/Buttons/_icon_buttons.dart';
-import '../../Components/Buttons/_app_buttons.dart';
+import '../../Components/Buttons/icon_buttons.dart';
+import '../../Components/Buttons/app_buttons.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../../Components/_Widgets_STYLING/_text_styles_for_components.dart';
+import '../../Components/_Widgets_STYLING/text_styles_for_components.dart';
 
 class StartPage extends StatefulWidget {
   static const routeName = '/start_page';
@@ -35,8 +35,7 @@ class _StartPageState extends State<StartPage> {
           children: [
             const SizedBox(width: 50),
             Text(LocaleKeys.startScreen.tr(),
-                style: AppTextStyles.appBarTitle(
-                    cupertinoTheme: cupertinoTheme, colorScheme: colorScheme)),
+                style: AppTextStyles.appBarTitle(context)),
             const Spacer(),
           ],
         ),
@@ -49,15 +48,13 @@ class _StartPageState extends State<StartPage> {
             child: ListView(
               children: [
                 const SizedBox(height: 20),
-                AppCustomButtons.goToTextFieldPage(context,
-                    colorScheme: colorScheme),
+                AppCustomButtons.goToTextFieldPage(context),
                 const SizedBox(height: 20),
-                AppCustomButtons.goToHivePage(context,
-                    colorScheme: colorScheme),
+                AppCustomButtons.goToHivePage(context),
                 const SizedBox(height: 20),
-                AppCustomButtons.goToGPTPage(context, colorScheme),
+                AppCustomButtons.goToGPTPage(context),
                 const SizedBox(height: 20),
-                AppCustomButtons.goToQuestionManager(context, colorScheme),
+                AppCustomButtons.goToQuestionManager(context),
               ],
             ),
           ),

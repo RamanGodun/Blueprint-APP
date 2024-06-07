@@ -1,4 +1,4 @@
-import 'package:blueprint_4app/UI_layout/Components/Buttons/_icon_buttons.dart';
+import 'package:blueprint_4app/UI_layout/Components/Buttons/icon_buttons.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,12 +8,12 @@ import 'package:go_router/go_router.dart';
 
 import '../../../State_management/Services/animation_controller_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../Components/Buttons/_app_buttons.dart';
+import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Buttons/_dd_buttons.dart';
 import '../../Components/Dialogs/custom_dialog.dart';
 import '../../Components/Others/icons_grid_view.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../../Components/Text_widgets/text_widgets2.dart';
+import '../../Components/_Widgets_STYLING/text_widgets_styles.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/start_page/settings';
@@ -55,10 +55,11 @@ class _SettingsPageState extends State<SettingsPage>
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        leading: AppIconButtons.backIcon(context, colorScheme: colorScheme),
+        leading: AppIconButtons.backIcon(context),
         middle: Row(
           children: [
-            TextWidgets.appBarTitle(context, LocaleKeys.startScreen.tr()),
+            AppTextWidgetsStyles.forAppBarTitle(context,
+                text: LocaleKeys.startScreen.tr()),
             const Spacer(),
           ],
         ),
@@ -94,8 +95,7 @@ class _SettingsPageState extends State<SettingsPage>
                     const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: AppCustomButtons.goToGPTApiKeyPage(context,
-                          colorScheme: colorScheme),
+                      child: AppCustomButtons.goToGPTApiKeyPage(context),
                     ),
                   ],
                 ),
@@ -125,8 +125,9 @@ Methods next
     showCupertinoModalPopup(
       context: context,
       builder: (BuildContext context) {
-        return CustomCupertinoDialog(
+        return CustomDialog(
           contentWidget: contentWidget,
+          isIOSStyle: true,
         );
       },
     ).then((_) {

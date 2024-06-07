@@ -8,73 +8,58 @@ import '../../Src/Const_data/strings_4_app.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 class Helpers {
-/*
-Here some useful methods, used across all app
-*/
-  static ColorScheme colorScheme(BuildContext context) {
-    return InheritedThemeManager.colorScheme(context)!;
-  }
-
-  static CupertinoThemeData cupertinoTheme(BuildContext context) {
-    return InheritedThemeManager.cupertinoTheme(context);
-  }
-
-  static TextTheme textTheme(BuildContext context) {
-    return InheritedThemeManager.textTheme(context);
-  }
-
-  static bool isDarkTheme(BuildContext context) {
-    return InheritedThemeManager.isDarkMode(context);
-  }
-
+  /*
+  Here some useful methods, used across all app
+  */
+  /// Get the current theme data.
   static ThemeData theme(BuildContext context) {
     return InheritedThemeManager.theme(context)!;
   }
 
-  static double deviceHeight(BuildContext context) {
-    return InheritedThemeManager.deviceHeight(context);
-  }
-
-  static double deviceWidth(BuildContext context) {
-    return InheritedThemeManager.deviceWidth(context);
-  }
-
-/*Previous option
- */
-/* 
-  static bool isDarkTheme(BuildContext context) {
-    bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
-    return isDarkTheme;
-  }
-
-  static CupertinoThemeData cupertinoTheme(BuildContext context) {
-    return CupertinoTheme.of(context);
-  }
-
-  static CupertinoTextThemeData cupertinoTextTheme(BuildContext context) {
-    return CupertinoTheme.of(context).textTheme;
-  }
-
-  static ThemeData theme(BuildContext context) {
-    return Theme.of(context);
-  }
-
+  /// Get the color scheme from the current theme.
   static ColorScheme colorScheme(BuildContext context) {
-    return Theme.of(context).colorScheme;
+    return theme(context).colorScheme;
   }
 
+  /// Get the text theme from the current theme.
   static TextTheme textTheme(BuildContext context) {
-    return Theme.of(context).textTheme;
+    return theme(context).textTheme;
   }
 
+  /// Determine if the current theme is dark mode.
+  static bool isDarkTheme(BuildContext context) {
+    return theme(context).brightness == Brightness.dark;
+  }
+
+  /// Determine if the given theme data is in dark mode.
+  static bool isDark(ThemeData theme) {
+    return theme.brightness == Brightness.dark;
+  }
+
+  /// Get the Cupertino theme data.
+  static CupertinoThemeData cupertinoTheme(BuildContext context) {
+    return InheritedThemeManager.cupertinoTheme(context);
+  }
+
+  /// Get the Cupertino text theme from the Cupertino theme data.
+  static CupertinoTextThemeData cupertinoTextTheme(BuildContext context) {
+    return cupertinoTheme(context).textTheme;
+  }
+
+  /// Get the device size.
+  static Size deviceSize(BuildContext context) {
+    return InheritedThemeManager.deviceSize(context);
+  }
+
+  /// Get the device height.
   static double deviceHeight(BuildContext context) {
-    return MediaQuery.of(context).size.height;
+    return deviceSize(context).height;
   }
 
+  /// Get the device width.
   static double deviceWidth(BuildContext context) {
-    return MediaQuery.of(context).size.width;
+    return deviceSize(context).width;
   }
-*/
 
 /* Converting & formatting of data
 */

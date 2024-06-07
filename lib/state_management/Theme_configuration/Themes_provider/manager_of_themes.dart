@@ -16,15 +16,6 @@ class InheritedThemeManager extends StatefulWidget {
     return MyChangeNotifierProvider.watch<ThemeProvider>(context);
   }
 
-  static ColorScheme? colorScheme(BuildContext context) {
-    final themeProvider = of(context);
-    if (themeProvider != null) {
-      return ThemeProviderHelper.getSelectedTheme(themeProvider.value)
-          ?.colorScheme;
-    }
-    return Theme.of(context).colorScheme;
-  }
-
   static ThemeData? theme(BuildContext context) {
     final themeProvider = of(context);
     if (themeProvider != null) {
@@ -33,12 +24,16 @@ class InheritedThemeManager extends StatefulWidget {
     return Theme.of(context);
   }
 
-  static TextTheme textTheme(BuildContext context) {
-    return theme(context)!.textTheme;
-  }
-
   static bool isDarkMode(BuildContext context) {
     return theme(context)!.brightness == Brightness.dark;
+  }
+
+  static ColorScheme colorScheme(BuildContext context) {
+    return theme(context)!.colorScheme;
+  }
+
+  static TextTheme textTheme(BuildContext context) {
+    return theme(context)!.textTheme;
   }
 
   static CupertinoThemeData cupertinoTheme(BuildContext context) {
@@ -46,15 +41,19 @@ class InheritedThemeManager extends StatefulWidget {
   }
 
   static CupertinoTextThemeData cupertinoTextTheme(BuildContext context) {
-    return CupertinoTheme.of(context).textTheme;
+    return cupertinoTheme(context).textTheme;
+  }
+
+  static Size deviceSize(BuildContext context) {
+    return MediaQuery.of(context).size;
   }
 
   static double deviceHeight(BuildContext context) {
-    return MediaQuery.of(context).size.height;
+    return deviceSize(context).height;
   }
 
   static double deviceWidth(BuildContext context) {
-    return MediaQuery.of(context).size.width;
+    return deviceSize(context).width;
   }
 }
 
