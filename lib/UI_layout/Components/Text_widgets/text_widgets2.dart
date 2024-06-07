@@ -1,8 +1,30 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
+import '../_Widgets_STYLING/_text_styles_for_components.dart';
 
 class TextWidgets {
+/*
+ GetIt.I<ThemeService>().init(context);
+
+
+var themeService = GetIt.I<ThemeService>();
+var colorScheme = themeService.colorScheme;
+ */
+  static Widget appBarTitle(
+    BuildContext context, {
+    required CupertinoThemeData cupertinoTheme,
+    required ColorScheme colorScheme,
+    required String text,
+  }) {
+    return Text(
+      text,
+      style: AppTextStyles.appBarTitle(
+          cupertinoTheme: cupertinoTheme, colorScheme: colorScheme),
+    );
+  }
+
 /*
 Example of RICH TEXT
  */

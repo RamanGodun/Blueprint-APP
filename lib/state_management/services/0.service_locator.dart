@@ -9,8 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../UI_layout/Components/Static/Cashed_widgets_alt/cashed_on_get_it.dart';
 import '../Models/models_4_FI_on_hive/model_4_hive.dart' as model_hive;
 import '../Models/models_4_FI_on_hive/model_4fi_on_hive.dart'
-    as question_model_hive; // Переконайтеся, що це правильний шлях до файлу моделі
+    as question_model_hive;
 import 'animation_controller_service.dart';
+import 'theme_service.dart';
 
 class DIServiceLocator {
   DIServiceLocator._internal();
@@ -29,6 +30,7 @@ class DIServiceLocator {
     await _setupIsarService();
     await _setupHiveBox();
     _setupAnimationService();
+    _setupThemeService();
   }
 
   Future<void> _setupSharedPreferences() async {
@@ -36,6 +38,10 @@ class DIServiceLocator {
       final prefs = await SharedPreferences.getInstance();
       _getIt.registerSingleton<SharedPreferences>(prefs);
     }
+  }
+
+  Future<void> _setupThemeService() async {
+    _getIt.registerLazySingleton<ThemeService>(() => ThemeService());
   }
 
   void _setupSecureStorage() {
@@ -77,8 +83,8 @@ class DIServiceLocator {
 
     if (!_getIt
         .isRegistered<Box<question_model_hive.QuestionAndAnswersModelHive>>()) {
-      Hive.registerAdapter(question_model_hive
-          .QuestionAndAnswersModelHiveAdapter()); // Переконайтеся, що цей адаптер існує і правильно імпортований
+      Hive.registerAdapter(
+          question_model_hive.QuestionAndAnswersModelHiveAdapter());
       var questionBox =
           await Hive.openBox<question_model_hive.QuestionAndAnswersModelHive>(
               'questionBox');

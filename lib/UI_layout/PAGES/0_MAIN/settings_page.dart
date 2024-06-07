@@ -13,7 +13,7 @@ import '../../Components/Buttons/_dd_buttons.dart';
 import '../../Components/Dialogs/custom_dialog.dart';
 import '../../Components/Others/icons_grid_view.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../../Components/_Widgets_STYLING/_text_styles_for_components.dart';
+import '../../Components/Text_widgets/text_widgets2.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/start_page/settings';
@@ -58,10 +58,11 @@ class _SettingsPageState extends State<SettingsPage>
         leading: AppIconButtons.backIcon(context, colorScheme: colorScheme),
         middle: Row(
           children: [
-            Text(
-              LocaleKeys.startScreen.tr(),
-              style: AppTextStyles.appBarTitle(
-                  cupertinoTheme: cupertinoTheme, colorScheme: colorScheme),
+            TextWidgets.appBarTitle(
+              context,
+              cupertinoTheme: cupertinoTheme,
+              colorScheme: colorScheme,
+              text: LocaleKeys.startScreen.tr(),
             ),
             const Spacer(),
           ],
