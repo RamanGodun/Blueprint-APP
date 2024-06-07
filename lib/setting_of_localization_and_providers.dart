@@ -49,7 +49,7 @@ class DataProviders extends StatelessWidget {
               create: (context) => CartsProvider(context)),
         ],
         child: const InheritedThemeManager(
-          child: ThemeAndRoutesConfiguration(),
+          child: ThemeServiceInitializer(),
         ),
       ),
     );

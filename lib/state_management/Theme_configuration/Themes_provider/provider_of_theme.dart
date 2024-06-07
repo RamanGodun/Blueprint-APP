@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Src/Const_data/app_const.dart';
 import '../../Models/app_enums.dart';
 import '../../Services/0.service_locator.dart';
-import '../../Helpers/Common/theme_provider_helper.dart';
+import '../theme_provider_helper.dart';
 
 class ThemeProvider extends ValueNotifier<CustomThemeMode> {
   static final ThemeProvider _instance = ThemeProvider._internal();
@@ -38,5 +38,6 @@ class ThemeProvider extends ValueNotifier<CustomThemeMode> {
       AppConstants.themeModeKey,
       ThemeProviderHelper.customThemeModeToString(newThemeMode),
     );
+    notifyListeners();
   }
 }

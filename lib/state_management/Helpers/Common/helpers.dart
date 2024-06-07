@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
+import '../../Theme_configuration/theme_service.dart';
 import '../../Src/Const_data/strings_4_app.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
@@ -10,9 +12,44 @@ class Helpers {
 /*
 Here some useful methods, used across all app
 */
+  static late ThemeService _themeService;
 
-/* Styling and MQ methods
-*/
+  static void init() {
+    _themeService = GetIt.I<ThemeService>();
+  }
+
+  static bool isDarkThemeGet() {
+    return _themeService.isDarkMode;
+  }
+
+  static CupertinoThemeData cupertinoThemeGet() {
+    return _themeService.cupertinoTheme;
+  }
+
+  static CupertinoTextThemeData cupertinoTextThemeGet() {
+    return _themeService.cupertinoTextTheme;
+  }
+
+  static ThemeData themeGet() {
+    return _themeService.themeData;
+  }
+
+  static ColorScheme colorSchemeGet() {
+    return _themeService.colorScheme;
+  }
+
+  static TextTheme textThemeGet() {
+    return _themeService.textTheme;
+  }
+
+  static double deviceHeightGet() {
+    return _themeService.deviceHeight;
+  }
+
+  static double deviceWidthGet() {
+    return _themeService.deviceWidth;
+  }
+
   static bool isDarkTheme(BuildContext context) {
     bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return isDarkTheme;
@@ -20,6 +57,10 @@ Here some useful methods, used across all app
 
   static CupertinoThemeData cupertinoTheme(BuildContext context) {
     return CupertinoTheme.of(context);
+  }
+
+  static CupertinoTextThemeData cupertinoTextTheme(BuildContext context) {
+    return CupertinoTheme.of(context).textTheme;
   }
 
   static ThemeData theme(BuildContext context) {

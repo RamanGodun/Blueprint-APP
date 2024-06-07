@@ -58,12 +58,8 @@ class _SettingsPageState extends State<SettingsPage>
         leading: AppIconButtons.backIcon(context, colorScheme: colorScheme),
         middle: Row(
           children: [
-            TextWidgets.appBarTitle(
-              context,
-              cupertinoTheme: cupertinoTheme,
-              colorScheme: colorScheme,
-              text: LocaleKeys.startScreen.tr(),
-            ),
+            TextWidgets.appBarTitle(text: LocaleKeys.startScreen.tr()),
+            // AppBarTitle(text: LocaleKeys.startScreen.tr()),
             const Spacer(),
           ],
         ),

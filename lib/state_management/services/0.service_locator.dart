@@ -11,7 +11,7 @@ import '../Models/models_4_FI_on_hive/model_4_hive.dart' as model_hive;
 import '../Models/models_4_FI_on_hive/model_4fi_on_hive.dart'
     as question_model_hive;
 import 'animation_controller_service.dart';
-import 'theme_service.dart';
+import '../Theme_configuration/theme_service.dart';
 
 class DIServiceLocator {
   DIServiceLocator._internal();
@@ -41,7 +41,9 @@ class DIServiceLocator {
   }
 
   Future<void> _setupThemeService() async {
-    _getIt.registerLazySingleton<ThemeService>(() => ThemeService());
+    if (!_getIt.isRegistered<ThemeService>()) {
+      _getIt.registerLazySingleton<ThemeService>(() => ThemeService());
+    }
   }
 
   void _setupSecureStorage() {

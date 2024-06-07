@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
+import '../../../State_management/Theme_configuration/theme_service.dart';
 import '../../Components/Static/cashed_widgets.dart';
 import '../0_MAIN/start_page.dart';
 import 'login_or_register_page.dart';
@@ -15,6 +17,30 @@ class AuthHandler extends StatefulWidget {
 
 class _AuthHandlerState extends State<AuthHandler> {
   bool showLoginPage = true;
+
+  @override
+  void initState() {
+    super.initState();
+    final themeService = GetIt.I<ThemeService>();
+    themeService.addListener(updateTheme);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final themeService = GetIt.I<ThemeService>();
+    themeService.init(context);
+  }
+
+  void updateTheme() {
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    GetIt.I<ThemeService>().removeListener(updateTheme);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
