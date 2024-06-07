@@ -9,7 +9,6 @@ import 'State_management/Providers/Providers_for_store/cart_provider.dart';
 import 'State_management/Providers/Provider_4_tracker/categories_provider.dart';
 import 'State_management/Providers/Providers_for_store/common_data_provider.dart';
 import 'State_management/Providers/Provider_4_tracker/items_provider.dart';
-import 'State_management/Theme_configuration/Themes_provider/manager_of_themes.dart';
 import 'State_management/Src/Generated_code/by easy_localization/codegen_loader.g.dart';
 import 'settings_of_theme_and_routes.dart';
 
@@ -48,9 +47,7 @@ class DataProviders extends StatelessWidget {
           ChangeNotifierProvider<CartsProvider>(
               create: (context) => CartsProvider(context)),
         ],
-        child: const InheritedThemeManager(
-          child: ThemeServiceInitializer(),
-        ),
+        child: const GetContextForInheritedThemeManager(),
       ),
     );
   }

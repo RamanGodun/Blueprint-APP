@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../Theme_configuration/this_app_colors.dart';
+import '../../Theme_configuration/app_colors.dart';
 import 'custom_icons_list.dart';
 
 class AppIcons {

@@ -58,8 +58,7 @@ class _SettingsPageState extends State<SettingsPage>
         leading: AppIconButtons.backIcon(context, colorScheme: colorScheme),
         middle: Row(
           children: [
-            TextWidgets.appBarTitle(text: LocaleKeys.startScreen.tr()),
-            // AppBarTitle(text: LocaleKeys.startScreen.tr()),
+            TextWidgets.appBarTitle(context, LocaleKeys.startScreen.tr()),
             const Spacer(),
           ],
         ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../State_management/Src/Generated_code/by spider/resources.dart';
-import '../../../State_management/Theme_configuration/this_app_colors.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 
 class AppCashedWidgets {
 /*

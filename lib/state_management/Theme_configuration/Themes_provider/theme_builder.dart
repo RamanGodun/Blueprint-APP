@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../this_app_colors.dart';
-import '../text_styles.dart';
+import '../app_colors.dart';
+import '../text_styles_for_themes.dart';
 
 class ThisAppThemesBuilder {
   static ThemeData buildThemeData({

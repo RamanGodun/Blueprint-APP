@@ -7,7 +7,7 @@ import '../../Models/models_4_tracker_on_isar /model_of_category.dart';
 import '../../Models/models_4_tracker_on_isar /db_item_model.dart';
 import '../../Models/models_4_tracker_on_isar /model_of_subcategory.dart';
 import '../../Providers/Provider_4_tracker/categories_provider.dart';
-import '../../Theme_configuration/this_app_colors.dart';
+import '../../Theme_configuration/app_colors.dart';
 import '../../Src/Custom_icons/app_icons.dart';
 
 class CategoriesHelper {

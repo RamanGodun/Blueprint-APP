@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
-import '../../../../State_management/Theme_configuration/this_app_colors.dart';
+import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/_app_buttons.dart';
 import '../../../Components/Text_fields/my_custom_text_field.dart';
 

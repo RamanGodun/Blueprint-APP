@@ -4,13 +4,9 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 import '../_Widgets_STYLING/_text_styles_for_components.dart';
 
 class TextWidgets {
-  static Widget appBarTitle({
-    required String text,
-  }) {
-    final colorScheme = Helpers.colorSchemeGet();
-    final cupertinoTheme = Helpers.cupertinoThemeGet();
-    // ignore: avoid_print
-    print("Applying color scheme: ${colorScheme.onSurface}");
+  static Widget appBarTitle(BuildContext context, String text) {
+    final colorScheme = Helpers.colorScheme(context);
+    final cupertinoTheme = Helpers.cupertinoTheme(context);
     return Text(
       text,
       style: AppTextStyles.appBarTitle(

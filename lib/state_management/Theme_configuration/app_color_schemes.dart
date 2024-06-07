@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'this_app_colors.dart';
+import 'app_colors.dart';
 
 abstract class ThisAppColorSchemes {
   /* IOS LIGHT color Scheme */

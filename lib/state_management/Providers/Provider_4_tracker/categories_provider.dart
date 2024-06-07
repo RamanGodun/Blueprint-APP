@@ -6,7 +6,7 @@ import '../../Models/models_4_tracker_on_isar /model_of_category.dart';
 import '../../Models/models_4_tracker_on_isar /model_of_subcategory.dart';
 import '../../Src/Custom_icons/app_icons.dart';
 import '../../Helpers/For_tracker/category_helpers.dart';
-import '../../Theme_configuration/this_app_colors.dart';
+import '../../Theme_configuration/app_colors.dart';
 
 class CategoriesProvider extends ChangeNotifier {
   static final CategoriesProvider _instance = CategoriesProvider._();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:country_picker/country_picker.dart';
 import '../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
-import '../../../State_management/Theme_configuration/this_app_colors.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../Others/_3_check_box.dart';
 
 class StyledTextFormField extends StatefulWidget {

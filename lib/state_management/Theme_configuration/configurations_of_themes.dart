@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'this_app_color_schemes.dart';
-import 'this_app_colors.dart';
+import 'app_color_schemes.dart';
+import 'app_colors.dart';
 import 'Themes_provider/theme_builder.dart';
 
 class ThisAppThemes {

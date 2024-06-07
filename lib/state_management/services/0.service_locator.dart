@@ -11,7 +11,6 @@ import '../Models/models_4_FI_on_hive/model_4_hive.dart' as model_hive;
 import '../Models/models_4_FI_on_hive/model_4fi_on_hive.dart'
     as question_model_hive;
 import 'animation_controller_service.dart';
-import '../Theme_configuration/theme_service.dart';
 
 class DIServiceLocator {
   DIServiceLocator._internal();
@@ -30,19 +29,13 @@ class DIServiceLocator {
     await _setupIsarService();
     await _setupHiveBox();
     _setupAnimationService();
-    _setupThemeService();
+    // _setupThemeService();
   }
 
   Future<void> _setupSharedPreferences() async {
     if (!_getIt.isRegistered<SharedPreferences>()) {
       final prefs = await SharedPreferences.getInstance();
       _getIt.registerSingleton<SharedPreferences>(prefs);
-    }
-  }
-
-  Future<void> _setupThemeService() async {
-    if (!_getIt.isRegistered<ThemeService>()) {
-      _getIt.registerLazySingleton<ThemeService>(() => ThemeService());
     }
   }
 
@@ -109,3 +102,13 @@ class DIServiceLocator {
   Box<question_model_hive.QuestionAndAnswersModelHive> get questionBox =>
       _getIt.get<Box<question_model_hive.QuestionAndAnswersModelHive>>();
 }
+
+
+
+/*
+  Future<void> _setupThemeService() async {
+    if (!_getIt.isRegistered<ThemeService>()) {
+      _getIt.registerLazySingleton<ThemeService>(() => ThemeService());
+    }
+  }
+ */

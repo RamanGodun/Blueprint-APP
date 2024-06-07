@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
-import '../../Theme_configuration/theme_service.dart';
+import '../../Theme_configuration/Themes_provider/manager_of_themes.dart';
 import '../../Src/Const_data/strings_4_app.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
@@ -12,44 +11,37 @@ class Helpers {
 /*
 Here some useful methods, used across all app
 */
-  static late ThemeService _themeService;
-
-  static void init() {
-    _themeService = GetIt.I<ThemeService>();
+  static ColorScheme colorScheme(BuildContext context) {
+    return InheritedThemeManager.colorScheme(context)!;
   }
 
-  static bool isDarkThemeGet() {
-    return _themeService.isDarkMode;
+  static CupertinoThemeData cupertinoTheme(BuildContext context) {
+    return InheritedThemeManager.cupertinoTheme(context);
   }
 
-  static CupertinoThemeData cupertinoThemeGet() {
-    return _themeService.cupertinoTheme;
+  static TextTheme textTheme(BuildContext context) {
+    return InheritedThemeManager.textTheme(context);
   }
 
-  static CupertinoTextThemeData cupertinoTextThemeGet() {
-    return _themeService.cupertinoTextTheme;
+  static bool isDarkTheme(BuildContext context) {
+    return InheritedThemeManager.isDarkMode(context);
   }
 
-  static ThemeData themeGet() {
-    return _themeService.themeData;
+  static ThemeData theme(BuildContext context) {
+    return InheritedThemeManager.theme(context)!;
   }
 
-  static ColorScheme colorSchemeGet() {
-    return _themeService.colorScheme;
+  static double deviceHeight(BuildContext context) {
+    return InheritedThemeManager.deviceHeight(context);
   }
 
-  static TextTheme textThemeGet() {
-    return _themeService.textTheme;
+  static double deviceWidth(BuildContext context) {
+    return InheritedThemeManager.deviceWidth(context);
   }
 
-  static double deviceHeightGet() {
-    return _themeService.deviceHeight;
-  }
-
-  static double deviceWidthGet() {
-    return _themeService.deviceWidth;
-  }
-
+/*Previous option
+ */
+/* 
   static bool isDarkTheme(BuildContext context) {
     bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return isDarkTheme;
@@ -82,6 +74,7 @@ Here some useful methods, used across all app
   static double deviceWidth(BuildContext context) {
     return MediaQuery.of(context).size.width;
   }
+*/
 
 /* Converting & formatting of data
 */

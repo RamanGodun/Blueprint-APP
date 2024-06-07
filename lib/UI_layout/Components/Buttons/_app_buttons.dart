@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
+import '../../../State_management/Theme_configuration/Themes_provider/manager_of_themes.dart';
 import '../_Widgets_STYLING/_custom_button_style.dart';
 
 class AppCustomButtons {
@@ -26,6 +27,7 @@ class AppCustomButtons {
     BuildContext context,
     ColorScheme colorScheme,
   ) {
+    final ColorScheme colorScheme = InheritedThemeManager.colorScheme(context)!;
     return AppButtonsStyle.firstDesign(
       context,
       onPressed: () {

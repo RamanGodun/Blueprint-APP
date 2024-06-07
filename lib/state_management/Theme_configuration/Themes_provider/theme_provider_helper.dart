@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../Models/app_enums.dart';
-import 'configurations_of_themes.dart';
+import '../../Models/app_enums.dart';
+import '../configurations_of_themes.dart';
 
 class ThemeProviderHelper {
   static ThemeData? getSelectedTheme(CustomThemeMode themeMode) {

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'dart:ui' as ui;
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
-import '../../../../State_management/Theme_configuration/this_app_colors.dart';
+import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/for_shop/custom_button.dart';
 import '../../../Components/Text_fields/_my_first_tf.dart';
 import '_2.1_admin_orders_list.dart';

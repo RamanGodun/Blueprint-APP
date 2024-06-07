@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../State_management/Theme_configuration/this_app_colors.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 
 class EditFormImage extends StatefulWidget {
   final String? currentProfileImage;

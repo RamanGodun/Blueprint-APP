@@ -6,7 +6,7 @@ import '../../../State_management/Providers/Providers_for_store/auth_profile_pro
 import '../../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../State_management/Helpers/For_auth/dm_methods.dart';
-import '../../../State_management/Theme_configuration/this_app_colors.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 // state management
 
 // screens or widgets

@@ -15,7 +15,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'State_management/Helpers/Common/helpers.dart';
 import 'setting_of_localization_and_providers.dart';
 import 'State_management/Services/0.service_locator.dart';
 import 'State_management/Src/Generated_code/firebase_options.dart';
@@ -27,6 +26,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  Helpers.init();
+  // Helpers.init();
   runApp(const AppLocalization());
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../../../State_management/Providers/Providers_for_store/cart_provider.dart';
-import '../../../State_management/Theme_configuration/this_app_colors.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../Dialogs/general_alert_dialog.dart';
 import '../Others/dash_divider.dart';
 import '../Switchers/_2_my_switcher.dart';

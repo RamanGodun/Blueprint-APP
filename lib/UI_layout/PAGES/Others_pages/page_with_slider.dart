@@ -5,7 +5,7 @@ import '../../../State_management/Src/Const_data/strings_4_app.dart';
 import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Src/Generated_code/by spider/resources.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../../State_management/Theme_configuration/this_app_colors.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../Tabs/tabs_from_tracker.dart';
 
 class EntryScreen extends StatelessWidget {

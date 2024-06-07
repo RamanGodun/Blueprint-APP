@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/For_auth/dm_methods.dart';
-import '../../../State_management/Theme_configuration/this_app_colors.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 
 class FuturePicture extends StatelessWidget {
   final String pictureTitle;
