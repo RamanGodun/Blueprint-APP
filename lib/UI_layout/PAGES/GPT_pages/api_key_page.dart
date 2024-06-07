@@ -6,7 +6,7 @@ import '../../../State_management/Services/open_ai_service.dart';
 import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/icon_buttons.dart';
-import '../../Components/Text_fields/cupertino_tf3.dart';
+import '../../Components/Text_fields/_cupertino_tf3.dart';
 import '../../Components/_Widgets_STYLING/text_styles_for_components.dart';
 
 class ApiKeyInputPage extends StatefulWidget {

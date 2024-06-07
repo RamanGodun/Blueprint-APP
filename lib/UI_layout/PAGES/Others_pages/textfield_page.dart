@@ -2,20 +2,19 @@ import 'package:blueprint_4app/UI_layout/Components/Buttons/icon_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../../Components/_Widgets_STYLING/text_styles_for_components.dart';
 import '../../Components/Buttons/app_buttons.dart';
-import '../../Components/Text_fields/cupertino_tf2.dart';
+import '../../Components/Text_fields/_cupertino_tf2.dart';
 
 class TextFieldPage extends HookWidget {
   static const routeName = '/start_page/new_screen';
-
   const TextFieldPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final textController = useTextEditingController();
     final isValid = useState(true);
-    // final colorScheme = Helpers.colorScheme(context);
 
     void validateInput() {
       isValid.value = textController.text.isNotEmpty;
@@ -42,7 +41,7 @@ class TextFieldPage extends HookWidget {
                 child: Text(
                   'This field cannot be empty',
                   style: TextStyle(
-                    color: CupertinoColors.destructiveRed,
+                    color: AppColors.kErrorColor,
                     fontSize: 12,
                   ),
                 ),

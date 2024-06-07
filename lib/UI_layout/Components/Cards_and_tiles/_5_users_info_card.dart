@@ -4,7 +4,7 @@ import '../../../State_management/Models/models_for_store/user_data_model.dart';
 import '../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
 import '../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../Others/dashed_border_container.dart';
+import '../Others/_dashed_border_container.dart';
 
 class UsersInfoCard extends StatelessWidget {
   final bool isAdmin;

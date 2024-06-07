@@ -1,4 +1,4 @@
-import 'package:blueprint_4app/UI_layout/Components/Static/dividers.dart';
+import 'package:blueprint_4app/UI_layout/Components/Static/_dividers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 

@@ -6,7 +6,7 @@ import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/for_shop/custom_button.dart';
 import '../../../Components/Cards_and_tiles/_2_card_for_list_view.dart';
 import '../../../Components/Others/_3_check_box.dart';
-import '../../../Components/Others/dash_divider.dart';
+import '../../../Components/Static/_dash_divider.dart';
 import '../../../Components/Pickers/_2_quantity_changer.dart';
 
 class CustomerCartScreen extends StatefulWidget {

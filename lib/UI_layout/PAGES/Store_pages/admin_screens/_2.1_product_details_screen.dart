@@ -6,7 +6,7 @@ import '../../../../State_management/Providers/Providers_for_store/cart_provider
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/for_shop/custom_button.dart';
-import '../../../Components/Others/dash_divider.dart';
+import '../../../Components/Static/_dash_divider.dart';
 import '../../../Components/Pickers/_2_quantity_changer.dart';
 
 class ProductDetailPage extends StatefulWidget {

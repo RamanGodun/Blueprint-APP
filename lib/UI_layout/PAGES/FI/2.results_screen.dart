@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import '../../../State_management/Providers/Provider_4_FI/_custom_provider_4fi_app.dart';
-import '../../Components/Cards_and_tiles/list_tile_4fi_app.dart';
+import '../../Components/Cards_and_tiles/_list_tile_4fi_app.dart';
 import 'manager_of_questions.dart';
 
 class ResultsScreen extends StatefulWidget {

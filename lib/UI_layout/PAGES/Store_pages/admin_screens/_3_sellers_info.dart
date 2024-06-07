@@ -5,7 +5,7 @@ import '../../../../State_management/Providers/Providers_for_store/common_data_p
 import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/for_shop/custom_button.dart';
 import '../../../Components/Cards_and_tiles/_5_users_info_card.dart';
-import '../../../Components/Others/dash_divider.dart';
+import '../../../Components/Static/_dash_divider.dart';
 
 class SellersInfo extends StatefulWidget {
   const SellersInfo({super.key});

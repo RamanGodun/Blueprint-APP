@@ -5,7 +5,7 @@ import '../../../State_management/Src/Const_data/strings_4_app.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../_Widgets_STYLING/text_styles_for_components.dart';
 
-class AppDialogButtonsStyles {
+class AppDialogsButtonsStyles {
   //
   /* CUSTOM style */
   static Widget customActionDB(BuildContext context,

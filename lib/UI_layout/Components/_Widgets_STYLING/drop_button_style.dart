@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../../../State_management/Helpers/Common/helpers.dart';
+
 abstract class AppDropButtonStyle {
 //
 /* For THEME CHANGING button
  */
-  static BoxDecoration forThemeChangingDB(
-      ColorScheme colorScheme, bool isDarkMode) {
+  static BoxDecoration forThemeChangingDB(BuildContext context) {
+    final theme = Helpers.theme(context);
+    final colorScheme = theme.colorScheme;
+    final isDarkMode = Helpers.isDark(theme);
     return BoxDecoration(
       color: colorScheme.surface,
       borderRadius: BorderRadius.circular(12.0),
@@ -32,11 +36,10 @@ abstract class AppDropButtonStyle {
 
 /* INPUT DECORATION for DD button
  */
-  static InputDecoration getInputDecoration(
-    BuildContext context,
-    bool isDarkTheme, {
-    required ColorScheme colorScheme,
-  }) {
+  static InputDecoration getInputDecoration(BuildContext context) {
+    final theme = Helpers.theme(context);
+    final colorScheme = theme.colorScheme;
+    final isDarkTheme = Helpers.isDark(theme);
     return InputDecoration(
       isDense: true,
       filled: true,

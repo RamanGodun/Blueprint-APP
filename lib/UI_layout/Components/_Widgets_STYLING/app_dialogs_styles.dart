@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../Buttons/dialog_action_buttons.dart';
-import '../Static/dividers.dart';
+import '../Buttons/dialog_buttons.dart';
+import '../Static/_dividers.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 
 abstract class AppDialogsStyles {
@@ -90,9 +90,9 @@ abstract class AppDialogsStyles {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    AppDialogButtonsStyles.customCancelDB(context),
+                    AppDialogsButtonsStyles.customCancelDB(context),
                     AppDividers.dividerBetweenDialogButtons(context),
-                    AppDialogButtonsStyles.customActionDB(context),
+                    AppDialogsButtonsStyles.customActionDB(context),
                   ],
                 ),
               ),
@@ -163,8 +163,8 @@ abstract class AppDialogsStyles {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    AppDialogButtonsStyles.customAndroidCancelButton(context),
-                    AppDialogButtonsStyles.customAndroidActionButton(context),
+                    AppDialogsButtonsStyles.customAndroidCancelButton(context),
+                    AppDialogsButtonsStyles.customAndroidActionButton(context),
                   ],
                 ),
               ),

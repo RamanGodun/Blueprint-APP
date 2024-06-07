@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../Dialogs/_general_alert_dialog.dart';
-import '../Others/dash_divider.dart';
+import '../Static/_dash_divider.dart';
 import '../Switchers/_2_my_switcher.dart';
 import '../../PAGES/Tabs/default_tabs_from_shop.dart';
 

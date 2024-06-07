@@ -3,8 +3,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../../State_management/Models/models_4_FI_on_hive/question_model.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../Static/mini_widgets.dart';
-import '../_Widgets_STYLING/_list_tile_layouts.dart';
+import '../Static/_mini_widgets.dart';
+import '../_Widgets_STYLING/fi_list_tile_layouts.dart';
 
 class CustomListTile extends StatelessWidget {
   final void Function(BuildContext) onEditPressed;

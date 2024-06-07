@@ -12,9 +12,9 @@ import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/For_tracker/category_helpers.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../Cards_and_tiles/list_tile.dart';
-import '../Static/dividers.dart';
-import '../_Widgets_STYLING/text_widgets_styles.dart';
+import '../Cards_and_tiles/_list_tile.dart';
+import '../Static/_dividers.dart';
+import '../Text_widgets/text_widgets.dart';
 
 class PieChartDialog {
   Key _reorderableListKey = GlobalKey();

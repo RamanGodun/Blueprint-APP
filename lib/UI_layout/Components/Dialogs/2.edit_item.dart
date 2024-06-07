@@ -11,8 +11,8 @@ import '../../../State_management/Helpers/For_tracker/category_helpers.dart';
 import '../_Widgets_STYLING/_textfield_styling.dart';
 import '../Buttons/for_tracker/drop_button2.dart';
 import '../Buttons/for_tracker/sc_drop_button.dart';
-import '../Pickers/cupertino_date_picker.dart';
-import '../Switchers/measurement_unit_picker.dart';
+import '../Pickers/_cupertino_date_picker.dart';
+import '../Switchers/_measurement_unit_picker.dart';
 
 class EditItemDialog extends StatefulWidget {
   const EditItemDialog({

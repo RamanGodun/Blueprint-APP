@@ -10,7 +10,7 @@ import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Cards_and_tiles/_2_card_for_list_view.dart';
 import '../../../Components/Cards_and_tiles/_4_customers_order_card.dart';
 import '../../../Components/Cards_and_tiles/_5_users_info_card.dart';
-import '../../../Components/Others/dash_divider.dart';
+import '../../../Components/Static/_dash_divider.dart';
 // state management
 
 class PersonalCabinet4Customer extends StatefulWidget {

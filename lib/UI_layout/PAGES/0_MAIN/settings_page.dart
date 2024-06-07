@@ -9,11 +9,11 @@ import 'package:go_router/go_router.dart';
 import '../../../State_management/Services/animation_controller_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/app_buttons.dart';
-import '../../Components/Buttons/_dd_buttons.dart';
+import '../../Components/Buttons/dd_buttons.dart';
 import '../../Components/Dialogs/custom_dialog.dart';
-import '../../Components/Others/icons_grid_view.dart';
+import '../../Components/Views/_icons_grid_view.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../../Components/_Widgets_STYLING/text_widgets_styles.dart';
+import '../../Components/Text_widgets/text_widgets.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/start_page/settings';
@@ -87,11 +87,7 @@ class _SettingsPageState extends State<SettingsPage>
               : Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    AppDDButtons.forThemeChanging(
-                      context,
-                      theme: theme,
-                      isDarkMode: isDark,
-                    ),
+                    AppDDButtons.forThemeChanging(context),
                     const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),

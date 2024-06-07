@@ -10,7 +10,7 @@ import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/app_buttons.dart';
-import '../../../Components/Text_fields/my_custom_text_field.dart';
+import '../../../Components/Text_fields/_my_custom_text_field.dart';
 
 class AuthScreen extends StatefulWidget {
   final bool isNeedRegistration;

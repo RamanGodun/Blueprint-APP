@@ -5,7 +5,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
 import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../Components/Static/other_widgets.dart';
+import '../../Components/Static/_other_widgets.dart';
 import '../0_MAIN/placeholder_screen.dart';
 
 class MyAnimatedBottomNavigationBar extends StatefulWidget {

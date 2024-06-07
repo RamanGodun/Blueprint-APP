@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import '../../../State_management/Services/google_signing_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/app_buttons.dart';
-import '../../Components/Others/square_tile.dart';
+import '../../Components/Cards_and_tiles/_square_tile.dart';
 import '../../Components/Static/cashed_widgets.dart';
-import '../../Components/Text_fields/textfield1.dart';
+import '../../Components/Text_fields/_textfield1.dart';
 import '../../../State_management/Src/Generated_code/by spider/resources.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {
