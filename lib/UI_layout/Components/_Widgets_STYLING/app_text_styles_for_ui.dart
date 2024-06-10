@@ -131,4 +131,21 @@ abstract class AppTextStyles {
       height: 1.05,
     );
   }
+
+  static TextStyle? forComplexityPicker(
+      BuildContext context, int selectedSegment) {
+    final theme = Helpers.theme(context);
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+    return textTheme.displayMedium?.copyWith(
+      color:
+          selectedSegment == 0 ? colorScheme.onPrimary : colorScheme.onSurface,
+    );
+  }
+
+  static TextStyle forFIPicker(
+      BuildContext context, TextTheme textTheme, ColorScheme colorScheme) {
+    return textTheme.displayLarge!
+        .copyWith(color: colorScheme.onTertiary.withOpacity(0.67));
+  }
 }

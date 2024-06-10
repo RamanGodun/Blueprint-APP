@@ -35,6 +35,7 @@ abstract class AppColors {
   }
 
   static const Color cupertinoBlackColor = CupertinoColors.black;
+  static const Color transparent = Colors.transparent;
 
   static const Color kLightIOSBackground = Color.fromARGB(246, 236, 232, 232);
   static const Color kLightIOSSurface = Color.fromARGB(255, 240, 234, 234);

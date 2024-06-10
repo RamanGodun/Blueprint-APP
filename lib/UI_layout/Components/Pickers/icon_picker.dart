@@ -21,12 +21,23 @@ class IconPickerWidget extends StatefulWidget {
 class _IconPickerWidgetState extends State<IconPickerWidget> {
   late IconData selectedIcon;
   late List<IconData> iconsForChoosing;
+  late ThemeData theme;
+  late ColorScheme colorScheme;
+  late TextTheme textTheme;
 
   @override
   void initState() {
     selectedIcon = AppIcons.customIcons[0];
     iconsForChoosing = AppIcons.customIcons;
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    theme = Helpers.theme(context);
+    colorScheme = theme.colorScheme;
+    textTheme = theme.textTheme;
   }
 
   @override
@@ -39,7 +50,7 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                backgroundColor: Theme.of(context).colorScheme.surface,
+                backgroundColor: colorScheme.surface,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -57,7 +68,7 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
                 title: Text(
                   "Вибір іконки",
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.labelLarge,
+                  style: textTheme.labelLarge,
                 ),
                 content: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.5,
@@ -95,10 +106,10 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
                     child: Column(
                       children: [
                         AppDividers.boldDivider(
-                          Helpers.isDarkTheme(context),
+                          Helpers.isDark(theme),
                         ),
                         AppDividers.boldDivider(
-                          Helpers.isDarkTheme(context),
+                          Helpers.isDark(theme),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 8.0),
@@ -109,7 +120,7 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
                             child: Text(
                               "Закрити",
                               style: AppTextStyles.forButtons(context).copyWith(
-                                color: Theme.of(context).primaryColor,
+                                color: theme.primaryColor,
                               ),
                             ),
                           ),

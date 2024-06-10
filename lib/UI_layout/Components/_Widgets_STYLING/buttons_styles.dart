@@ -68,7 +68,7 @@ abstract class AppButtonsStyle {
       child: Container(
         height: height,
         padding: padding,
-        decoration: AppUIStyling.glassmorphismGradientDecoration(context),
+        decoration: AppBoxDecorations.glassmorphismGradientDecoration(context),
         child: Center(
           child: Text(
             buttonText,

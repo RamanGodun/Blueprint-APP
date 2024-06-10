@@ -7,7 +7,7 @@ import '../../../Components/Buttons/for_shop/custom_button.dart';
 import '../../../Components/Cards_and_tiles/for_shop/card_for_list_view.dart';
 import '../../../Components/Mini_widgets/for_shop/check_box.dart';
 import '../../../Components/Mini_widgets/dash_divider.dart';
-import '../../../Components/Pickers/_2_quantity_changer.dart';
+import '../../../Components/Pickers/for_shop/quantity_changer.dart';
 
 class CustomerCartScreen extends StatefulWidget {
   const CustomerCartScreen({

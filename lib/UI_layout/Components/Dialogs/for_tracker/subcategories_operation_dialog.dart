@@ -8,7 +8,7 @@ import '../../../../State_management/Src/Custom_icons/custom_icons_src.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../_Widgets_STYLING/_textfield_styling.dart';
 import '../../Buttons/for_tracker/drop_button2.dart';
-import '../../Pickers/_icon_picker.dart';
+import '../../Pickers/icon_picker.dart';
 import 'color_picker_window.dart';
 
 class SubCategoriesOperationDialog extends StatefulWidget {

@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../State_management/Helpers/Common/helpers.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
+import '../_Widgets_STYLING/app_text_styles_for_ui.dart';
 
 class QuantityPicker extends StatefulWidget {
   final Function(double) setSelectedQuantity;
@@ -12,16 +15,18 @@ class QuantityPicker extends StatefulWidget {
 class _QuantityPickerState extends State<QuantityPicker> {
   double _sliderSelectedValue = 0.0;
   double _pickerSelectedValue = 0;
+  late ThemeData theme;
   late ColorScheme colorScheme;
   late TextTheme textTheme;
   late Size deviceSize;
 
   @override
   void didChangeDependencies() {
-    colorScheme = Theme.of(context).colorScheme;
-    textTheme = Theme.of(context).textTheme;
-    deviceSize = MediaQuery.of(context).size;
     super.didChangeDependencies();
+    theme = Helpers.theme(context);
+    colorScheme = theme.colorScheme;
+    textTheme = theme.textTheme;
+    deviceSize = Helpers.deviceSize(context);
   }
 
   @override
@@ -32,7 +37,7 @@ class _QuantityPickerState extends State<QuantityPicker> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Material(
-            color: Colors.transparent,
+            color: AppColors.transparent,
             child: Slider(
               label: _sliderSelectedValue.toString(),
               overlayColor: WidgetStateProperty.all<Color>(
@@ -63,7 +68,6 @@ class _QuantityPickerState extends State<QuantityPicker> {
                 onSelectedItemChanged: (index) {
                   setState(() {
                     _pickerSelectedValue = index.toDouble();
-
                     widget.setSelectedQuantity(getSelectedQuantity());
                   });
                 },
@@ -72,8 +76,8 @@ class _QuantityPickerState extends State<QuantityPicker> {
                   (index) => Center(
                     child: Text(
                       '$index',
-                      style: textTheme.displayLarge?.copyWith(
-                          color: colorScheme.onTertiary.withOpacity(0.67)),
+                      style: AppTextStyles.forFIPicker(
+                          context, textTheme, colorScheme),
                     ),
                   ),
                 ),

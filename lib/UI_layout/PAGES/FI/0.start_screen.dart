@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Images/image_widgets.dart';
-import '../../Components/Pickers/_complexity_picker.dart';
-import '../../Components/Pickers/_custom_picker.dart';
+import '../../Components/Pickers/complexity_picker.dart';
+import '../../Components/Pickers/questions_picker_for_fi.dart';
 
 class StartScreen extends StatefulWidget {
   final void Function() startQuiz;

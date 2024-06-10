@@ -7,7 +7,7 @@ import '../../../../State_management/Providers/Providers_for_store/common_data_p
 import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/for_shop/custom_button.dart';
 import '../../../Components/Mini_widgets/dash_divider.dart';
-import '../../../Components/Pickers/_2_quantity_changer.dart';
+import '../../../Components/Pickers/for_shop/quantity_changer.dart';
 
 class ProductDetailPage extends StatefulWidget {
   final String productId;

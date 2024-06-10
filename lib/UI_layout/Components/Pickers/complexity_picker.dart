@@ -1,7 +1,13 @@
+import 'package:blueprint_4app/UI_layout/Components/_Widgets_STYLING/app_paddings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
+
+import '../../../State_management/Theme_configuration/app_colors.dart';
+import '../_Widgets_STYLING/app_text_styles_for_ui.dart';
+import '../_Widgets_STYLING/ui_styling.dart';
 
 class ComplexityPicker extends StatefulWidget {
   final Function(String) setSelectedComplexity;
@@ -13,6 +19,7 @@ class ComplexityPicker extends StatefulWidget {
 
 class _ComplexityPickerState extends State<ComplexityPicker> {
   late int _selectedSegment;
+  late ColorScheme colorScheme;
 
   @override
   void initState() {
@@ -20,57 +27,41 @@ class _ComplexityPickerState extends State<ComplexityPicker> {
     super.initState();
   }
 
-  // void _setSelectedSegment() {
-  //   int index = AppStrings.complexityLevels.indexOf(inputMeasureUnit);
-  //   _selectedSegment =
-  //       (index != -1) ? index : AppStrings.complexityLevels.length - 1;
-  // }
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    colorScheme = Helpers.colorScheme(context);
+  }
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme colorScheme = Theme.of(context).colorScheme;
-    TextStyle? textStyle = Theme.of(context)
-        .textTheme
-        .displayMedium
-        ?.copyWith(color: colorScheme.onSurface);
-
-    Map<int, Text> segmentedControlChildren = {
+    final textStyle =
+        AppTextStyles.forComplexityPicker(context, _selectedSegment);
+    final segmentedControlChildren = {
       for (var entry in AppStrings.complexityLevels.asMap().entries)
         entry.key: Text(entry.value,
             style: textStyle?.copyWith(
-                color: (_selectedSegment == entry.key)
+                color: _selectedSegment == entry.key
                     ? colorScheme.onPrimary
-                    : (_selectedSegment == entry.key)
-                        ? colorScheme.onSurface
-                        : null))
+                    : colorScheme.onSurface))
     };
 
     return Material(
-      color: Colors.transparent,
+      color: AppColors.transparent,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: AppPaddings.zero,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               height: 29,
-              padding: const EdgeInsets.all(0.5),
-              decoration: BoxDecoration(
-                color: colorScheme.surface.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(6.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: colorScheme.secondary.withOpacity(0.1),
-                    blurRadius: 0.25,
-                    offset: const Offset(0.5, 1.5),
-                  ),
-                ],
-              ),
+              padding: AppPaddings.zero,
+              decoration: AppBoxDecorations.forComplexityPicker(context),
               child: CupertinoSlidingSegmentedControl(
                 thumbColor: colorScheme.primary.withOpacity(0.75),
                 backgroundColor: colorScheme.surface.withOpacity(0.25),
-                padding: const EdgeInsets.all(0),
+                padding: AppPaddings.zero,
                 children: segmentedControlChildren,
                 groupValue: _selectedSegment,
                 onValueChanged: (value) {

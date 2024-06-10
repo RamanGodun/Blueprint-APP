@@ -8,7 +8,7 @@ import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/for_shop/custom_button.dart';
 import '../../../Components/Mini_widgets/dashed_border_container.dart';
-import '../../../Components/Switchers/_2_my_switcher.dart';
+import '../../../Components/Switchers/for_shop/my_switcher.dart';
 
 // ignore_for_file: use_build_context_synchronously
 

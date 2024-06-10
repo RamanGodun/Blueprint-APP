@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../../State_management/Models/models_for_store/product_model.dart';
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../Images/image_widgets.dart';
-import '../../Pickers/_2_quantity_changer.dart';
+import '../../Pickers/for_shop/quantity_changer.dart';
 import '../../_Widgets_STYLING/cards_and_tiles_styles.dart';
 import '../../_Widgets_STYLING/app_text_styles_for_ui.dart';
 

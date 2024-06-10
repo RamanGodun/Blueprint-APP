@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../State_management/Src/Const_data/strings_4_app.dart';
-import '../../../State_management/Helpers/Common/helpers.dart';
+import '../../../../State_management/Src/Const_data/strings_4_app.dart';
+import '../../../../State_management/Helpers/Common/helpers.dart';
 
 class MeasurementUnitPicker extends StatefulWidget {
   final TextEditingController controller;
@@ -25,6 +25,7 @@ class MeasurementUnitPicker extends StatefulWidget {
 class _MeasurementUnitPickerState extends State<MeasurementUnitPicker> {
   late String inputMeasureUnit;
   late int _selectedSegment;
+  late ThemeData theme;
 
   @override
   void initState() {
@@ -39,6 +40,12 @@ class _MeasurementUnitPickerState extends State<MeasurementUnitPicker> {
     super.initState();
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    theme = Helpers.theme(context);
+  }
+
   void _setSelectedSegment() {
     int index = AppStrings.measurementUnits.indexOf(inputMeasureUnit);
     _selectedSegment =
@@ -47,12 +54,10 @@ class _MeasurementUnitPickerState extends State<MeasurementUnitPicker> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkTheme = Helpers.isDarkTheme(context);
-    ColorScheme colorScheme = Theme.of(context).colorScheme;
-    TextStyle textStyle = Theme.of(context)
-        .textTheme
-        .labelSmall!
-        .copyWith(color: colorScheme.primary);
+    bool isDarkTheme = Helpers.isDark(theme);
+    ColorScheme colorScheme = theme.colorScheme;
+    TextStyle textStyle =
+        theme.textTheme.labelSmall!.copyWith(color: colorScheme.primary);
 
     Map<int, Text> segmentedControlChildren = {
       for (var entry in AppStrings.measurementUnits.asMap().entries)

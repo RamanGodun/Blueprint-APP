@@ -5,7 +5,7 @@ import '../../../../State_management/Providers/Providers_for_store/cart_provider
 import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../Dialogs/for_shop/general_alert_dialog.dart';
 import '../../Mini_widgets/dash_divider.dart';
-import '../../Switchers/_2_my_switcher.dart';
+import '../../Switchers/for_shop/my_switcher.dart';
 import '../../../PAGES/Tabs/default_tabs_from_shop.dart';
 
 class AdminOrderItem extends StatefulWidget {

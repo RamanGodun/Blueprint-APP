@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
 
-abstract class AppUIStyling {
+abstract class AppBoxDecorations {
   static BoxDecoration glassmorphismGradientDecoration(BuildContext context) {
     final theme = Helpers.theme(context);
     final ColorScheme colorScheme = theme.colorScheme;
@@ -30,6 +30,21 @@ abstract class AppUIStyling {
           spreadRadius: 0.5,
           blurRadius: 2,
           offset: const Offset(0, 1),
+        ),
+      ],
+    );
+  }
+
+  static BoxDecoration forComplexityPicker(BuildContext context) {
+    final colorScheme = Helpers.colorScheme(context);
+    return BoxDecoration(
+      color: colorScheme.surface.withOpacity(0.2),
+      borderRadius: BorderRadius.circular(6.0),
+      boxShadow: [
+        BoxShadow(
+          color: colorScheme.secondary.withOpacity(0.1),
+          blurRadius: 0.25,
+          offset: const Offset(0.5, 1.5),
         ),
       ],
     );
