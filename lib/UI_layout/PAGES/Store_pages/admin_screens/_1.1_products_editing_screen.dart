@@ -7,8 +7,8 @@ import '../../../../State_management/Providers/Providers_for_store/common_data_p
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/for_shop/custom_button.dart';
-import '../../../Components/Dialogs/_general_alert_dialog.dart';
-import '../../../Components/Others/_dashed_border_container.dart';
+import '../../../Components/Dialogs/for_shop/general_alert_dialog.dart';
+import '../../../Components/Mini_widgets/dashed_border_container.dart';
 import '../../../Components/Text_fields/_my_first_tf.dart';
 
 // ignore_for_file: use_build_context_synchronously

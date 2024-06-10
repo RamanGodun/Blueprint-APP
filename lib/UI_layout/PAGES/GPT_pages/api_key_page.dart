@@ -7,7 +7,7 @@ import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/icon_buttons.dart';
 import '../../Components/Text_fields/_cupertino_tf3.dart';
-import '../../Components/_Widgets_STYLING/text_styles_for_components.dart';
+import '../../Components/_Widgets_STYLING/app_text_styles_for_ui.dart';
 
 class ApiKeyInputPage extends StatefulWidget {
   static const routeName = '/start_page/settings/enter_api_key';

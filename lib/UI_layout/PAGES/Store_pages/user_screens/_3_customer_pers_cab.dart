@@ -7,10 +7,10 @@ import '../../../../State_management/Models/models_for_store/user_data_model.dar
 import '../../../../State_management/Providers/Providers_for_store/auth_profile_provider.dart';
 import '../../../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../../../State_management/Theme_configuration/app_colors.dart';
-import '../../../Components/Cards_and_tiles/_2_card_for_list_view.dart';
-import '../../../Components/Cards_and_tiles/_4_customers_order_card.dart';
-import '../../../Components/Cards_and_tiles/_5_users_info_card.dart';
-import '../../../Components/Static/_dash_divider.dart';
+import '../../../Components/Cards_and_tiles/for_shop/card_for_list_view.dart';
+import '../../../Components/Cards_and_tiles/for_shop/customers_order_card.dart';
+import '../../../Components/Cards_and_tiles/for_shop/users_info_card.dart';
+import '../../../Components/Mini_widgets/dash_divider.dart';
 // state management
 
 class PersonalCabinet4Customer extends StatefulWidget {

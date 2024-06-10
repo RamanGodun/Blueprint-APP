@@ -1,12 +1,12 @@
 // ignore_for_file: avoid_print
 
-import 'package:blueprint_4app/UI_layout/Components/Static/cashed_widgets.dart';
+import 'package:blueprint_4app/UI_layout/Components/Cashed_widgets/cashed_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../State_management/Models/models_4_FI_on_hive/hive_adapter.dart';
 import '../../../State_management/Models/models_4_FI_on_hive/model_4fi_on_hive.dart';
-import '../../../State_management/Services/0.service_locator.dart';
+import '../../../State_management/Services/_service_locator.dart';
 import '../../../State_management/Src/Const_data/data_4_questions.dart';
 import '../../../State_management/Helpers/Common/my_change_notifier_provider.dart';
 import '../../../State_management/Providers/Provider_4_FI/_custom_provider_4fi_app.dart';

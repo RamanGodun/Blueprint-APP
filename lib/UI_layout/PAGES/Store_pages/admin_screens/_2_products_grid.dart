@@ -5,7 +5,7 @@ import '../../../../State_management/Providers/Providers_for_store/auth_profile_
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/for_shop/custom_button.dart';
-import '../../../Components/Cards_and_tiles/_1_grid_view_card.dart';
+import '../../../Components/Cards_and_tiles/for_shop/grid_view_card.dart';
 
 class ProductsGrid extends StatefulWidget {
   final bool showMainCategory;

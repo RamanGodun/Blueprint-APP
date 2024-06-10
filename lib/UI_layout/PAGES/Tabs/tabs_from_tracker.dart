@@ -5,7 +5,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
 import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../Components/Static/_other_widgets.dart';
+import '../../Components/Cashed_widgets/cashed_widgets.dart';
 import '../0_MAIN/placeholder_screen.dart';
 
 class MyAnimatedBottomNavigationBar extends StatefulWidget {
@@ -104,9 +104,9 @@ class _MyAnimatedBottomNavigationBarState
               AppIcons.icons[index],
               AppStrings.iconTitles[index],
               Theme.of(context),
-              !Helpers.isDarkTheme(context)
-                  ? AppOtherWidgets.border4LightThemeGNavButton
-                  : AppOtherWidgets.border4DarkThemeGNavButton,
+              Helpers.isDarkTheme(context)
+                  ? AppCashedWidgets.border4DarkThemeGNavButton
+                  : AppCashedWidgets.border4LightThemeGNavButtonConst,
               colorScheme,
             ),
           ),

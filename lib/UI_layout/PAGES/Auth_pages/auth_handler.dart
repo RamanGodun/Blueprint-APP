@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../Components/Static/cashed_widgets.dart';
+import '../../Components/Cashed_widgets/cashed_widgets.dart';
 import '../0_MAIN/start_page.dart';
 import 'login_or_register_page.dart';
 

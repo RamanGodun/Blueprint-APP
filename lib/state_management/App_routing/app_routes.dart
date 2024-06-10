@@ -11,7 +11,7 @@ import '../../UI_layout/PAGES/Others_pages/textfield_page.dart';
 import '../../UI_layout/PAGES/DB_pages/hive_box.dart';
 import '../../UI_layout/PAGES/0_MAIN/settings_page.dart';
 import '../../UI_layout/PAGES/0_MAIN/start_page.dart';
-import '../Services/0.service_locator.dart';
+import '../Services/_service_locator.dart';
 import '../Models/models_4_FI_on_hive/model_4_hive.dart';
 
 /*

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../_Widgets_STYLING/app_button_styles.dart';
+import '../_Widgets_STYLING/buttons_styles.dart';
 
 class AppCustomButtons {
 /* WITH SHADOWS

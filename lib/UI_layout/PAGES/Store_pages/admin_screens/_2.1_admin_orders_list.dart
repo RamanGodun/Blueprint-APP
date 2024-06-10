@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../../State_management/Models/models_for_store/cart_item_model.dart';
 import '../../../../State_management/Providers/Providers_for_store/cart_provider.dart';
 import '../../../../State_management/Theme_configuration/app_colors.dart';
-import '../../../Components/Cards_and_tiles/_3_admin_order_card.dart';
+import '../../../Components/Cards_and_tiles/for_shop/admin_order_card.dart';
 
 class AdminOrdersList extends StatefulWidget {
   const AdminOrdersList({super.key});

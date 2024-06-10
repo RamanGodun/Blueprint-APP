@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../UI_layout/Components/Static/Cashed_widgets_alt/cashed_on_get_it.dart';
+import '../../../UI_layout/Components/Cashed_widgets/cashed_widgets.dart';
 import '../../Helpers/Common/my_change_notifier_provider.dart';
 import 'provider_of_theme.dart';
 import 'theme_provider_helper.dart';
@@ -68,12 +68,11 @@ class _InheritedThemeManagerState extends State<InheritedThemeManager> {
 
   @override
   Widget build(BuildContext context) {
-    final widgetManager = getIt<StaticWidgetsOnGetIt>();
     return FutureBuilder(
       future: themeProvider.loadSettings(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: widgetManager.loadingWidget);
+          return const Center(child: AppCashedWidgets.loadingWidget);
         }
 
         return MyChangeNotifierProvider(

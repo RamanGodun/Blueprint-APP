@@ -6,7 +6,7 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/icon_buttons.dart';
 import '../../Components/Buttons/app_buttons.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../../Components/_Widgets_STYLING/text_styles_for_components.dart';
+import '../../Components/_Widgets_STYLING/app_text_styles_for_ui.dart';
 
 class StartPage extends StatefulWidget {
   static const routeName = '/start_page';

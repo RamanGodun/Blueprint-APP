@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../Static/_dividers.dart';
-import '../_Widgets_STYLING/text_styles_for_components.dart';
+import '../Mini_widgets/dividers.dart';
+import '../_Widgets_STYLING/app_text_styles_for_ui.dart';
 
 class IconPickerWidget extends StatefulWidget {
   final ValueChanged<IconData> onIconSelected;

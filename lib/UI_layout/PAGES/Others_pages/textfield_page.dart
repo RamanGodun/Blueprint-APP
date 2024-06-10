@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../../Components/_Widgets_STYLING/text_styles_for_components.dart';
+import '../../Components/_Widgets_STYLING/app_text_styles_for_ui.dart';
 import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Text_fields/_cupertino_tf2.dart';
 

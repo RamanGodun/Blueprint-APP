@@ -5,7 +5,7 @@ import '../../../../State_management/Providers/Providers_for_store/common_data_p
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/for_shop/custom_button.dart';
-import '../../../Components/Cards_and_tiles/_2_card_for_list_view.dart';
+import '../../../Components/Cards_and_tiles/for_shop/card_for_list_view.dart';
 
 class AdminsListOfProducts extends StatefulWidget {
   final int categoryOfProducts;

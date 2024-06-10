@@ -1,4 +1,4 @@
-import 'package:blueprint_4app/UI_layout/Components/Static/cashed_widgets.dart';
+import 'package:blueprint_4app/UI_layout/Components/Cashed_widgets/cashed_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';

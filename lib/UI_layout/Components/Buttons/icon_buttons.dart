@@ -5,12 +5,12 @@ import 'package:go_router/go_router.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Src/Const_data/app_locales.dart';
 import '../../../State_management/Src/Custom_icons/custom_icons_src.dart';
-import '../_Widgets_STYLING/icon_button_style.dart';
+import '../_Widgets_STYLING/icon_buttons_styles.dart';
 
 class AppIconButtons {
   static Widget changeLanguageButton(BuildContext context) {
     final appLocales = AppLocales().appLocales;
-    return AppIconButtonStyle.withShadows(
+    return AppIconButtonsStyles.withShadows(
       context,
       icon: ThisAppIcons.globe,
       onPressed: () {
@@ -25,7 +25,7 @@ class AppIconButtons {
     BuildContext context, {
     required void Function()? onPressed,
   }) {
-    return AppIconButtonStyle.withShadows(
+    return AppIconButtonsStyles.withShadows(
       context,
       icon: ThisAppIcons.crown,
       onPressed: onPressed,
@@ -34,7 +34,7 @@ class AppIconButtons {
 
   static Widget signOutButton(BuildContext context,
       {required VoidCallback onPressed}) {
-    return AppIconButtonStyle.withShadows(
+    return AppIconButtonsStyles.withShadows(
       context,
       icon: Icons.logout,
       onPressed: onPressed,
@@ -43,7 +43,7 @@ class AppIconButtons {
 
   static Widget backIcon(BuildContext context) {
     final ColorScheme colorScheme = Helpers.colorScheme(context);
-    return AppIconButtonStyle.withoutShadows(
+    return AppIconButtonsStyles.withoutShadows(
       context,
       iconColor: colorScheme.onSurface,
       icon: CupertinoIcons.back,
@@ -54,7 +54,7 @@ class AppIconButtons {
   }
 
   static Widget toSettingsPageIconButton(BuildContext context) {
-    return AppIconButtonStyle.withShadows(
+    return AppIconButtonsStyles.withShadows(
       context,
       icon: ThisAppIcons.settings,
       onPressed: () {

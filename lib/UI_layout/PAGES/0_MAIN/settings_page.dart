@@ -123,7 +123,7 @@ Methods next
       builder: (BuildContext context) {
         return CustomDialog(
           contentWidget: contentWidget,
-          isIOSStyle: true,
+          isIOSStyle: false,
         );
       },
     ).then((_) {

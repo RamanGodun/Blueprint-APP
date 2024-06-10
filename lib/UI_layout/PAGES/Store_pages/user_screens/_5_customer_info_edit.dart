@@ -9,10 +9,10 @@ import '../../../../State_management/Providers/Providers_for_store/cart_provider
 import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/for_shop/custom_button.dart';
-import '../../../Components/Dialogs/_general_alert_dialog.dart';
-import '../../../Components/Images/_6_customer_pic_4edit_screen.dart';
-import '../../../Components/Static/_dash_divider.dart';
-import '../../../Components/Others/_dashed_border_container.dart';
+import '../../../Components/Dialogs/for_shop/general_alert_dialog.dart';
+import '../../../Components/Images/image_widgets.dart';
+import '../../../Components/Mini_widgets/dash_divider.dart';
+import '../../../Components/Mini_widgets/dashed_border_container.dart';
 import '../../../Components/Text_fields/_my_first_tf.dart';
 import '_5_delivery_selection.dart';
 // ignore_for_file: use_build_context_synchronously
@@ -80,7 +80,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                                 dashWidth: 2,
                                 child: InkWell(
                                   onTap: () => selectImageOfCustomer(),
-                                  child: ProfileImageWidget(
+                                  child: AppImages.profileImageWidget(
                                       isLoading: isLoading,
                                       selectedImageOfCustomer:
                                           selectedImageOfCustomer,

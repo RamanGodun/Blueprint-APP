@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../Components/Buttons/app_buttons.dart';
-import '../../Components/Images/_pictures_widgets.dart';
+import '../../Components/Images/image_widgets.dart';
 import '../../Components/Pickers/_complexity_picker.dart';
 import '../../Components/Pickers/_custom_picker.dart';
 

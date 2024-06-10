@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../_Widgets_STYLING/_for_text_fields.dart';
-import '../_Widgets_STYLING/text_styles_for_components.dart';
+import '../_Widgets_STYLING/app_text_styles_for_ui.dart';
 
 class CustomTextFields {
   static Widget customTextField1({
