@@ -5,7 +5,7 @@ import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../Pickers/country_picker.dart';
 import '../_Widgets_STYLING/app_text_styles_for_ui.dart';
 
-enum ValidatorType { integer, double, string, phoneNumber }
+enum ValidatorType { integer, double, string, name, phoneNumber }
 
 class AppTextField extends StatelessWidget {
   AppTextField({
@@ -20,8 +20,6 @@ class AppTextField extends StatelessWidget {
     this.isObscureText = false,
     this.maxLength = 24,
     this.isReadOnly = false,
-    this.isName = false,
-    this.isText = true,
     this.isAllBorder = true,
     this.isTextFormField = false,
     this.showHintText = true,
@@ -56,8 +54,6 @@ class AppTextField extends StatelessWidget {
   final IconData? icon;
   final int maxLength;
   final bool isReadOnly;
-  final bool isText;
-  final bool isName;
   final bool isAllBorder;
   final bool isTextFormField;
   final bool showCounterText;
@@ -93,12 +89,6 @@ class AppTextField extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 7),
             height: heightOfField,
             width: widthOfField,
-            // decoration: BoxDecoration(
-            //   border: Border.all(
-            //     color: AppColors.kAppPrimaryColor.withOpacity(0.7),
-            //   ),
-            //   borderRadius: BorderRadius.circular(8.0),
-            // ),
             child: TextFormField(
               textAlign: isTextAlignCenter ? TextAlign.center : TextAlign.start,
               validator: validator,
@@ -184,12 +174,14 @@ class AppTextField extends StatelessWidget {
                         ),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                keyboardType: isText
+                keyboardType: (validatorType == ValidatorType.string)
                     ? TextInputType.text
                     : const TextInputType.numberWithOptions(decimal: true),
                 readOnly: isReadOnly,
                 maxLength: maxLength,
-                textAlign: isName ? TextAlign.left : TextAlign.center,
+                textAlign: (validatorType == ValidatorType.name)
+                    ? TextAlign.left
+                    : TextAlign.center,
                 padding:
                     const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
                 style: AppTextStyles.forTextField(theme)
