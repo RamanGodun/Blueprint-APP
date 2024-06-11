@@ -7,7 +7,7 @@ abstract class AppBoxDecorations {
   static BoxDecoration glassmorphismGradientDecoration(BuildContext context) {
     final theme = Helpers.theme(context);
     final ColorScheme colorScheme = theme.colorScheme;
-    final isDark = Helpers.isDark(theme);
+    final isDark = Helpers.isDarkMode(theme);
     return BoxDecoration(
       gradient: LinearGradient(
         colors: [

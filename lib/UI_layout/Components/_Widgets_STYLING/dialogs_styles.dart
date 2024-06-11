@@ -6,7 +6,7 @@ import 'dart:ui';
 
 import '../../../State_management/Services/mapping_service.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../Buttons/dialog_buttons.dart';
+import 'dialog_buttons_styles.dart';
 import '../Mini_widgets/dividers.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 
@@ -24,7 +24,7 @@ abstract class AppDialogsStyles {
   }) {
     final theme = Helpers.theme(context);
     final deviceSize = Helpers.deviceSize(context);
-    final isDarkMode = Helpers.isDark(theme);
+    final isDarkMode = Helpers.isDarkMode(theme);
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
     final deviceHeight = deviceSize.height;
@@ -122,7 +122,7 @@ abstract class AppDialogsStyles {
     final theme = Helpers.theme(context);
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
-    final isDarkMode = Helpers.isDark(theme);
+    final isDarkMode = Helpers.isDarkMode(theme);
 
     return Stack(
       children: [

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../_Widgets_STYLING/app_text_styles_for_ui.dart';
+import 'app_text_styles_for_ui.dart';
 
 class AppDialogsButtonsStyles {
   /* CUSTOM style */
@@ -105,7 +105,8 @@ class AppDialogsButtonsStyles {
   /* BUILD method for Material Styles */
   static Widget _buildMaterialDialogAction(BuildContext context, String text,
       TextStyle style, VoidCallback? onPressed, bool isActionButton) {
-    final colorScheme = Helpers.colorScheme(context);
+    final theme = Helpers.theme(context);
+    final colorScheme = theme.colorScheme;
     final deviceWidth = Helpers.deviceWidth(context);
     return SizedBox(
       width: deviceWidth * 0.4,
@@ -124,7 +125,7 @@ class AppDialogsButtonsStyles {
         ),
         child: Text(
           text,
-          style: AppTextStyles.forButtons(context).copyWith(
+          style: AppTextStyles.forButtons(theme).copyWith(
             color:
                 isActionButton ? colorScheme.onPrimary : AppColors.kErrorColor,
           ),

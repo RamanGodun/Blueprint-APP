@@ -9,23 +9,23 @@ class AppTextWidgetsStyles {
  */
   static Widget forAppBarTitle(
     BuildContext context, {
+    required ThemeData theme,
     required String text,
   }) {
     return Text(
       text,
-      style: AppTextStyles.appBarTitle(context),
+      style: AppTextStyles.appBarTitle(context, theme),
     );
   }
 
 /*
 Example of RICH TEXT
  */
-  static Widget forResultScreenTitle(
-    BuildContext context, {
+  static Widget forResultScreenTitle({
+    required ThemeData theme,
     required int numCorrectQuestions,
     required int numTotalQuestions,
   }) {
-    final theme = Helpers.theme(context);
     final TextTheme textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
     TextStyle? textStyle =
@@ -56,48 +56,48 @@ Example of RICH TEXT
   }
 
 /*
-TEXT widgets
+for JBnTracker
  */
-  static Widget titleForPurchasePageWidget(BuildContext context) {
+  static Widget titleForPurchasePageWidget(ThemeData theme) {
+    final colorScheme = theme.colorScheme;
+    final isDarkTheme = Helpers.isDarkMode(theme);
     return Container(
-      color: Helpers.colorScheme(context)
-          .surface
-          .withOpacity(Helpers.isDarkTheme(context) ? 0.55 : 0.9),
+      color: colorScheme.surface.withOpacity(isDarkTheme ? 0.55 : 0.9),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 17.0),
-            child: text4PurchasePageTitle(AppStrings.quantityText, context),
+            child: text4PurchasePageTitle(theme, AppStrings.quantityText),
           ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(left: 15.0),
-              child: text4PurchasePageTitle(AppStrings.nameText, context),
+              child: text4PurchasePageTitle(theme, AppStrings.nameText),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 23.0),
-            child: text4PurchasePageTitle(AppStrings.isBuyText, context),
+            child: text4PurchasePageTitle(theme, AppStrings.isBuyText),
           ),
         ],
       ),
     );
   }
 
-  static Widget forEmptyPageText(BuildContext context, String text) {
+  static Widget forEmptyPageText(ThemeData theme, String text) {
     return Center(
-      child: Text(text, style: Theme.of(context).textTheme.labelMedium),
+      child: Text(text, style: theme.textTheme.labelMedium),
     );
   }
 
-  static Text text4PurchasePageTitle(String text, BuildContext context) {
-    return Text(text, style: Theme.of(context).textTheme.bodySmall);
+  static Text text4PurchasePageTitle(ThemeData theme, String text) {
+    return Text(text, style: theme.textTheme.bodySmall);
   }
 
-  static Text text4PurchaseListTitle(String text, BuildContext context) {
-    return Text(text, style: Theme.of(context).textTheme.bodySmall);
+  static Text text4PurchaseListTitle(ThemeData theme, String text) {
+    return Text(text, style: theme.textTheme.bodySmall);
   }
 
   static Widget errorTextWidget(String errorText) {

@@ -32,7 +32,7 @@ class Helpers {
   }
 
   /// Determine if the given theme data is in dark mode.
-  static bool isDark(ThemeData theme) {
+  static bool isDarkMode(ThemeData theme) {
     return theme.brightness == Brightness.dark;
   }
 

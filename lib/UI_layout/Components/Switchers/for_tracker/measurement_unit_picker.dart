@@ -54,7 +54,7 @@ class _MeasurementUnitPickerState extends State<MeasurementUnitPicker> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkTheme = Helpers.isDark(theme);
+    bool isDarkTheme = Helpers.isDarkMode(theme);
     ColorScheme colorScheme = theme.colorScheme;
     TextStyle textStyle =
         theme.textTheme.labelSmall!.copyWith(color: colorScheme.primary);

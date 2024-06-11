@@ -59,7 +59,7 @@ class _SettingsPageState extends State<SettingsPage>
         middle: Row(
           children: [
             AppTextWidgetsStyles.forAppBarTitle(context,
-                text: LocaleKeys.startScreen.tr()),
+                theme: theme, text: LocaleKeys.startScreen.tr()),
             const Spacer(),
           ],
         ),

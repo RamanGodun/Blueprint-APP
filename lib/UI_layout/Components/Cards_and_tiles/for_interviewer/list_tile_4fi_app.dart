@@ -24,6 +24,7 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Helpers.theme(context);
     return Material(
       color: Colors.transparent,
       child: Stack(children: [
@@ -60,7 +61,7 @@ class CustomListTile extends StatelessWidget {
                   id: "question",
                   child: Text(
                     itemData.questionText,
-                    style: AppTextStyles.questionTextStyle(context),
+                    style: AppTextStyles.questionTextStyle(theme),
                     maxLines: 3,
                   ),
                 ),
@@ -68,7 +69,7 @@ class CustomListTile extends StatelessWidget {
                   id: "answer label",
                   child: Text(
                     "Your answer:",
-                    style: AppTextStyles.answerLabelStyle(context),
+                    style: AppTextStyles.answerLabelStyle(theme),
                     maxLines: 3,
                     textAlign: TextAlign.left,
                   ),
@@ -78,7 +79,7 @@ class CustomListTile extends StatelessWidget {
                   child: Text(
                     itemData.userAnswer,
                     style:
-                        AppTextStyles.answerTextStyle(context, isCorrectAnswer),
+                        AppTextStyles.answerTextStyle(theme, isCorrectAnswer),
                     maxLines: 2,
                   ),
                 ),

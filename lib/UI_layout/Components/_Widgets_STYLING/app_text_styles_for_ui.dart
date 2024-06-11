@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
@@ -5,8 +6,9 @@ import '../../../State_management/Models/models_4_tracker_on_isar /item_model.da
 import '../../../State_management/Theme_configuration/app_colors.dart';
 
 abstract class AppTextStyles {
-  static TextStyle forButtons(BuildContext context) {
-    final theme = Helpers.theme(context);
+/* General text styles
+ */
+  static TextStyle forButtons(ThemeData theme) {
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
     final buttonsTextStyle = textTheme.titleMedium?.copyWith(
@@ -26,22 +28,93 @@ abstract class AppTextStyles {
         );
   }
 
-  static TextStyle appBarTitle(BuildContext context) {
-    final cupertinoTheme = Helpers.cupertinoTheme(context);
-    final colorScheme = Helpers.colorScheme(context);
+  static TextStyle appBarTitle(BuildContext context, ThemeData theme) {
+    final CupertinoThemeData cupertinoTheme = Helpers.cupertinoTheme(context);
+    final colorScheme = theme.colorScheme;
     return cupertinoTheme.textTheme.navTitleTextStyle
         .copyWith(color: colorScheme.onSurface);
   }
 
-  static TextStyle? bodyMedium(BuildContext context) {
-    final textTheme = Helpers.textTheme(context);
-    final colorScheme = Helpers.colorScheme(context);
-    return textTheme.bodyMedium?.copyWith(
+  static TextStyle bodyMedium(ThemeData theme) {
+    final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
+    return textTheme.bodyMedium!.copyWith(
       color: colorScheme.onSurface,
       fontSize: 16.0,
     );
   }
 
+  static TextStyle forTextField(ThemeData theme) {
+    TextStyle textStyle = theme.textTheme.displaySmall!.copyWith(
+      fontSize: 11.5,
+      fontStyle: FontStyle.italic,
+      fontWeight: FontWeight.w300,
+    );
+    return textStyle;
+  }
+
+/* Text styles for FI APP
+ */
+  static TextStyle questionTextStyle(ThemeData theme) {
+    final textTheme = theme.textTheme;
+    return textTheme.labelSmall!.copyWith(height: 1.15);
+  }
+
+  static TextStyle answerLabelStyle(ThemeData theme) {
+    final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
+    return textTheme.bodySmall!.copyWith(
+      color: colorScheme.onSurface.withOpacity(0.55),
+      height: 0.95,
+      fontStyle: FontStyle.italic,
+    );
+  }
+
+  static TextStyle answerTextStyle(ThemeData theme, bool isCorrectAnswer) {
+    final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
+    return textTheme.bodyMedium!.copyWith(
+      color: isCorrectAnswer ? colorScheme.primary : colorScheme.error,
+      height: 1.05,
+    );
+  }
+
+  static TextStyle? forComplexityPicker(ThemeData theme, int selectedSegment) {
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+    return textTheme.displayMedium?.copyWith(
+      color:
+          selectedSegment == 0 ? colorScheme.onPrimary : colorScheme.onSurface,
+    );
+  }
+
+  static TextStyle forFIPicker(ThemeData theme, ColorScheme colorScheme) {
+    return theme.textTheme.displayLarge!
+        .copyWith(color: colorScheme.onTertiary.withOpacity(0.67));
+  }
+
+/* Text styles for JBnTracker APP
+ */
+  static TextStyle subtitleTextStyle(
+      ThemeData theme, bool isPurchase, ItemModel itemData) {
+    return theme.textTheme.bodySmall!.copyWith(fontSize: 9);
+  }
+
+  static TextStyle trailingTextStyle(ThemeData theme) {
+    return theme.textTheme.bodyMedium!;
+  }
+
+  static TextStyle checkboxTextStyle(ThemeData theme, ItemModel itemData) {
+    final colorScheme = theme.colorScheme;
+    return TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.bold,
+      color: colorScheme.onSurface,
+    );
+  }
+
+/* FOR SHOP
+ */
   static TextStyle newPriceStyle() {
     return const TextStyle(
       fontSize: 13,
@@ -88,64 +161,5 @@ abstract class AppTextStyles {
       color: itemColor,
       fontSize: isExpense ? 10 : 12,
     );
-  }
-
-  static TextStyle subtitleTextStyle(
-      TextTheme textTheme, bool isPurchase, ItemModel itemData) {
-    return textTheme.bodySmall!.copyWith(fontSize: 9);
-  }
-
-  static TextStyle trailingTextStyle(TextTheme textTheme) {
-    return textTheme.bodyMedium!;
-  }
-
-  static TextStyle checkboxTextStyle(BuildContext context, ItemModel itemData) {
-    final colorScheme = Helpers.colorScheme(context);
-    return TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.bold,
-      color: colorScheme.onSurface,
-    );
-  }
-
-  static TextStyle questionTextStyle(BuildContext context) {
-    final textTheme = Helpers.textTheme(context);
-    return textTheme.labelSmall!.copyWith(height: 1.15);
-  }
-
-  static TextStyle answerLabelStyle(BuildContext context) {
-    final textTheme = Helpers.textTheme(context);
-    final colorScheme = Helpers.colorScheme(context);
-    return textTheme.bodySmall!.copyWith(
-      color: colorScheme.onSurface.withOpacity(0.55),
-      height: 0.95,
-      fontStyle: FontStyle.italic,
-    );
-  }
-
-  static TextStyle answerTextStyle(BuildContext context, bool isCorrectAnswer) {
-    final textTheme = Helpers.textTheme(context);
-    final colorScheme = Helpers.colorScheme(context);
-    return textTheme.bodyMedium!.copyWith(
-      color: isCorrectAnswer ? AppColors.kAppPrimaryColor : colorScheme.error,
-      height: 1.05,
-    );
-  }
-
-  static TextStyle? forComplexityPicker(
-      BuildContext context, int selectedSegment) {
-    final theme = Helpers.theme(context);
-    final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
-    return textTheme.displayMedium?.copyWith(
-      color:
-          selectedSegment == 0 ? colorScheme.onPrimary : colorScheme.onSurface,
-    );
-  }
-
-  static TextStyle forFIPicker(
-      BuildContext context, TextTheme textTheme, ColorScheme colorScheme) {
-    return textTheme.displayLarge!
-        .copyWith(color: colorScheme.onTertiary.withOpacity(0.67));
   }
 }

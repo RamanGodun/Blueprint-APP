@@ -41,12 +41,12 @@ abstract class AppButtonsStyle {
         const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
   }) {
     final theme = Helpers.theme(context);
-    final isDark = Helpers.isDark(theme);
+    final isDark = Helpers.isDarkMode(theme);
     return _buildButton(
       context: context,
       child: Text(
         buttonText,
-        style: AppTextStyles.forButtons(context),
+        style: AppTextStyles.forButtons(theme),
       ),
       backgroundColor:
           AppColors.kAppPrimaryColor.withOpacity(isDark ? 0.6 : 0.85),
@@ -63,6 +63,7 @@ abstract class AppButtonsStyle {
     EdgeInsets padding =
         const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
   }) {
+    final theme = Helpers.theme(context);
     return InkWell(
       onTap: onPressed,
       child: Container(
@@ -72,7 +73,7 @@ abstract class AppButtonsStyle {
         child: Center(
           child: Text(
             buttonText,
-            style: AppTextStyles.forButtons(context),
+            style: AppTextStyles.forButtons(theme),
           ),
         ),
       ),
@@ -84,7 +85,8 @@ abstract class AppButtonsStyle {
     void Function()? onPressed,
     required String buttonText,
   }) {
-    final ColorScheme colorScheme = Helpers.colorScheme(context);
+    final theme = Helpers.theme(context);
+    final ColorScheme colorScheme = theme.colorScheme;
     return SizedBox(
       width: double.infinity,
       child: CupertinoButton.filled(
@@ -102,7 +104,7 @@ abstract class AppButtonsStyle {
             const SizedBox(width: 8),
             Text(
               buttonText,
-              style: AppTextStyles.forButtons(context),
+              style: AppTextStyles.forButtons(theme),
             ),
           ],
         ),
@@ -116,7 +118,7 @@ abstract class AppButtonsStyle {
     required String buttonText,
   }) {
     final theme = Helpers.theme(context);
-    final isDark = Helpers.isDark(theme);
+    final isDark = Helpers.isDarkMode(theme);
     return ElevatedButton(
       style: OutlinedButton.styleFrom(
         backgroundColor:
@@ -147,7 +149,7 @@ abstract class AppButtonsStyle {
   }) {
     final theme = Helpers.theme(context);
     final ColorScheme colorScheme = theme.colorScheme;
-    final isDark = Helpers.isDark(theme);
+    final isDark = Helpers.isDarkMode(theme);
     return ElevatedButton(
       style: ButtonStyle(
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
@@ -164,7 +166,7 @@ abstract class AppButtonsStyle {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Text(
           buttonText,
-          style: AppTextStyles.forButtons(context),
+          style: AppTextStyles.forButtons(theme),
         ),
       ),
     );

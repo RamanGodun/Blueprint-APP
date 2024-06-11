@@ -1,3 +1,4 @@
+import 'package:blueprint_4app/State_management/Theme_configuration/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
@@ -22,10 +23,20 @@ class ColorPickerWidget extends StatefulWidget {
 }
 
 class _ColorPickerWidgetState extends State<ColorPickerWidget> {
-  Color currentColor = Colors.black;
+  Color currentColor = AppColors.cupertinoBlackColor;
+  late ThemeData theme;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    theme = Helpers.theme(context);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+    final isDarkMode = Helpers.isDarkMode(theme);
     return IconButton(
       icon: AppIcons.flipIcon(15),
       onPressed: () {
@@ -35,7 +46,7 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
             return Padding(
               padding: AppPickersStyle.dialogPadding(context),
               child: AlertDialog(
-                backgroundColor: Theme.of(context).colorScheme.surface,
+                backgroundColor: colorScheme.surface,
                 shape: AppPickersStyle.dialogShape(),
                 titlePadding: AppPickersStyle.titlePadding(),
                 actionsPadding: AppPickersStyle.actionsPadding(),
@@ -44,9 +55,9 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
                   children: [
                     Text("Вибір кольору",
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.labelLarge),
-                    AppDividers.boldDivider(Helpers.isDarkTheme(context)),
-                    AppDividers.boldDivider(Helpers.isDarkTheme(context)),
+                        style: textTheme.labelLarge),
+                    AppDividers.boldDivider(isDarkMode),
+                    AppDividers.boldDivider(isDarkMode),
                   ],
                 ),
                 content: SingleChildScrollView(
@@ -75,8 +86,8 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
                     height: 60,
                     child: Column(
                       children: [
-                        AppDividers.boldDivider(Helpers.isDarkTheme(context)),
-                        AppDividers.boldDivider(Helpers.isDarkTheme(context)),
+                        AppDividers.boldDivider(isDarkMode),
+                        AppDividers.boldDivider(isDarkMode),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -88,11 +99,9 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
                                 },
                                 child: Text(
                                   "Відміна",
-                                  style: AppTextStyles.forButtons(context)
+                                  style: AppTextStyles.forButtons(theme)
                                       .copyWith(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onSurface,
+                                          color: colorScheme.onSurface,
                                           fontWeight: FontWeight.w300),
                                 ),
                               ),
@@ -106,10 +115,8 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
                                 },
                                 child: Text(
                                   "Обрати",
-                                  style: AppTextStyles.forButtons(context)
-                                      .copyWith(
-                                          color:
-                                              Theme.of(context).primaryColor),
+                                  style: AppTextStyles.forButtons(theme)
+                                      .copyWith(color: colorScheme.primary),
                                 ),
                               ),
                             ),

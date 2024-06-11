@@ -19,7 +19,7 @@ class ComplexityPicker extends StatefulWidget {
 
 class _ComplexityPickerState extends State<ComplexityPicker> {
   late int _selectedSegment;
-  late ColorScheme colorScheme;
+  late ThemeData theme;
 
   @override
   void initState() {
@@ -30,13 +30,14 @@ class _ComplexityPickerState extends State<ComplexityPicker> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    colorScheme = Helpers.colorScheme(context);
+    theme = Helpers.theme(context);
   }
 
   @override
   Widget build(BuildContext context) {
     final textStyle =
-        AppTextStyles.forComplexityPicker(context, _selectedSegment);
+        AppTextStyles.forComplexityPicker(theme, _selectedSegment);
+    final colorScheme = theme.colorScheme;
     final segmentedControlChildren = {
       for (var entry in AppStrings.complexityLevels.asMap().entries)
         entry.key: Text(entry.value,

@@ -76,8 +76,7 @@ class _QuantityPickerState extends State<QuantityPicker> {
                   (index) => Center(
                     child: Text(
                       '$index',
-                      style: AppTextStyles.forFIPicker(
-                          context, textTheme, colorScheme),
+                      style: AppTextStyles.forFIPicker(theme, colorScheme),
                     ),
                   ),
                 ),

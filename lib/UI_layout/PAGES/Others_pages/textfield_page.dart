@@ -1,9 +1,11 @@
 import 'package:blueprint_4app/UI_layout/Components/Buttons/icon_buttons.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../../Components/_Widgets_STYLING/app_text_styles_for_ui.dart';
+import '../../Components/Text_widgets/text_widgets.dart';
 import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Text_fields/_cupertino_tf2.dart';
 
@@ -13,6 +15,7 @@ class TextFieldPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Helpers.theme(context);
     final textController = useTextEditingController();
     final isValid = useState(true);
 
@@ -23,7 +26,8 @@ class TextFieldPage extends HookWidget {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         leading: AppIconButtons.backIcon(context),
-        middle: Text('New Screen', style: AppTextStyles.appBarTitle(context)),
+        middle: AppTextWidgetsStyles.forAppBarTitle(context,
+            theme: theme, text: "New Screen"),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -33,11 +33,13 @@ class PieChartDialog {
     bool allExpensesAreZero = CategoriesEnum.values.every(
       (categoryEnum) => provider.expensesCategorySummary[categoryEnum] == 0,
     );
-    double mQHeight = Helpers.deviceHeight(context);
-    double mQWidth = Helpers.deviceWidth(context);
-    TextTheme textTheme = Helpers.textTheme(context);
-    ColorScheme colorScheme = Helpers.colorScheme(context);
-    bool isDarkTheme = Helpers.isDarkTheme(context);
+    final Size deviceSize = Helpers.deviceSize(context);
+    final double mQHeight = deviceSize.height;
+    final double mQWidth = deviceSize.width;
+    final ThemeData theme = Helpers.theme(context);
+    TextTheme textTheme = theme.textTheme;
+    ColorScheme colorScheme = theme.colorScheme;
+    bool isDarkTheme = Helpers.isDarkMode(theme);
     String totalExpensesText = showAllExpenses
         ? AppStrings.totalExpenses
         : "${AppStrings.expensesIn} ${Helpers().getCurrentMonthName()}";
@@ -103,8 +105,8 @@ class PieChartDialog {
                       ? const SizedBox()
                       : (provider.calculatedCurrentMonthTotal == 0 &&
                               !showAllExpenses)
-                          ? AppTextWidgetsStyles.forEmptyPageText(context,
-                              AppStrings.textForEmptyPages["pieChart"]!)
+                          ? AppTextWidgetsStyles.forEmptyPageText(
+                              theme, AppStrings.textForEmptyPages["pieChart"]!)
                           : Text(
                               showAllExpenses
                                   ? "${NumberFormat.compact().format(provider.totalSumOfAllExpenses)} ${AppStrings.localCurrencySymbol1}"
@@ -119,7 +121,7 @@ class PieChartDialog {
                   height: mQHeight / 2,
                   child: Center(
                     child: AppTextWidgetsStyles.forEmptyPageText(
-                        context, AppStrings.textForEmptyPages["expenses"]!),
+                        theme, AppStrings.textForEmptyPages["expenses"]!),
                   ),
                 ),
               const SizedBox(height: 20),

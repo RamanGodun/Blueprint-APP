@@ -7,7 +7,7 @@ import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/icon_buttons.dart';
 import '../../Components/Text_fields/_cupertino_tf3.dart';
-import '../../Components/_Widgets_STYLING/app_text_styles_for_ui.dart';
+import '../../Components/Text_widgets/text_widgets.dart';
 
 class ApiKeyInputPage extends StatefulWidget {
   static const routeName = '/start_page/settings/enter_api_key';
@@ -20,7 +20,7 @@ class ApiKeyInputPage extends StatefulWidget {
 class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
   final _apiKeyController = TextEditingController();
   final _secureStorage = GetIt.instance<FlutterSecureStorage>();
-
+  late ThemeData theme;
   late ColorScheme colorScheme;
   late TextTheme textTheme;
   late CupertinoThemeData cupertinoTheme;
@@ -35,8 +35,9 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     cupertinoTheme = Helpers.cupertinoTheme(context);
-    colorScheme = Helpers.colorScheme(context);
-    textTheme = Helpers.textTheme(context);
+    theme = Helpers.theme(context);
+    colorScheme = theme.colorScheme;
+    textTheme = theme.textTheme;
   }
 
   @override
@@ -45,8 +46,8 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
       child: CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
           leading: AppIconButtons.backIcon(context),
-          middle: Text('Enter OpenAI API Key',
-              style: AppTextStyles.appBarTitle(context)),
+          middle: AppTextWidgetsStyles.forAppBarTitle(context,
+              theme: theme, text: "Enter OpenAI API Key"),
           trailing: CupertinoButton(
             padding: EdgeInsets.zero,
             onPressed: _showTooltip,

@@ -9,7 +9,7 @@ abstract class AppDropButtonStyle {
   static BoxDecoration forThemeChangingDB(BuildContext context) {
     final theme = Helpers.theme(context);
     final colorScheme = theme.colorScheme;
-    final isDarkMode = Helpers.isDark(theme);
+    final isDarkMode = Helpers.isDarkMode(theme);
     return BoxDecoration(
       color: colorScheme.surface,
       borderRadius: BorderRadius.circular(12.0),
@@ -39,7 +39,7 @@ abstract class AppDropButtonStyle {
   static InputDecoration getInputDecoration(BuildContext context) {
     final theme = Helpers.theme(context);
     final colorScheme = theme.colorScheme;
-    final isDarkTheme = Helpers.isDark(theme);
+    final isDarkTheme = Helpers.isDarkMode(theme);
     return InputDecoration(
       isDense: true,
       filled: true,

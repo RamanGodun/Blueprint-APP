@@ -6,7 +6,7 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/icon_buttons.dart';
 import '../../Components/Buttons/app_buttons.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../../Components/_Widgets_STYLING/app_text_styles_for_ui.dart';
+import '../../Components/Text_widgets/text_widgets.dart';
 
 class StartPage extends StatefulWidget {
   static const routeName = '/start_page';
@@ -18,13 +18,15 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage> {
   late CupertinoThemeData cupertinoTheme;
+  late ThemeData theme;
   late ColorScheme colorScheme;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     cupertinoTheme = Helpers.cupertinoTheme(context);
-    colorScheme = Helpers.colorScheme(context);
+    theme = Helpers.theme(context);
+    colorScheme = theme.colorScheme;
   }
 
   @override
@@ -34,8 +36,8 @@ class _StartPageState extends State<StartPage> {
         middle: Row(
           children: [
             const SizedBox(width: 50),
-            Text(LocaleKeys.startScreen.tr(),
-                style: AppTextStyles.appBarTitle(context)),
+            AppTextWidgetsStyles.forAppBarTitle(context,
+                theme: theme, text: LocaleKeys.startScreen.tr()),
             const Spacer(),
           ],
         ),

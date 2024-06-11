@@ -24,6 +24,8 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
   late ThemeData theme;
   late ColorScheme colorScheme;
   late TextTheme textTheme;
+  late Size deviceSize;
+  late bool isDarkMode;
 
   @override
   void initState() {
@@ -38,6 +40,8 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
     theme = Helpers.theme(context);
     colorScheme = theme.colorScheme;
     textTheme = theme.textTheme;
+    isDarkMode = Helpers.isDarkMode(theme);
+    deviceSize = Helpers.deviceSize(context);
   }
 
   @override
@@ -71,8 +75,8 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
                   style: textTheme.labelLarge,
                 ),
                 content: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: deviceSize.height * 0.5,
+                  width: deviceSize.width * 0.5,
                   child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -105,12 +109,8 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
                     height: 60,
                     child: Column(
                       children: [
-                        AppDividers.boldDivider(
-                          Helpers.isDark(theme),
-                        ),
-                        AppDividers.boldDivider(
-                          Helpers.isDark(theme),
-                        ),
+                        AppDividers.boldDivider(isDarkMode),
+                        AppDividers.boldDivider(isDarkMode),
                         Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: TextButton(
@@ -119,7 +119,7 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
                             },
                             child: Text(
                               "Закрити",
-                              style: AppTextStyles.forButtons(context).copyWith(
+                              style: AppTextStyles.forButtons(theme).copyWith(
                                 color: theme.primaryColor,
                               ),
                             ),
