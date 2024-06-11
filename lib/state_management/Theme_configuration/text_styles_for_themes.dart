@@ -32,7 +32,7 @@ abstract class TextStyles4ThisAppThemes {
   }
 
   static CupertinoTextThemeData getCupertinoTextStyle(BuildContext context) {
-    final colorScheme = Helpers.colorScheme(context);
+    final colorScheme = Helpers.colorSchemeGet(context);
     return CupertinoTextThemeData(
       primaryColor: colorScheme.onSurface,
       navTitleTextStyle: TextStyle(

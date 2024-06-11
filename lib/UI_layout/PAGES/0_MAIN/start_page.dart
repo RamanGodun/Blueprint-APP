@@ -24,8 +24,8 @@ class _StartPageState extends State<StartPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    cupertinoTheme = Helpers.cupertinoTheme(context);
-    theme = Helpers.theme(context);
+    cupertinoTheme = Helpers.cupertinoThemeGet(context);
+    theme = Helpers.themeGet(context);
     colorScheme = theme.colorScheme;
   }
 

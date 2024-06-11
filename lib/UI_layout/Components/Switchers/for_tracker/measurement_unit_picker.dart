@@ -43,7 +43,7 @@ class _MeasurementUnitPickerState extends State<MeasurementUnitPicker> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    theme = Helpers.theme(context);
+    theme = Helpers.themeGet(context);
   }
 
   void _setSelectedSegment() {
@@ -54,7 +54,7 @@ class _MeasurementUnitPickerState extends State<MeasurementUnitPicker> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkTheme = Helpers.isDarkMode(theme);
+    bool isDarkTheme = Helpers.isDarkTheme(theme);
     ColorScheme colorScheme = theme.colorScheme;
     TextStyle textStyle =
         theme.textTheme.labelSmall!.copyWith(color: colorScheme.primary);

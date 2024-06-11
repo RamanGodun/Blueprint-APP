@@ -28,8 +28,8 @@ class _MyAnimatedBottomNavigationBarState
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Helpers.colorScheme(context);
-    final bool isDarkScheme = Helpers.isDarkTheme(context);
+    final ColorScheme colorScheme = Helpers.colorSchemeGet(context);
+    final bool isDarkScheme = Helpers.isDarkMode(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -44,7 +44,7 @@ class _MyAnimatedBottomNavigationBarState
             Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: IconButton(
-                  icon: AppIcons.pieCharIcon(Helpers.isDarkTheme(context)),
+                  icon: AppIcons.pieCharIcon(Helpers.isDarkMode(context)),
                   onPressed: () {
                     _showPieChartDialog(context);
                   },
@@ -53,7 +53,7 @@ class _MyAnimatedBottomNavigationBarState
             Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: IconButton(
-                  icon: AppIcons.infoIcon(Helpers.isDarkTheme(context)),
+                  icon: AppIcons.infoIcon(Helpers.isDarkMode(context)),
                   onPressed: () {
                     _showInfoDialog(context);
                   },
@@ -104,7 +104,7 @@ class _MyAnimatedBottomNavigationBarState
               AppIcons.icons[index],
               AppStrings.iconTitles[index],
               Theme.of(context),
-              Helpers.isDarkTheme(context)
+              Helpers.isDarkMode(context)
                   ? AppCashedWidgets.border4DarkThemeGNavButton
                   : AppCashedWidgets.border4LightThemeGNavButtonConst,
               colorScheme,
@@ -127,7 +127,7 @@ class _MyAnimatedBottomNavigationBarState
       text: text,
       textStyle: themeData.textTheme.titleSmall!.copyWith(
           color: colorScheme.secondary
-              .withOpacity(Helpers.isDarkTheme(context) ? 0.4 : 0.7)),
+              .withOpacity(Helpers.isDarkMode(context) ? 0.4 : 0.7)),
     );
   }
 

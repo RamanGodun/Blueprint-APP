@@ -26,13 +26,13 @@ class DeleteDialog {
     showCupertinoModalPopup(
         context: context,
         builder: (context) {
-          TextTheme textTheme = Helpers.textTheme(context);
-          ColorScheme colorScheme = Helpers.colorScheme(context);
+          TextTheme textTheme = Helpers.textThemeGet(context);
+          ColorScheme colorScheme = Helpers.colorSchemeGet(context);
           //
 
           return Padding(
             padding:
-                EdgeInsets.only(bottom: Helpers.deviceHeight(context) / 10),
+                EdgeInsets.only(bottom: Helpers.deviceHeightGet(context) / 10),
             child: CupertinoAlertDialog(
               insetAnimationDuration: const Duration(milliseconds: 30),
               title: Padding(

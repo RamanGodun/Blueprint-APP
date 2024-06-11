@@ -7,7 +7,7 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../../Components/Text_widgets/text_widgets.dart';
 import '../../Components/Buttons/app_buttons.dart';
-import '../../Components/Text_fields/_cupertino_tf2.dart';
+import '../../Components/Text_fields/app_text_fields.dart';
 
 class TextFieldPage extends HookWidget {
   static const routeName = '/start_page/new_screen';
@@ -15,7 +15,7 @@ class TextFieldPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Helpers.theme(context);
+    final ThemeData theme = Helpers.themeGet(context);
     final textController = useTextEditingController();
     final isValid = useState(true);
 
@@ -29,33 +29,39 @@ class TextFieldPage extends HookWidget {
         middle: AppTextWidgetsStyles.forAppBarTitle(context,
             theme: theme, text: "New Screen"),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CupertinoTextField2(
-              textController: textController,
-              isValid: isValid,
-              validateInput: validateInput,
-            ),
-            if (!isValid.value)
-              const Padding(
-                padding: EdgeInsets.only(top: 8.0),
-                child: Text(
-                  'This field cannot be empty',
-                  style: TextStyle(
-                    color: AppColors.kErrorColor,
-                    fontSize: 12,
-                  ),
-                ),
+      child: Material(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AppTextField(
+                theme: theme,
+                controller: textController,
+                isValid: isValid,
+                validateInput: validateInput,
               ),
-            const SizedBox(height: 20),
-            AppCustomButtons.submitButton(
-              context,
-              onPressed: () {},
-            ),
-          ],
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  if (!isValid.value)
+                    const Text(
+                      'This field cannot be empty',
+                      style: TextStyle(
+                        color: AppColors.kErrorColor,
+                        fontSize: 12,
+                      ),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              AppCustomButtons.submitButton(
+                context,
+                onPressed: () {},
+              ),
+            ],
+          ),
         ),
       ),
     );

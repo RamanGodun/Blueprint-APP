@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 
 import '../../../State_management/Services/google_signing_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Cards_and_tiles/log_in_tile.dart';
 import '../../Components/Cashed_widgets/cashed_widgets.dart';
-import '../../Components/Text_fields/_textfield1.dart';
 import '../../../State_management/Src/Generated_code/by spider/resources.dart';
+import '../../Components/Text_fields/app_text_fields.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {
   final Function() changeAuthMode;
@@ -31,8 +32,10 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   final passwordController = TextEditingController();
   TextEditingController? passwordConfirmationController;
   bool isLoading = false;
+  late ThemeData theme;
   late ColorScheme colorScheme;
   late TextTheme textTheme;
+  late ValueNotifier<bool> isValid;
 
   @override
   void initState() {
@@ -40,13 +43,15 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
     if (!widget.isLoginPage) {
       passwordConfirmationController = TextEditingController();
     }
+    isValid = ValueNotifier(true);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    textTheme = Helpers.textTheme(context);
-    colorScheme = Helpers.colorScheme(context);
+    theme = Helpers.themeGet(context);
+    textTheme = theme.textTheme;
+    colorScheme = theme.colorScheme;
   }
 
   @override
@@ -83,29 +88,46 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                       ),
                       const SizedBox(height: 25),
                       // email textfield
-                      CustomTextFields.customTextField1(
-                        context: context,
+                      AppTextField(
+                        theme: theme,
                         controller: emailController,
                         hintText: 'Email',
-                        isObscureText: false,
+                        validateInput: () => validateInput(emailController),
+                        isValid: isValid,
                         icon: Icons.mail,
+                        isInCupertinoStyle: false,
                       ),
+                      if (!isValid.value)
+                        const Text(
+                          'This field cannot be empty',
+                          style: TextStyle(
+                            color: AppColors.kErrorColor,
+                            fontSize: 12,
+                          ),
+                        ),
                       // password textfield
-                      CustomTextFields.customTextField1(
-                        context: context,
+                      AppTextField(
+                        theme: theme,
                         controller: passwordController,
                         hintText: 'Password',
-                        isObscureText: true,
+                        validateInput: () => validateInput(passwordController),
+                        isValid: isValid,
                         icon: Icons.lock,
+                        isInCupertinoStyle: false,
+                        isObscureText: true,
                       ),
                       if (!widget.isLoginPage &&
                           passwordConfirmationController != null)
-                        CustomTextFields.customTextField1(
-                          context: context,
+                        AppTextField(
+                          theme: theme,
                           controller: passwordConfirmationController!,
                           hintText: 'Confirm password',
-                          isObscureText: true,
+                          validateInput: () =>
+                              validateInput(passwordConfirmationController!),
+                          isValid: isValid,
                           icon: Icons.lock_outline,
+                          isInCupertinoStyle: false,
+                          isObscureText: true,
                         ),
                       if (widget.isLoginPage)
                         Align(
@@ -286,5 +308,9 @@ Methods
         wrongEmailOrPasswordMessage(context, 'Incorrect Password');
       }
     }
+  }
+
+  void validateInput(TextEditingController controller) {
+    isValid.value = controller.text.isNotEmpty;
   }
 }

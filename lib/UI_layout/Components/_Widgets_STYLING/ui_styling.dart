@@ -5,9 +5,9 @@ import '../../../State_management/Theme_configuration/app_colors.dart';
 
 abstract class AppBoxDecorations {
   static BoxDecoration glassmorphismGradientDecoration(BuildContext context) {
-    final theme = Helpers.theme(context);
+    final theme = Helpers.themeGet(context);
     final ColorScheme colorScheme = theme.colorScheme;
-    final isDark = Helpers.isDarkMode(theme);
+    final isDark = Helpers.isDarkTheme(theme);
     return BoxDecoration(
       gradient: LinearGradient(
         colors: [
@@ -36,7 +36,7 @@ abstract class AppBoxDecorations {
   }
 
   static BoxDecoration forComplexityPicker(BuildContext context) {
-    final colorScheme = Helpers.colorScheme(context);
+    final colorScheme = Helpers.colorSchemeGet(context);
     return BoxDecoration(
       color: colorScheme.surface.withOpacity(0.2),
       borderRadius: BorderRadius.circular(6.0),

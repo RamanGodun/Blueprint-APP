@@ -30,7 +30,7 @@ class _ComplexityPickerState extends State<ComplexityPicker> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    theme = Helpers.theme(context);
+    theme = Helpers.themeGet(context);
   }
 
   @override

@@ -46,8 +46,8 @@ class _DropButtonState extends State<DropButton> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDarkTheme = Helpers.isDarkTheme(context);
-    _colorScheme = Helpers.colorScheme(context);
+    final bool isDarkTheme = Helpers.isDarkMode(context);
+    _colorScheme = Helpers.colorSchemeGet(context);
     return BoxDecoratedDropButton(
       colorScheme: _colorScheme,
       child: DropdownButtonFormField<Category>(

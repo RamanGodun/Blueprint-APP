@@ -11,9 +11,9 @@ class QuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Helpers.textTheme(context);
-    final colorScheme = Helpers.colorScheme(context);
-    final deviceHeight = Helpers.deviceHeight(context);
+    final textTheme = Helpers.textThemeGet(context);
+    final colorScheme = Helpers.colorSchemeGet(context);
+    final deviceHeight = Helpers.deviceHeightGet(context);
     final provider = InheritedQuestionManager.of(context)!;
     final currentQuestion = provider.currentQuestion;
 

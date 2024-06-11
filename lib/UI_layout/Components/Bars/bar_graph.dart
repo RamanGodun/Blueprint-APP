@@ -42,7 +42,7 @@ class _BarGraphState extends State<BarGraph> {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Helpers.textTheme(context);
+    TextTheme textTheme = Helpers.textThemeGet(context);
     double barWidth = 30;
     double spaceBetweenBars = 10;
 
@@ -92,14 +92,14 @@ class _BarGraphState extends State<BarGraph> {
                           borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(7),
                               topRight: Radius.circular(7)),
-                          color: Helpers.colorScheme(context)
+                          color: Helpers.colorSchemeGet(context)
                               .secondary
                               .withOpacity(
-                                  Helpers.isDarkTheme(context) ? 0.25 : 0.3),
+                                  Helpers.isDarkMode(context) ? 0.25 : 0.3),
                           backDrawRodData: BackgroundBarChartRodData(
                             show: true,
                             toY: calculateMax(),
-                            color: Helpers.colorScheme(context)
+                            color: Helpers.colorSchemeGet(context)
                                 .secondary
                                 .withOpacity(0.03),
                           ),
@@ -143,7 +143,7 @@ Methods next
 
   //
   Widget getTopTitles(double value, TitleMeta meta) {
-    TextStyle textStyle = Helpers.textTheme(context).bodySmall!.copyWith();
+    TextStyle textStyle = Helpers.textThemeGet(context).bodySmall!.copyWith();
 
     int index = value.toInt();
     String formattedNumber = index < widget.monthlySummary.length

@@ -22,9 +22,9 @@ abstract class AppDialogsStyles {
     required Widget contentWidget,
     required EdgeInsets contentPadding,
   }) {
-    final theme = Helpers.theme(context);
-    final deviceSize = Helpers.deviceSize(context);
-    final isDarkMode = Helpers.isDarkMode(theme);
+    final theme = Helpers.themeGet(context);
+    final deviceSize = Helpers.deviceSizeGet(context);
+    final isDarkMode = Helpers.isDarkTheme(theme);
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
     final deviceHeight = deviceSize.height;
@@ -119,10 +119,10 @@ abstract class AppDialogsStyles {
     required Widget contentWidget,
     required EdgeInsets contentPadding,
   }) {
-    final theme = Helpers.theme(context);
+    final theme = Helpers.themeGet(context);
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
-    final isDarkMode = Helpers.isDarkMode(theme);
+    final isDarkMode = Helpers.isDarkTheme(theme);
 
     return Stack(
       children: [

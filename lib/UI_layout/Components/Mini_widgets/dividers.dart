@@ -23,7 +23,7 @@ class AppDividers {
   }
 
   static Widget divider2(BuildContext context) {
-    final colorScheme = Helpers.colorScheme(context);
+    final colorScheme = Helpers.colorSchemeGet(context);
     return Divider(
       thickness: 0.5,
       color: colorScheme.inverseSurface.withOpacity(0.5),
@@ -49,7 +49,7 @@ class AppDividers {
   DIVIDER 4 Sign page
  */
   static Widget dividerForSignPage(BuildContext context) {
-    final theme = Helpers.theme(context);
+    final theme = Helpers.themeGet(context);
     return Column(children: [
       const SizedBox(height: 40),
       Row(
@@ -76,7 +76,7 @@ class AppDividers {
 DIVIDER between Dialog Buttons 
  */
   static Widget dividerBetweenDialogButtons(BuildContext context) {
-    final colorScheme = Helpers.colorScheme(context);
+    final colorScheme = Helpers.colorSchemeGet(context);
     return Container(
       width: 0.5,
       color: colorScheme.inverseSurface.withOpacity(0.5),

@@ -28,8 +28,8 @@ abstract class DropButtonStyle {
       LocaleKeys.darkIOSTheme.tr(),
       LocaleKeys.customDarkTheme.tr(),
     ];
-    final textTheme = Helpers.textTheme(context);
-    final colorScheme = Helpers.colorScheme(context);
+    final textTheme = Helpers.textThemeGet(context);
+    final colorScheme = Helpers.colorSchemeGet(context);
     return List<DropdownMenuItem<CustomThemeMode>>.generate(
       themeModes.length,
       (index) => DropdownMenuItem<CustomThemeMode>(

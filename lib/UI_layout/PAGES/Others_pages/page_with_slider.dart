@@ -13,7 +13,7 @@ class EntryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkTheme = Helpers.isDarkTheme(context);
+    final isDarkTheme = Helpers.isDarkMode(context);
     Color getBackgroundColor(BuildContext context, bool isDarkTheme) {
       return isDarkTheme
           ? AppColors.black54.withOpacity(0.83)
@@ -39,17 +39,17 @@ class EntryScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                  bottom: Helpers.deviceHeight(context) / 6.5,
+                  bottom: Helpers.deviceHeightGet(context) / 6.5,
                 ),
                 child: Image.asset(
                   ThisAppImages.flutterLogo,
                   width: double.infinity,
-                  height: Helpers.deviceHeight(context) / 2.5,
+                  height: Helpers.deviceHeightGet(context) / 2.5,
                   fit: BoxFit.cover,
                 ),
               ),
               _buildSlideToAct(context, isDarkTheme),
-              SizedBox(height: Helpers.deviceHeight(context) / 7),
+              SizedBox(height: Helpers.deviceHeightGet(context) / 7),
             ],
           ),
         ],

@@ -1,5 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
-// general
+// ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +9,6 @@ import '../../../../State_management/Helpers/For_auth/dm_methods.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/app_buttons.dart';
-import '../../../Components/Text_fields/_my_custom_text_field.dart';
 
 class AuthScreen extends StatefulWidget {
   final bool isNeedRegistration;
@@ -111,47 +109,47 @@ class _AuthScreenState extends State<AuthScreen> {
                             textAlign: TextAlign.center)),
                     const SizedBox(height: 75),
                     //
-                    (_isNeedRegistration == true)
-                        ? CustomTextField(
-                            controller: _nameController,
-                            // labelText: "Назва аккаунту:",
-                            hintText: "Введіть імʼя аккаунту",
-                            // typeOfField: "String",
-                            // heightOfField: 45,
-                            // isNeedSuffixIcon: true,
-                            // suffixLength: 1,
-                            // textPadding: const EdgeInsets.only(left: 25),
-                            // textFontSize: 20,
-                            // textAlign: TextAlign.start,
-                            // borderWidth: 2,
-                            // textStyle: textStyle,
-                            // needValidation: true,
-                            keyboardType: TextInputType.name,
-                            maxLength: 15,
-                            validatorType: ValidatorType.string,
-                          )
-                        : const SizedBox(height: 30),
+                    // (_isNeedRegistration == true)
+                    //     ? CustomTextField(
+                    //         controller: _nameController,
+                    // labelText: "Назва аккаунту:",
+                    // hintText: "Введіть імʼя аккаунту",
+                    // typeOfField: "String",
+                    // heightOfField: 45,
+                    // isNeedSuffixIcon: true,
+                    // suffixLength: 1,
+                    // textPadding: const EdgeInsets.only(left: 25),
+                    // textFontSize: 20,
+                    // textAlign: TextAlign.start,
+                    // borderWidth: 2,
+                    // textStyle: textStyle,
+                    // needValidation: true,
+                    //     keyboardType: TextInputType.name,
+                    //     maxLength: 15,
+                    //     validatorType: ValidatorType.string,
+                    //   )
+                    // : const SizedBox(height: 30),
 
                     const SizedBox(height: 25),
-                    CustomTextField(
-                      controller: _phoneController,
-                      maxLength: 15,
-                      validatorType: ValidatorType.phoneNumber,
-                      // labelText: "Номер телефону:",
-                      hintText: "Введіть номер телефону",
-                      // maxSymbols: 10,
-                      // typeOfField: "int",
-                      // heightOfField: 45,
-                      // isNeedSuffixIcon: true,
-                      // suffixLength: 9,
-                      // textFontSize: 20,
-                      // textAlign: TextAlign.start,
-                      // borderWidth: 2,
-                      // isNeedPrefixIcon: true,
-                      // textStyle: textStyle,
-                      // needValidation: true,
-                      keyboardType: TextInputType.phone,
-                    ),
+                    // CustomTextField(
+                    //   controller: _phoneController,
+                    //   maxLength: 15,
+                    //   validatorType: ValidatorType.phoneNumber,
+                    // labelText: "Номер телефону:",
+                    // hintText: "Введіть номер телефону",
+                    // maxSymbols: 10,
+                    // typeOfField: "int",
+                    // heightOfField: 45,
+                    // isNeedSuffixIcon: true,
+                    // suffixLength: 9,
+                    // textFontSize: 20,
+                    // textAlign: TextAlign.start,
+                    // borderWidth: 2,
+                    // isNeedPrefixIcon: true,
+                    // textStyle: textStyle,
+                    // needValidation: true,
+                    //   keyboardType: TextInputType.phone,
+                    // ),
                     const SizedBox(height: 130),
 
                     SizedBox(

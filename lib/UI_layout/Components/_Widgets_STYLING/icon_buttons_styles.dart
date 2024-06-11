@@ -10,8 +10,8 @@ abstract class AppIconButtonsStyles {
     double iconSize = 25,
     void Function()? onPressed,
   }) {
-    final colorScheme = Helpers.colorScheme(context);
-    final isDark = Helpers.isDarkTheme(context);
+    final colorScheme = Helpers.colorSchemeGet(context);
+    final isDark = Helpers.isDarkMode(context);
     return IconButton(
       padding: EdgeInsets.zero,
       onPressed: onPressed,
@@ -39,7 +39,7 @@ abstract class AppIconButtonsStyles {
     double iconSize = 25,
     void Function()? onPressed,
   }) {
-    final defaultColorScheme = Helpers.colorScheme(context);
+    final defaultColorScheme = Helpers.colorSchemeGet(context);
     // final isDark = Helpers.isDarkTheme(context);
     return IconButton(
       padding: EdgeInsets.zero,

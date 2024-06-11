@@ -70,7 +70,7 @@ class AppCustomButtons {
     return AppButtonsStyle.withGradient(
       context,
       onPressed: () {
-        context.pushNamed('HiveBoxPage');
+        context.pushNamed('ApiKeyInputPage');
       },
       buttonText: "To enter GPT API key",
     );

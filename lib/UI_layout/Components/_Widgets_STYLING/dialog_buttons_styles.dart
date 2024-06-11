@@ -10,7 +10,7 @@ class AppDialogsButtonsStyles {
   static Widget customActionDB(BuildContext context,
       {VoidCallback? onPressed}) {
     final style = _cupertinoButtonStyle(context,
-        color: Helpers.colorScheme(context).primary,
+        color: Helpers.colorSchemeGet(context).primary,
         fontWeight: FontWeight.w600);
     return _buildCupertinoDialogAction(
         context, AppStrings.oKText, style, onPressed);
@@ -19,7 +19,7 @@ class AppDialogsButtonsStyles {
   static Widget customCancelDB(BuildContext context,
       {VoidCallback? onPressed}) {
     final style = _cupertinoButtonStyle(context,
-        color: Helpers.colorScheme(context).error,
+        color: Helpers.colorSchemeGet(context).error,
         fontWeight: FontWeight.w300,
         fontStyle: FontStyle.italic);
     return _buildCupertinoDialogAction(
@@ -30,7 +30,7 @@ class AppDialogsButtonsStyles {
   static Widget defaultActionDB(BuildContext context,
       {VoidCallback? onPressed}) {
     final style = _cupertinoButtonStyle(context,
-        color: Helpers.cupertinoTheme(context).primaryColor,
+        color: Helpers.cupertinoThemeGet(context).primaryColor,
         fontWeight: FontWeight.w600);
     return _buildCupertinoDialogAction(
         context, AppStrings.oKText, style, onPressed);
@@ -48,7 +48,7 @@ class AppDialogsButtonsStyles {
   static Widget customAndroidActionButton(BuildContext context,
       {VoidCallback? onPressed}) {
     final style = _materialButtonStyle(context,
-        color: Helpers.colorScheme(context).primary,
+        color: Helpers.colorSchemeGet(context).primary,
         fontWeight: FontWeight.bold);
     return _buildMaterialDialogAction(
         context, AppStrings.oKText, style, onPressed, true);
@@ -57,7 +57,7 @@ class AppDialogsButtonsStyles {
   static Widget customAndroidCancelButton(BuildContext context,
       {VoidCallback? onPressed}) {
     final style = _materialButtonStyle(context,
-        color: Helpers.colorScheme(context).error,
+        color: Helpers.colorSchemeGet(context).error,
         fontWeight: FontWeight.normal);
     return _buildMaterialDialogAction(
         context, AppStrings.cancel, style, onPressed, false);
@@ -68,7 +68,7 @@ class AppDialogsButtonsStyles {
       {required Color color,
       FontWeight fontWeight = FontWeight.normal,
       FontStyle fontStyle = FontStyle.normal}) {
-    final textTheme = Helpers.cupertinoTheme(context).textTheme;
+    final textTheme = Helpers.cupertinoThemeGet(context).textTheme;
     return textTheme.actionTextStyle.copyWith(
       fontSize: 17,
       color: color,
@@ -105,9 +105,9 @@ class AppDialogsButtonsStyles {
   /* BUILD method for Material Styles */
   static Widget _buildMaterialDialogAction(BuildContext context, String text,
       TextStyle style, VoidCallback? onPressed, bool isActionButton) {
-    final theme = Helpers.theme(context);
+    final theme = Helpers.themeGet(context);
     final colorScheme = theme.colorScheme;
-    final deviceWidth = Helpers.deviceWidth(context);
+    final deviceWidth = Helpers.deviceWidthGet(context);
     return SizedBox(
       width: deviceWidth * 0.4,
       child: ElevatedButton(

@@ -13,7 +13,7 @@ class AppDDButtons {
       // required void Function()? onPressed,
       ) {
     final themeProvider = InheritedThemeManager.of(context);
-    final theme = Helpers.theme(context);
+    final theme = Helpers.themeGet(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       decoration: AppDropButtonStyle.forThemeChangingDB(context),

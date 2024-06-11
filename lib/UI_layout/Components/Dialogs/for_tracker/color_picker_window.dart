@@ -29,14 +29,14 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    theme = Helpers.theme(context);
+    theme = Helpers.themeGet(context);
   }
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
-    final isDarkMode = Helpers.isDarkMode(theme);
+    final isDarkMode = Helpers.isDarkTheme(theme);
     return IconButton(
       icon: AppIcons.flipIcon(15),
       onPressed: () {

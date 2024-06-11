@@ -23,10 +23,10 @@ class _QuantityPickerState extends State<QuantityPicker> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    theme = Helpers.theme(context);
+    theme = Helpers.themeGet(context);
     colorScheme = theme.colorScheme;
     textTheme = theme.textTheme;
-    deviceSize = Helpers.deviceSize(context);
+    deviceSize = Helpers.deviceSizeGet(context);
   }
 
   @override

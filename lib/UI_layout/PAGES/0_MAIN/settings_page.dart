@@ -11,7 +11,7 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Buttons/dd_buttons.dart';
 import '../../Components/Dialogs/custom_dialog.dart';
-import '../../Components/Views/_icons_grid_view.dart';
+import '../../Components/Views/icons_grid_view.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
 import '../../Components/Text_widgets/text_widgets.dart';
 
@@ -44,11 +44,11 @@ class _SettingsPageState extends State<SettingsPage>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    cupertinoTheme = Helpers.cupertinoTheme(context);
-    theme = Helpers.theme(context);
-    textTheme = Helpers.textTheme(context);
-    colorScheme = Helpers.colorScheme(context);
-    isDark = Helpers.isDarkTheme(context);
+    cupertinoTheme = Helpers.cupertinoThemeGet(context);
+    theme = Helpers.themeGet(context);
+    textTheme = Helpers.textThemeGet(context);
+    colorScheme = Helpers.colorSchemeGet(context);
+    isDark = Helpers.isDarkMode(context);
   }
 
   @override

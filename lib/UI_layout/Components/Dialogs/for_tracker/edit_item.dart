@@ -65,13 +65,13 @@ class _EditItemDialogState extends State<EditItemDialog> {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Helpers.textTheme(context);
+    TextTheme textTheme = Helpers.textThemeGet(context);
     TextStyle labelStyle = textTheme.displaySmall!
         .copyWith(color: Theme.of(context).colorScheme.onSurface);
 
     return Material(
       child: Padding(
-        padding: EdgeInsets.only(bottom: Helpers.deviceHeight(context) / 10),
+        padding: EdgeInsets.only(bottom: Helpers.deviceHeightGet(context) / 10),
         child: CupertinoAlertDialog(
           title: Text(
             (widget.isPurchase != null)

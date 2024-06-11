@@ -5,7 +5,7 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 
 class CardsAndTilesStyles {
   static BoxDecoration cardDecoration(BuildContext context) {
-    final colorScheme = Helpers.colorScheme(context);
+    final colorScheme = Helpers.colorSchemeGet(context);
     return BoxDecoration(
       borderRadius: BorderRadius.circular(12.0),
       color: colorScheme.surface.withOpacity(0.4),
@@ -36,7 +36,7 @@ class CardsAndTilesStyles {
   }
 
   static Widget tileContainer(BuildContext context, {required Widget child}) {
-    final colorScheme = Helpers.colorScheme(context);
+    final colorScheme = Helpers.colorSchemeGet(context);
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: BackdropFilter(
@@ -71,7 +71,7 @@ class CardsAndTilesStyles {
 
   static BoxDecoration listTileDecoration(
       BuildContext context, bool isDarkTheme) {
-    final colorScheme = Helpers.colorScheme(context);
+    final colorScheme = Helpers.colorSchemeGet(context);
     return BoxDecoration(
       color: colorScheme.surface.withOpacity(isDarkTheme ? 0.15 : 0.08),
       borderRadius: BorderRadius.circular(6.0),
@@ -95,7 +95,7 @@ class CardsAndTilesStyles {
 
   static BoxDecoration checkboxDecoration(
       BuildContext context, bool isDarkTheme) {
-    final colorScheme = Helpers.colorScheme(context);
+    final colorScheme = Helpers.colorSchemeGet(context);
     return BoxDecoration(
       border:
           Border.all(color: colorScheme.onSurface.withOpacity(0.2), width: 1.5),

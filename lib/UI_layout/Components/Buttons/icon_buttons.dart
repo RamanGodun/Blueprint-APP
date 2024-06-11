@@ -42,7 +42,7 @@ class AppIconButtons {
   }
 
   static Widget backIcon(BuildContext context) {
-    final ColorScheme colorScheme = Helpers.colorScheme(context);
+    final ColorScheme colorScheme = Helpers.colorSchemeGet(context);
     return AppIconButtonsStyles.withoutShadows(
       context,
       iconColor: colorScheme.onSurface,

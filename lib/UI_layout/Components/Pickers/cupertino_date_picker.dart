@@ -59,7 +59,7 @@ class _DatePickerRowState extends State<DatePickerRow> {
                     context: context,
                     locale: const Locale('uk', 'UA'),
                     child: SizedBox(
-                      height: Helpers.deviceHeight(context) / 4,
+                      height: Helpers.deviceHeightGet(context) / 4,
                       child: CupertinoDatePicker(
                         showDayOfWeek: false,
                         mode: CupertinoDatePickerMode.date,

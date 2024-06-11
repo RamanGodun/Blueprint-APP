@@ -9,7 +9,7 @@ import '../../../../State_management/Theme_configuration/app_colors.dart';
 import '../../../Components/Buttons/for_shop/custom_button.dart';
 import '../../../Components/Dialogs/for_shop/general_alert_dialog.dart';
 import '../../../Components/Mini_widgets/dashed_border_container.dart';
-import '../../../Components/Text_fields/_my_first_tf.dart';
+import '../../../Components/Text_fields/first_tf/_my_first_tf.dart';
 
 // ignore_for_file: use_build_context_synchronously
 class ProductsEditingScreen extends StatefulWidget {

@@ -60,7 +60,7 @@ for JBnTracker
  */
   static Widget titleForPurchasePageWidget(ThemeData theme) {
     final colorScheme = theme.colorScheme;
-    final isDarkTheme = Helpers.isDarkMode(theme);
+    final isDarkTheme = Helpers.isDarkTheme(theme);
     return Container(
       color: colorScheme.surface.withOpacity(isDarkTheme ? 0.55 : 0.9),
       child: Row(

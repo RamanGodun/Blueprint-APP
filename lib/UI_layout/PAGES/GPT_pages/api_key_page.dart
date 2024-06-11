@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import '../../../State_management/Services/open_ai_service.dart';
 import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../../Components/Buttons/icon_buttons.dart';
-import '../../Components/Text_fields/_cupertino_tf3.dart';
+import '../../Components/Text_fields/app_text_fields.dart';
 import '../../Components/Text_widgets/text_widgets.dart';
 
 class ApiKeyInputPage extends StatefulWidget {
@@ -24,18 +24,20 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
   late ColorScheme colorScheme;
   late TextTheme textTheme;
   late CupertinoThemeData cupertinoTheme;
+  late ValueNotifier<bool> isValid;
 
   @override
   void initState() {
     super.initState();
     _loadApiKey();
+    isValid = ValueNotifier(true);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    cupertinoTheme = Helpers.cupertinoTheme(context);
-    theme = Helpers.theme(context);
+    cupertinoTheme = Helpers.cupertinoThemeGet(context);
+    theme = Helpers.themeGet(context);
     colorScheme = theme.colorScheme;
     textTheme = theme.textTheme;
   }
@@ -62,10 +64,21 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CupertinoTextField3(
-                      apiKeyController: _apiKeyController,
-                      colorScheme: colorScheme,
-                      textTheme: textTheme),
+                  AppTextField(
+                    theme: theme,
+                    controller: _apiKeyController,
+                    hintText: 'Enter API Key here',
+                    validateInput: validateInput,
+                    isValid: isValid,
+                  ),
+                  if (!isValid.value)
+                    const Text(
+                      'This field cannot be empty',
+                      style: TextStyle(
+                        color: AppColors.kErrorColor,
+                        fontSize: 12,
+                      ),
+                    ),
                   const SizedBox(height: 20),
                   SizedBox(
                     width: double.infinity,
@@ -82,20 +95,6 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 50),
-                  SizedBox(
-                    width: double.infinity,
-                    child: CupertinoButton(
-                      color: colorScheme.primary,
-                      onPressed: testAPIKey,
-                      child: Text(
-                        'Test API Key',
-                        style: textTheme.bodyLarge?.copyWith(
-                          color: CupertinoColors.white,
-                        ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -105,11 +104,8 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
     );
   }
 
-  void testAPIKey() async {
-    final openAiService = OpenAiService();
-    final response = await openAiService.sendPrompt("Hello, how are you?");
-    // ignore: avoid_print
-    print(response);
+  void validateInput() {
+    isValid.value = _apiKeyController.text.isNotEmpty;
   }
 
   Future<void> _loadApiKey() async {
@@ -150,4 +146,18 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
       content: Text('API Key saved successfully!'),
     ));
   }
+
+  @override
+  void dispose() {
+    isValid.dispose();
+    super.dispose();
+  }
 }
+
+
+/*
+     CupertinoTextField3(
+                      apiKeyController: _apiKeyController,
+                      colorScheme: colorScheme,
+                      textTheme: textTheme),
+ */

@@ -9,7 +9,7 @@ class IconsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Helpers.colorScheme(context);
+    final ColorScheme colorScheme = Helpers.colorSchemeGet(context);
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {

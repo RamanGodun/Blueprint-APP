@@ -12,53 +12,53 @@ class Helpers {
   Here some useful methods, used across all app
   */
   /// Get the current theme data.
-  static ThemeData theme(BuildContext context) {
+  static ThemeData themeGet(BuildContext context) {
     return InheritedThemeManager.theme(context)!;
   }
 
   /// Get the color scheme from the current theme.
-  static ColorScheme colorScheme(BuildContext context) {
-    return theme(context).colorScheme;
+  static ColorScheme colorSchemeGet(BuildContext context) {
+    return themeGet(context).colorScheme;
   }
 
   /// Get the text theme from the current theme.
-  static TextTheme textTheme(BuildContext context) {
-    return theme(context).textTheme;
+  static TextTheme textThemeGet(BuildContext context) {
+    return themeGet(context).textTheme;
   }
 
   /// Determine if the current theme is dark mode.
-  static bool isDarkTheme(BuildContext context) {
-    return theme(context).brightness == Brightness.dark;
+  static bool isDarkMode(BuildContext context) {
+    return themeGet(context).brightness == Brightness.dark;
   }
 
   /// Determine if the given theme data is in dark mode.
-  static bool isDarkMode(ThemeData theme) {
+  static bool isDarkTheme(ThemeData theme) {
     return theme.brightness == Brightness.dark;
   }
 
   /// Get the Cupertino theme data.
-  static CupertinoThemeData cupertinoTheme(BuildContext context) {
+  static CupertinoThemeData cupertinoThemeGet(BuildContext context) {
     return InheritedThemeManager.cupertinoTheme(context);
   }
 
   /// Get the Cupertino text theme from the Cupertino theme data.
-  static CupertinoTextThemeData cupertinoTextTheme(BuildContext context) {
-    return cupertinoTheme(context).textTheme;
+  static CupertinoTextThemeData cupertinoTextThemeGet(BuildContext context) {
+    return cupertinoThemeGet(context).textTheme;
   }
 
   /// Get the device size.
-  static Size deviceSize(BuildContext context) {
+  static Size deviceSizeGet(BuildContext context) {
     return InheritedThemeManager.deviceSize(context);
   }
 
   /// Get the device height.
-  static double deviceHeight(BuildContext context) {
-    return deviceSize(context).height;
+  static double deviceHeightGet(BuildContext context) {
+    return deviceSizeGet(context).height;
   }
 
   /// Get the device width.
-  static double deviceWidth(BuildContext context) {
-    return deviceSize(context).width;
+  static double deviceWidthGet(BuildContext context) {
+    return deviceSizeGet(context).width;
   }
 
 /* Converting & formatting of data
@@ -151,24 +151,24 @@ class Helpers {
   }
 
   static void showSnackBar(BuildContext ctx, String content) {
-    bool isDarkTheme = Helpers.isDarkTheme(ctx);
+    bool isDarkTheme = Helpers.isDarkMode(ctx);
     ScaffoldMessenger.of(ctx).showSnackBar(
       SnackBar(
         backgroundColor: !isDarkTheme
-            ? colorScheme(ctx).surface.withOpacity(0.75)
-            : colorScheme(ctx).surface.withOpacity(0.9),
+            ? colorSchemeGet(ctx).surface.withOpacity(0.75)
+            : colorSchemeGet(ctx).surface.withOpacity(0.9),
         content: Padding(
           padding: const EdgeInsets.only(left: 50),
           child: Text(
             content,
-            style: Helpers.textTheme(ctx)
+            style: Helpers.textThemeGet(ctx)
                 .titleSmall!
-                .copyWith(color: Helpers.colorScheme(ctx).secondary),
+                .copyWith(color: Helpers.colorSchemeGet(ctx).secondary),
           ),
         ),
         duration: const Duration(milliseconds: 2350),
         behavior: SnackBarBehavior.floating,
-        margin: EdgeInsets.only(bottom: Helpers.deviceHeight(ctx) * 0.85),
+        margin: EdgeInsets.only(bottom: Helpers.deviceHeightGet(ctx) * 0.85),
       ),
     );
   }

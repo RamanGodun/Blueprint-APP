@@ -37,11 +37,11 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    theme = Helpers.theme(context);
+    theme = Helpers.themeGet(context);
     colorScheme = theme.colorScheme;
     textTheme = theme.textTheme;
-    isDarkMode = Helpers.isDarkMode(theme);
-    deviceSize = Helpers.deviceSize(context);
+    isDarkMode = Helpers.isDarkTheme(theme);
+    deviceSize = Helpers.deviceSizeGet(context);
   }
 
   @override

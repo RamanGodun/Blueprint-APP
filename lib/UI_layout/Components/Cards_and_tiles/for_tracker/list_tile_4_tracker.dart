@@ -39,7 +39,7 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDarkTheme = Helpers.isDarkTheme(context);
+    final bool isDarkTheme = Helpers.isDarkMode(context);
     final TextTheme textTheme = Theme.of(context).textTheme;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
 

@@ -33,20 +33,20 @@ class PieChartDialog {
     bool allExpensesAreZero = CategoriesEnum.values.every(
       (categoryEnum) => provider.expensesCategorySummary[categoryEnum] == 0,
     );
-    final Size deviceSize = Helpers.deviceSize(context);
+    final Size deviceSize = Helpers.deviceSizeGet(context);
     final double mQHeight = deviceSize.height;
     final double mQWidth = deviceSize.width;
-    final ThemeData theme = Helpers.theme(context);
+    final ThemeData theme = Helpers.themeGet(context);
     TextTheme textTheme = theme.textTheme;
     ColorScheme colorScheme = theme.colorScheme;
-    bool isDarkTheme = Helpers.isDarkMode(theme);
+    bool isDarkTheme = Helpers.isDarkTheme(theme);
     String totalExpensesText = showAllExpenses
         ? AppStrings.totalExpenses
         : "${AppStrings.expensesIn} ${Helpers().getCurrentMonthName()}";
 
     return Material(
       color: AppColors.kDarkAndroidBackground
-          .withOpacity(Helpers.isDarkTheme(context) ? 0.2 : 0.05),
+          .withOpacity(Helpers.isDarkMode(context) ? 0.2 : 0.05),
       child: Padding(
         padding: EdgeInsets.only(bottom: mQHeight / 100),
         child: CupertinoAlertDialog(

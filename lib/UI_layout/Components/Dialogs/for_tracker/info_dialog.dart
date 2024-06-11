@@ -7,11 +7,11 @@ import '../../../../State_management/Helpers/Common/helpers.dart';
 
 class InfoDialog {
   Widget show(BuildContext context, Function(bool) setShowAllExpenses) {
-    final TextTheme textTheme = Helpers.textTheme(context);
+    final TextTheme textTheme = Helpers.textThemeGet(context);
     TextStyle textStyle = textTheme.titleSmall!.copyWith(fontSize: 10.5);
 
     return Padding(
-      padding: EdgeInsets.only(bottom: Helpers.deviceHeight(context) / 10),
+      padding: EdgeInsets.only(bottom: Helpers.deviceHeightGet(context) / 10),
       child: CupertinoAlertDialog(
         insetAnimationDuration: const Duration(milliseconds: 75),
         title: Padding(

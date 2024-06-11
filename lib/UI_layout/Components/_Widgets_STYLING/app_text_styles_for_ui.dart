@@ -29,7 +29,8 @@ abstract class AppTextStyles {
   }
 
   static TextStyle appBarTitle(BuildContext context, ThemeData theme) {
-    final CupertinoThemeData cupertinoTheme = Helpers.cupertinoTheme(context);
+    final CupertinoThemeData cupertinoTheme =
+        Helpers.cupertinoThemeGet(context);
     final colorScheme = theme.colorScheme;
     return cupertinoTheme.textTheme.navTitleTextStyle
         .copyWith(color: colorScheme.onSurface);

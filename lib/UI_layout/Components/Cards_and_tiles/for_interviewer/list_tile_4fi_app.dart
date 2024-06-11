@@ -24,7 +24,7 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Helpers.theme(context);
+    final ThemeData theme = Helpers.themeGet(context);
     return Material(
       color: Colors.transparent,
       child: Stack(children: [
@@ -35,7 +35,7 @@ class CustomListTile extends StatelessWidget {
               SlidableAction(
                 backgroundColor: Colors.transparent,
                 foregroundColor:
-                    Helpers.colorScheme(context).primary.withOpacity(0.9),
+                    Helpers.colorSchemeGet(context).primary.withOpacity(0.9),
                 onPressed: onEditPressed,
                 icon: Icons.query_stats_outlined,
                 autoClose: true,

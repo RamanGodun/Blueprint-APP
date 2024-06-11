@@ -28,9 +28,9 @@ class _SendPromptPageState extends State<SendPromptPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    cupertinoTheme = Helpers.cupertinoTheme(context);
-    colorScheme = Helpers.colorScheme(context);
-    textTheme = Helpers.textTheme(context);
+    cupertinoTheme = Helpers.cupertinoThemeGet(context);
+    colorScheme = Helpers.colorSchemeGet(context);
+    textTheme = Helpers.textThemeGet(context);
   }
 
   @override
