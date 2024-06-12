@@ -5,7 +5,9 @@ import '../../../../State_management/Models/models_4_tracker_on_isar /model_of_c
 import '../../../../State_management/Models/models_4_tracker_on_isar /item_model.dart';
 import '../../../../State_management/Providers/Provider_4_tracker/categories_provider.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
-import '../../_Widgets_STYLING/dd_button_styles.dart';
+import '../../_Widgets_STYLING/app_box_decoration.dart';
+import '../../_Widgets_STYLING/app_styling_constants.dart';
+import '../../_Widgets_STYLING/app_text_styles.dart';
 
 class DropButton extends StatefulWidget {
   const DropButton({
@@ -62,18 +64,18 @@ class _DropButtonState extends State<DropButton> {
           }
         },
         items: _buildDropdownItems(context),
-        dropdownColor: DropButtonStyle.getDropdownColor(context, isDarkTheme),
+        dropdownColor: AppStylingConstants.getDropdownColor(isDarkTheme),
         focusColor: _colorScheme.primary,
         itemHeight: 35,
         elevation: 10,
-        style: DropButtonStyle.getTextStyle(context),
-        decoration: DropButtonStyle.getInputDecoration(context, isDarkTheme),
+        style: AppTextStyles.forDDButtonTextStyle(context),
+        decoration: AppBoxDecorations.getInputDecoration(context, isDarkTheme),
       ),
     );
   }
 
   List<DropdownMenuItem<Category>> _buildDropdownItems(BuildContext context) {
-    final textStyle = DropButtonStyle.getTextStyle(context);
+    final textStyle = AppTextStyles.forDDButtonTextStyle(context);
 
     return CategoriesProvider().kCategoriesData.entries.map((entry) {
       final category = entry.value;

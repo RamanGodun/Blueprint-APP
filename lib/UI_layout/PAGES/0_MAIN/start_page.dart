@@ -50,13 +50,13 @@ class _StartPageState extends State<StartPage> {
             child: ListView(
               children: [
                 const SizedBox(height: 20),
-                AppCustomButtons.goToTextFieldPage(context),
+                AppButtons.goToTextFieldPage(context),
                 const SizedBox(height: 20),
-                AppCustomButtons.goToHivePage(context),
+                AppButtons.goToHivePage(context),
                 const SizedBox(height: 20),
-                AppCustomButtons.goToGPTPage(context),
+                AppButtons.goToGPTPage(context),
                 const SizedBox(height: 20),
-                AppCustomButtons.goToQuestionManager(context),
+                AppButtons.goToQuestionManager(context),
               ],
             ),
           ),

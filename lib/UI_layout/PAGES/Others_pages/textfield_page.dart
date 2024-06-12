@@ -56,7 +56,7 @@ class TextFieldPage extends HookWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              AppCustomButtons.submitButton(
+              AppButtons.submitButton(
                 context,
                 onPressed: () {},
               ),

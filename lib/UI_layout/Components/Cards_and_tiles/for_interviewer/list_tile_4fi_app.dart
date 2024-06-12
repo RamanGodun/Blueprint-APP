@@ -5,7 +5,7 @@ import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../../../State_management/Models/models_4_FI_on_hive/question_model.dart';
 import '../../Mini_widgets/mini_widgets.dart';
 import '../../_Widgets_STYLING/Custom_layouts/fi_list_tile_layouts.dart';
-import '../../_Widgets_STYLING/cards_and_tiles_styles.dart';
+import '../../_Widgets_STYLING/app_box_decoration.dart';
 import '../../_Widgets_STYLING/app_text_styles.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -45,7 +45,7 @@ class CustomListTile extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.only(left: 7, right: 7, bottom: 3.5),
             height: 120,
-            decoration: CardsAndTilesStyles.cardDecoration(context),
+            decoration: AppBoxDecorations.cardDecoration(context),
             child: CustomMultiChildLayout(
               delegate: ListTileMultiChildLayoutDelegate(),
               children: [

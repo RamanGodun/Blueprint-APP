@@ -140,7 +140,7 @@ class _StartScreenState extends State<StartScreen> {
                 /* 
                 Start button
                 */
-                AppCustomButtons.startButtonForInterviewerAPP(
+                AppButtons.startButtonForInterviewerAPP(
                   context,
                   onPressed: widget.startQuiz,
                 )

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
-  static const Color kAppPrimaryColor = Color.fromARGB(199, 14, 117, 91);
+  static const Color kAppPrimaryColor = Color.fromARGB(255, 15, 90, 71);
   static final MaterialColor kPrimarySwatch =
       createMaterialColor(kAppPrimaryColor);
 
@@ -33,6 +33,8 @@ abstract class AppColors {
     }
     return MaterialColor(color.value, swatch);
   }
+
+  static const Color buttonsColor = Color.fromARGB(255, 18, 55, 36);
 
   static const Color cupertinoBlackColor = CupertinoColors.black;
   static const Color transparent = Colors.transparent;

@@ -87,11 +87,11 @@ class _SettingsPageState extends State<SettingsPage>
               : Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    AppDDButtons.forThemeChanging(context),
+                    AppDDButtons.themeChanging(context),
                     const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: AppCustomButtons.goToGPTApiKeyPage(context),
+                      child: AppButtons.goToGPTApiKeyPage(context),
                     ),
                   ],
                 ),

@@ -96,7 +96,7 @@ abstract class AppBordersStyling {
       ThemeData theme) {
     final buttonShape = RoundedRectangleBorder(
       borderRadius: AppStylingConstants.commonBorderRadius,
-      side: BorderSide(color: theme.colorScheme.primary),
+      side: BorderSide(color: theme.colorScheme.primary.withOpacity(0.3)),
     );
     return buttonShape;
   }

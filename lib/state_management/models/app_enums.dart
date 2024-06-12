@@ -25,3 +25,10 @@ enum CategoriesEnum {
 }
 
 enum ValidatorType { integer, double, string, name, phoneNumber }
+
+enum DialogButtonType {
+  actionButtonInIOSStyle,
+  actionButtonInAndroidStyle,
+  cancelButtonInIOSStyle,
+  cancelButtonInAndroidType,
+}

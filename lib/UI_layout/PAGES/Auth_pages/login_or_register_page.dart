@@ -116,7 +116,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                           const ForgotPasswordTextWidget(),
                         const SizedBox(height: 45),
                         /* sign in/sign up button */
-                        AppCustomButtons.signInUp(
+                        AppButtons.signInUp(
                           context,
                           isLoginPage: widget.isLoginPage,
                           onPressed: () => _signUserInOrUp(widget.isLoginPage),

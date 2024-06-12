@@ -11,21 +11,14 @@ abstract class AppTextStyles {
   static TextStyle forButtons(ThemeData theme) {
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
-    final buttonsTextStyle = textTheme.titleMedium?.copyWith(
-      fontWeight: FontWeight.w400,
-      fontSize: 18,
-      letterSpacing: 1.03,
-      wordSpacing: 1.76,
+    final buttonsTextStyle = textTheme.titleMedium!.copyWith(
+      fontWeight: FontWeight.w500,
+      fontSize: 17,
+      letterSpacing: 1.04,
+      wordSpacing: 1.96,
       color: colorScheme.onPrimary,
     );
-    return buttonsTextStyle ??
-        TextStyle(
-          fontWeight: FontWeight.w500,
-          letterSpacing: 1.03,
-          wordSpacing: 1.76,
-          fontSize: 16,
-          color: colorScheme.onPrimary,
-        );
+    return buttonsTextStyle;
   }
 
   static TextStyle appBarTitle(BuildContext context, ThemeData theme) {
@@ -58,6 +51,42 @@ abstract class AppTextStyles {
     final TextStyle forActionText =
         theme.textTheme.labelLarge!.copyWith(color: theme.colorScheme.primary);
     return forActionText;
+  }
+
+  static TextStyle bodyLarge(ThemeData theme) {
+    final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
+    final bodyLargeTextStyle = textTheme.bodyLarge!.copyWith(
+      color: colorScheme.onSurface,
+    );
+    return bodyLargeTextStyle;
+  }
+
+  /* Common Cupertino Button Style */
+  static TextStyle cupertinoButtonStyle(
+    BuildContext context, {
+    required Color color,
+    FontWeight fontWeight = FontWeight.normal,
+    FontStyle fontStyle = FontStyle.normal,
+  }) {
+    final textTheme = Helpers.cupertinoThemeGet(context).textTheme;
+    return textTheme.actionTextStyle.copyWith(
+      fontSize: 17,
+      color: color,
+      fontWeight: fontWeight,
+      fontStyle: fontStyle,
+      letterSpacing: 1.15,
+    );
+  }
+
+  /* Common Material Button Style */
+  static TextStyle materialButtonStyle(BuildContext context,
+      {required Color color, FontWeight fontWeight = FontWeight.normal}) {
+    return TextStyle(
+      fontSize: 17,
+      fontWeight: fontWeight,
+      color: color,
+    );
   }
 
 /* Text styles for FI APP
@@ -181,4 +210,14 @@ abstract class AppTextStyles {
     );
     return textStyle;
   }
+
+  static TextStyle forDDButtonTextStyle(BuildContext context) {
+    return Theme.of(context).textTheme.displaySmall!.copyWith(
+          fontSize: 11.5,
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.w300,
+        );
+  }
+
+//
 }

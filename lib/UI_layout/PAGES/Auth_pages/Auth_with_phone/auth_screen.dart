@@ -155,7 +155,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     SizedBox(
                       width: double.infinity,
                       height: 50,
-                      child: AppCustomButtons.enterButton4GG(
+                      child: AppButtons.enterButton4GG(
                         context,
                         buttonText: (_isNeedRegistration == true)
                             ? "Зареєструватись"

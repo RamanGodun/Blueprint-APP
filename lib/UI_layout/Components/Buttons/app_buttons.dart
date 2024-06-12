@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../_Widgets_STYLING/buttons_styling.dart';
+import '_buttons_styling.dart';
 
-class AppCustomButtons {
+class AppButtons {
 /* WITH SHADOWS
  */
   static Widget goToQuestionManager(BuildContext context) {
@@ -106,7 +106,7 @@ class AppCustomButtons {
     required void Function()? onPressed,
     required buttonText,
   }) {
-    return AppButtonsStyling.forInterviewerAppAnswerButton(
+    return AppButtonsStyling.forOutlinedButton(
       context,
       onPressed: onPressed,
       buttonText: buttonText,

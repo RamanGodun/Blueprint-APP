@@ -4,7 +4,7 @@ import '../../../../State_management/Models/models_for_store/product_model.dart'
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../Images/image_widgets.dart';
 import '../../Pickers/for_shop/quantity_changer.dart';
-import '../../_Widgets_STYLING/cards_and_tiles_styles.dart';
+import '../../_Widgets_STYLING/app_box_decoration.dart';
 import '../../_Widgets_STYLING/app_text_styles.dart';
 
 class CardOfProductItem4GridView extends StatefulWidget {
@@ -29,7 +29,7 @@ class _CardOfProductItem4GridViewState
       onTap: () {},
       child: Container(
         width: MediaQuery.of(context).size.width * 0.41,
-        decoration: CardsAndTilesStyles.cardDecoration(context),
+        decoration: AppBoxDecorations.cardDecoration(context),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Stack(
             alignment: Alignment.topRight,
@@ -84,7 +84,7 @@ class _DiscountLabelWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 10, right: 5),
       padding: const EdgeInsets.symmetric(horizontal: 2.5, vertical: 2.5),
-      decoration: CardsAndTilesStyles.discountDecoration(),
+      decoration: AppBoxDecorations.discountDecoration(),
       child: Text(
         (editedProduct!.discountAmount! == 0)
             ? "-5%   "

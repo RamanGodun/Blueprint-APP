@@ -4,9 +4,10 @@ import 'package:get_it/get_it.dart';
 import 'package:icon_animated/icon_animated.dart';
 import 'dart:ui';
 
+import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Services/mapping_service.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import 'dialog_buttons_styles.dart';
+import '../Buttons/dialog_buttons.dart';
 import '../Mini_widgets/dividers.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 
@@ -95,9 +96,15 @@ abstract class AppDialogsStyles {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    AppDialogsButtonsStyles.customCancelDB(context),
+                    AppDialogsButtons.custom(
+                      context: context,
+                      buttonType: DialogButtonType.cancelButtonInIOSStyle,
+                    ),
                     AppDividers.dividerBetweenDialogButtons(context),
-                    AppDialogsButtonsStyles.customActionDB(context),
+                    AppDialogsButtons.custom(
+                      context: context,
+                      buttonType: DialogButtonType.actionButtonInIOSStyle,
+                    ),
                   ],
                 ),
               ),
@@ -224,9 +231,15 @@ abstract class AppDialogsStyles {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                AppDialogsButtonsStyles.customAndroidCancelButton(context),
+                AppDialogsButtons.custom(
+                  context: context,
+                  buttonType: DialogButtonType.cancelButtonInAndroidType,
+                ),
                 AppDividers.dividerBetweenDialogButtons(context),
-                AppDialogsButtonsStyles.customAndroidActionButton(context),
+                AppDialogsButtons.custom(
+                  context: context,
+                  buttonType: DialogButtonType.actionButtonInAndroidStyle,
+                ),
               ],
             ),
           ),

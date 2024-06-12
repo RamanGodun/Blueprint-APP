@@ -7,7 +7,7 @@ import '../../../../State_management/Models/models_4_tracker_on_isar /item_model
 import '../../../../State_management/Models/models_4_tracker_on_isar /model_of_subcategory.dart';
 import '../../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
-import '../../_Widgets_STYLING/cards_and_tiles_styles.dart';
+import '../../_Widgets_STYLING/app_box_decoration.dart';
 import '../../_Widgets_STYLING/app_text_styles.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -76,7 +76,7 @@ class CustomListTile extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.only(left: 7, right: 7, bottom: 3.5),
               decoration:
-                  CardsAndTilesStyles.listTileDecoration(context, isDarkTheme),
+                  AppBoxDecorations.listTileDecoration(context, isDarkTheme),
               child: ListTile(
                 dense: true,
                 contentPadding: const EdgeInsets.symmetric(vertical: 1),
@@ -225,7 +225,7 @@ class CustomListTile extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.only(left: 7, right: 7, bottom: 3.5),
               decoration:
-                  CardsAndTilesStyles.listTileDecoration(context, isDarkTheme),
+                  AppBoxDecorations.listTileDecoration(context, isDarkTheme),
               child: ListTile(
                 dense: true,
                 contentPadding: const EdgeInsets.symmetric(vertical: 1),

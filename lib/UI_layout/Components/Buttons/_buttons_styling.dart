@@ -1,12 +1,11 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import 'app_borders.dart';
-import 'app_styling_constants.dart';
-import 'app_text_styles.dart';
-import 'app_box_decoration.dart';
+import '../_Widgets_STYLING/app_borders.dart';
+import '../_Widgets_STYLING/app_styling_constants.dart';
+import '../_Widgets_STYLING/app_text_styles.dart';
+import '../_Widgets_STYLING/app_box_decoration.dart';
 
 abstract class AppButtonsStyling {
 /* 
@@ -29,7 +28,7 @@ abstract class AppButtonsStyling {
             height: height,
             width: double.infinity,
             padding: padding,
-            decoration: AppBoxDecorations.inGlassMorphismStyle(theme),
+            decoration: AppBoxDecorations.forButtonsInGlassMorphismStyle(theme),
             child: Center(
               child: Text(
                 buttonText,
@@ -81,8 +80,8 @@ abstract class AppButtonsStyling {
     required String buttonText,
   }) {
     final theme = Helpers.themeGet(context);
-    final ColorScheme colorScheme = theme.colorScheme;
     final isDark = Helpers.isDarkTheme(theme);
+    final colorScheme = theme.colorScheme;
     return SizedBox(
       width: double.infinity,
       height: AppStylingConstants.buttonsHeight,
@@ -91,7 +90,8 @@ abstract class AppButtonsStyling {
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(
               AppBordersStyling.roundedRectangleBorderForButton(theme)),
           backgroundColor: WidgetStateProperty.all(
-              colorScheme.primary.withOpacity(isDark ? 0.6 : 0.75)),
+            colorScheme.primary.withOpacity(isDark ? 0.35 : 0.65),
+          ),
         ),
         onPressed: onPressed,
         child: Padding(
@@ -114,9 +114,8 @@ abstract class AppButtonsStyling {
     final isDark = Helpers.isDarkTheme(theme);
     final colorScheme = theme.colorScheme;
     final backgroundColor =
-        colorScheme.primary.withOpacity(isDark ? 0.6 : 0.85);
-    final foregroundColor =
-        colorScheme.onPrimary.withOpacity(isDark ? 0.85 : 0.9);
+        colorScheme.primary.withOpacity(isDark ? 0.35 : 0.65);
+    final foregroundColor = colorScheme.onPrimary;
     return SizedBox(
       height: AppStylingConstants.buttonsHeight,
       child: ElevatedButton(
@@ -136,15 +135,17 @@ abstract class AppButtonsStyling {
     );
   }
 
-/* FOR FI APP
+/* OUTLINED Button
  */
-  static Widget forInterviewerAppAnswerButton(
+  static Widget forOutlinedButton(
     BuildContext context, {
     void Function()? onPressed,
     required String buttonText,
+    TextStyle? textStyle,
   }) {
     final theme = Helpers.themeGet(context);
     final isDark = Helpers.isDarkTheme(theme);
+    final textStyleForButton = textStyle ?? AppTextStyles.forButtons(theme);
     return ElevatedButton(
       style: OutlinedButton.styleFrom(
         backgroundColor:
@@ -155,11 +156,7 @@ abstract class AppButtonsStyling {
       child: Center(
         child: Text(
           buttonText,
-          textAlign: TextAlign.center,
-          style: theme.textTheme.labelMedium,
-          maxLines: 3,
-          softWrap: true,
-          selectionColor: theme.colorScheme.primary.withOpacity(0.8),
+          style: textStyleForButton,
         ),
       ),
     );
