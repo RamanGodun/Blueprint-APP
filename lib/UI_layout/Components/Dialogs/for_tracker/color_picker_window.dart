@@ -36,7 +36,6 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
   Widget build(BuildContext context) {
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
-    final isDarkMode = Helpers.isDarkTheme(theme);
     return IconButton(
       icon: AppIcons.flipIcon(15),
       onPressed: () {
@@ -56,8 +55,8 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
                     Text("Вибір кольору",
                         textAlign: TextAlign.center,
                         style: textTheme.labelLarge),
-                    AppDividers.boldDivider(isDarkMode),
-                    AppDividers.boldDivider(isDarkMode),
+                    AppDividers.boldDivider(theme),
+                    AppDividers.boldDivider(theme),
                   ],
                 ),
                 content: SingleChildScrollView(
@@ -86,8 +85,8 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
                     height: 60,
                     child: Column(
                       children: [
-                        AppDividers.boldDivider(isDarkMode),
-                        AppDividers.boldDivider(isDarkMode),
+                        AppDividers.boldDivider(theme),
+                        AppDividers.boldDivider(theme),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [

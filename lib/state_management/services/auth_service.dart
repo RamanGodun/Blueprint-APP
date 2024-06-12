@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -21,6 +19,22 @@ class AuthService {
 
   void signOutGoogle() async {
     await googleSignIn.signOut();
-    print("User Signed Out");
+    // print("User Signed Out");
+  }
+
+  Future<UserCredential?> signInWithEmailAndPassword(
+      String email, String password) async {
+    return await firebaseAuth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
+
+  Future<UserCredential?> createUserWithEmailAndPassword(
+      String email, String password) async {
+    return await firebaseAuth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
   }
 }

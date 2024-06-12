@@ -191,7 +191,7 @@ class CustomListTile extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            child: AppDividers.divider(isDarkTheme, true),
+            child: AppDividers.divider(isDarkTheme),
           ),
         ],
       );
@@ -270,7 +270,7 @@ class CustomListTile extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            child: AppDividers.divider(isDarkTheme, true),
+            child: AppDividers.divider(isDarkTheme),
           ),
         ],
       );

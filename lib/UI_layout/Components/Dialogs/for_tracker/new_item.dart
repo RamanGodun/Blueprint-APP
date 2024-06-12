@@ -9,7 +9,7 @@ import '../../../../State_management/Models/models_4_tracker_on_isar /model_of_s
 import '../../../../State_management/Providers/Provider_4_tracker/categories_provider.dart';
 import '../../../../State_management/Helpers/For_tracker/category_helpers.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
-import '../../_Widgets_STYLING/_textfield_styling.dart';
+import '../../Text_fields/app_text_fields.dart';
 import '../../Buttons/for_tracker/drop_button2.dart';
 import '../../Buttons/for_tracker/sc_drop_button.dart';
 import '../../Pickers/cupertino_date_picker.dart';
@@ -50,9 +50,14 @@ class _NewItemDialogState extends State<NewItemDialog> {
   late Category _selectedCategory;
   late List<SubCategory> _subCategoriesOfSelectedCategory;
   late SubCategory _currentSubCategory;
+  late ThemeData theme;
+  late TextTheme textTheme;
+  late Size deviceSize;
+  late ValueNotifier<bool> isValid;
 
   @override
   void initState() {
+    super.initState();
     _selectedCategory = widget.item?.selectedCategory ??
         CategoriesProvider().kCategoriesData[CategoriesEnum.other]!;
     _subCategoriesOfSelectedCategory = CategoriesProvider().kSubCategoriesData[
@@ -60,18 +65,24 @@ class _NewItemDialogState extends State<NewItemDialog> {
     // _currentSubCategory = widget.item?.selectedSubCategory ??
     //     CategoriesProvider().kSubCategoriesData[
     //         CategoriesHelper.categoryToEnum(_selectedCategory.title)]![0];
-    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    ThemeData theme = Helpers.themeGet(context);
+    textTheme = theme.textTheme;
+    deviceSize = Helpers.deviceSizeGet(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Helpers.textThemeGet(context);
     TextStyle labelStyle = textTheme.displaySmall!
         .copyWith(color: Theme.of(context).colorScheme.onSurface);
 
     return Material(
       child: Padding(
-        padding: EdgeInsets.only(bottom: Helpers.deviceHeightGet(context) / 10),
+        padding: EdgeInsets.only(bottom: deviceSize.height / 10),
         child: CupertinoAlertDialog(
           title: Text(
             (widget.isPurchase != null ||
@@ -98,9 +109,9 @@ class _NewItemDialogState extends State<NewItemDialog> {
                     ),
                     const SizedBox(width: 10),
                     Expanded(
-                      child: DialogStyling.cupertinoTextField(
+                      child: AppTextField(
                         controller: widget.nameController,
-                        placeholder:
+                        hintText:
                             (widget.isNewPurchaseOnBaseOfBlueprint != null)
                                 ? widget.item!.name
                                 : (widget.isExpense != null)
@@ -108,9 +119,11 @@ class _NewItemDialogState extends State<NewItemDialog> {
                                     : (widget.isPurchase != null)
                                         ? AppStrings.inputPurchaseName
                                         : AppStrings.inputBlueprintName,
-                        context: context,
-                        isText: true,
-                        isName: true,
+                        theme: theme,
+                        isValid: isValid,
+                        validatorType: ValidatorType.name,
+                        validateInput: () =>
+                            validateInput(widget.nameController),
                       ),
                     ),
                   ],
@@ -126,15 +139,18 @@ class _NewItemDialogState extends State<NewItemDialog> {
                     const SizedBox(width: 4),
                     SizedBox(
                       width: 38,
-                      child: DialogStyling.cupertinoTextField(
+                      child: AppTextField(
                         controller: widget.quantityController,
-                        placeholder:
+                        hintText:
                             (widget.isNewPurchaseOnBaseOfBlueprint != null)
                                 ? widget.item!.quantity.toString()
                                 : '1',
-                        context: context,
-                        isText: false,
+                        theme: theme,
+                        isValid: isValid,
+                        validatorType: ValidatorType.integer,
                         maxLength: 4,
+                        validateInput: () =>
+                            validateInput(widget.nameController),
                       ),
                     ),
                     //
@@ -143,12 +159,14 @@ class _NewItemDialogState extends State<NewItemDialog> {
                     const SizedBox(width: 4),
                     SizedBox(
                       width: 30,
-                      child: DialogStyling.cupertinoTextField(
+                      child: AppTextField(
                         controller: widget.measurementUnitController,
-                        placeholder: '-',
-                        context: context,
-                        isText: true,
+                        hintText: "-",
+                        theme: theme,
+                        isValid: isValid,
                         maxLength: 3,
+                        validateInput: () =>
+                            validateInput(widget.nameController),
                       ),
                     ),
                     const Spacer(),
@@ -171,15 +189,18 @@ class _NewItemDialogState extends State<NewItemDialog> {
                       style: labelStyle,
                     ),
                     Expanded(
-                      child: DialogStyling.cupertinoTextField(
+                      child: AppTextField(
                         controller: widget.amountController,
-                        placeholder:
-                            // (widget.isNewPurchaseOnBaseOfBlueprint != null)
-                            //     ? Helpers().formatAmount(widget.item!.amount) :
-                            "0 ",
-                        context: context,
-                        isText: false,
+                        hintText:
+                            (widget.isNewPurchaseOnBaseOfBlueprint != null)
+                                ? Helpers().formatAmount(widget.item!.amount)
+                                : "0 ",
+                        theme: theme,
+                        isValid: isValid,
+                        validatorType: ValidatorType.double,
                         maxLength: 10,
+                        validateInput: () =>
+                            validateInput(widget.nameController),
                       ),
                     ),
                     const Spacer(),
@@ -189,7 +210,7 @@ class _NewItemDialogState extends State<NewItemDialog> {
                 //
 
                 SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  width: deviceSize.width,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     mainAxisSize: MainAxisSize.min,
@@ -217,7 +238,7 @@ class _NewItemDialogState extends State<NewItemDialog> {
 
                 const SizedBox(height: 8),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  width: deviceSize.width,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     mainAxisSize: MainAxisSize.min,
@@ -326,6 +347,10 @@ class _NewItemDialogState extends State<NewItemDialog> {
           CategoriesProvider().kSubCategoriesData[
               CategoriesHelper.categoryToEnum(newCategory.title)]!;
     });
+  }
+
+  void validateInput(TextEditingController controller) {
+    isValid.value = controller.text.isNotEmpty;
   }
 //
 }

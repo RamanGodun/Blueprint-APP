@@ -109,8 +109,8 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
                     height: 60,
                     child: Column(
                       children: [
-                        AppDividers.boldDivider(isDarkMode),
-                        AppDividers.boldDivider(isDarkMode),
+                        AppDividers.boldDivider(theme),
+                        AppDividers.boldDivider(theme),
                         Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: TextButton(

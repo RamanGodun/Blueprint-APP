@@ -8,8 +8,8 @@ import '../_Widgets_STYLING/app_paddings.dart';
 class AppDividers {
 /* Custom Dividers
  */
-  static Widget divider(bool isDarkMode, bool? isSymmetric) {
-    bool isWithSymmetry = (isSymmetric != null) ? true : false;
+  static Widget divider(bool isDarkMode, {bool? isSymmetric}) {
+    bool isWithSymmetry = isSymmetric ?? true;
     return Padding(
       padding: isWithSymmetry ? AppPaddings.zero : AppPaddings.forDivider,
       child: Divider(
@@ -22,8 +22,8 @@ class AppDividers {
     );
   }
 
-  static Widget divider2(BuildContext context) {
-    final colorScheme = Helpers.colorSchemeGet(context);
+  static Widget divider2(ThemeData theme) {
+    final colorScheme = theme.colorScheme;
     return Divider(
       thickness: 0.5,
       color: colorScheme.inverseSurface.withOpacity(0.5),
@@ -32,7 +32,8 @@ class AppDividers {
 
 /* BOLD Dividers
  */
-  static Widget boldDivider(bool isDarkMode) {
+  static Widget boldDivider(ThemeData theme) {
+    final isDarkMode = Helpers.isDarkTheme(theme);
     return Padding(
       padding: AppPaddings.forBoldDivider,
       child: Divider(
@@ -48,28 +49,30 @@ class AppDividers {
 /*
   DIVIDER 4 Sign page
  */
-  static Widget dividerForSignPage(BuildContext context) {
-    final theme = Helpers.themeGet(context);
-    return Column(children: [
-      const SizedBox(height: 40),
-      Row(
-        children: <Widget>[
-          const Expanded(child: Divider()),
-          Padding(
-            padding: AppPaddings.horizontal8,
-            child: Text(
-              AppStrings.continueWith,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface,
-                fontWeight: FontWeight.w500,
+  static Widget dividerForSignPage(ThemeData theme) {
+    // final isDarkMode = Helpers.isDarkTheme(theme);
+    return SizedBox(
+      height: 40,
+      child: Column(children: [
+        Row(
+          children: <Widget>[
+            Expanded(child: AppDividers.divider2(theme)),
+            Padding(
+              padding: AppPaddings.horizontal8,
+              child: Text(
+                AppStrings.continueWith,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurface,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-          ),
-          const Expanded(child: Divider()),
-        ],
-      ),
-      const SizedBox(height: 20),
-    ]);
+            Expanded(child: AppDividers.divider2(theme)),
+          ],
+        ),
+        const SizedBox(height: 20),
+      ]),
+    );
   }
 
 /*

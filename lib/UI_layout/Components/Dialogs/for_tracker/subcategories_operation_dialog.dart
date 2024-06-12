@@ -6,7 +6,7 @@ import '../../../../State_management/Models/models_4_tracker_on_isar /item_model
 import '../../../../State_management/Models/models_4_tracker_on_isar /model_of_subcategory.dart';
 import '../../../../State_management/Src/Custom_icons/custom_icons_src.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
-import '../../_Widgets_STYLING/_textfield_styling.dart';
+import '../../Text_fields/app_text_fields.dart';
 import '../../Buttons/for_tracker/drop_button2.dart';
 import '../../Pickers/icon_picker.dart';
 import 'color_picker_window.dart';
@@ -43,6 +43,10 @@ class _SubCategoriesOperationDialogState
   List<ItemModel> allItemsFromDB = [];
   late Color selectedColor;
   late IconData selectedIcon;
+  late ThemeData theme;
+  late TextTheme textTheme;
+  late Size deviceSize;
+  late ValueNotifier<bool> isValid;
 
   @override
   void initState() {
@@ -58,6 +62,13 @@ class _SubCategoriesOperationDialogState
     super.initState();
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    ThemeData theme = Helpers.themeGet(context);
+    textTheme = theme.textTheme;
+    deviceSize = Helpers.deviceSizeGet(context);
+  }
   // void getAllItems() {
   //   Provider.of<ItemsDataBase>(context, listen: false)
   //       .getAllItemsFromDB()
@@ -71,14 +82,12 @@ class _SubCategoriesOperationDialogState
 
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;
-    TextTheme textTheme = Helpers.textThemeGet(context);
     TextStyle labelStyle = textTheme.displaySmall!
         .copyWith(color: Theme.of(context).colorScheme.onSurface);
 
     return Material(
       child: Padding(
-        padding: EdgeInsets.only(bottom: Helpers.deviceHeightGet(context) / 10),
+        padding: EdgeInsets.only(bottom: deviceSize.height / 10),
         child: CupertinoAlertDialog(
           title: Text(
             widget.isNewSubcategory
@@ -93,14 +102,14 @@ class _SubCategoriesOperationDialogState
             children: [
               const SizedBox(height: 8),
               const SizedBox(width: 10),
-              DialogStyling.cupertinoTextField(
+              AppTextField(
                 controller: widget.nameController,
-                placeholder: (widget.selectedSubCategory != null)
+                hintText: (widget.selectedSubCategory != null)
                     ? widget.selectedSubCategory!.title
                     : AppStrings.enterSubCategoryName,
-                context: context,
-                isText: true,
-                maxLength: 25,
+                theme: theme,
+                isValid: isValid,
+                validateInput: () => validateInput(widget.nameController),
               ),
               Align(
                   alignment: Alignment.center,
@@ -137,12 +146,12 @@ class _SubCategoriesOperationDialogState
               const SizedBox(height: 5),
               SizedBox(
                 height: 20,
-                width: screenSize.width / 1.5,
+                width: deviceSize.width / 1.5,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: screenSize.width / 3.85,
+                      width: deviceSize.width / 3.85,
                       height: 22,
                       decoration: BoxDecoration(
                         color: selectedColor,
@@ -156,7 +165,7 @@ class _SubCategoriesOperationDialogState
                             selectedColor = color;
                           });
                         }),
-                    SizedBox(width: screenSize.width / 7.85),
+                    SizedBox(width: deviceSize.width / 7.85),
                     Icon(selectedIcon, size: 15, color: selectedColor),
                     const SizedBox(width: 8),
                     IconPickerWidget(
@@ -199,5 +208,8 @@ class _SubCategoriesOperationDialogState
     );
   }
 
+  void validateInput(TextEditingController controller) {
+    isValid.value = controller.text.isNotEmpty;
+  }
 //
 }

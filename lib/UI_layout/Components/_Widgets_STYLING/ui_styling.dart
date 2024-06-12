@@ -49,4 +49,30 @@ abstract class AppBoxDecorations {
       ],
     );
   }
+
+  static BoxShadow boxShadowsType1(ThemeData theme) {
+    final colorScheme = theme.colorScheme;
+    final isDarkMode = Helpers.isDarkTheme(theme);
+    return BoxShadow(
+      color: isDarkMode
+          ? AppColors.cupertinoBlackColor.withOpacity(0.7)
+          : colorScheme.inverseSurface.withOpacity(0.2),
+      spreadRadius: 4,
+      blurRadius: 10,
+      offset: const Offset(0, 3),
+    );
+  }
+
+  static BoxShadow boxShadowsType2(ThemeData theme) {
+    final colorScheme = theme.colorScheme;
+    final isDarkMode = Helpers.isDarkTheme(theme);
+    return BoxShadow(
+      color: isDarkMode
+          ? AppColors.cupertinoBlackColor.withOpacity(0.7)
+          : colorScheme.inverseSurface.withOpacity(0.1),
+      spreadRadius: 1,
+      blurRadius: 5,
+      offset: const Offset(0, 1),
+    );
+  }
 }

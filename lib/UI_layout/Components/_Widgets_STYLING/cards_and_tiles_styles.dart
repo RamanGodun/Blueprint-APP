@@ -35,33 +35,21 @@ class CardsAndTilesStyles {
     );
   }
 
-  static Widget tileContainer(BuildContext context, {required Widget child}) {
-    final colorScheme = Helpers.colorSchemeGet(context);
+  static Widget tileContainer(ThemeData theme,
+      {required Widget child, bool? fromSignPage}) {
+    final colorScheme = theme.colorScheme;
     return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(12),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
-          padding: const EdgeInsets.all(12),
+          padding: EdgeInsets.symmetric(
+              horizontal: 16, vertical: (fromSignPage != null) ? 16 : 6),
           decoration: BoxDecoration(
-            border:
-                Border.all(color: Colors.white.withOpacity(0.2), width: 1.5),
-            borderRadius: BorderRadius.circular(16),
-            color: colorScheme.surface.withOpacity(0.7),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                spreadRadius: 4,
-                blurRadius: 10,
-                offset: const Offset(0, 3),
-              ),
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                spreadRadius: 1,
-                blurRadius: 5,
-                offset: const Offset(0, 1),
-              ),
-            ],
+            color: colorScheme.surface.withOpacity(0.95),
+            border: Border.all(
+                color: colorScheme.inverseSurface.withOpacity(0.2), width: 0.9),
+            borderRadius: BorderRadius.circular(12),
           ),
           child: child,
         ),

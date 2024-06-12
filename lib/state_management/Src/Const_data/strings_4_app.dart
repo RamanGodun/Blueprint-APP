@@ -21,7 +21,7 @@ class AppStrings {
       "Chosen quantity of questions:    ";
   static const String chosenComplexity = "Chosen complexity:    ";
   static const List<String> complexityLevels = ["intern", "junior", "middle"];
-  static const String continueWith = "Or continue wit";
+  static const String continueWith = "Or continue with";
   static const String delete = "Видалити";
   static const List<String> iconTitles = [
     'трекер',

@@ -23,3 +23,5 @@ enum CategoriesEnum {
   household,
   other
 }
+
+enum ValidatorType { integer, double, string, name, phoneNumber }

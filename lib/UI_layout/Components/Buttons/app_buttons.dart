@@ -33,10 +33,13 @@ class AppCustomButtons {
     required bool isLoginPage,
     required void Function()? onPressed,
   }) {
-    return AppButtonsStyle.styleFrom(
-      context,
-      onPressed: onPressed,
-      buttonText: isLoginPage ? 'Sign In' : 'Sign Up',
+    return SizedBox(
+      width: double.infinity,
+      child: AppButtonsStyle.styleFrom(
+        context,
+        onPressed: onPressed,
+        buttonText: isLoginPage ? 'Sign In' : 'Sign Up',
+      ),
     );
   }
 

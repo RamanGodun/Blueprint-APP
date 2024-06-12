@@ -11,6 +11,7 @@ import '../Models/models_4_FI_on_hive/model_4_hive.dart' as model_hive;
 import '../Models/models_4_FI_on_hive/model_4fi_on_hive.dart'
     as question_model_hive;
 import 'animation_controller_service.dart';
+import 'text_validation_service.dart';
 
 class DIServiceLocator {
   DIServiceLocator._internal();
@@ -29,8 +30,18 @@ class DIServiceLocator {
     await _setupIsarService();
     await _setupHiveBox();
     _setupAnimationService();
+    _setupTextValidation();
     // _setupMappingHelperService();
     // _setupThemeService();
+  }
+
+/*TextFieldValidationService */
+
+  void _setupTextValidation() {
+    if (!_getIt.isRegistered<TextFieldValidationService>()) {
+      _getIt.registerSingleton<TextFieldValidationService>(
+          TextFieldValidationService());
+    }
   }
 
   Future<void> _setupSharedPreferences() async {

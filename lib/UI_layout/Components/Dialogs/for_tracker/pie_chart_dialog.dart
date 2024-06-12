@@ -136,7 +136,7 @@ class PieChartDialog {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          AppDividers.divider(isDarkTheme, true),
+                          AppDividers.divider(isDarkTheme),
                           const SizedBox(height: 5),
                           Expanded(
                             child: ReorderableListView.builder(
@@ -292,7 +292,7 @@ class PieChartDialog {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      child: AppDividers.divider(isDarkTheme, true),
+                      child: AppDividers.divider(isDarkTheme),
                     ),
                   ],
                 ),

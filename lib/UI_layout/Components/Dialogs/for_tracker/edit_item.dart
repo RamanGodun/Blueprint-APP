@@ -8,7 +8,7 @@ import '../../../../State_management/Models/models_4_tracker_on_isar /model_of_s
 import '../../../../State_management/Providers/Provider_4_tracker/categories_provider.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../../../State_management/Helpers/For_tracker/category_helpers.dart';
-import '../../_Widgets_STYLING/_textfield_styling.dart';
+import '../../Text_fields/app_text_fields.dart';
 import '../../Buttons/for_tracker/drop_button2.dart';
 import '../../Buttons/for_tracker/sc_drop_button.dart';
 import '../../Pickers/cupertino_date_picker.dart';
@@ -49,9 +49,14 @@ class _EditItemDialogState extends State<EditItemDialog> {
   late Category _selectedCategory;
   late List<SubCategory> _subCategoriesOfSelectedCategory;
   late SubCategory _currentSubCategory;
+  late ThemeData theme;
+  late TextTheme textTheme;
+  late Size deviceSize;
+  late ValueNotifier<bool> isValid;
 
   @override
   void initState() {
+    super.initState();
     _selectedCategory = widget.item.selectedCategory ??
         CategoriesProvider().kCategoriesData[CategoriesEnum.other]!;
     _subCategoriesOfSelectedCategory = CategoriesProvider().kSubCategoriesData[
@@ -60,18 +65,25 @@ class _EditItemDialogState extends State<EditItemDialog> {
         // widget.item.selectedSubCategory ??
         _subCategoriesOfSelectedCategory[0];
     selectedDate = widget.item.date;
-    super.initState();
+    isValid = ValueNotifier(true);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    ThemeData theme = Helpers.themeGet(context);
+    textTheme = theme.textTheme;
+    deviceSize = Helpers.deviceSizeGet(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Helpers.textThemeGet(context);
     TextStyle labelStyle = textTheme.displaySmall!
         .copyWith(color: Theme.of(context).colorScheme.onSurface);
 
     return Material(
       child: Padding(
-        padding: EdgeInsets.only(bottom: Helpers.deviceHeightGet(context) / 10),
+        padding: EdgeInsets.only(bottom: deviceSize.height / 10),
         child: CupertinoAlertDialog(
           title: Text(
             (widget.isPurchase != null)
@@ -96,12 +108,12 @@ class _EditItemDialogState extends State<EditItemDialog> {
                   ),
                   const SizedBox(width: 10),
                   Expanded(
-                    child: DialogStyling.cupertinoTextField(
+                    child: AppTextField(
                       controller: widget.nameController,
-                      placeholder: widget.item.name,
-                      context: context,
-                      isText: true,
-                      maxLength: 25,
+                      hintText: widget.item.name,
+                      theme: theme,
+                      isValid: isValid,
+                      validateInput: () => validateInput(widget.nameController),
                     ),
                   ),
                 ],
@@ -117,12 +129,14 @@ class _EditItemDialogState extends State<EditItemDialog> {
                   const SizedBox(width: 4),
                   SizedBox(
                     width: 38,
-                    child: DialogStyling.cupertinoTextField(
+                    child: AppTextField(
                       controller: widget.quantityController,
-                      placeholder: widget.item.quantity.toString(),
-                      context: context,
-                      isText: false,
+                      hintText: widget.item.quantity.toString(),
+                      theme: theme,
+                      isValid: isValid,
+                      validatorType: ValidatorType.double,
                       maxLength: 4,
+                      validateInput: () => validateInput(widget.nameController),
                     ),
                   ),
                   //
@@ -130,12 +144,13 @@ class _EditItemDialogState extends State<EditItemDialog> {
                   Text(AppStrings.measureUnit, style: labelStyle),
                   const SizedBox(width: 4),
                   Expanded(
-                    child: DialogStyling.cupertinoTextField(
+                    child: AppTextField(
                       controller: widget.measurementUnitController,
-                      placeholder: widget.item.measurementUnit,
-                      context: context,
-                      isText: true,
+                      hintText: widget.item.measurementUnit,
+                      theme: theme,
+                      isValid: isValid,
                       maxLength: 3,
+                      validateInput: () => validateInput(widget.nameController),
                     ),
                   ),
                   const Spacer(),
@@ -159,22 +174,22 @@ class _EditItemDialogState extends State<EditItemDialog> {
                     style: labelStyle,
                   ),
                   Expanded(
-                    child: DialogStyling.cupertinoTextField(
-                      controller: widget.amountController,
-                      placeholder: "",
-                      // placeholder: widget.item.amount.toString(),
-                      context: context,
-                      isText: false,
-                      maxLength: 10,
-                    ),
-                  ),
+                      child: AppTextField(
+                    controller: widget.amountController,
+                    hintText: widget.item.amount.toString(),
+                    theme: theme,
+                    isValid: isValid,
+                    validatorType: ValidatorType.double,
+                    maxLength: 10,
+                    validateInput: () => validateInput(widget.nameController),
+                  )),
                   const Spacer(),
                 ],
               ),
               const SizedBox(height: 8),
 
               SizedBox(
-                width: MediaQuery.of(context).size.width,
+                width: deviceSize.width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   mainAxisSize: MainAxisSize.min,
@@ -184,7 +199,7 @@ class _EditItemDialogState extends State<EditItemDialog> {
                     Text(AppStrings.category, style: labelStyle),
                     const SizedBox(width: 5),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width / 2.1,
+                      width: deviceSize.width / 2.1,
                       child: DropButton(
                         item: widget.item,
                         onCategoryChanged: (newCategory) {
@@ -204,7 +219,7 @@ class _EditItemDialogState extends State<EditItemDialog> {
               //
               const SizedBox(height: 8),
               SizedBox(
-                width: MediaQuery.of(context).size.width,
+                width: deviceSize.width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   mainAxisSize: MainAxisSize.min,
@@ -214,7 +229,7 @@ class _EditItemDialogState extends State<EditItemDialog> {
                     Text(AppStrings.subCategory, style: labelStyle),
                     const SizedBox(width: 10),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width / 2.1,
+                      width: deviceSize.width / 2.1,
                       child: SubCategoryDropButton(
                         item: widget.item,
                         subCategoriesOfSelectedCategory:
@@ -297,6 +312,10 @@ class _EditItemDialogState extends State<EditItemDialog> {
           CategoriesProvider().kSubCategoriesData[
               CategoriesHelper.categoryToEnum(newCategory.title)]!;
     });
+  }
+
+  void validateInput(TextEditingController controller) {
+    isValid.value = controller.text.isNotEmpty;
   }
 //
 }
