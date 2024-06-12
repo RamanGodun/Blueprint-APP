@@ -36,7 +36,7 @@ class _StartPageState extends State<StartPage> {
         middle: Row(
           children: [
             const SizedBox(width: 50),
-            AppTextWidgetsStyles.forAppBarTitle(context,
+            AppTextWidgets.forAppBarTitle(context,
                 theme: theme, text: LocaleKeys.startScreen.tr()),
             const Spacer(),
           ],

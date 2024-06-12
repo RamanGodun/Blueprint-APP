@@ -54,6 +54,12 @@ abstract class AppTextStyles {
     return textStyle;
   }
 
+  static TextStyle forActionText(ThemeData theme) {
+    final TextStyle forActionText =
+        theme.textTheme.labelLarge!.copyWith(color: theme.colorScheme.primary);
+    return forActionText;
+  }
+
 /* Text styles for FI APP
  */
   static TextStyle questionTextStyle(ThemeData theme) {
@@ -162,5 +168,17 @@ abstract class AppTextStyles {
       color: itemColor,
       fontSize: isExpense ? 10 : 12,
     );
+  }
+
+  static TextStyle forTextFormField(ThemeData theme, double? textSize) {
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+    final textStyle = textTheme.bodyMedium!.copyWith(
+      color: colorScheme.primary,
+      fontSize: textSize ?? 17,
+      fontWeight: FontWeight.w500,
+      overflow: TextOverflow.ellipsis,
+    );
+    return textStyle;
   }
 }

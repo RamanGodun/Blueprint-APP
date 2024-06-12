@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../_Widgets_STYLING/app_text_styles_for_ui.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
+import '../_Widgets_STYLING/app_text_styles.dart';
 
-class AppTextWidgetsStyles {
+class AppTextWidgets {
 /* 
    OFTEN USED Text widgets
  */
@@ -106,4 +107,31 @@ for JBnTracker
           "$AppStrings.errorOcurredTextLoc $errorText$AppStrings.tryLaterTextLoc"),
     );
   }
+
+  static Text greetingsText(ThemeData theme, isLoginPage) {
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+    final greetingsText = Text(
+      isLoginPage
+          ? 'Welcome back, you\'ve been missed!'
+          : 'Let\'s create an account',
+      style: textTheme.titleMedium?.copyWith(
+        color: colorScheme.onSurface,
+        fontWeight: FontWeight.w600,
+      ),
+      textAlign: TextAlign.center,
+    );
+    return greetingsText;
+  }
+
+  static Text textForNotValidText(ThemeData theme) {
+    final textForNotValidText = Text(
+      'This field cannot be empty',
+      style: theme.textTheme.labelMedium!.copyWith(
+        color: AppColors.kErrorColor,
+      ),
+    );
+    return textForNotValidText;
+  }
+//
 }

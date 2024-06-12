@@ -8,7 +8,7 @@ import '../../../../State_management/Models/models_4_tracker_on_isar /model_of_s
 import '../../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../_Widgets_STYLING/cards_and_tiles_styles.dart';
-import '../../_Widgets_STYLING/app_text_styles_for_ui.dart';
+import '../../_Widgets_STYLING/app_text_styles.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({

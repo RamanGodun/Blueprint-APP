@@ -1,17 +1,19 @@
-// ignore_for_file: use_build_context_synchronously, avoid_print
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../State_management/Services/auth_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Cards_and_tiles/sign_in_tile.dart';
+import '../../Components/Images/image_widgets.dart';
 import '../../Components/Mini_widgets/dividers.dart';
 import '../../Components/Switchers/auth_mode_switcher.dart';
 import '../../Components/Text_fields/app_text_fields.dart';
 import '../../Components/Cashed_widgets/cashed_widgets.dart';
-import '../../../State_management/Src/Generated_code/by spider/resources.dart';
+import '../../Components/Text_widgets/forgot_password.dart';
+import '../../Components/Text_widgets/text_widgets.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {
   final Function() changeAuthMode;
@@ -35,6 +37,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   late ThemeData theme;
   late ColorScheme colorScheme;
   late TextTheme textTheme;
+  late Size deviceSize;
   late ValueNotifier<bool> isValid;
 
   @override
@@ -49,6 +52,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    deviceSize = Helpers.deviceSizeGet(context);
     theme = Helpers.themeGet(context);
     textTheme = theme.textTheme;
     colorScheme = theme.colorScheme;
@@ -67,28 +71,14 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         const SizedBox(height: 50),
-                        // logo
-                        Image.asset(
-                          ThisAppImages.flutterLogo,
-                          color: colorScheme.primary,
-                          height: 70,
-                        ),
+                        AppImages.appLogoWidget(deviceSize, colorScheme),
                         const SizedBox(height: 50),
-                        // welcome text
-                        Text(
-                          widget.isLoginPage
-                              ? 'Welcome back, you\'ve been missed!'
-                              : 'Let\'s create an account',
-                          style: textTheme.titleMedium?.copyWith(
-                            color: colorScheme.onSurface,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
+                        AppTextWidgets.greetingsText(theme, widget.isLoginPage),
                         const SizedBox(height: 25),
-                        // email textfield
+                        /* email textfield */
                         AppTextField(
                           theme: theme,
                           controller: emailController,
@@ -96,17 +86,10 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                           validateInput: () => validateInput(emailController),
                           isValid: isValid,
                           icon: Icons.mail,
-                          isInCupertinoStyle: false,
                         ),
                         if (!isValid.value)
-                          const Text(
-                            'This field cannot be empty',
-                            style: TextStyle(
-                              color: AppColors.kErrorColor,
-                              fontSize: 12,
-                            ),
-                          ),
-                        // password textfield
+                          AppTextWidgets.textForNotValidText(theme),
+                        /* password textfield */
                         AppTextField(
                           theme: theme,
                           controller: passwordController,
@@ -115,7 +98,6 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                               validateInput(passwordController),
                           isValid: isValid,
                           icon: Icons.lock,
-                          isInCupertinoStyle: false,
                           isObscureText: true,
                         ),
                         if (!widget.isLoginPage &&
@@ -128,27 +110,12 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                                 validateInput(passwordConfirmationController!),
                             isValid: isValid,
                             icon: Icons.lock_outline,
-                            isInCupertinoStyle: false,
                             isObscureText: true,
                           ),
                         if (widget.isLoginPage)
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: TextButton(
-                              onPressed: () {
-                                // Forgot password logic
-                              },
-                              child: Text(
-                                'Forgot Password?',
-                                style: textTheme.bodyMedium?.copyWith(
-                                  color: colorScheme.primary,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                          ),
-                        const SizedBox(height: 35),
-                        // sign in/sign up button
+                          const ForgotPasswordTextWidget(),
+                        const SizedBox(height: 45),
+                        /* sign in/sign up button */
                         AppCustomButtons.signInUp(
                           context,
                           isLoginPage: widget.isLoginPage,
@@ -157,25 +124,30 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                         const SizedBox(height: 50),
                         AppDividers.dividerForSignPage(theme),
                         const SizedBox(height: 20),
-                        // google + apple sign in buttons
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SignInTile(
-                              onTap: _googleSignIn,
-                              logInType: LogInType.googleSignIn,
-                            ),
-                            const SizedBox(width: 25),
-                            SignInTile(
-                              onTap: () {},
-                              logInType: LogInType.appleSignIn,
-                            ),
-                          ],
+                        /* google + apple sign in buttons */
+                        SizedBox(
+                          height: 60,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SignInTile(
+                                onTap: _googleSignIn,
+                                logInType: LogInType.googleSignIn,
+                              ),
+                              const SizedBox(width: 25),
+                              SignInTile(
+                                onTap: () {},
+                                logInType: LogInType.appleSignIn,
+                              ),
+                            ],
+                          ),
                         ),
-                        const SizedBox(height: 50),
-                        AuthModeSwitcher(
-                          isLoginPage: widget.isLoginPage,
-                          changeAuthMode: widget.changeAuthMode,
+                        Padding(
+                          padding: const EdgeInsets.only(top: 45.0, bottom: 20),
+                          child: AuthModeSwitcher(
+                            isLoginPage: widget.isLoginPage,
+                            changeAuthMode: widget.changeAuthMode,
+                          ),
                         ),
                       ],
                     ),
@@ -206,7 +178,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
       final AuthService authService = AuthService();
       await authService.signInWithGoogle();
     } catch (error) {
-      print(error);
+      //
     }
     setState(() {
       isLoading = false;
@@ -246,7 +218,6 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
       Navigator.pop(context);
     } catch (e) {
       Navigator.pop(context);
-      print(e);
     }
   }
 

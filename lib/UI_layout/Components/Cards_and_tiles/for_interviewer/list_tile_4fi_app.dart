@@ -6,7 +6,7 @@ import '../../../../State_management/Models/models_4_FI_on_hive/question_model.d
 import '../../Mini_widgets/mini_widgets.dart';
 import '../../_Widgets_STYLING/Custom_layouts/fi_list_tile_layouts.dart';
 import '../../_Widgets_STYLING/cards_and_tiles_styles.dart';
-import '../../_Widgets_STYLING/app_text_styles_for_ui.dart';
+import '../../_Widgets_STYLING/app_text_styles.dart';
 
 class CustomListTile extends StatelessWidget {
   final void Function(BuildContext) onEditPressed;

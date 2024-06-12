@@ -1,4 +1,3 @@
-import 'package:blueprint_4app/UI_layout/Components/_Widgets_STYLING/app_paddings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,8 +5,9 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
 
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../_Widgets_STYLING/app_text_styles_for_ui.dart';
-import '../_Widgets_STYLING/ui_styling.dart';
+import '../_Widgets_STYLING/app_styling_constants.dart';
+import '../_Widgets_STYLING/app_text_styles.dart';
+import '../_Widgets_STYLING/app_box_decoration.dart';
 
 class ComplexityPicker extends StatefulWidget {
   final Function(String) setSelectedComplexity;
@@ -50,19 +50,19 @@ class _ComplexityPickerState extends State<ComplexityPicker> {
     return Material(
       color: AppColors.transparent,
       child: Padding(
-        padding: AppPaddings.zero,
+        padding: AppStylingConstants.zero,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               height: 29,
-              padding: AppPaddings.zero,
-              decoration: AppBoxDecorations.forComplexityPicker(context),
+              padding: AppStylingConstants.zero,
+              decoration: AppBoxDecorations.forComplexityPicker(theme),
               child: CupertinoSlidingSegmentedControl(
                 thumbColor: colorScheme.primary.withOpacity(0.75),
                 backgroundColor: colorScheme.surface.withOpacity(0.25),
-                padding: AppPaddings.zero,
+                padding: AppStylingConstants.zero,
                 children: segmentedControlChildren,
                 groupValue: _selectedSegment,
                 onValueChanged: (value) {

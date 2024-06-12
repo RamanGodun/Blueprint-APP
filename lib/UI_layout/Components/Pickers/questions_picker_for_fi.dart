@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../_Widgets_STYLING/app_text_styles_for_ui.dart';
+import '../_Widgets_STYLING/app_text_styles.dart';
 
 class QuantityPicker extends StatefulWidget {
   final Function(double) setSelectedQuantity;

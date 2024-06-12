@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import 'app_text_styles_for_ui.dart';
+import 'app_text_styles.dart';
 
 class AppDialogsButtonsStyles {
   /* CUSTOM style */

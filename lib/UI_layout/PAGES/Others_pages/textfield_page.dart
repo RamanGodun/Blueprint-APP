@@ -26,7 +26,7 @@ class TextFieldPage extends HookWidget {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         leading: AppIconButtons.backIcon(context),
-        middle: AppTextWidgetsStyles.forAppBarTitle(context,
+        middle: AppTextWidgets.forAppBarTitle(context,
             theme: theme, text: "New Screen"),
       ),
       child: Material(

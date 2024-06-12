@@ -45,17 +45,13 @@ Quiz background
 App LOGO widget
  */
   static Widget appLogoWidget(Size deviceSize, ColorScheme colorScheme) {
-    return Padding(
-      padding: EdgeInsets.only(
-          top: deviceSize.height * 0.15, bottom: deviceSize.height * 0.1),
-      child: SizedBox(
-          height: deviceSize.height * 0.1,
-          child: Image.asset(
-            ThisAppImages.apple,
-            fit: BoxFit.fitHeight,
-            color: colorScheme.primary.withOpacity(0.9),
-          )),
-    );
+    return SizedBox(
+        height: deviceSize.height * 0.1,
+        child: Image.asset(
+          ThisAppImages.flutterLogo,
+          fit: BoxFit.fitHeight,
+          color: colorScheme.primary.withOpacity(0.9),
+        ));
   }
 
   static Image noImagePlaceholder() {

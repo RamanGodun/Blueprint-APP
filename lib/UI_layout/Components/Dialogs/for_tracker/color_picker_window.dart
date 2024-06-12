@@ -6,7 +6,7 @@ import '../../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../Mini_widgets/dividers.dart';
 import '../../_Widgets_STYLING/pickers_styles.dart';
-import '../../_Widgets_STYLING/app_text_styles_for_ui.dart';
+import '../../_Widgets_STYLING/app_text_styles.dart';
 
 class ColorPickerWidget extends StatefulWidget {
   const ColorPickerWidget({

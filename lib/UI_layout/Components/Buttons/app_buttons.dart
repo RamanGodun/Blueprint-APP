@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
-import '../_Widgets_STYLING/buttons_styles.dart';
+import '../_Widgets_STYLING/buttons_styling.dart';
 
 class AppCustomButtons {
 /* WITH SHADOWS
  */
   static Widget goToQuestionManager(BuildContext context) {
-    return AppButtonsStyle.inIOSStyle(
+    return AppButtonsStyling.inIOSStyle(
       context,
       onPressed: () {
         context.pushNamed('QuestionHandler');
@@ -19,7 +19,7 @@ class AppCustomButtons {
   }
 
   static Widget goToGPTPage(BuildContext context) {
-    return AppButtonsStyle.firstDesign(
+    return AppButtonsStyling.firstDesign(
       context,
       onPressed: () {
         context.pushNamed('SendPromptPage');
@@ -35,7 +35,7 @@ class AppCustomButtons {
   }) {
     return SizedBox(
       width: double.infinity,
-      child: AppButtonsStyle.styleFrom(
+      child: AppButtonsStyling.forElevatedButton(
         context,
         onPressed: onPressed,
         buttonText: isLoginPage ? 'Sign In' : 'Sign Up',
@@ -46,7 +46,7 @@ class AppCustomButtons {
   static Widget goToTextFieldPage(BuildContext context
       // required void Function()? onPressed,
       ) {
-    return AppButtonsStyle.withGradient(
+    return AppButtonsStyling.withGradient(
       context,
       onPressed: () {
         context.pushNamed('TextFieldPage');
@@ -58,7 +58,7 @@ class AppCustomButtons {
   static Widget goToHivePage(
       BuildContext context // required void Function()? onPressed,
       ) {
-    return AppButtonsStyle.styleFrom(
+    return AppButtonsStyling.forElevatedButton(
       context,
       onPressed: () {
         context.pushNamed('HiveBoxPage');
@@ -70,7 +70,7 @@ class AppCustomButtons {
   static Widget goToGPTApiKeyPage(
       BuildContext context // required void Function()? onPressed,
       ) {
-    return AppButtonsStyle.withGradient(
+    return AppButtonsStyling.withGradient(
       context,
       onPressed: () {
         context.pushNamed('ApiKeyInputPage');
@@ -83,7 +83,7 @@ class AppCustomButtons {
     BuildContext context, {
     required void Function()? onPressed,
   }) {
-    return AppButtonsStyle.inIOSStyle(
+    return AppButtonsStyling.inIOSStyle(
       context,
       onPressed: onPressed,
       buttonText: "OK",
@@ -94,7 +94,7 @@ class AppCustomButtons {
     BuildContext context, {
     required void Function()? onPressed,
   }) {
-    return AppButtonsStyle.inIOSStyle(
+    return AppButtonsStyling.inIOSStyle(
       context,
       onPressed: onPressed,
       buttonText: "Submit",
@@ -106,7 +106,7 @@ class AppCustomButtons {
     required void Function()? onPressed,
     required buttonText,
   }) {
-    return AppButtonsStyle.forInterviewerAppAnswerButton(
+    return AppButtonsStyling.forInterviewerAppAnswerButton(
       context,
       onPressed: onPressed,
       buttonText: buttonText,
@@ -118,7 +118,7 @@ class AppCustomButtons {
     required void Function()? onPressed,
     required buttonText,
   }) {
-    return AppButtonsStyle.firstDesign(
+    return AppButtonsStyling.firstDesign(
       context,
       onPressed: () {
         context.pushNamed('TextFieldPage');

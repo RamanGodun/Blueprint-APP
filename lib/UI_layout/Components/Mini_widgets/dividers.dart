@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../_Widgets_STYLING/app_paddings.dart';
+import '../_Widgets_STYLING/app_styling_constants.dart';
 
 class AppDividers {
 /* Custom Dividers
@@ -11,7 +11,9 @@ class AppDividers {
   static Widget divider(bool isDarkMode, {bool? isSymmetric}) {
     bool isWithSymmetry = isSymmetric ?? true;
     return Padding(
-      padding: isWithSymmetry ? AppPaddings.zero : AppPaddings.forDivider,
+      padding: isWithSymmetry
+          ? AppStylingConstants.zero
+          : AppStylingConstants.forDivider,
       child: Divider(
         color: isDarkMode
             ? AppColors.kSecondaryDarkColor
@@ -35,7 +37,7 @@ class AppDividers {
   static Widget boldDivider(ThemeData theme) {
     final isDarkMode = Helpers.isDarkTheme(theme);
     return Padding(
-      padding: AppPaddings.forBoldDivider,
+      padding: AppStylingConstants.forBoldDivider,
       child: Divider(
         color: isDarkMode
             ? AppColors.kSecondaryDarkColor
@@ -58,7 +60,7 @@ class AppDividers {
           children: <Widget>[
             Expanded(child: AppDividers.divider2(theme)),
             Padding(
-              padding: AppPaddings.horizontal8,
+              padding: AppStylingConstants.horizontal8,
               child: Text(
                 AppStrings.continueWith,
                 style: theme.textTheme.bodyMedium?.copyWith(

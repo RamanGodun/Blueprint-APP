@@ -3,8 +3,15 @@ import 'package:flutter/material.dart';
 
 import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Services/text_validation_service.dart';
-import '../_Widgets_STYLING/_textfield_styling.dart';
-import '../_Widgets_STYLING/app_text_styles_for_ui.dart';
+import '../_Widgets_STYLING/app_borders.dart';
+import '../_Widgets_STYLING/app_text_styles.dart';
+import '../_Widgets_STYLING/input_styling.dart';
+
+enum WidgetType {
+  textField,
+  textFormField,
+  cupertinoStyle,
+}
 
 class AppTextField extends StatelessWidget {
   AppTextField({
@@ -15,12 +22,11 @@ class AppTextField extends StatelessWidget {
     this.validatorType = ValidatorType.string,
     required this.theme,
     this.hintText = "Enter text",
-    this.isInCupertinoStyle = true,
+    this.widgetType = WidgetType.textField,
     this.isObscureText = false,
     this.maxLength = 24,
     this.isReadOnly = false,
     this.isAllBorder = true,
-    this.isTextFormField = false,
     this.showHintText = true,
     this.showCounterText = false,
     this.isTextAlignCenter = false,
@@ -30,10 +36,10 @@ class AppTextField extends StatelessWidget {
     this.isNeedPrefixIcon = false,
     this.borderRadius = 9.0,
     this.borderWidth = 1.0,
-    this.icon,
-    this.maxLines,
+    this.maxLines = 1,
     this.allowEmpty = false,
-    this.keyboardType,
+    this.keyboardType = TextInputType.text,
+    this.icon,
     this.prefix,
     this.suffixText,
     this.textSize,
@@ -49,49 +55,45 @@ class AppTextField extends StatelessWidget {
   final VoidCallback validateInput;
   final String hintText;
   final ThemeData theme;
-  final bool isInCupertinoStyle;
   final bool isObscureText;
-  final IconData? icon;
   final int maxLength;
+  final double heightOfField;
+  final double widthOfField;
   final bool isReadOnly;
   final bool isAllBorder;
-  final bool isTextFormField;
+  final WidgetType widgetType;
   final bool showCounterText;
   final bool showHintText;
-  final int? maxLines;
+  final int maxLines;
   final bool allowEmpty;
   final bool isTextAlignCenter;
   final TextInputType? keyboardType;
+  final bool isNeedSuffixIcon;
+  final bool isNeedPrefixIcon;
+  final double borderRadius;
+  final double borderWidth;
+  final IconData? icon;
   final Widget? prefix;
   final String? suffixText;
   final double? textSize;
-  final double? heightOfField;
-  final double? widthOfField;
-  final bool isNeedSuffixIcon;
-  final bool isNeedPrefixIcon;
   final String? labelText;
-  final double borderRadius;
-  final double borderWidth;
 
   @override
   Widget build(BuildContext context) {
-    return (isTextFormField == true)
-        ? _buildTextFormField(context)
-        : (isInCupertinoStyle == true)
-            ? _buildCupertinoTextField()
-            : _buildTextField(context);
+    switch (widgetType) {
+      case WidgetType.textFormField:
+        return _buildTextFormField(context);
+      case WidgetType.cupertinoStyle:
+        return _buildCupertinoTextField();
+      case WidgetType.textField:
+      default:
+        return _buildTextField(context);
+    }
   }
 
   Widget _buildTextFormField(BuildContext context) {
     final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
-    final textColor = colorScheme.primary;
-    final textStyle = textTheme.bodyMedium?.copyWith(
-      color: textColor,
-      fontSize: textSize ?? 17,
-      fontWeight: FontWeight.w500,
-      overflow: TextOverflow.ellipsis,
-    );
+    final textStyle = AppTextStyles.forTextFormField(theme, textSize);
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 7),
       height: heightOfField,
@@ -99,13 +101,13 @@ class AppTextField extends StatelessWidget {
       child: TextFormField(
         textAlign: isTextAlignCenter ? TextAlign.center : TextAlign.start,
         validator: validator,
-        cursorColor: textColor,
-        maxLines: maxLines ?? 1,
+        cursorColor: colorScheme.primary,
+        maxLines: maxLines,
         controller: _textController,
         maxLength: maxLength,
         keyboardType: keyboardType,
         style: textStyle,
-        decoration: DialogStyling.inputDecoration4FormField(
+        decoration: InputDecorationStyling.inputDecorationForFormField(
           borderRadius: borderRadius,
           borderWidth: borderWidth,
           colorScheme: colorScheme,
@@ -128,18 +130,8 @@ class AppTextField extends StatelessWidget {
           .copyWith(color: theme.colorScheme.primary),
       decoration: BoxDecoration(
         border: (isAllBorder == true)
-            ? Border.all(
-                color: isValid.value
-                    ? CupertinoColors.inactiveGray
-                    : CupertinoColors.destructiveRed,
-                width: 1.0,
-              )
-            : Border(
-                bottom: BorderSide(
-                  color: theme.colorScheme.primary,
-                  width: 0.15,
-                ),
-              ),
+            ? AppBordersStyling.border1ForCupertinoTextField(isValid.value)
+            : AppBordersStyling.border2ForCupertinoTextField(isValid.value),
         borderRadius: BorderRadius.circular(8.0),
       ),
       keyboardType: (validatorType == ValidatorType.string)
@@ -167,69 +159,12 @@ class AppTextField extends StatelessWidget {
           controller: _textController,
           obscureText: isObscureText,
           style: AppTextStyles.bodyMedium(theme),
-          decoration: DialogStyling.inputDecorForTF(theme, hintText, icon!),
+          decoration: InputDecorationStyling.inputDecorationForTextField(
+              theme, hintText, icon),
+          obscuringCharacter: "*",
+          autofocus: true,
         ),
       ),
     );
   }
-
-  // static String? Function(String?)? _getValidatorFunction(
-  //   ValidatorType type,
-  //   bool allowEmpty,
-  // ) {
-  //   switch (type) {
-  //     case ValidatorType.integer:
-  //       return _validateInteger;
-  //     case ValidatorType.double:
-  //       return _validateDouble;
-  //     case ValidatorType.string:
-  //       return (value) => _validateString(value, allowEmpty);
-  //     case ValidatorType.phoneNumber:
-  //       return _validatePhoneNumber;
-  //     default:
-  //       return null;
-  //   }
-  // }
-
-  // static String? _validateInteger(String? value) {
-  //   if (value == null || value.isEmpty) {
-  //     return 'Це поле не може бути пустим';
-  //   }
-
-  //   if (int.tryParse(value) == null ||
-  //       double.tryParse(value) != null ||
-  //       value.startsWith('-')) {
-  //     return 'Введіть ціле число';
-  //   }
-  //   return null;
-  // }
-
-  // static String? _validateDouble(String? value) {
-  //   if (value == null || value.isEmpty) {
-  //     return 'Це поле не може бути пустим';
-  //   }
-
-  //   if (double.tryParse(value) == null || value.startsWith('-')) {
-  //     return 'Введіть додатне число';
-  //   }
-  //   return null;
-  // }
-
-  // static String? _validateString(String? value, bool allowEmpty) {
-  //   if (value == null || value.isEmpty) {
-  //     return allowEmpty ? null : 'Це поле не може бути пустим';
-  //   }
-  //   return null;
-  // }
-
-  // static String? _validatePhoneNumber(String? value) {
-  //   if (value == null || value.isEmpty) {
-  //     return 'Це поле не може бути пустим';
-  //   }
-  //   final regExp = RegExp(r'^\+380[0-9]{9}$');
-  //   if (!regExp.hasMatch('+380$value')) {
-  //     return 'Невірний номер телефону!';
-  //   }
-  //   return null;
-  // }
 }

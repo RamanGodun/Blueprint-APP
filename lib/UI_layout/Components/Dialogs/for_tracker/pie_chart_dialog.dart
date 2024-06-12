@@ -105,7 +105,7 @@ class PieChartDialog {
                       ? const SizedBox()
                       : (provider.calculatedCurrentMonthTotal == 0 &&
                               !showAllExpenses)
-                          ? AppTextWidgetsStyles.forEmptyPageText(
+                          ? AppTextWidgets.forEmptyPageText(
                               theme, AppStrings.textForEmptyPages["pieChart"]!)
                           : Text(
                               showAllExpenses
@@ -120,7 +120,7 @@ class PieChartDialog {
                 SizedBox(
                   height: mQHeight / 2,
                   child: Center(
-                    child: AppTextWidgetsStyles.forEmptyPageText(
+                    child: AppTextWidgets.forEmptyPageText(
                         theme, AppStrings.textForEmptyPages["expenses"]!),
                   ),
                 ),

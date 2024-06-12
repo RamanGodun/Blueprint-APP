@@ -5,7 +5,7 @@ import '../../../../State_management/Providers/Providers_for_store/common_data_p
 import '../../Images/image_widgets.dart';
 import '../../Pickers/for_shop/quantity_changer.dart';
 import '../../_Widgets_STYLING/cards_and_tiles_styles.dart';
-import '../../_Widgets_STYLING/app_text_styles_for_ui.dart';
+import '../../_Widgets_STYLING/app_text_styles.dart';
 
 class CardOfProductItem4GridView extends StatefulWidget {
   const CardOfProductItem4GridView({required this.productId, super.key});

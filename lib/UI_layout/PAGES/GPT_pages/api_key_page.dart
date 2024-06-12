@@ -48,7 +48,7 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
       child: CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
           leading: AppIconButtons.backIcon(context),
-          middle: AppTextWidgetsStyles.forAppBarTitle(context,
+          middle: AppTextWidgets.forAppBarTitle(context,
               theme: theme, text: "Enter OpenAI API Key"),
           trailing: CupertinoButton(
             padding: EdgeInsets.zero,
