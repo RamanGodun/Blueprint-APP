@@ -8,11 +8,14 @@ import '../_Widgets_STYLING/app_styling_constants.dart';
 class AppDividers {
 /* Custom Dividers
  */
-  static Widget divider(bool isDarkMode, {bool? isSymmetric}) {
+  static Widget divider(
+    bool isDarkMode, {
+    bool? isSymmetric,
+  }) {
     bool isWithSymmetry = isSymmetric ?? true;
     return Padding(
       padding: isWithSymmetry
-          ? AppStylingConstants.zero
+          ? AppStylingConstants.zeroPadding
           : AppStylingConstants.forDivider,
       child: Divider(
         color: isDarkMode
@@ -78,17 +81,25 @@ class AppDividers {
   }
 
 /*
-DIVIDER between Dialog Buttons 
+DIVIDER for CUSTOM DIALOG 
  */
-  static Widget dividerBetweenDialogButtons(BuildContext context) {
-    final colorScheme = Helpers.colorSchemeGet(context);
+  static Widget dividerForCustomDialog(ThemeData theme) {
+    return Divider(
+      height: 0.4,
+      thickness: 0.7,
+      color: theme.colorScheme.inverseSurface.withOpacity(0.5),
+    );
+  }
+
+  static Widget dividerBetweenDialogButtons(ThemeData theme) {
+    final colorScheme = theme.colorScheme;
     return Container(
       width: 0.5,
       color: colorScheme.inverseSurface.withOpacity(0.5),
     );
   }
 
-  static Widget getDividerBetweenDialogButtons(BuildContext context) =>
-      dividerBetweenDialogButtons(context);
+  static Widget getDividerBetweenDialogButtons(ThemeData theme) =>
+      dividerBetweenDialogButtons(theme);
 //
 }

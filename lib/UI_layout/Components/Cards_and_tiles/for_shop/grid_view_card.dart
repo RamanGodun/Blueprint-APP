@@ -5,7 +5,7 @@ import '../../../../State_management/Providers/Providers_for_store/common_data_p
 import '../../Images/image_widgets.dart';
 import '../../Pickers/for_shop/quantity_changer.dart';
 import '../../_Widgets_STYLING/app_box_decoration.dart';
-import '../../_Widgets_STYLING/app_text_styles.dart';
+import '../../_Widgets_STYLING/app_text_styling.dart';
 
 class CardOfProductItem4GridView extends StatefulWidget {
   const CardOfProductItem4GridView({required this.productId, super.key});
@@ -47,21 +47,21 @@ class _CardOfProductItem4GridViewState
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Text(editedProduct.nameOfProduct,
-                    style: AppTextStyles.productNameStyle()),
+                    style: AppTextStyling.productNameStyle()),
               ),
               const SizedBox(height: 4),
               Row(
                 children: [
                   Text('${editedProduct.calculatedNewPrice} \u20B4 ',
-                      style: AppTextStyles.newPriceStyle()),
-                  Text("/ за 1 л", style: AppTextStyles.priceStyle()),
+                      style: AppTextStyling.newPriceStyle()),
+                  Text("/ за 1 л", style: AppTextStyling.priceStyle()),
                 ],
               ),
               Text(
                   (editedProduct.isDiscount!)
                       ? '${editedProduct.priceOfProduct} \u20B4'
                       : "",
-                  style: AppTextStyles.oldPriceStyle()),
+                  style: AppTextStyling.oldPriceStyle()),
               const SizedBox(height: 10),
               _QuantityChangerWidget(widget: widget),
             ]),
@@ -89,7 +89,7 @@ class _DiscountLabelWidget extends StatelessWidget {
         (editedProduct!.discountAmount! == 0)
             ? "-5%   "
             : '-${editedProduct!.discountAmount!}%',
-        style: AppTextStyles.discountTextStyle(),
+        style: AppTextStyling.discountTextStyle(),
       ),
     );
   }

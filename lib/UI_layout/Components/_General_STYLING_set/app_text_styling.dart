@@ -5,22 +5,23 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Models/models_4_tracker_on_isar /item_model.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
 
-abstract class AppTextStyles {
-/* General text styles
- */
+abstract class AppTextStyling {
+  /* General text styles */
+
+  // Загальний стиль тексту для кнопок
   static TextStyle forButtons(ThemeData theme) {
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
-    final buttonsTextStyle = textTheme.titleMedium!.copyWith(
+    return textTheme.titleMedium!.copyWith(
       fontWeight: FontWeight.w500,
       fontSize: 17,
       letterSpacing: 1.04,
       wordSpacing: 1.96,
       color: colorScheme.onPrimary,
     );
-    return buttonsTextStyle;
   }
 
+  // Стиль тексту для заголовка AppBar
   static TextStyle appBarTitle(BuildContext context, ThemeData theme) {
     final CupertinoThemeData cupertinoTheme =
         Helpers.cupertinoThemeGet(context);
@@ -29,6 +30,7 @@ abstract class AppTextStyles {
         .copyWith(color: colorScheme.onSurface);
   }
 
+  // Стиль тексту для заголовка в тілі
   static TextStyle bodyMedium(ThemeData theme) {
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
@@ -38,6 +40,14 @@ abstract class AppTextStyles {
     );
   }
 
+  // Стиль тексту для підказки
+  static TextStyle hintText(ThemeData theme) {
+    final hintText =
+        theme.textTheme.bodyMedium!.copyWith(color: AppColors.inactiveGray);
+    return hintText;
+  }
+
+  // Стиль тексту для текстових полів
   static TextStyle forTextField(ThemeData theme) {
     TextStyle textStyle = theme.textTheme.displaySmall!.copyWith(
       fontSize: 11.5,
@@ -47,22 +57,25 @@ abstract class AppTextStyles {
     return textStyle;
   }
 
+  // Стиль тексту для дій
   static TextStyle forActionText(ThemeData theme) {
     final TextStyle forActionText =
         theme.textTheme.labelLarge!.copyWith(color: theme.colorScheme.primary);
     return forActionText;
   }
 
+  // Стиль тексту для великого тіла
   static TextStyle bodyLarge(ThemeData theme) {
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
-    final bodyLargeTextStyle = textTheme.bodyLarge!.copyWith(
+    return textTheme.bodyLarge!.copyWith(
       color: colorScheme.onSurface,
     );
-    return bodyLargeTextStyle;
   }
 
   /* Common Cupertino Button Style */
+
+  // Стиль тексту для кнопок Cupertino
   static TextStyle cupertinoButtonStyle(
     BuildContext context, {
     required Color color,
@@ -80,6 +93,8 @@ abstract class AppTextStyles {
   }
 
   /* Common Material Button Style */
+
+  // Стиль тексту для кнопок Material
   static TextStyle materialButtonStyle(BuildContext context,
       {required Color color, FontWeight fontWeight = FontWeight.normal}) {
     return TextStyle(
@@ -89,13 +104,15 @@ abstract class AppTextStyles {
     );
   }
 
-/* Text styles for FI APP
- */
+  /* Text styles for FI APP */
+
+  // Стиль тексту для питань
   static TextStyle questionTextStyle(ThemeData theme) {
     final textTheme = theme.textTheme;
     return textTheme.labelSmall!.copyWith(height: 1.15);
   }
 
+  // Стиль тексту для мітки відповіді
   static TextStyle answerLabelStyle(ThemeData theme) {
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
@@ -106,6 +123,7 @@ abstract class AppTextStyles {
     );
   }
 
+  // Стиль тексту для відповіді
   static TextStyle answerTextStyle(ThemeData theme, bool isCorrectAnswer) {
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
@@ -115,6 +133,7 @@ abstract class AppTextStyles {
     );
   }
 
+  // Стиль тексту для вибору складності
   static TextStyle? forComplexityPicker(ThemeData theme, int selectedSegment) {
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
@@ -124,22 +143,26 @@ abstract class AppTextStyles {
     );
   }
 
+  // Стиль тексту для вибору функціональних інтерв'ю
   static TextStyle forFIPicker(ThemeData theme, ColorScheme colorScheme) {
     return theme.textTheme.displayLarge!
         .copyWith(color: colorScheme.onTertiary.withOpacity(0.67));
   }
 
-/* Text styles for JBnTracker APP
- */
+  /* Text styles for JBnTracker APP */
+
+  // Стиль тексту для підзаголовка
   static TextStyle subtitleTextStyle(
       ThemeData theme, bool isPurchase, ItemModel itemData) {
     return theme.textTheme.bodySmall!.copyWith(fontSize: 9);
   }
 
+  // Стиль тексту для відступу
   static TextStyle trailingTextStyle(ThemeData theme) {
     return theme.textTheme.bodyMedium!;
   }
 
+  // Стиль тексту для текстових полів прапорця
   static TextStyle checkboxTextStyle(ThemeData theme, ItemModel itemData) {
     final colorScheme = theme.colorScheme;
     return TextStyle(
@@ -149,8 +172,9 @@ abstract class AppTextStyles {
     );
   }
 
-/* FOR SHOP
- */
+  /* FOR SHOP */
+
+  // Стиль тексту для нової ціни
   static TextStyle newPriceStyle() {
     return const TextStyle(
       fontSize: 13,
@@ -159,6 +183,7 @@ abstract class AppTextStyles {
     );
   }
 
+  // Стиль тексту для ціни
   static TextStyle priceStyle() {
     return const TextStyle(
       color: Colors.white,
@@ -166,6 +191,7 @@ abstract class AppTextStyles {
     );
   }
 
+  // Стиль тексту для старої ціни
   static TextStyle oldPriceStyle() {
     return const TextStyle(
       fontSize: 10,
@@ -175,6 +201,7 @@ abstract class AppTextStyles {
     );
   }
 
+  // Стиль тексту для знижки
   static TextStyle discountTextStyle() {
     return const TextStyle(
       fontSize: 14,
@@ -183,6 +210,7 @@ abstract class AppTextStyles {
     );
   }
 
+  // Стиль тексту для назви товару
   static TextStyle productNameStyle() {
     return const TextStyle(
       fontSize: 13,
@@ -191,6 +219,7 @@ abstract class AppTextStyles {
     );
   }
 
+  // Стиль тексту для заголовка
   static TextStyle titleTextStyle(
       TextTheme textTheme, Color itemColor, bool isExpense) {
     return textTheme.displaySmall!.copyWith(
@@ -199,6 +228,7 @@ abstract class AppTextStyles {
     );
   }
 
+  // Стиль тексту для текстових полів форми
   static TextStyle forTextFormField(ThemeData theme, double? textSize) {
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
@@ -211,6 +241,7 @@ abstract class AppTextStyles {
     return textStyle;
   }
 
+  // Стиль тексту для тексту кнопки випадаючого списку
   static TextStyle forDDButtonTextStyle(BuildContext context) {
     return Theme.of(context).textTheme.displaySmall!.copyWith(
           fontSize: 11.5,
@@ -218,6 +249,4 @@ abstract class AppTextStyles {
           fontWeight: FontWeight.w300,
         );
   }
-
-//
 }

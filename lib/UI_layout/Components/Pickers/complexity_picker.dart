@@ -6,7 +6,7 @@ import '../../../State_management/Src/Const_data/strings_4_app.dart';
 
 import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../_Widgets_STYLING/app_styling_constants.dart';
-import '../_Widgets_STYLING/app_text_styles.dart';
+import '../_Widgets_STYLING/app_text_styling.dart';
 import '../_Widgets_STYLING/app_box_decoration.dart';
 
 class ComplexityPicker extends StatefulWidget {
@@ -36,7 +36,7 @@ class _ComplexityPickerState extends State<ComplexityPicker> {
   @override
   Widget build(BuildContext context) {
     final textStyle =
-        AppTextStyles.forComplexityPicker(theme, _selectedSegment);
+        AppTextStyling.forComplexityPicker(theme, _selectedSegment);
     final colorScheme = theme.colorScheme;
     final segmentedControlChildren = {
       for (var entry in AppStrings.complexityLevels.asMap().entries)
@@ -50,19 +50,19 @@ class _ComplexityPickerState extends State<ComplexityPicker> {
     return Material(
       color: AppColors.transparent,
       child: Padding(
-        padding: AppStylingConstants.zero,
+        padding: AppStylingConstants.zeroPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               height: 29,
-              padding: AppStylingConstants.zero,
+              padding: AppStylingConstants.zeroPadding,
               decoration: AppBoxDecorations.forComplexityPicker(theme),
               child: CupertinoSlidingSegmentedControl(
                 thumbColor: colorScheme.primary.withOpacity(0.75),
                 backgroundColor: colorScheme.surface.withOpacity(0.25),
-                padding: AppStylingConstants.zero,
+                padding: AppStylingConstants.zeroPadding,
                 children: segmentedControlChildren,
                 groupValue: _selectedSegment,
                 onValueChanged: (value) {

@@ -8,7 +8,7 @@ import '../../../../State_management/Models/models_4_tracker_on_isar /model_of_s
 import '../../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../_Widgets_STYLING/app_box_decoration.dart';
-import '../../_Widgets_STYLING/app_text_styles.dart';
+import '../../_Widgets_STYLING/app_text_styling.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
@@ -127,7 +127,7 @@ class CustomListTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(itemData!.name,
-                            style: AppTextStyles.titleTextStyle(
+                            style: AppTextStyling.titleTextStyle(
                                 textTheme, itemColor, isExpense!)),
                         Text(
                           (isPurchase != null)

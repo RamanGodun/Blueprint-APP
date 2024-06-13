@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Services/text_validation_service.dart';
 import '../_Widgets_STYLING/app_borders.dart';
-import '../_Widgets_STYLING/app_text_styles.dart';
-import '../_Widgets_STYLING/input_styling.dart';
+import '../_Widgets_STYLING/app_text_styling.dart';
+import '_input_styling.dart';
 
 enum WidgetType {
   textField,
@@ -93,7 +93,7 @@ class AppTextField extends StatelessWidget {
 
   Widget _buildTextFormField(BuildContext context) {
     final colorScheme = theme.colorScheme;
-    final textStyle = AppTextStyles.forTextFormField(theme, textSize);
+    final textStyle = AppTextStyling.forTextFormField(theme, textSize);
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 7),
       height: heightOfField,
@@ -126,7 +126,7 @@ class AppTextField extends StatelessWidget {
     return CupertinoTextField(
       controller: _textController,
       placeholder: hintText,
-      placeholderStyle: AppTextStyles.forTextField(theme)
+      placeholderStyle: AppTextStyling.forTextField(theme)
           .copyWith(color: theme.colorScheme.primary),
       decoration: BoxDecoration(
         border: (isAllBorder == true)
@@ -143,7 +143,7 @@ class AppTextField extends StatelessWidget {
           ? TextAlign.left
           : TextAlign.center,
       padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
-      style: AppTextStyles.forTextField(theme)
+      style: AppTextStyling.forTextField(theme)
           .copyWith(fontWeight: FontWeight.w400),
       showCursor: true,
       onChanged: (text) => validateInput(),
@@ -158,7 +158,7 @@ class AppTextField extends StatelessWidget {
         child: TextField(
           controller: _textController,
           obscureText: isObscureText,
-          style: AppTextStyles.bodyMedium(theme),
+          style: AppTextStyling.bodyMedium(theme),
           decoration: InputDecorationStyling.inputDecorationForTextField(
               theme, hintText, icon),
           obscuringCharacter: "*",

@@ -10,6 +10,11 @@ import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../Buttons/dialog_buttons.dart';
 import '../Mini_widgets/dividers.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
+import '../Mini_widgets/mini_widgets.dart';
+import '../_Widgets_STYLING/app_borders.dart';
+import '../_Widgets_STYLING/app_box_decoration.dart';
+import '../_Widgets_STYLING/app_styling_constants.dart';
+import '../_Widgets_STYLING/app_text_styling.dart';
 
 abstract class AppDialogsStyles {
 /* 
@@ -25,38 +30,13 @@ abstract class AppDialogsStyles {
   }) {
     final theme = Helpers.themeGet(context);
     final deviceSize = Helpers.deviceSizeGet(context);
-    final isDarkMode = Helpers.isDarkTheme(theme);
-    final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
     final deviceHeight = deviceSize.height;
     final deviceWidth = deviceSize.width;
-
     return Container(
       width: deviceWidth * widthFraction,
       height: deviceHeight * heightFraction,
-      padding: const EdgeInsets.all(0),
-      decoration: BoxDecoration(
-        color: colorScheme.surface,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: (isDarkMode)
-                ? Colors.black
-                : colorScheme.inverseSurface.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 10,
-            offset: const Offset(2, 4),
-          ),
-          BoxShadow(
-            color: (isDarkMode)
-                ? Colors.black
-                : colorScheme.inverseSurface.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
+      padding: AppStylingConstants.zeroPadding,
+      decoration: AppBoxDecorations.forIOSDialog(theme),
       child: CupertinoPopupSurface(
         isSurfacePainted: true,
         child: Column(
@@ -68,15 +48,12 @@ abstract class AppDialogsStyles {
                   top: 26, left: 16, right: 16, bottom: 8),
               child: Text(
                 dialogTitle,
-                style: textTheme.titleMedium?.copyWith(
-                    color: colorScheme.inverseSurface.withOpacity(0.7)),
+                style: AppTextStyling.appBarTitle(context, theme),
                 maxLines: 2,
                 textAlign: TextAlign.center,
               ),
             ),
-            Divider(
-                thickness: 0.5,
-                color: colorScheme.inverseSurface.withOpacity(0.5)),
+            AppDividers.divider2(theme),
             const SizedBox(height: 7),
             Expanded(
               child: Padding(
@@ -85,12 +62,9 @@ abstract class AppDialogsStyles {
               ),
             ),
             const SizedBox(height: 7),
-            Divider(
-                height: 0.4,
-                thickness: 0.7,
-                color: colorScheme.inverseSurface.withOpacity(0.5)),
+            AppDividers.dividerForCustomDialog(theme),
             Padding(
-              padding: const EdgeInsets.all(0),
+              padding: AppStylingConstants.zeroPadding,
               child: SizedBox(
                 height: 60,
                 child: Row(
@@ -100,7 +74,7 @@ abstract class AppDialogsStyles {
                       context: context,
                       buttonType: DialogButtonType.cancelButtonInIOSStyle,
                     ),
-                    AppDividers.dividerBetweenDialogButtons(context),
+                    AppDividers.dividerBetweenDialogButtons(theme),
                     AppDialogsButtons.custom(
                       context: context,
                       buttonType: DialogButtonType.actionButtonInIOSStyle,
@@ -128,66 +102,27 @@ abstract class AppDialogsStyles {
   }) {
     final theme = Helpers.themeGet(context);
     final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
-    final isDarkMode = Helpers.isDarkTheme(theme);
-
+    final deviceSize = Helpers.deviceSizeGet(context);
+    final deviceWidth = deviceSize.width;
+    final deviceHeight = deviceSize.height;
     return Stack(
       children: [
         Dialog(
-          backgroundColor: Colors.transparent,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          backgroundColor: AppColors.transparent,
+          shape: AppBordersStyling.rectangleBorderForDialog(theme),
           child: Container(
-            width: MediaQuery.of(context).size.width * widthFraction,
-            height: MediaQuery.of(context).size.height * heightFraction,
-            padding: const EdgeInsets.all(0),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: (isDarkMode)
-                    ? AppColors.cupertinoBlackColor.withOpacity(0.4)
-                    : colorScheme.inverseSurface.withOpacity(0.1),
-                width: 0.2,
-              ),
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: (isDarkMode)
-                      ? AppColors.cupertinoBlackColor
-                      : colorScheme.inverseSurface.withOpacity(0.3),
-                  spreadRadius: 2,
-                  blurRadius: 10,
-                  offset: const Offset(2, 4),
-                ),
-                BoxShadow(
-                  color: (isDarkMode)
-                      ? AppColors.cupertinoBlackColor
-                      : colorScheme.inverseSurface.withOpacity(0.1),
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
+            width: deviceWidth * widthFraction,
+            height: deviceHeight * heightFraction,
+            padding: AppStylingConstants.zeroPadding,
+            decoration: AppBoxDecorations.forAndroidDialog(theme),
             child: Stack(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: colorScheme.surface.withOpacity(0.65),
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: Colors.white.withOpacity(0.2),
-                        ),
-                      ),
-                    ),
-                  ),
+                AppMiniWidgets.backDropFilter(
+                  child: Container(
+                      decoration: AppBoxDecorations.forAndroidDialog1(theme)),
                 ),
                 Container(
-                  padding: const EdgeInsets.all(0),
+                  padding: AppStylingConstants.zeroPadding,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -197,15 +132,12 @@ abstract class AppDialogsStyles {
                             top: 26, left: 16, right: 16, bottom: 8),
                         child: Text(
                           dialogTitle,
-                          style: textTheme.titleMedium?.copyWith(
-                              color: colorScheme.onSurface.withOpacity(0.7)),
+                          style: AppTextStyling.appBarTitle(context, theme),
                           maxLines: 2,
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Divider(
-                          thickness: 0.5,
-                          color: colorScheme.onSurface.withOpacity(0.5)),
+                      AppDividers.divider2(theme),
                       const SizedBox(height: 7),
                       Expanded(
                         child: Padding(
@@ -227,7 +159,7 @@ abstract class AppDialogsStyles {
           right: 0,
           child: Container(
             color: colorScheme.surface.withOpacity(0.5),
-            padding: const EdgeInsets.all(8.0),
+            padding: AppStylingConstants.allPadding10,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -235,7 +167,7 @@ abstract class AppDialogsStyles {
                   context: context,
                   buttonType: DialogButtonType.cancelButtonInAndroidType,
                 ),
-                AppDividers.dividerBetweenDialogButtons(context),
+                AppDividers.dividerBetweenDialogButtons(theme),
                 AppDialogsButtons.custom(
                   context: context,
                   buttonType: DialogButtonType.actionButtonInAndroidStyle,
@@ -258,30 +190,25 @@ abstract class AppDialogsStyles {
     String? confirmButtonText,
     String? cancelButtonText,
   }) {
+    final theme = Helpers.themeGet(context);
+    final colorScheme = theme.colorScheme;
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      backgroundColor: Colors.transparent,
+      shape: AppBordersStyling.rectangleBorderForDialog(theme),
+      backgroundColor: AppColors.transparent,
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.onPrimary,
-            borderRadius: BorderRadius.circular(20.0),
+            color: colorScheme.onPrimary,
+            borderRadius: AppStylingConstants.commonBorderRadius,
           ),
-          padding: const EdgeInsets.all(16.0),
+          padding: AppStylingConstants.allPadding10,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 text ?? '',
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25,
-                  color: Colors.black,
-                ),
               ),
               const SizedBox(height: 16.0),
               isConfirmation == false
@@ -375,58 +302,36 @@ abstract class AppDialogsStyles {
     int? bonusRequest,
     bool? isFinishedOrder,
   }) {
+    final theme = Helpers.themeGet(context);
     final mappingHelperService = GetIt.instance<MappingHelperService>();
     return Container(
-      decoration: BoxDecoration(
-        color: AppColors.black1.withOpacity(0.65),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(width: 0.1),
-      ),
+      decoration: AppBoxDecorations.forGG(theme),
       child: Padding(
         padding: const EdgeInsets.only(bottom: 100),
         child: AlertDialog(
           backgroundColor: AppColors.grey1.withOpacity(0.96),
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: AppStylingConstants.commonBorderRadius,
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
                 padding: const EdgeInsets.all(20),
-                child: Text(
-                  text4Body,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: AppColors.white,
-                    fontSize: 18,
-                  ),
-                ),
+                child: Text(text4Body, textAlign: TextAlign.center),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   TextButton(
-                    child: Text(
-                      noButtonText,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: AppColors.kAppPrimaryColor.withOpacity(0.7),
-                      ),
-                    ),
+                    child: Text(noButtonText),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
                   ),
                   TextButton(
-                    child: Text(
-                      yesButtonText,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: AppColors.kAppPrimaryColor.withOpacity(0.7),
-                      ),
-                    ),
+                    child: Text(yesButtonText),
                     onPressed: () {
                       mappingHelperService.executeMapping(
                         mappingKey,

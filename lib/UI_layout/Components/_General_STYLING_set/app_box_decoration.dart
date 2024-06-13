@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
+import 'app_borders.dart';
 import 'app_box_shadows.dart';
 import 'app_styling_constants.dart';
 
 abstract class AppBoxDecorations {
-/* BoxDecoration in GLASS MORPHISM STYLE  */
+  /* BoxDecoration для кнопок у стилі "GLASS MORPHISM" */
   static BoxDecoration forButtonsInGlassMorphismStyle(ThemeData theme) {
     final isDark = Helpers.isDarkTheme(theme);
     final colorScheme = theme.colorScheme;
@@ -14,15 +16,66 @@ abstract class AppBoxDecorations {
     );
   }
 
+  /* BoxDecoration для IOS Dialog */
+  static BoxDecoration forIOSDialog(ThemeData theme) {
+    return BoxDecoration(
+      color: theme.colorScheme.surface,
+      borderRadius: AppStylingConstants.radius12,
+      boxShadow: [
+        AppBoxShadows.customDialogShadow1(theme, true),
+        AppBoxShadows.customDialogShadow2(theme, true),
+      ],
+    );
+  }
+
+  /* BoxDecoration для Android Dialog */
+  static BoxDecoration forAndroidDialog(ThemeData theme) {
+    return BoxDecoration(
+      border: AppBordersStyling.forAndroidBoxDecoration(theme),
+      borderRadius: AppStylingConstants.radius12,
+      boxShadow: [
+        AppBoxShadows.customDialogShadow1(theme, false),
+        AppBoxShadows.customDialogShadow2(theme, false),
+      ],
+    );
+  }
+
+  /* BoxDecoration для кнопок та низьких контейнерів */
+  static BoxDecoration forAndroidDialog1(ThemeData theme) {
+    final colorScheme = theme.colorScheme;
+    return BoxDecoration(
+      color: colorScheme.surface.withOpacity(0.65),
+      borderRadius: AppStylingConstants.radius12,
+      border: Border.all(
+        color: colorScheme.inverseSurface.withOpacity(0.1),
+      ),
+    );
+  }
+
+  /* BoxDecoration для THEME CHANGING DD Button */
+  static BoxDecoration forThemeChangingDB(ThemeData theme) {
+    final colorScheme = theme.colorScheme;
+    return BoxDecoration(
+      color: colorScheme.surface,
+      borderRadius: AppStylingConstants.radius12,
+      boxShadow: [
+        AppBoxShadows.themeChangingDDButtonShadow1(theme),
+        AppBoxShadows.themeChangingDDButtonShadow2(theme),
+      ],
+    );
+  }
+
+  /* BoxDecoration для вибору складності */
   static BoxDecoration forComplexityPicker(ThemeData theme) {
     final colorScheme = theme.colorScheme;
     return BoxDecoration(
       color: colorScheme.surface.withOpacity(0.2),
       borderRadius: AppStylingConstants.commonBorderRadius,
-      boxShadow: [AppBoxShadows.forComplexityPicker(theme)],
+      boxShadow: [AppBoxShadows.themeChangingDDButtonShadow1(theme)],
     );
   }
 
+  /* BoxDecoration для знижок */
   static BoxDecoration discountDecoration() {
     return const BoxDecoration(
       color: Color(0xFFC94C4C),
@@ -32,6 +85,7 @@ abstract class AppBoxDecorations {
     );
   }
 
+  /* BoxDecoration для елементів списку */
   static BoxDecoration listTileDecoration(
       BuildContext context, bool isDarkTheme) {
     final colorScheme = Helpers.colorSchemeGet(context);
@@ -48,6 +102,7 @@ abstract class AppBoxDecorations {
     );
   }
 
+  /* BoxDecoration для дій в слайдерах */
   static BoxDecoration slidableActionDecoration(
       BuildContext context, bool isDarkTheme, Color color) {
     return BoxDecoration(
@@ -56,6 +111,7 @@ abstract class AppBoxDecorations {
     );
   }
 
+  /* BoxDecoration для чекбоксів */
   static BoxDecoration checkboxDecoration(
       BuildContext context, bool isDarkTheme) {
     final colorScheme = Helpers.colorSchemeGet(context);
@@ -66,10 +122,11 @@ abstract class AppBoxDecorations {
     );
   }
 
+  /* BoxDecoration для карточок */
   static BoxDecoration cardDecoration(BuildContext context) {
     final colorScheme = Helpers.colorSchemeGet(context);
     return BoxDecoration(
-      borderRadius: BorderRadius.circular(12.0),
+      borderRadius: AppStylingConstants.radius12,
       color: colorScheme.surface.withOpacity(0.4),
       boxShadow: [
         BoxShadow(
@@ -88,19 +145,18 @@ abstract class AppBoxDecorations {
     );
   }
 
+  /* BoxDecoration для елементів списку */
   static BoxDecoration forTiles(ThemeData theme) {
     final colorScheme = theme.colorScheme;
-    final forTiles = BoxDecoration(
+    return BoxDecoration(
       color: colorScheme.surface.withOpacity(0.95),
       border: Border.all(
           color: colorScheme.inverseSurface.withOpacity(0.2), width: 0.9),
       borderRadius: AppStylingConstants.commonBorderRadius,
     );
-    return forTiles;
   }
 
-/* next FOR Drop Button FROM JBnTracker
- */
+  /* BoxDecoration для DropDown Button */
   static InputDecoration getInputDecoration(
     BuildContext context,
     bool isDarkTheme,
@@ -125,5 +181,13 @@ abstract class AppBoxDecorations {
       ),
     );
   }
-//
+
+  static BoxDecoration forGG(ThemeData theme) {
+    return BoxDecoration(
+      color: AppColors.black1.withOpacity(0.65),
+      borderRadius: BorderRadius.circular(8),
+      border: Border.all(width: 0.1),
+    );
+  }
+/* */
 }

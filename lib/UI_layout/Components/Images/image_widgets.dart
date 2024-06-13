@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import '../../../State_management/Src/Generated_code/by spider/resources.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../_Widgets_STYLING/images_styles.dart';
+import '_images_styling.dart';
 
 class AppImages {
 /*
@@ -76,7 +76,7 @@ App LOGO widget
       onTap: onTap,
       child: isLoading
           ? const Padding(
-              padding: AppImagesStyles.circularProgressPadding,
+              padding: AppImagesStyling.circularProgressPadding,
               child: CircularProgressIndicator(
                 color: Colors.amber,
                 strokeWidth: 5,
@@ -87,7 +87,7 @@ App LOGO widget
               : profilePictureUrl != null
                   ? SizedBox(
                       child: ClipRRect(
-                        borderRadius: AppImagesStyles.imageBorderRadius,
+                        borderRadius: AppImagesStyling.imageBorderRadius,
                         child: Image.network(
                           profilePictureUrl,
                           fit: BoxFit.cover,

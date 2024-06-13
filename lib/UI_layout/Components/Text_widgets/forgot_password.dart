@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../_Widgets_STYLING/app_text_styles.dart';
+import '../_Widgets_STYLING/app_text_styling.dart';
 
 class ForgotPasswordTextWidget extends StatelessWidget {
   const ForgotPasswordTextWidget({super.key});
@@ -17,7 +17,7 @@ class ForgotPasswordTextWidget extends StatelessWidget {
           onTap: openDialogForForgotPassword,
           child: Text(
             'Forgot Password?',
-            style: AppTextStyles.forActionText(theme).copyWith(
+            style: AppTextStyling.forActionText(theme).copyWith(
               fontStyle: FontStyle.italic,
               decoration: TextDecoration.underline,
             ),

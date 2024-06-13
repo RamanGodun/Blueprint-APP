@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../Mini_widgets/dividers.dart';
-import '../_Widgets_STYLING/app_text_styles.dart';
+import '../_Widgets_STYLING/app_text_styling.dart';
 
 class IconPickerWidget extends StatefulWidget {
   final ValueChanged<IconData> onIconSelected;
@@ -119,7 +119,7 @@ class _IconPickerWidgetState extends State<IconPickerWidget> {
                             },
                             child: Text(
                               "Закрити",
-                              style: AppTextStyles.forButtons(theme).copyWith(
+                              style: AppTextStyling.forButtons(theme).copyWith(
                                 color: theme.primaryColor,
                               ),
                             ),

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
-import '../_Widgets_STYLING/app_text_styles.dart';
+import '../_Widgets_STYLING/app_text_styling.dart';
 import '_buttons_styling.dart';
 
 class AppDialogsButtons {
@@ -56,7 +56,7 @@ class AppDialogsButtons {
   }) {
     final theme = Helpers.themeGet(context);
     final colorScheme = theme.colorScheme;
-    final textStyle = AppTextStyles.cupertinoButtonStyle(
+    final textStyle = AppTextStyling.cupertinoButtonStyle(
       context,
       color: isActionButton ? colorScheme.primary : colorScheme.error,
       fontWeight: fontWeight,
@@ -84,14 +84,15 @@ class AppDialogsButtons {
       child: isActionButton
           ? AppButtonsStyling.withGradient(
               context,
-              buttonText: buttonText,
               onPressed: onPressed ?? () => Navigator.of(context).pop(),
+              buttonText: buttonText,
             )
           : AppButtonsStyling.forOutlinedButton(
               context,
-              buttonText: buttonText,
-              textStyle: AppTextStyles.forButtons(theme).copyWith(
+              textStyle: AppTextStyling.forButtons(theme).copyWith(
                   color: theme.colorScheme.error, fontWeight: fontWeight),
+              onPressed: onPressed ?? () => Navigator.of(context).pop(),
+              buttonText: buttonText,
             ),
     );
   }

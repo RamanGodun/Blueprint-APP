@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../State_management/Services/animation_controller_service.dart';
-import '../_Widgets_STYLING/dialogs_styles.dart';
+import '_dialogs_styling.dart';
 
 class CustomDialog extends HookWidget {
   final Widget contentWidget;

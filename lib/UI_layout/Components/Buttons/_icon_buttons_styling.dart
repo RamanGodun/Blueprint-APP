@@ -1,32 +1,26 @@
+import 'package:blueprint_4app/UI_layout/Components/_Widgets_STYLING/app_box_shadows.dart';
 import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../../State_management/Theme_configuration/app_colors.dart';
+import '../_Widgets_STYLING/app_styling_constants.dart';
 
-abstract class AppIconButtonsStyles {
+abstract class AppIconButtonsStyling {
   static IconButton withShadows(
     BuildContext context, {
     Color? iconColor,
     required IconData icon,
-    double iconSize = 25,
+    double iconSize = AppStylingConstants.iconSize,
     void Function()? onPressed,
   }) {
-    final colorScheme = Helpers.colorSchemeGet(context);
-    final isDark = Helpers.isDarkMode(context);
+    final theme = Helpers.themeGet(context);
+    final colorScheme = theme.colorScheme;
     return IconButton(
-      padding: EdgeInsets.zero,
+      padding: AppStylingConstants.zeroPadding,
       onPressed: onPressed,
       icon: Icon(
         icon,
         size: iconSize,
         color: (iconColor != null) ? iconColor : colorScheme.primary,
-        shadows: [
-          BoxShadow(
-            color: AppColors.cupertinoBlackColor.withOpacity(isDark ? 1 : 0.35),
-            spreadRadius: 1,
-            blurRadius: 7,
-            offset: const Offset(1, 2.5),
-          ),
-        ],
+        shadows: [AppBoxShadows.iconButtonShadow(theme)],
       ),
     );
   }
@@ -36,13 +30,12 @@ abstract class AppIconButtonsStyles {
     ColorScheme? colorScheme,
     Color? iconColor,
     required IconData icon,
-    double iconSize = 25,
+    double iconSize = AppStylingConstants.iconSize,
     void Function()? onPressed,
   }) {
     final defaultColorScheme = Helpers.colorSchemeGet(context);
-    // final isDark = Helpers.isDarkTheme(context);
     return IconButton(
-      padding: EdgeInsets.zero,
+      padding: AppStylingConstants.zeroPadding,
       onPressed: onPressed,
       icon: Icon(
         icon,

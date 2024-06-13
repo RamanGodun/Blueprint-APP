@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../_Widgets_STYLING/app_borders.dart';
 import '../_Widgets_STYLING/app_styling_constants.dart';
-import '../_Widgets_STYLING/app_text_styles.dart';
+import '../_Widgets_STYLING/app_text_styling.dart';
 import '../_Widgets_STYLING/app_box_decoration.dart';
 
 abstract class AppButtonsStyling {
@@ -32,7 +32,7 @@ abstract class AppButtonsStyling {
             child: Center(
               child: Text(
                 buttonText,
-                style: AppTextStyles.forButtons(theme),
+                style: AppTextStyling.forButtons(theme),
               ),
             ),
           ),
@@ -66,7 +66,7 @@ abstract class AppButtonsStyling {
             const SizedBox(width: 8),
             Text(
               buttonText,
-              style: AppTextStyles.forButtons(theme),
+              style: AppTextStyling.forButtons(theme),
             ),
           ],
         ),
@@ -98,7 +98,7 @@ abstract class AppButtonsStyling {
           padding: AppStylingConstants.commonPadding,
           child: Text(
             buttonText,
-            style: AppTextStyles.forButtons(theme),
+            style: AppTextStyling.forButtons(theme),
           ),
         ),
       ),
@@ -129,7 +129,7 @@ abstract class AppButtonsStyling {
         onPressed: onPressed,
         child: Text(
           buttonText,
-          style: AppTextStyles.forButtons(theme),
+          style: AppTextStyling.forButtons(theme),
         ),
       ),
     );
@@ -145,7 +145,7 @@ abstract class AppButtonsStyling {
   }) {
     final theme = Helpers.themeGet(context);
     final isDark = Helpers.isDarkTheme(theme);
-    final textStyleForButton = textStyle ?? AppTextStyles.forButtons(theme);
+    final textStyleForButton = textStyle ?? AppTextStyling.forButtons(theme);
     return ElevatedButton(
       style: OutlinedButton.styleFrom(
         backgroundColor:

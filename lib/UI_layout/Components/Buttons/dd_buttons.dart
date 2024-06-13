@@ -5,8 +5,8 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
 import '../../../State_management/Theme_configuration/Themes_provider/manager_of_themes.dart';
-import '../_Widgets_STYLING/app_text_styles.dart';
-import '../_Widgets_STYLING/drop_buttons_styles.dart';
+import '../_Widgets_STYLING/app_box_decoration.dart';
+import '../_Widgets_STYLING/app_text_styling.dart';
 
 class AppDDButtons {
   static Widget themeChanging(
@@ -17,7 +17,7 @@ class AppDDButtons {
     final theme = Helpers.themeGet(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      decoration: AppDropButtonStyle.forThemeChangingDB(context),
+      decoration: AppBoxDecorations.forThemeChangingDB(theme),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<CustomThemeMode>(
           key: ValueKey(context.locale.toString()),
@@ -68,7 +68,7 @@ class AppDDButtons {
         value: themeModes[index],
         child: Text(
           themeModeTexts[index],
-          style: AppTextStyles.bodyLarge(theme),
+          style: AppTextStyling.bodyLarge(theme),
         ),
       ),
     );

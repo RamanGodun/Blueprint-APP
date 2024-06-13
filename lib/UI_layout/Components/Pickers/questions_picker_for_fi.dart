@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../_Widgets_STYLING/app_text_styles.dart';
+import '../_Widgets_STYLING/app_text_styling.dart';
 
 class QuantityPicker extends StatefulWidget {
   final Function(double) setSelectedQuantity;
@@ -76,7 +76,7 @@ class _QuantityPickerState extends State<QuantityPicker> {
                   (index) => Center(
                     child: Text(
                       '$index',
-                      style: AppTextStyles.forFIPicker(theme, colorScheme),
+                      style: AppTextStyling.forFIPicker(theme, colorScheme),
                     ),
                   ),
                 ),

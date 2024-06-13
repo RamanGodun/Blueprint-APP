@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
+import '../_Widgets_STYLING/app_styling_constants.dart';
 
 class AppMiniWidgets {
 /*
@@ -52,6 +55,14 @@ Checkbox
 /*
 OTHERS (borders)
 */
-
+  static Widget backDropFilter({required Widget child}) {
+    return ClipRRect(
+      borderRadius: AppStylingConstants.radius12,
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+        child: child,
+      ),
+    );
+  }
 //
 }

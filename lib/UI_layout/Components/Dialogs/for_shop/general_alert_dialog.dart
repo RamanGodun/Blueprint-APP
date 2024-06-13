@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../_Widgets_STYLING/dialogs_styles.dart';
+import '../_dialogs_styling.dart';
 
 class StyledAlertDialog extends StatefulWidget {
   final String? productID;

@@ -4,8 +4,7 @@ import '../../../../State_management/Models/models_4_tracker_on_isar /item_model
 import '../../../../State_management/Models/models_4_tracker_on_isar /model_of_subcategory.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../_Widgets_STYLING/app_box_decoration.dart';
-import '../../_Widgets_STYLING/app_styling_constants.dart';
-import '../../_Widgets_STYLING/app_text_styles.dart';
+import '../../_Widgets_STYLING/app_text_styling.dart';
 import 'dd_button_from_tracker.dart';
 
 class SubCategoryDropButton extends StatefulWidget {
@@ -44,11 +43,13 @@ class _SubCategoryDropButtonState extends State<SubCategoryDropButton> {
           }
         },
         items: _buildDropdownItems(context),
-        dropdownColor: AppStylingConstants.getDropdownColor(isDarkTheme),
+        dropdownColor: isDarkTheme
+            ? const Color.fromARGB(255, 14, 4, 4).withOpacity(0.95)
+            : const Color.fromARGB(255, 233, 230, 230),
         focusColor: _colorScheme.primary,
         itemHeight: 35,
         elevation: 10,
-        style: AppTextStyles.forDDButtonTextStyle(context),
+        style: AppTextStyling.forDDButtonTextStyle(context),
         decoration: AppBoxDecorations.getInputDecoration(context, isDarkTheme),
       ),
     );
@@ -56,7 +57,7 @@ class _SubCategoryDropButtonState extends State<SubCategoryDropButton> {
 
   List<DropdownMenuItem<SubCategory>> _buildDropdownItems(
       BuildContext context) {
-    final textStyle = AppTextStyles.forDDButtonTextStyle(context);
+    final textStyle = AppTextStyling.forDDButtonTextStyle(context);
     return widget.subCategoriesOfSelectedCategory.map((subCategory) {
       return DropdownMenuItem<SubCategory>(
         value: subCategory,

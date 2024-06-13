@@ -6,7 +6,7 @@ import '../../../../State_management/Models/models_4_FI_on_hive/question_model.d
 import '../../Mini_widgets/mini_widgets.dart';
 import '../../_Widgets_STYLING/Custom_layouts/fi_list_tile_layouts.dart';
 import '../../_Widgets_STYLING/app_box_decoration.dart';
-import '../../_Widgets_STYLING/app_text_styles.dart';
+import '../../_Widgets_STYLING/app_text_styling.dart';
 
 class CustomListTile extends StatelessWidget {
   final void Function(BuildContext) onEditPressed;
@@ -61,7 +61,7 @@ class CustomListTile extends StatelessWidget {
                   id: "question",
                   child: Text(
                     itemData.questionText,
-                    style: AppTextStyles.questionTextStyle(theme),
+                    style: AppTextStyling.questionTextStyle(theme),
                     maxLines: 3,
                   ),
                 ),
@@ -69,7 +69,7 @@ class CustomListTile extends StatelessWidget {
                   id: "answer label",
                   child: Text(
                     "Your answer:",
-                    style: AppTextStyles.answerLabelStyle(theme),
+                    style: AppTextStyling.answerLabelStyle(theme),
                     maxLines: 3,
                     textAlign: TextAlign.left,
                   ),
@@ -79,7 +79,7 @@ class CustomListTile extends StatelessWidget {
                   child: Text(
                     itemData.userAnswer,
                     style:
-                        AppTextStyles.answerTextStyle(theme, isCorrectAnswer),
+                        AppTextStyling.answerTextStyle(theme, isCorrectAnswer),
                     maxLines: 2,
                   ),
                 ),
