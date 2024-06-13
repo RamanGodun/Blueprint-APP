@@ -68,7 +68,6 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
                     theme: theme,
                     controller: _apiKeyController,
                     hintText: 'Enter API Key here',
-                    validateInput: validateInput,
                     isValid: isValid,
                   ),
                   if (!isValid.value)

@@ -1,27 +1,52 @@
 import 'package:blueprint_4app/UI_layout/Components/Buttons/icon_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../../../State_management/Theme_configuration/app_colors.dart';
+import '../../../State_management/Models/app_enums.dart';
+import '../../../State_management/Services/text_validation_service.dart';
 import '../../Components/Text_widgets/text_widgets.dart';
 import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Text_fields/app_text_fields.dart';
 
-class TextFieldPage extends HookWidget {
+class TextFieldPage extends StatefulWidget {
   static const routeName = '/start_page/new_screen';
   const TextFieldPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final ThemeData theme = Helpers.themeGet(context);
-    final textController = useTextEditingController();
-    final isValid = useState(true);
+  State<TextFieldPage> createState() => _TextFieldPageState();
+}
 
-    void validateInput() {
-      isValid.value = textController.text.isNotEmpty;
-    }
+class _TextFieldPageState extends State<TextFieldPage> {
+  late TextEditingController textController;
+  late bool isValid;
+  late ThemeData theme;
+
+  @override
+  void initState() {
+    super.initState();
+    textController = TextEditingController();
+    isValid = true;
+  }
+
+  void validateInput() {
+    final validator = TextFieldValidationService.getValidatorFunction(
+        ValidatorType.integer, false);
+    final isValidInput = validator?.call(textController.text) == null;
+    setState(() {
+      isValid = isValidInput;
+    });
+  }
+
+  @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    theme = Helpers.themeGet(context);
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
@@ -38,27 +63,13 @@ class TextFieldPage extends HookWidget {
               AppTextField(
                 theme: theme,
                 controller: textController,
-                isValid: isValid,
-                validateInput: validateInput,
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  if (!isValid.value)
-                    const Text(
-                      'This field cannot be empty',
-                      style: TextStyle(
-                        color: AppColors.kErrorColor,
-                        fontSize: 12,
-                      ),
-                    ),
-                ],
+                isValid: ValueNotifier(isValid),
+                validatorType: ValidatorType.integer,
               ),
               const SizedBox(height: 20),
               AppButtons.submitButton(
                 context,
-                onPressed: () {},
+                onPressed: validateInput,
               ),
             ],
           ),

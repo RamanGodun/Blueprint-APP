@@ -109,7 +109,6 @@ class _SubCategoriesOperationDialogState
                     : AppStrings.enterSubCategoryName,
                 theme: theme,
                 isValid: isValid,
-                validateInput: () => validateInput(widget.nameController),
               ),
               Align(
                   alignment: Alignment.center,
@@ -208,8 +207,5 @@ class _SubCategoriesOperationDialogState
     );
   }
 
-  void validateInput(TextEditingController controller) {
-    isValid.value = controller.text.isNotEmpty;
-  }
 //
 }

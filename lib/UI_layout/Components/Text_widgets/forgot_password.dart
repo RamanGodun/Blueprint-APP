@@ -20,6 +20,7 @@ class ForgotPasswordTextWidget extends StatelessWidget {
             style: AppTextStyling.forActionText(theme).copyWith(
               fontStyle: FontStyle.italic,
               decoration: TextDecoration.underline,
+              decorationColor: theme.colorScheme.primary.withOpacity(0.5),
             ),
           ),
         ),

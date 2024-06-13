@@ -62,11 +62,6 @@ abstract class InputDecorationStyling {
       labelText: labelText ?? "",
       labelStyle: textStyle?.copyWith(fontSize: 14),
       hintStyle: textStyle?.copyWith(color: AppColors.inactiveGray),
-      errorStyle: textStyle?.copyWith(
-        debugLabel: "Some text here",
-        overflow: TextOverflow.fade,
-        fontSize: 0,
-      ),
       enabledBorder: AppBordersStyling.enabledBorderForTF(),
       focusedBorder: AppBordersStyling.focusedBorderForTF(),
       errorBorder: AppBordersStyling.errorBorderForTF(),

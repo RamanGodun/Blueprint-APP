@@ -14,6 +14,10 @@ class TextFieldValidationService {
         return (value) => validateString(value, allowEmpty);
       case ValidatorType.phoneNumber:
         return validatePhoneNumber;
+      case ValidatorType.email:
+        return validateEmail;
+      case ValidatorType.name:
+        return validateName;
       default:
         return null;
     }
@@ -24,9 +28,9 @@ class TextFieldValidationService {
       return 'Це поле не може бути пустим';
     }
 
-    if (int.tryParse(value) == null ||
-        double.tryParse(value) != null ||
-        value.startsWith('-')) {
+    // Checking if the value is an integer
+    final intValue = int.tryParse(value);
+    if (intValue == null) {
       return 'Введіть ціле число';
     }
     return null;
@@ -57,6 +61,28 @@ class TextFieldValidationService {
     final regExp = RegExp(r'^\+380[0-9]{9}$');
     if (!regExp.hasMatch('+380$value')) {
       return 'Невірний номер телефону!';
+    }
+    return null;
+  }
+
+  static String? validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Це поле не може бути пустим';
+    }
+    final regExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    if (!regExp.hasMatch(value)) {
+      return 'Невірний формат електронної пошти!';
+    }
+    return null;
+  }
+
+  static String? validateName(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Це поле не може бути пустим';
+    }
+    final regExp = RegExp(r'^[a-zA-Zа-яА-Я\s-]+$');
+    if (!regExp.hasMatch(value)) {
+      return 'Ім\'я може містити лише букви, пробіли та дефіси!';
     }
     return null;
   }

@@ -122,8 +122,6 @@ class _NewItemDialogState extends State<NewItemDialog> {
                         theme: theme,
                         isValid: isValid,
                         validatorType: ValidatorType.name,
-                        validateInput: () =>
-                            validateInput(widget.nameController),
                       ),
                     ),
                   ],
@@ -149,8 +147,6 @@ class _NewItemDialogState extends State<NewItemDialog> {
                         isValid: isValid,
                         validatorType: ValidatorType.integer,
                         maxLength: 4,
-                        validateInput: () =>
-                            validateInput(widget.nameController),
                       ),
                     ),
                     //
@@ -165,8 +161,6 @@ class _NewItemDialogState extends State<NewItemDialog> {
                         theme: theme,
                         isValid: isValid,
                         maxLength: 3,
-                        validateInput: () =>
-                            validateInput(widget.nameController),
                       ),
                     ),
                     const Spacer(),
@@ -199,8 +193,6 @@ class _NewItemDialogState extends State<NewItemDialog> {
                         isValid: isValid,
                         validatorType: ValidatorType.double,
                         maxLength: 10,
-                        validateInput: () =>
-                            validateInput(widget.nameController),
                       ),
                     ),
                     const Spacer(),

@@ -13,12 +13,11 @@ enum WidgetType {
   cupertinoStyle,
 }
 
-class AppTextField extends StatelessWidget {
-  AppTextField({
+class AppTextField extends StatefulWidget {
+  const AppTextField({
     super.key,
-    required TextEditingController controller,
+    required this.controller,
     required this.isValid,
-    required this.validateInput,
     this.validatorType = ValidatorType.string,
     required this.theme,
     this.hintText = "Enter text",
@@ -44,15 +43,11 @@ class AppTextField extends StatelessWidget {
     this.suffixText,
     this.textSize,
     this.labelText,
-  })  : _textController = controller,
-        validator = TextFieldValidationService.getValidatorFunction(
-            validatorType, allowEmpty);
+  });
 
-  final TextEditingController _textController;
+  final TextEditingController controller;
   final ValueNotifier<bool> isValid;
-  final String? Function(String?)? validator;
   final ValidatorType validatorType;
-  final VoidCallback validateInput;
   final String hintText;
   final ThemeData theme;
   final bool isObscureText;
@@ -79,44 +74,77 @@ class AppTextField extends StatelessWidget {
   final String? labelText;
 
   @override
+  State<AppTextField> createState() => _AppTextFieldState();
+}
+
+class _AppTextFieldState extends State<AppTextField> {
+  String? errorText;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.controller.addListener(_validate);
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(_validate);
+    super.dispose();
+  }
+
+  void _validate() {
+    final validator = TextFieldValidationService.getValidatorFunction(
+        widget.validatorType, widget.allowEmpty);
+    final errorText = validator?.call(widget.controller.text);
+    widget.isValid.value = errorText == null;
+    setState(() {
+      this.errorText = errorText;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    switch (widgetType) {
-      case WidgetType.textFormField:
-        return _buildTextFormField(context);
-      case WidgetType.cupertinoStyle:
-        return _buildCupertinoTextField();
-      case WidgetType.textField:
-      default:
-        return _buildTextField(context);
+    Widget field;
+
+    if (widget.widgetType == WidgetType.textFormField) {
+      field = _buildTextFormField(context);
+    } else if (widget.widgetType == WidgetType.cupertinoStyle) {
+      field = _buildCupertinoTextField();
+    } else {
+      field = _buildTextField(context);
     }
+    return field;
   }
 
   Widget _buildTextFormField(BuildContext context) {
-    final colorScheme = theme.colorScheme;
-    final textStyle = AppTextStyling.forTextFormField(theme, textSize);
+    final colorScheme = widget.theme.colorScheme;
+    final textStyle =
+        AppTextStyling.forTextFormField(widget.theme, widget.textSize);
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 7),
-      height: heightOfField,
-      width: widthOfField,
+      height: widget.heightOfField,
+      width: widget.widthOfField,
       child: TextFormField(
-        textAlign: isTextAlignCenter ? TextAlign.center : TextAlign.start,
-        validator: validator,
+        textAlign:
+            widget.isTextAlignCenter ? TextAlign.center : TextAlign.start,
         cursorColor: colorScheme.primary,
-        maxLines: maxLines,
-        controller: _textController,
-        maxLength: maxLength,
-        keyboardType: keyboardType,
+        maxLines: widget.maxLines,
+        controller: widget.controller,
+        maxLength: widget.maxLength,
+        keyboardType: widget.keyboardType,
         style: textStyle,
         decoration: InputDecorationStyling.inputDecorationForFormField(
-          borderRadius: borderRadius,
-          borderWidth: borderWidth,
+          borderRadius: widget.borderRadius,
+          borderWidth: widget.borderWidth,
           colorScheme: colorScheme,
           textStyle: textStyle,
-          isNeedPrefixIcon: isNeedPrefixIcon,
-          isNeedSuffixIcon: isNeedSuffixIcon,
-          showCounterText: showCounterText,
-          icon: icon,
-          maxLength: maxLength,
+          isNeedPrefixIcon: widget.isNeedPrefixIcon,
+          isNeedSuffixIcon: widget.isNeedSuffixIcon,
+          showCounterText: widget.showCounterText,
+          icon: widget.icon,
+          maxLength: widget.maxLength,
+        ).copyWith(
+          errorText: errorText,
         ),
       ),
     );
@@ -124,29 +152,30 @@ class AppTextField extends StatelessWidget {
 
   Widget _buildCupertinoTextField() {
     return CupertinoTextField(
-      controller: _textController,
-      placeholder: hintText,
-      placeholderStyle: AppTextStyling.forTextField(theme)
-          .copyWith(color: theme.colorScheme.primary),
+      controller: widget.controller,
+      placeholder: widget.hintText,
+      placeholderStyle: AppTextStyling.forTextField(widget.theme)
+          .copyWith(color: widget.theme.colorScheme.primary),
       decoration: BoxDecoration(
-        border: (isAllBorder == true)
-            ? AppBordersStyling.border1ForCupertinoTextField(isValid.value)
-            : AppBordersStyling.border2ForCupertinoTextField(isValid.value),
+        border: (widget.isAllBorder == true)
+            ? AppBordersStyling.border1ForCupertinoTextField(
+                widget.isValid.value)
+            : AppBordersStyling.border2ForCupertinoTextField(
+                widget.isValid.value),
         borderRadius: BorderRadius.circular(8.0),
       ),
-      keyboardType: (validatorType == ValidatorType.string)
+      keyboardType: (widget.validatorType == ValidatorType.string)
           ? TextInputType.text
           : const TextInputType.numberWithOptions(decimal: true),
-      readOnly: isReadOnly,
-      maxLength: maxLength,
-      textAlign: (validatorType == ValidatorType.name)
+      readOnly: widget.isReadOnly,
+      maxLength: widget.maxLength,
+      textAlign: (widget.validatorType == ValidatorType.name)
           ? TextAlign.left
           : TextAlign.center,
       padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
-      style: AppTextStyling.forTextField(theme)
+      style: AppTextStyling.forTextField(widget.theme)
           .copyWith(fontWeight: FontWeight.w400),
       showCursor: true,
-      onChanged: (text) => validateInput(),
     );
   }
 
@@ -156,13 +185,18 @@ class AppTextField extends StatelessWidget {
       child: SizedBox(
         height: 50,
         child: TextField(
-          controller: _textController,
-          obscureText: isObscureText,
-          style: AppTextStyling.bodyMedium(theme),
+          controller: widget.controller,
+          obscureText: widget.isObscureText,
+          style: AppTextStyling.bodyMedium(widget.theme),
           decoration: InputDecorationStyling.inputDecorationForTextField(
-              theme, hintText, icon),
+            widget.theme,
+            widget.hintText,
+            widget.icon,
+          ).copyWith(
+            errorText: errorText,
+          ),
           obscuringCharacter: "*",
-          autofocus: true,
+          autofocus: false,
         ),
       ),
     );

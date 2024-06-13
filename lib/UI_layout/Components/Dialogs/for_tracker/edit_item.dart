@@ -113,7 +113,6 @@ class _EditItemDialogState extends State<EditItemDialog> {
                       hintText: widget.item.name,
                       theme: theme,
                       isValid: isValid,
-                      validateInput: () => validateInput(widget.nameController),
                     ),
                   ),
                 ],
@@ -136,7 +135,6 @@ class _EditItemDialogState extends State<EditItemDialog> {
                       isValid: isValid,
                       validatorType: ValidatorType.double,
                       maxLength: 4,
-                      validateInput: () => validateInput(widget.nameController),
                     ),
                   ),
                   //
@@ -150,7 +148,6 @@ class _EditItemDialogState extends State<EditItemDialog> {
                       theme: theme,
                       isValid: isValid,
                       maxLength: 3,
-                      validateInput: () => validateInput(widget.nameController),
                     ),
                   ),
                   const Spacer(),
@@ -181,7 +178,6 @@ class _EditItemDialogState extends State<EditItemDialog> {
                     isValid: isValid,
                     validatorType: ValidatorType.double,
                     maxLength: 10,
-                    validateInput: () => validateInput(widget.nameController),
                   )),
                   const Spacer(),
                 ],
@@ -314,8 +310,5 @@ class _EditItemDialogState extends State<EditItemDialog> {
     });
   }
 
-  void validateInput(TextEditingController controller) {
-    isValid.value = controller.text.isNotEmpty;
-  }
 //
 }
