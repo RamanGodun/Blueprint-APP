@@ -1,13 +1,13 @@
 import 'package:blueprint_4app/State_management/Theme_configuration/app_colors.dart';
-import 'package:blueprint_4app/UI_layout/Components/_Widgets_STYLING/app_borders.dart';
-import 'package:blueprint_4app/UI_layout/Components/_Widgets_STYLING/app_styling_constants.dart';
+import 'package:blueprint_4app/UI_layout/Components/_General_STYLING_set/app_borders.dart';
+import 'package:blueprint_4app/UI_layout/Components/_General_STYLING_set/app_styling_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 import '../../../../State_management/Src/Custom_icons/app_icons.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../Mini_widgets/dividers.dart';
-import '../../_Widgets_STYLING/app_text_styling.dart';
+import '../../_General_STYLING_set/app_text_styling.dart';
 
 class ColorPickerWidget extends StatefulWidget {
   const ColorPickerWidget({

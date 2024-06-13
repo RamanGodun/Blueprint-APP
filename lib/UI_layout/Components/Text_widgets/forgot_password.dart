@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../_Widgets_STYLING/app_text_styling.dart';
+import '../_General_STYLING_set/app_text_styling.dart';
 
 class ForgotPasswordTextWidget extends StatelessWidget {
   const ForgotPasswordTextWidget({super.key});

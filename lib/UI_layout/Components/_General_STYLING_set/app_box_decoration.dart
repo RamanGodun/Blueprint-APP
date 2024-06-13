@@ -156,32 +156,6 @@ abstract class AppBoxDecorations {
     );
   }
 
-  /* BoxDecoration для DropDown Button */
-  static InputDecoration getInputDecoration(
-    BuildContext context,
-    bool isDarkTheme,
-  ) {
-    final colorScheme = Theme.of(context).colorScheme;
-    return InputDecoration(
-      isDense: true,
-      filled: true,
-      fillColor: colorScheme.surface.withOpacity(isDarkTheme ? 0.1 : 0.21),
-      contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 1),
-      enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(
-            color: colorScheme.secondary.withOpacity(isDarkTheme ? 0.25 : 0.25),
-            width: isDarkTheme ? 0.25 : 0.65),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(
-            color: colorScheme.secondary.withOpacity(isDarkTheme ? 0.25 : 0.25),
-            width: isDarkTheme ? 0.3 : 0.65),
-        borderRadius: BorderRadius.circular(10),
-      ),
-    );
-  }
-
   static BoxDecoration forGG(ThemeData theme) {
     return BoxDecoration(
       color: AppColors.black1.withOpacity(0.65),

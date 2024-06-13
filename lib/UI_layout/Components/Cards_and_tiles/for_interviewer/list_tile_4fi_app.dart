@@ -4,9 +4,9 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
 import '../../../../State_management/Models/models_4_FI_on_hive/question_model.dart';
 import '../../Mini_widgets/mini_widgets.dart';
-import '../../_Widgets_STYLING/Custom_layouts/fi_list_tile_layouts.dart';
-import '../../_Widgets_STYLING/app_box_decoration.dart';
-import '../../_Widgets_STYLING/app_text_styling.dart';
+import '../../_General_STYLING_set/Custom_layouts/fi_list_tile_layouts.dart';
+import '../../_General_STYLING_set/app_box_decoration.dart';
+import '../../_General_STYLING_set/app_text_styling.dart';
 
 class CustomListTile extends StatelessWidget {
   final void Function(BuildContext) onEditPressed;

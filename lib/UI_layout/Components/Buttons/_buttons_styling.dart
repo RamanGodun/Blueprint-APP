@@ -2,10 +2,10 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../_Widgets_STYLING/app_borders.dart';
-import '../_Widgets_STYLING/app_styling_constants.dart';
-import '../_Widgets_STYLING/app_text_styling.dart';
-import '../_Widgets_STYLING/app_box_decoration.dart';
+import '../_General_STYLING_set/app_borders.dart';
+import '../_General_STYLING_set/app_styling_constants.dart';
+import '../_General_STYLING_set/app_text_styling.dart';
+import '../_General_STYLING_set/app_box_decoration.dart';
 
 abstract class AppButtonsStyling {
 /* 

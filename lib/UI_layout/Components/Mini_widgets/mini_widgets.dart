@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../_Widgets_STYLING/app_styling_constants.dart';
+import '../_General_STYLING_set/app_styling_constants.dart';
 
 class AppMiniWidgets {
 /*

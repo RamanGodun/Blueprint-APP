@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../_Widgets_STYLING/app_styling_constants.dart';
+import '../_General_STYLING_set/app_styling_constants.dart';
 
 abstract class AppImagesStyling {
   static const EdgeInsets circularProgressPadding =

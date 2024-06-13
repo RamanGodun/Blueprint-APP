@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-import '../_Widgets_STYLING/app_box_decoration.dart';
-import '../_Widgets_STYLING/app_styling_constants.dart';
+import '../_General_STYLING_set/app_box_decoration.dart';
+import '../_General_STYLING_set/app_styling_constants.dart';
 
 abstract class CardsAndTilesStyling {
 /* FOR TILE CONTAINER

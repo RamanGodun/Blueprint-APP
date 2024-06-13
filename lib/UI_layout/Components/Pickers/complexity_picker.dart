@@ -5,9 +5,9 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
 
 import '../../../State_management/Theme_configuration/app_colors.dart';
-import '../_Widgets_STYLING/app_styling_constants.dart';
-import '../_Widgets_STYLING/app_text_styling.dart';
-import '../_Widgets_STYLING/app_box_decoration.dart';
+import '../_General_STYLING_set/app_styling_constants.dart';
+import '../_General_STYLING_set/app_text_styling.dart';
+import '../_General_STYLING_set/app_box_decoration.dart';
 
 class ComplexityPicker extends StatefulWidget {
   final Function(String) setSelectedComplexity;

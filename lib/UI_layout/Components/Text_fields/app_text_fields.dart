@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Services/text_validation_service.dart';
-import '../_Widgets_STYLING/app_borders.dart';
-import '../_Widgets_STYLING/app_text_styling.dart';
+import '../_General_STYLING_set/app_borders.dart';
+import '../_General_STYLING_set/app_text_styling.dart';
 import '_input_styling.dart';
 
 enum WidgetType {

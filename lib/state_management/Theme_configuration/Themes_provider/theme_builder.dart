@@ -1,3 +1,4 @@
+import 'package:blueprint_4app/UI_layout/Components/_General_STYLING_set/app_styling_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -56,13 +57,106 @@ class ThisAppThemesBuilder {
         scaffoldBackgroundColor: scaffoldBackgroundColor,
       ),
       inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: colorScheme.onSurface),
+        labelStyle: TextStyle(
+          color: colorScheme.onSurface,
+          fontWeight: FontWeight.w400,
+        ),
+        floatingLabelStyle: TextStyle(
+          color: colorScheme.primary,
+          fontWeight: FontWeight.w500,
+        ),
+        helperStyle: TextStyle(
+          color: colorScheme.onSurface.withOpacity(0.7),
+          fontSize: 12,
+        ),
+        helperMaxLines: 1,
+        hintStyle: TextStyle(
+          color: colorScheme.onSurface.withOpacity(0.5),
+          fontStyle: FontStyle.italic,
+        ),
+        hintFadeDuration: const Duration(milliseconds: 200),
+        errorStyle: const TextStyle(
+          color: AppColors.kErrorColor,
+          fontSize: 12,
+        ),
+        errorMaxLines: 2,
+        floatingLabelBehavior: FloatingLabelBehavior.auto,
+        floatingLabelAlignment: FloatingLabelAlignment.start,
+        isDense: true,
+        contentPadding: AppStylingConstants.commonPadding,
+        isCollapsed: false,
+        iconColor: colorScheme.onSurface,
+        prefixStyle: TextStyle(
+          color: colorScheme.onSurface,
+          fontWeight: FontWeight.w400,
+        ),
+        prefixIconColor: colorScheme.primary,
+        suffixStyle: TextStyle(
+          color: colorScheme.onSurface,
+          fontWeight: FontWeight.w400,
+        ),
+        suffixIconColor: colorScheme.primary,
+        counterStyle: TextStyle(
+          color: colorScheme.onSurface.withOpacity(0.7),
+          fontSize: 12,
+        ),
+        filled: true,
+        fillColor: colorScheme.surface.withOpacity(0.2),
+        activeIndicatorBorder: BorderSide(
+          color: colorScheme.primary.withOpacity(0.6),
+          width: 1.0,
+        ),
+        outlineBorder: BorderSide(
+          color: colorScheme.onSurface.withOpacity(0.3),
+          width: 1.0,
+        ),
+        focusColor: colorScheme.primary,
+        hoverColor: colorScheme.primary.withOpacity(0.04),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: AppColors.kErrorColor,
+            width: 0.8,
+          ),
+          borderRadius: AppStylingConstants.commonBorderRadius,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.kAppPrimaryColor),
+          borderSide: const BorderSide(
+            color: AppColors.kAppPrimaryColor,
+            width: 0.8,
+          ),
+          borderRadius: AppStylingConstants.commonBorderRadius,
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: AppColors.kErrorColorDark,
+            width: 0.8,
+          ),
+          borderRadius: AppStylingConstants.commonBorderRadius,
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: colorScheme.onSurface.withOpacity(0.1),
+            width: 0.8,
+          ),
+          borderRadius: AppStylingConstants.commonBorderRadius,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: colorScheme.onSurface.withOpacity(0.3),
+            width: 0.8,
+          ),
+          borderRadius: AppStylingConstants.commonBorderRadius,
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: colorScheme.onSurface,
+            width: 0.8,
+          ),
+          borderRadius: AppStylingConstants.commonBorderRadius,
+        ),
+        alignLabelWithHint: true,
+        constraints: const BoxConstraints(
+          maxWidth: 400,
         ),
       ),
       dividerColor: dividerColor,

@@ -1,7 +1,7 @@
-import 'package:blueprint_4app/UI_layout/Components/_Widgets_STYLING/app_box_shadows.dart';
+import 'package:blueprint_4app/UI_layout/Components/_General_STYLING_set/app_box_shadows.dart';
 import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
-import '../_Widgets_STYLING/app_styling_constants.dart';
+import '../_General_STYLING_set/app_styling_constants.dart';
 
 abstract class AppIconButtonsStyling {
   static IconButton withShadows(

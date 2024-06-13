@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../State_management/Models/models_4_tracker_on_isar /item_model.dart';
 import '../../../../State_management/Models/models_4_tracker_on_isar /model_of_subcategory.dart';
 import '../../../../State_management/Helpers/Common/helpers.dart';
-import '../../_Widgets_STYLING/app_box_decoration.dart';
-import '../../_Widgets_STYLING/app_text_styling.dart';
+import '../../_General_STYLING_set/app_text_styling.dart';
+import '../_dd_buttons_styling.dart';
 import 'dd_button_from_tracker.dart';
 
 class SubCategoryDropButton extends StatefulWidget {
@@ -50,7 +50,8 @@ class _SubCategoryDropButtonState extends State<SubCategoryDropButton> {
         itemHeight: 35,
         elevation: 10,
         style: AppTextStyling.forDDButtonTextStyle(context),
-        decoration: AppBoxDecorations.getInputDecoration(context, isDarkTheme),
+        decoration: AppDDButtonsStyling.inputDecorationForDDButton(
+            context, isDarkTheme),
       ),
     );
   }

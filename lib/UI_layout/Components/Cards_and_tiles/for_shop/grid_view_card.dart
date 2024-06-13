@@ -4,8 +4,8 @@ import '../../../../State_management/Models/models_for_store/product_model.dart'
 import '../../../../State_management/Providers/Providers_for_store/common_data_provider.dart';
 import '../../Images/image_widgets.dart';
 import '../../Pickers/for_shop/quantity_changer.dart';
-import '../../_Widgets_STYLING/app_box_decoration.dart';
-import '../../_Widgets_STYLING/app_text_styling.dart';
+import '../../_General_STYLING_set/app_box_decoration.dart';
+import '../../_General_STYLING_set/app_text_styling.dart';
 
 class CardOfProductItem4GridView extends StatefulWidget {
   const CardOfProductItem4GridView({required this.productId, super.key});

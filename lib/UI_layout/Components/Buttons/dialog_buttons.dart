@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Src/Const_data/strings_4_app.dart';
-import '../_Widgets_STYLING/app_text_styling.dart';
+import '../_General_STYLING_set/app_text_styling.dart';
 import '_buttons_styling.dart';
 
 class AppDialogsButtons {
