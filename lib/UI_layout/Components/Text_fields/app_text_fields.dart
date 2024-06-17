@@ -104,50 +104,10 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   Widget build(BuildContext context) {
-    Widget field;
-
-    if (widget.widgetType == WidgetType.textFormField) {
-      field = _buildTextFormField(context);
-    } else if (widget.widgetType == WidgetType.cupertinoStyle) {
-      field = _buildCupertinoTextField();
-    } else {
-      field = _buildTextField(context);
-    }
-    return field;
-  }
-
-  Widget _buildTextFormField(BuildContext context) {
-    final colorScheme = widget.theme.colorScheme;
-    final textStyle =
-        AppTextStyling.forTextFormField(widget.theme, widget.textSize);
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 7),
-      height: widget.heightOfField,
-      width: widget.widthOfField,
-      child: TextFormField(
-        textAlign:
-            widget.isTextAlignCenter ? TextAlign.center : TextAlign.start,
-        cursorColor: colorScheme.primary,
-        maxLines: widget.maxLines,
-        controller: widget.controller,
-        maxLength: widget.maxLength,
-        keyboardType: widget.keyboardType,
-        style: textStyle,
-        decoration: InputDecorationStyling.inputDecorationForFormField(
-          borderRadius: widget.borderRadius,
-          borderWidth: widget.borderWidth,
-          colorScheme: colorScheme,
-          textStyle: textStyle,
-          isNeedPrefixIcon: widget.isNeedPrefixIcon,
-          isNeedSuffixIcon: widget.isNeedSuffixIcon,
-          showCounterText: widget.showCounterText,
-          icon: widget.icon,
-          maxLength: widget.maxLength,
-        ).copyWith(
-          errorText: errorText,
-        ),
-      ),
-    );
+    final textField = (widget.widgetType == WidgetType.cupertinoStyle)
+        ? _buildCupertinoTextField()
+        : _buildTextField(context);
+    return textField;
   }
 
   Widget _buildCupertinoTextField() {
@@ -168,6 +128,7 @@ class _AppTextFieldState extends State<AppTextField> {
           ? TextInputType.text
           : const TextInputType.numberWithOptions(decimal: true),
       readOnly: widget.isReadOnly,
+      // clearButtonMode: OverlayVisibilityMode.never,
       maxLength: widget.maxLength,
       textAlign: (widget.validatorType == ValidatorType.name)
           ? TextAlign.left

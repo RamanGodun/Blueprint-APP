@@ -28,44 +28,5 @@ abstract class InputDecorationStyling {
           : null,
     );
   }
-
-/*
-   for TEXT FORM
- */
-  static InputDecoration inputDecorationForFormField({
-    required ColorScheme colorScheme,
-    required TextStyle? textStyle,
-    required bool isNeedPrefixIcon,
-    required bool isNeedSuffixIcon,
-    required bool showCounterText,
-    required IconData? icon,
-    required int maxLength,
-    Widget? prefix,
-    String? suffixText,
-    String? labelText,
-    required double borderWidth,
-    required double borderRadius,
-  }) {
-    const prefixIcon = CountryPicker();
-    final suffixIcon = Icon(icon);
-    return InputDecoration(
-      prefixIcon: (isNeedPrefixIcon == true) ? prefixIcon : null,
-      suffixIcon: (isNeedSuffixIcon == true) ? suffixIcon : null,
-      contentPadding: AppStylingConstants.commonPadding,
-      counterText: showCounterText ? maxLength.toString() : '',
-      counterStyle: textStyle,
-      border: InputBorder.none,
-      prefix: prefix,
-      prefixStyle: textStyle,
-      suffixText: suffixText,
-      suffixStyle: textStyle,
-      labelText: labelText ?? "",
-      labelStyle: textStyle?.copyWith(fontSize: 14),
-      hintStyle: textStyle?.copyWith(color: AppColors.inactiveGray),
-      enabledBorder: AppBordersStyling.enabledBorderForTF(),
-      focusedBorder: AppBordersStyling.focusedBorderForTF(),
-      errorBorder: AppBordersStyling.errorBorderForTF(),
-      focusedErrorBorder: AppBordersStyling.focusedErrorBorderForTF(),
-    );
-  }
+/* */
 }
