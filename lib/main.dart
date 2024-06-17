@@ -22,10 +22,11 @@ import 'State_management/Src/Generated_code/firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  await DIServiceLocator.instance.setupDependencies();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await DIServiceLocator.instance.setupDependencies();
+
   // Helpers.init();
   runApp(const AppLocalization());
 }

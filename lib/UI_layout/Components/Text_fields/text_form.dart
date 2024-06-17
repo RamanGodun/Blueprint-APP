@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 
 import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Services/text_validation_service.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../_General_STYLING_set/app_borders.dart';
-import '../_General_STYLING_set/app_styling_constants.dart';
 import '../_General_STYLING_set/app_text_styling.dart';
 
-class AppTextFormField extends StatelessWidget {
+class AppTextFormField extends StatefulWidget {
   const AppTextFormField({
     super.key,
-    required this.controller,
+    required this.onChanged,
     required this.theme,
-    required this.focusNode,
     this.validatorType = ValidatorType.string,
     this.hintText = "Hint text",
     // this.labelText = "Label text",
@@ -31,6 +30,7 @@ class AppTextFormField extends StatelessWidget {
     this.borderRadius = 9.0,
     this.borderWidth = 1.0,
     this.maxLines = 1,
+    this.minLength = 3,
     this.allowEmpty = false,
     this.keyboardType = TextInputType.text,
     this.icon,
@@ -44,16 +44,14 @@ class AppTextFormField extends StatelessWidget {
     this.onSaved,
   });
 
-  final TextEditingController controller;
   final ValidatorType validatorType;
-  final FocusNode focusNode;
   final ThemeData theme;
   final String hintText, obscuringCharacter; // labelText,
   final IconData? icon;
   final Widget? prefix;
   final String? suffixText;
   final double? textSize;
-  final int maxLength, maxLines;
+  final int maxLength, maxLines, minLength;
   final double heightOfField, widthOfField, borderRadius, borderWidth;
   final bool isObscureText,
       isReadOnly,
@@ -68,13 +66,46 @@ class AppTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final String? restorationId;
   final VoidCallback? onEditingComplete;
-  final void Function(String)? onFieldSubmitted;
+  final void Function(String)? onFieldSubmitted, onChanged;
   final void Function(String?)? onSaved;
 
   @override
+  State<AppTextFormField> createState() => _AppTextFormFieldState();
+}
+
+class _AppTextFormFieldState extends State<AppTextFormField> {
+  late TextEditingController _controller;
+  late FocusNode _focusNode;
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+    _focusNode = FocusNode();
+    _controller.addListener(() {
+      if (mounted) {
+        setState(() {});
+        widget.onChanged?.call(_controller.text);
+      }
+    });
+    _focusNode.addListener(() {
+      if (!_focusNode.hasFocus) {
+        widget.onChanged?.call(_controller.text);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final colorScheme = theme.colorScheme;
-    final textStyle = AppTextStyling.forTextFormField(theme, textSize);
+    final colorScheme = widget.theme.colorScheme;
+    final textStyle =
+        AppTextStyling.forTextFormField(widget.theme, widget.textSize);
 /* const prefixIcon = CountryPicker(); - this for countries flags */
 
     return GestureDetector(
@@ -84,27 +115,31 @@ class AppTextFormField extends StatelessWidget {
       },
       child: Container(
         color: AppColors.transparent,
-        margin: AppStylingConstants.zeroPadding,
-        height: heightOfField,
-        width: widthOfField,
+        margin: const EdgeInsets.symmetric(vertical: 4),
+        height: widget.heightOfField,
+        width: widget.widthOfField,
         child: TextFormField(
-          restorationId: restorationId,
-          controller: controller,
-          keyboardType: keyboardType,
+          restorationId: widget.restorationId,
+          controller: _controller,
+          keyboardType: widget.keyboardType,
           /* 
         VALIDATION  */
-          validator: _getValidator(),
+          validator: (value) => TextFieldValidationService.getValidatorFunction(
+                  widget.validatorType, widget.allowEmpty, '', widget.minLength)
+              ?.call(value),
+//  _getValidator(),
           autovalidateMode: AutovalidateMode.onUserInteraction,
           /* 
         HANDLERS */
-          onEditingComplete: onEditingComplete,
-          onFieldSubmitted: onFieldSubmitted,
-          onSaved: onSaved,
+          onEditingComplete: widget.onEditingComplete,
+          onFieldSubmitted: widget.onFieldSubmitted,
+          onSaved: widget.onSaved,
+          onChanged: widget.onChanged,
           // onTapOutside: () {},
           /* 
         Text STYLING */
           style: textStyle,
-          textAlign: textAlign,
+          textAlign: widget.textAlign,
           /* 
         CURSOR */
           showCursor: true,
@@ -112,15 +147,15 @@ class AppTextFormField extends StatelessWidget {
           cursorHeight: 15,
           cursorColor: colorScheme.secondary,
           cursorErrorColor: colorScheme.errorContainer,
-          obscuringCharacter: obscuringCharacter,
+          obscuringCharacter: widget.obscuringCharacter,
           /* 
         MAX parameters */
-          maxLines: maxLines,
-          maxLength: maxLength,
+          maxLines: widget.maxLines,
+          maxLength: widget.maxLength,
           /* 
         FOCUS */
-          autofocus: autoFocus,
-          focusNode: focusNode,
+          autofocus: widget.autoFocus,
+          focusNode: _focusNode,
           /* 
         INPUT DECORATION */
           decoration: InputDecoration(
@@ -128,33 +163,37 @@ class AppTextFormField extends StatelessWidget {
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
             /* 
           COUNTER */
-            counterText: (!showCounterText
-//  || controller.text.isEmpty
-                )
+            counterText: (!widget.showCounterText || _controller.text.isEmpty)
                 ? ""
-                : "${controller.text.length}/$maxLength",
-            counterStyle: AppTextStyling.label(theme),
+                : "${_controller.text.length}/${widget.maxLength}",
+            counterStyle: AppTextStyling.label(widget.theme).copyWith(
+                color: (_controller.length < widget.minLength)
+                    ? AppColors.kErrorColor
+                    : colorScheme.onSurface),
             /* 
           PREFIX */
-            prefixIcon: (isNeedPrefixIcon == true) ? Icon(icon) : null,
-            prefix: prefix,
+            prefixIcon:
+                (widget.isNeedPrefixIcon == true) ? Icon(widget.icon) : null,
+            prefix: widget.prefix,
             prefixStyle: textStyle,
             /* 
           SUFFIX */
-            suffixIcon: (isNeedSuffixIcon == true) ? Icon(icon) : null,
-            suffixText: suffixText,
+            suffixIcon:
+                (widget.isNeedSuffixIcon == true) ? Icon(widget.icon) : null,
+            suffixText: widget.suffixText,
             suffixStyle: textStyle,
             /* 
           LABEL & HINT text */
             // labelText: labelText,
-            labelStyle: textStyle.copyWith(fontSize: 14),
+            labelStyle: textStyle.copyWith(fontSize: 13),
             // label: Some widget can be here,
-            hintText: hintText,
+            hintText: widget.hintText,
             hintStyle: textStyle.copyWith(color: AppColors.inactiveGray),
             /* 
           ERROR text */
             // errorText: errorText,
-            errorStyle: AppTextStyling.errorText(theme).copyWith(fontSize: 10),
+            errorStyle:
+                AppTextStyling.errorText(widget.theme).copyWith(fontSize: 13),
             /* 
           BORDERS styling */
             enabledBorder: AppBordersStyling.enabledBorderForTF(),
@@ -169,9 +208,5 @@ class AppTextFormField extends StatelessWidget {
     );
   }
 
-  String? Function(String?)? _getValidator() {
-    final validator = TextFieldValidationService.getValidatorFunction(
-        validatorType, allowEmpty);
-    return validator;
-  }
+/* */
 }

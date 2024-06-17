@@ -1,10 +1,9 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Services/auth_service.dart';
+import '../../../State_management/Services/_service_locator.dart';
 import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Cards_and_tiles/sign_in_tile.dart';
 import '../../Components/Images/image_widgets.dart';
@@ -30,26 +29,27 @@ class LoginOrRegisterPage extends StatefulWidget {
 }
 
 class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
+  final AuthService authService = DIServiceLocator.instance.get<AuthService>();
   final _formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  TextEditingController? passwordConfirmationController;
-  FocusNode emailFocusNode = FocusNode();
-  FocusNode passwordFocusNode = FocusNode();
-  FocusNode? passwordConfirmationFocusNode;
+  final List<String> textControllersValues = ["", "", ""];
   bool isLoading = false;
   late ThemeData theme;
   late ColorScheme colorScheme;
   late TextTheme textTheme;
   late Size deviceSize;
+  late ValueNotifier<bool> isButtonActive;
 
   @override
   void initState() {
     super.initState();
-    if (!widget.isLoginPage) {
-      passwordConfirmationController = TextEditingController();
-      passwordConfirmationFocusNode = FocusNode();
-    }
+    isButtonActive = ValueNotifier<bool>(false);
+    authService.addListener(() {
+      if (mounted) {
+        setState(() {
+          isLoading = authService.isLoading;
+        });
+      }
+    });
   }
 
   @override
@@ -61,6 +61,10 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
     textTheme = theme.textTheme;
   }
 
+  void _updateButtonState() {
+    isButtonActive.value = _formKey.currentState?.validate() ?? false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return isLoading
@@ -68,12 +72,10 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
         : CupertinoPageScaffold(
             backgroundColor: colorScheme.surface,
             child: Material(
-              // color: AppColors.transparent,
               child: Center(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Form(
-                    // Використовуємо Form
                     key: _formKey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -84,43 +86,54 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                         AppTextWidgets.greetingsText(theme, widget.isLoginPage),
                         const SizedBox(height: 25),
                         AppTextFormField(
-                          controller: emailController,
-                          focusNode: emailFocusNode,
                           theme: theme,
                           hintText: 'Email',
-                          // labelText: "enter email",
                           icon: Icons.mail,
                           validatorType: ValidatorType.email,
+                          onChanged: (value) {
+                            textControllersValues[0] = value;
+                            _updateButtonState();
+                          },
                         ),
                         AppTextFormField(
-                          controller: passwordController,
-                          focusNode: passwordFocusNode,
                           theme: theme,
                           hintText: 'Password',
-                          // labelText: "enter password",
                           isObscureText: true,
                           icon: Icons.lock,
                           validatorType: ValidatorType.double,
+                          onChanged: (value) {
+                            textControllersValues[1] = value;
+                            _updateButtonState();
+                          },
                         ),
-                        if (!widget.isLoginPage &&
-                            passwordConfirmationController != null)
+                        if (!widget.isLoginPage)
                           AppTextFormField(
-                            controller: passwordConfirmationController!,
-                            focusNode: passwordConfirmationFocusNode!,
                             theme: theme,
                             hintText: 'Confirm password',
-                            // labelText: "confirm email",
                             isObscureText: true,
                             icon: Icons.lock_outline,
                             validatorType: ValidatorType.integer,
+                            onChanged: (value) {
+                              textControllersValues[2] = value;
+                              _updateButtonState();
+                            },
                           ),
                         if (widget.isLoginPage)
                           const ForgotPasswordTextWidget(),
                         const SizedBox(height: 45),
-                        AppButtons.signInUp(context,
-                            isLoginPage: widget.isLoginPage,
-                            onPressed: () =>
-                                _signUserInOrUp(widget.isLoginPage)),
+                        ValueListenableBuilder<bool>(
+                          valueListenable: isButtonActive,
+                          builder: (context, value, child) {
+                            return AppButtons.signInUp(context,
+                                isLoginPage: widget.isLoginPage,
+                                onPressed: value
+                                    ? () => authService.signUserInOrUp(
+                                        context,
+                                        widget.isLoginPage,
+                                        textControllersValues)
+                                    : null);
+                          },
+                        ),
                         const SizedBox(height: 50),
                         AppDividers.dividerForSignPage(theme),
                         const SizedBox(height: 20),
@@ -155,88 +168,6 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   }
 
   Future<void> _googleSignIn() async {
-    setState(() {
-      isLoading = true;
-    });
-    try {
-      final AuthService authService = AuthService();
-      await authService.signInWithGoogle();
-    } catch (error) {
-      //
-    }
-    setState(() {
-      isLoading = false;
-    });
+    await authService.signInWithGoogle();
   }
-
-  Future<void> _signUserInOrUp(bool isLoginPage) async {
-    if (_formKey.currentState!.validate()) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(child: AppCashedWidgets.loadingWidget);
-        },
-      );
-      try {
-        if (emailController.text.isNotEmpty &&
-            passwordController.text.isNotEmpty) {
-          final AuthService authService = AuthService();
-          if (isLoginPage) {
-            await authService.signInWithEmailAndPassword(
-              emailController.text,
-              passwordController.text,
-            );
-          } else {
-            if (passwordConfirmationController != null &&
-                passwordController.text ==
-                    passwordConfirmationController!.text) {
-              await authService.createUserWithEmailAndPassword(
-                emailController.text,
-                passwordController.text,
-              );
-            } else {
-              Navigator.pop(context);
-              return _wrongEmailOrPasswordMessage(
-                  context, 'Passwords don\'t match');
-            }
-          }
-        }
-        Navigator.pop(context);
-      } catch (e) {
-        Navigator.pop(context);
-      }
-    }
-  }
-
-  void _wrongEmailOrPasswordMessage(BuildContext context, String message) {
-    showCupertinoDialog(
-      context: context,
-      builder: (context) {
-        return CupertinoAlertDialog(
-          title: const Text('Error'),
-          content: Text(message),
-          actions: [
-            CupertinoDialogAction(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    passwordConfirmationController?.dispose();
-    emailFocusNode.dispose();
-    passwordFocusNode.dispose();
-    passwordConfirmationFocusNode?.dispose();
-    super.dispose();
-  }
-/* */
 }

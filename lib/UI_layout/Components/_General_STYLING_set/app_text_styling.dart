@@ -80,7 +80,6 @@ abstract class AppTextStyling {
     return textTheme.labelSmall!.copyWith(
       color: colorScheme.onSurface,
       height: 0.9,
-      fontStyle: FontStyle.italic,
     );
   }
 

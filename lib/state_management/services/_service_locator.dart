@@ -11,6 +11,8 @@ import '../Models/models_4_FI_on_hive/model_4_hive.dart' as model_hive;
 import '../Models/models_4_FI_on_hive/model_4fi_on_hive.dart'
     as question_model_hive;
 import 'animation_controller_service.dart';
+import 'auth_service.dart';
+import 'dialogs_service.dart';
 import 'text_validation_service.dart';
 
 class DIServiceLocator {
@@ -31,16 +33,29 @@ class DIServiceLocator {
     await _setupHiveBox();
     _setupAnimationService();
     _setupTextValidation();
+    _setupCustomDialogService();
+    _setupAuthService();
     // _setupMappingHelperService();
     // _setupThemeService();
   }
 
 /*TextFieldValidationService */
-
   void _setupTextValidation() {
     if (!_getIt.isRegistered<TextFieldValidationService>()) {
       _getIt.registerSingleton<TextFieldValidationService>(
           TextFieldValidationService());
+    }
+  }
+
+  void _setupAuthService() {
+    if (!_getIt.isRegistered<AuthService>()) {
+      _getIt.registerSingleton<AuthService>(AuthService());
+    }
+  }
+
+  void _setupCustomDialogService() {
+    if (!_getIt.isRegistered<CustomDialogService>()) {
+      _getIt.registerSingleton<CustomDialogService>(CustomDialogService());
     }
   }
 
