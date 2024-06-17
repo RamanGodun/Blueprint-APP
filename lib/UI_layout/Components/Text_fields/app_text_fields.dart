@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Services/text_validation_service.dart';
 import '../_General_STYLING_set/app_borders.dart';
+import '../_General_STYLING_set/app_styling_constants.dart';
 import '../_General_STYLING_set/app_text_styling.dart';
-import '_input_styling.dart';
 
 enum WidgetType {
   textField,
@@ -133,7 +133,7 @@ class _AppTextFieldState extends State<AppTextField> {
       textAlign: (widget.validatorType == ValidatorType.name)
           ? TextAlign.left
           : TextAlign.center,
-      padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+      padding: AppStylingConstants.commonPadding,
       style: AppTextStyling.forTextField(widget.theme)
           .copyWith(fontWeight: FontWeight.w400),
       showCursor: true,
@@ -149,7 +149,7 @@ class _AppTextFieldState extends State<AppTextField> {
           controller: widget.controller,
           obscureText: widget.isObscureText,
           style: AppTextStyling.bodyMedium(widget.theme),
-          decoration: InputDecorationStyling.inputDecorationForTextField(
+          decoration: _inputDecorationForTextField(
             widget.theme,
             widget.hintText,
             widget.icon,
@@ -160,6 +160,23 @@ class _AppTextFieldState extends State<AppTextField> {
           autofocus: false,
         ),
       ),
+    );
+  }
+
+  static InputDecoration _inputDecorationForTextField(
+      ThemeData theme, String hintText, IconData? icon) {
+    final colorScheme = theme.colorScheme;
+    return InputDecoration(
+      contentPadding: AppStylingConstants.commonPadding,
+      enabledBorder: AppBordersStyling.enabledBorderForTextField(theme),
+      focusedBorder: AppBordersStyling.focusedBorderForTextField(theme),
+      fillColor: colorScheme.surface,
+      filled: true,
+      hintText: hintText,
+      hintStyle: AppTextStyling.hintText(theme),
+      prefixIcon: (icon != null)
+          ? Icon(icon, color: colorScheme.onSurface.withOpacity(0.5))
+          : null,
     );
   }
 }

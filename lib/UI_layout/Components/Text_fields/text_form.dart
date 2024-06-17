@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../../State_management/Models/app_enums.dart';
+import '../../../State_management/Services/text_validation_service.dart';
 import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../_General_STYLING_set/app_borders.dart';
 import '../_General_STYLING_set/app_styling_constants.dart';
@@ -9,20 +11,23 @@ class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
     super.key,
     required this.controller,
-    this.validatorType = ValidatorType.string,
     required this.theme,
+    required this.focusNode,
+    this.validatorType = ValidatorType.string,
     this.hintText = "Hint text",
+    // this.labelText = "Label text",
     this.isObscureText = false,
     this.maxLength = 24,
     this.isReadOnly = false,
     this.isAllBorder = true,
     this.showHintText = true,
-    this.showCounterText = false,
-    this.isTextAlignCenter = false,
+    this.showCounterText = true,
     this.heightOfField = 50,
     this.widthOfField = double.infinity,
     this.isNeedSuffixIcon = false,
     this.isNeedPrefixIcon = false,
+    this.autoFocus = false,
+    this.textAlign = TextAlign.start,
     this.borderRadius = 9.0,
     this.borderWidth = 1.0,
     this.maxLines = 1,
@@ -32,83 +37,141 @@ class AppTextFormField extends StatelessWidget {
     this.prefix,
     this.suffixText,
     this.textSize,
-    this.labelText,
+    this.obscuringCharacter = "*",
+    this.restorationId,
+    this.onEditingComplete,
+    this.onFieldSubmitted,
+    this.onSaved,
   });
 
   final TextEditingController controller;
   final ValidatorType validatorType;
-  final String hintText;
+  final FocusNode focusNode;
   final ThemeData theme;
-  final bool isObscureText;
-  final int maxLength;
-  final double heightOfField;
-  final double widthOfField;
-  final bool isReadOnly;
-  final bool isAllBorder;
-  final bool showCounterText;
-  final bool showHintText;
-  final int maxLines;
-  final bool allowEmpty;
-  final bool isTextAlignCenter;
-  final TextInputType? keyboardType;
-  final bool isNeedSuffixIcon;
-  final bool isNeedPrefixIcon;
-  final double borderRadius;
-  final double borderWidth;
+  final String hintText, obscuringCharacter; // labelText,
   final IconData? icon;
   final Widget? prefix;
   final String? suffixText;
   final double? textSize;
-  final String? labelText;
+  final int maxLength, maxLines;
+  final double heightOfField, widthOfField, borderRadius, borderWidth;
+  final bool isObscureText,
+      isReadOnly,
+      isAllBorder,
+      showCounterText,
+      showHintText,
+      isNeedSuffixIcon,
+      isNeedPrefixIcon,
+      autoFocus,
+      allowEmpty;
+  final TextAlign textAlign;
+  final TextInputType? keyboardType;
+  final String? restorationId;
+  final VoidCallback? onEditingComplete;
+  final void Function(String)? onFieldSubmitted;
+  final void Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = theme.colorScheme;
     final textStyle = AppTextStyling.forTextFormField(theme, textSize);
-    // const prefixIcon = CountryPicker();
+/* const prefixIcon = CountryPicker(); - this for countries flags */
 
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 7),
-      height: heightOfField,
-      width: widthOfField,
-      child: TextFormField(
-        controller: controller,
-        //  focusNode: FocusNode  - for focus
-        decoration: InputDecoration(
-          /* PREFIX */
-          prefixIcon: (isNeedPrefixIcon == true) ? Icon(icon) : null,
-          prefix: prefix,
-          prefixStyle: textStyle,
-
-          suffixIcon: (isNeedSuffixIcon == true) ? Icon(icon) : null,
-          contentPadding: AppStylingConstants.commonPadding,
-          counterText: showCounterText ? maxLength.toString() : '',
-          counterStyle: AppTextStyling.answerLabelStyle(theme),
-          // border: InputBorder.,
-
-          suffixText: suffixText,
-          suffixStyle: textStyle,
-          labelText: labelText ?? "",
-          labelStyle: textStyle.copyWith(fontSize: 14),
-          hintStyle: textStyle.copyWith(color: AppColors.inactiveGray),
-          enabledBorder: AppBordersStyling.enabledBorderForTF(),
-          focusedBorder: AppBordersStyling.focusedBorderForTF(),
-          errorBorder: AppBordersStyling.errorBorderForTF(),
-          focusedErrorBorder: AppBordersStyling.focusedErrorBorderForTF(),
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: Container(
+        color: AppColors.transparent,
+        margin: AppStylingConstants.zeroPadding,
+        height: heightOfField,
+        width: widthOfField,
+        child: TextFormField(
+          restorationId: restorationId,
+          controller: controller,
+          keyboardType: keyboardType,
+          /* 
+        VALIDATION  */
+          validator: _getValidator(),
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          /* 
+        HANDLERS */
+          onEditingComplete: onEditingComplete,
+          onFieldSubmitted: onFieldSubmitted,
+          onSaved: onSaved,
+          // onTapOutside: () {},
+          /* 
+        Text STYLING */
+          style: textStyle,
+          textAlign: textAlign,
+          /* 
+        CURSOR */
+          showCursor: true,
+          cursorWidth: 1.5,
+          cursorHeight: 15,
+          cursorColor: colorScheme.secondary,
+          cursorErrorColor: colorScheme.errorContainer,
+          obscuringCharacter: obscuringCharacter,
+          /* 
+        MAX parameters */
+          maxLines: maxLines,
+          maxLength: maxLength,
+          /* 
+        FOCUS */
+          autofocus: autoFocus,
+          focusNode: focusNode,
+          /* 
+        INPUT DECORATION */
+          decoration: InputDecoration(
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+            /* 
+          COUNTER */
+            counterText: (!showCounterText
+//  || controller.text.isEmpty
+                )
+                ? ""
+                : "${controller.text.length}/$maxLength",
+            counterStyle: AppTextStyling.label(theme),
+            /* 
+          PREFIX */
+            prefixIcon: (isNeedPrefixIcon == true) ? Icon(icon) : null,
+            prefix: prefix,
+            prefixStyle: textStyle,
+            /* 
+          SUFFIX */
+            suffixIcon: (isNeedSuffixIcon == true) ? Icon(icon) : null,
+            suffixText: suffixText,
+            suffixStyle: textStyle,
+            /* 
+          LABEL & HINT text */
+            // labelText: labelText,
+            labelStyle: textStyle.copyWith(fontSize: 14),
+            // label: Some widget can be here,
+            hintText: hintText,
+            hintStyle: textStyle.copyWith(color: AppColors.inactiveGray),
+            /* 
+          ERROR text */
+            // errorText: errorText,
+            errorStyle: AppTextStyling.errorText(theme).copyWith(fontSize: 10),
+            /* 
+          BORDERS styling */
+            enabledBorder: AppBordersStyling.enabledBorderForTF(),
+            focusedBorder: AppBordersStyling.focusedBorderForTF(),
+            disabledBorder: AppBordersStyling.disabledBorderForTF(),
+            errorBorder: AppBordersStyling.errorBorderForTF(),
+            focusedErrorBorder: AppBordersStyling.focusedErrorBorderForTF(),
+          ),
+          /* */
         ),
-        textAlign: isTextAlignCenter ? TextAlign.center : TextAlign.start,
-        cursorColor: colorScheme.primary,
-        maxLines: maxLines,
-        maxLength: maxLength,
-        keyboardType: keyboardType,
-        style: textStyle,
       ),
     );
   }
+
+  String? Function(String?)? _getValidator() {
+    final validator = TextFieldValidationService.getValidatorFunction(
+        validatorType, allowEmpty);
+    return validator;
+  }
 }
-
-
-  // void _validate() {
-  //   final validator = TextFieldValidationService.getValidatorFunction(
-  //       widget.validatorType, widget.allowEmpty);
-  // }

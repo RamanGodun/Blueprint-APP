@@ -2,9 +2,8 @@ import '../Models/app_enums.dart';
 
 class TextFieldValidationService {
   static String? Function(String?)? getValidatorFunction(
-    ValidatorType type,
-    bool allowEmpty,
-  ) {
+      ValidatorType type, bool allowEmpty,
+      [String etalonText = '']) {
     switch (type) {
       case ValidatorType.integer:
         return validateInteger;
@@ -18,6 +17,8 @@ class TextFieldValidationService {
         return validateEmail;
       case ValidatorType.name:
         return validateName;
+      case ValidatorType.sameAs:
+        return (value) => validateSameAs(value, etalonText);
       default:
         return null;
     }
@@ -71,7 +72,7 @@ class TextFieldValidationService {
     }
     final regExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!regExp.hasMatch(value)) {
-      return 'Невірний формат електронної пошти!';
+      return 'Поки що невірний формат е-mail!';
     }
     return null;
   }
@@ -86,4 +87,16 @@ class TextFieldValidationService {
     }
     return null;
   }
+
+  static String? validateSameAs(String? value, String etalonText) {
+    if (value == null || value.isEmpty) {
+      return 'Це поле не може бути пустим';
+    }
+    if (value != etalonText) {
+      return 'Текст не співпадає з еталонним';
+    }
+    return null;
+  }
+
+/** */
 }

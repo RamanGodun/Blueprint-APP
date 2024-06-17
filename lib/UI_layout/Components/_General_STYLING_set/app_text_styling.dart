@@ -73,6 +73,38 @@ abstract class AppTextStyling {
     );
   }
 
+  // Стиль тексту для label
+  static TextStyle label(ThemeData theme) {
+    final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
+    return textTheme.labelSmall!.copyWith(
+      color: colorScheme.onSurface,
+      height: 0.9,
+      fontStyle: FontStyle.italic,
+    );
+  }
+
+  // Стиль тексту для помилок
+  static TextStyle errorText(ThemeData theme) {
+    final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
+    return textTheme.labelMedium!.copyWith(
+      color: colorScheme.error,
+    );
+  }
+
+  // Стиль тексту для текстових полів форми
+  static TextStyle forTextFormField(ThemeData theme, double? textSize) {
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+    final textStyle = textTheme.bodyMedium!.copyWith(
+      color: colorScheme.onSurface,
+      fontSize: textSize ?? 17,
+      fontWeight: FontWeight.w500,
+    );
+    return textStyle;
+  }
+
   /* Common Cupertino Button Style */
 
   // Стиль тексту для кнопок Cupertino
@@ -117,8 +149,8 @@ abstract class AppTextStyling {
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
     return textTheme.bodySmall!.copyWith(
-      color: colorScheme.onSurface.withOpacity(0.55),
-      height: 0.95,
+      color: colorScheme.onSurface,
+      height: 0.9,
       fontStyle: FontStyle.italic,
     );
   }
@@ -226,19 +258,6 @@ abstract class AppTextStyling {
       color: itemColor,
       fontSize: isExpense ? 10 : 12,
     );
-  }
-
-  // Стиль тексту для текстових полів форми
-  static TextStyle forTextFormField(ThemeData theme, double? textSize) {
-    final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
-    final textStyle = textTheme.bodyMedium!.copyWith(
-      color: colorScheme.primary,
-      fontSize: textSize ?? 17,
-      fontWeight: FontWeight.w500,
-      overflow: TextOverflow.ellipsis,
-    );
-    return textStyle;
   }
 
   // Стиль тексту для тексту кнопки випадаючого списку

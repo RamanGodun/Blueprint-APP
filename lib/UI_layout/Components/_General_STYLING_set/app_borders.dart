@@ -31,32 +31,53 @@ abstract class AppBordersStyling {
   // OutlineInputBorder для текстового поля з валідацією
   static OutlineInputBorder enabledBorderForTF() {
     return OutlineInputBorder(
-      borderSide:
-          const BorderSide(color: AppColors.kSecondaryColor, width: 0.8),
+      borderSide: const BorderSide(color: AppColors.inactiveGray, width: 0.1),
       borderRadius: AppStylingConstants.commonBorderRadius,
     );
   }
 
-  static OutlineInputBorder focusedBorderForTF() {
+  static OutlineInputBorder focusedBorder2ForTF() {
     return OutlineInputBorder(
       borderSide:
-          const BorderSide(color: AppColors.kAppPrimaryColor, width: 0.8),
+          const BorderSide(color: AppColors.kAppPrimaryColor, width: 0.3),
+      borderRadius: AppStylingConstants.commonBorderRadius,
+    );
+  }
+
+  static UnderlineInputBorder focusedBorderForTF() {
+    return const UnderlineInputBorder(
+      borderSide: BorderSide(
+        color: AppColors.kAppPrimaryColor,
+        width: 0.5,
+      ),
+    );
+  }
+
+  static OutlineInputBorder disabledBorderForTF() {
+    return OutlineInputBorder(
+      borderSide: const BorderSide(color: AppColors.inactiveGray, width: 0.1),
       borderRadius: AppStylingConstants.commonBorderRadius,
     );
   }
 
   static OutlineInputBorder errorBorderForTF() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(color: AppColors.kErrorColor, width: 0.8),
+      borderSide: const BorderSide(color: AppColors.kErrorColor, width: 0.3),
       borderRadius: AppStylingConstants.commonBorderRadius,
     );
   }
 
-  static OutlineInputBorder focusedErrorBorderForTF() {
+  static OutlineInputBorder focusedErrorBorder2ForTF() {
     return OutlineInputBorder(
       borderSide:
-          const BorderSide(color: AppColors.kErrorColorDark, width: 0.8),
+          const BorderSide(color: AppColors.kErrorColorDark, width: 0.3),
       borderRadius: AppStylingConstants.commonBorderRadius,
+    );
+  }
+
+  static UnderlineInputBorder focusedErrorBorderForTF() {
+    return const UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColors.kErrorColorDark, width: 0.3),
     );
   }
 

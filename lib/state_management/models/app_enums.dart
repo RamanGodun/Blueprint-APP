@@ -24,7 +24,7 @@ enum CategoriesEnum {
   other
 }
 
-enum ValidatorType { integer, double, string, name, email, phoneNumber }
+enum ValidatorType { integer, double, string, name, email, phoneNumber, sameAs }
 
 enum DialogButtonType {
   actionButtonInIOSStyle,
