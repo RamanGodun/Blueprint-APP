@@ -11,7 +11,7 @@ abstract class AppBoxDecorations {
     final isDark = Helpers.isDarkTheme(theme);
     final colorScheme = theme.colorScheme;
     return BoxDecoration(
-      color: colorScheme.primary.withOpacity(isDark ? 0.45 : 0.85),
+      color: colorScheme.primary.withOpacity(isDark ? 0.45 : 0.7),
       borderRadius: AppStylingConstants.commonBorderRadius,
     );
   }

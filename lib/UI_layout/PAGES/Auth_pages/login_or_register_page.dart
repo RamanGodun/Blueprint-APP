@@ -15,14 +15,14 @@ import '../../Components/Text_widgets/forgot_password.dart';
 import '../../Components/Text_widgets/text_widgets.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {
-  final Function() changeAuthMode;
-  final bool isLoginPage;
-
   const LoginOrRegisterPage({
     super.key,
     required this.changeAuthMode,
     required this.isLoginPage,
   });
+
+  final Function() changeAuthMode;
+  final bool isLoginPage;
 
   @override
   State<LoginOrRegisterPage> createState() => _LoginOrRegisterPageState();
@@ -31,7 +31,11 @@ class LoginOrRegisterPage extends StatefulWidget {
 class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   final AuthService authService = DIServiceLocator.instance.get<AuthService>();
   final _formKey = GlobalKey<FormState>();
-  final List<String> textControllersValues = ["", "", ""];
+  final Map<TextFields, String> textControllersValues = {
+    TextFields.email: "",
+    TextFields.password: "",
+    TextFields.passwordConfirmation: "",
+  };
   bool isLoading = false;
   late ThemeData theme;
   late ColorScheme colorScheme;
@@ -50,19 +54,6 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
         });
       }
     });
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    deviceSize = Helpers.deviceSizeGet(context);
-    theme = Helpers.themeGet(context);
-    colorScheme = theme.colorScheme;
-    textTheme = theme.textTheme;
-  }
-
-  void _updateButtonState() {
-    isButtonActive.value = _formKey.currentState?.validate() ?? false;
   }
 
   @override
@@ -87,22 +78,22 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                         const SizedBox(height: 25),
                         AppTextFormField(
                           theme: theme,
-                          hintText: 'Email',
+                          hintText: 'Enter e-mail',
                           icon: Icons.mail,
                           validatorType: ValidatorType.email,
                           onChanged: (value) {
-                            textControllersValues[0] = value;
+                            textControllersValues[TextFields.email] = value;
                             _updateButtonState();
                           },
                         ),
                         AppTextFormField(
                           theme: theme,
-                          hintText: 'Password',
+                          hintText: 'Enter password',
                           isObscureText: true,
                           icon: Icons.lock,
                           validatorType: ValidatorType.double,
                           onChanged: (value) {
-                            textControllersValues[1] = value;
+                            textControllersValues[TextFields.password] = value;
                             _updateButtonState();
                           },
                         ),
@@ -114,7 +105,8 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                             icon: Icons.lock_outline,
                             validatorType: ValidatorType.integer,
                             onChanged: (value) {
-                              textControllersValues[2] = value;
+                              textControllersValues[
+                                  TextFields.passwordConfirmation] = value;
                               _updateButtonState();
                             },
                           ),
@@ -165,6 +157,19 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
               ),
             ),
           );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    deviceSize = Helpers.deviceSizeGet(context);
+    theme = Helpers.themeGet(context);
+    colorScheme = theme.colorScheme;
+    textTheme = theme.textTheme;
+  }
+
+  void _updateButtonState() {
+    isButtonActive.value = _formKey.currentState?.validate() ?? false;
   }
 
   Future<void> _googleSignIn() async {

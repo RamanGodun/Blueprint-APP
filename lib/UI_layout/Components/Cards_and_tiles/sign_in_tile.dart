@@ -15,17 +15,19 @@ class SignInTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Helpers.themeGet(context);
-    return GestureDetector(
-      onTap: onTap,
-      child: CardsAndTilesStyling.forTileContainer(
-        theme,
-        child: Image.asset(
-          (logInType == LogInType.googleSignIn)
-              ? ThisAppImages.google
-              : ThisAppImages.apple,
-          height: 30,
+    return Material(
+      child: GestureDetector(
+        onTap: onTap,
+        child: CardsAndTilesStyling.forTileContainer(
+          theme,
+          child: Image.asset(
+            (logInType == LogInType.googleSignIn)
+                ? ThisAppImages.google
+                : ThisAppImages.apple,
+            height: 30,
+          ),
+          fromSignPage: true,
         ),
-        fromSignPage: true,
       ),
     );
   }

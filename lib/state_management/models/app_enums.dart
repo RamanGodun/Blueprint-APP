@@ -32,3 +32,5 @@ enum DialogButtonType {
   cancelButtonInIOSStyle,
   cancelButtonInAndroidType,
 }
+
+enum TextFields { email, password, passwordConfirmation }

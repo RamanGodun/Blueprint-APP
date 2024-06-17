@@ -10,21 +10,23 @@ class ForgotPasswordTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Helpers.themeGet(context);
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        GestureDetector(
-          onTap: openDialogForForgotPassword,
-          child: Text(
-            'Forgot Password?',
-            style: AppTextStyling.forActionText(theme).copyWith(
-              fontStyle: FontStyle.italic,
-              decoration: TextDecoration.underline,
-              decorationColor: theme.colorScheme.primary.withOpacity(0.5),
+    return Material(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          GestureDetector(
+            onTap: openDialogForForgotPassword,
+            child: Text(
+              'Forgot Password?',
+              style: AppTextStyling.forActionText(theme).copyWith(
+                fontStyle: FontStyle.italic,
+                decoration: TextDecoration.underline,
+                decorationColor: theme.colorScheme.primary.withOpacity(0.5),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

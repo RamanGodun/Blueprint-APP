@@ -6,7 +6,7 @@ class CustomDialogService {
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: const Text('Error'),
+          title: const Text('Error title '),
           content: Text(message),
           actions: [
             CupertinoDialogAction(

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:blueprint_4app/State_management/Theme_configuration/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
@@ -18,21 +19,25 @@ abstract class AppButtonsStyling {
     EdgeInsets padding = AppStylingConstants.commonPadding,
   }) {
     final theme = Helpers.themeGet(context);
-    return InkWell(
-      onTap: onPressed,
-      child: ClipRRect(
-        borderRadius: AppStylingConstants.commonBorderRadius,
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          child: Container(
-            height: height,
-            width: double.infinity,
-            padding: padding,
-            decoration: AppBoxDecorations.forButtonsInGlassMorphismStyle(theme),
-            child: Center(
-              child: Text(
-                buttonText,
-                style: AppTextStyling.forButtons(theme),
+    return Material(
+      color: AppColors.transparent,
+      child: InkWell(
+        onTap: onPressed,
+        child: ClipRRect(
+          borderRadius: AppStylingConstants.commonBorderRadius,
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Container(
+              height: height,
+              width: double.infinity,
+              padding: padding,
+              decoration:
+                  AppBoxDecorations.forButtonsInGlassMorphismStyle(theme),
+              child: Center(
+                child: Text(
+                  buttonText,
+                  style: AppTextStyling.forButtons(theme),
+                ),
               ),
             ),
           ),
@@ -48,27 +53,30 @@ abstract class AppButtonsStyling {
   }) {
     final theme = Helpers.themeGet(context);
     final ColorScheme colorScheme = theme.colorScheme;
-    return SizedBox(
-      width: double.infinity,
-      height: AppStylingConstants.buttonsHeight,
-      child: CupertinoButton.filled(
-        padding: AppStylingConstants.commonPadding,
-        borderRadius: AppStylingConstants.commonBorderRadius,
-        pressedOpacity: 0.8,
-        onPressed: onPressed,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              CupertinoIcons.play_arrow,
-              color: colorScheme.onPrimary,
-            ),
-            const SizedBox(width: 8),
-            Text(
-              buttonText,
-              style: AppTextStyling.forButtons(theme),
-            ),
-          ],
+    return Material(
+      color: AppColors.transparent,
+      child: SizedBox(
+        width: double.infinity,
+        height: AppStylingConstants.buttonsHeight,
+        child: CupertinoButton.filled(
+          padding: AppStylingConstants.commonPadding,
+          borderRadius: AppStylingConstants.commonBorderRadius,
+          pressedOpacity: 0.8,
+          onPressed: onPressed,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                CupertinoIcons.play_arrow,
+                color: colorScheme.onPrimary,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                buttonText,
+                style: AppTextStyling.forButtons(theme),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -82,23 +90,26 @@ abstract class AppButtonsStyling {
     final theme = Helpers.themeGet(context);
     final isDark = Helpers.isDarkTheme(theme);
     final colorScheme = theme.colorScheme;
-    return SizedBox(
-      width: double.infinity,
-      height: AppStylingConstants.buttonsHeight,
-      child: ElevatedButton(
-        style: ButtonStyle(
-          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-              AppBordersStyling.roundedRectangleBorderForButton(theme)),
-          backgroundColor: WidgetStateProperty.all(
-            colorScheme.primary.withOpacity(isDark ? 0.35 : 0.65),
+    return Material(
+      color: AppColors.transparent,
+      child: SizedBox(
+        width: double.infinity,
+        height: AppStylingConstants.buttonsHeight,
+        child: ElevatedButton(
+          style: ButtonStyle(
+            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                AppBordersStyling.roundedRectangleBorderForButton(theme)),
+            backgroundColor: WidgetStateProperty.all(
+              colorScheme.primary.withOpacity(isDark ? 0.45 : 0.7),
+            ),
           ),
-        ),
-        onPressed: onPressed,
-        child: Padding(
-          padding: AppStylingConstants.commonPadding,
-          child: Text(
-            buttonText,
-            style: AppTextStyling.forButtons(theme),
+          onPressed: onPressed,
+          child: Padding(
+            padding: AppStylingConstants.commonPadding,
+            child: Text(
+              buttonText,
+              style: AppTextStyling.forButtons(theme),
+            ),
           ),
         ),
       ),
@@ -114,22 +125,25 @@ abstract class AppButtonsStyling {
     final isDark = Helpers.isDarkTheme(theme);
     final colorScheme = theme.colorScheme;
     final backgroundColor =
-        colorScheme.primary.withOpacity(isDark ? 0.35 : 0.65);
+        colorScheme.primary.withOpacity(isDark ? 0.45 : 0.7);
     final foregroundColor = colorScheme.onPrimary;
-    return SizedBox(
-      height: AppStylingConstants.buttonsHeight,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor,
-          foregroundColor: foregroundColor,
-          shape: AppBordersStyling.roundedRectangleBorderForButton(theme),
-          elevation: AppStylingConstants.elevation,
-          padding: AppStylingConstants.commonPadding,
-        ),
-        onPressed: onPressed,
-        child: Text(
-          buttonText,
-          style: AppTextStyling.forButtons(theme),
+    return Material(
+      color: AppColors.transparent,
+      child: SizedBox(
+        height: AppStylingConstants.buttonsHeight,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: backgroundColor,
+            foregroundColor: foregroundColor,
+            shape: AppBordersStyling.roundedRectangleBorderForButton(theme),
+            elevation: AppStylingConstants.elevation,
+            padding: AppStylingConstants.commonPadding,
+          ),
+          onPressed: onPressed,
+          child: Text(
+            buttonText,
+            style: AppTextStyling.forButtons(theme),
+          ),
         ),
       ),
     );
@@ -146,17 +160,20 @@ abstract class AppButtonsStyling {
     final theme = Helpers.themeGet(context);
     final isDark = Helpers.isDarkTheme(theme);
     final textStyleForButton = textStyle ?? AppTextStyling.forButtons(theme);
-    return ElevatedButton(
-      style: OutlinedButton.styleFrom(
-        backgroundColor:
-            theme.colorScheme.surface.withOpacity(isDark ? 0.2 : 0.5),
-        side: AppBordersStyling.borderSideForFIAnswer(theme),
-      ),
-      onPressed: onPressed,
-      child: Center(
-        child: Text(
-          buttonText,
-          style: textStyleForButton,
+    return Material(
+      color: AppColors.transparent,
+      child: ElevatedButton(
+        style: OutlinedButton.styleFrom(
+          backgroundColor:
+              theme.colorScheme.surface.withOpacity(isDark ? 0.2 : 0.5),
+          side: AppBordersStyling.borderSideForFIAnswer(theme),
+        ),
+        onPressed: onPressed,
+        child: Center(
+          child: Text(
+            buttonText,
+            style: textStyleForButton,
+          ),
         ),
       ),
     );

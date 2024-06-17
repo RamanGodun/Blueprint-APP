@@ -5,6 +5,7 @@ import '../../../State_management/Helpers/Common/helpers.dart';
 import '../../../State_management/Models/app_enums.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
 import '../../../State_management/Theme_configuration/Themes_provider/manager_of_themes.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../_General_STYLING_set/app_box_decoration.dart';
 import '../_General_STYLING_set/app_text_styling.dart';
 
@@ -15,24 +16,27 @@ class AppDDButtons {
   ) {
     final themeProvider = InheritedThemeManager.of(context);
     final theme = Helpers.themeGet(context);
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      decoration: AppBoxDecorations.forThemeChangingDB(theme),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<CustomThemeMode>(
-          key: ValueKey(context.locale.toString()),
-          value: themeProvider!.value,
-          onChanged: (newThemeMode) {
-            themeProvider.updateThemeMode(newThemeMode!);
-          },
-          items: _buildThemeModeItems(context),
-          style: theme.textTheme.bodyLarge?.copyWith(
-            color: theme.colorScheme.onSurface,
-          ),
-          dropdownColor: theme.colorScheme.surface,
-          icon: Icon(
-            Icons.arrow_drop_down,
-            color: theme.colorScheme.onSurface,
+    return Material(
+      color: AppColors.transparent,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        decoration: AppBoxDecorations.forThemeChangingDB(theme),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<CustomThemeMode>(
+            key: ValueKey(context.locale.toString()),
+            value: themeProvider!.value,
+            onChanged: (newThemeMode) {
+              themeProvider.updateThemeMode(newThemeMode!);
+            },
+            items: _buildThemeModeItems(context),
+            style: theme.textTheme.bodyLarge?.copyWith(
+              color: theme.colorScheme.onSurface,
+            ),
+            dropdownColor: theme.colorScheme.surface,
+            icon: Icon(
+              Icons.arrow_drop_down,
+              color: theme.colorScheme.onSurface,
+            ),
           ),
         ),
       ),

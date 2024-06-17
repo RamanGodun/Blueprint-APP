@@ -108,101 +108,107 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         AppTextStyling.forTextFormField(widget.theme, widget.textSize);
 /* const prefixIcon = CountryPicker(); - this for countries flags */
 
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        FocusScope.of(context).requestFocus(FocusNode());
-      },
-      child: Container(
-        color: AppColors.transparent,
-        margin: const EdgeInsets.symmetric(vertical: 4),
-        height: widget.heightOfField,
-        width: widget.widthOfField,
-        child: TextFormField(
-          restorationId: widget.restorationId,
-          controller: _controller,
-          keyboardType: widget.keyboardType,
-          /* 
-        VALIDATION  */
-          validator: (value) => TextFieldValidationService.getValidatorFunction(
-                  widget.validatorType, widget.allowEmpty, '', widget.minLength)
-              ?.call(value),
-//  _getValidator(),
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          /* 
-        HANDLERS */
-          onEditingComplete: widget.onEditingComplete,
-          onFieldSubmitted: widget.onFieldSubmitted,
-          onSaved: widget.onSaved,
-          onChanged: widget.onChanged,
-          // onTapOutside: () {},
-          /* 
-        Text STYLING */
-          style: textStyle,
-          textAlign: widget.textAlign,
-          /* 
-        CURSOR */
-          showCursor: true,
-          cursorWidth: 1.5,
-          cursorHeight: 15,
-          cursorColor: colorScheme.secondary,
-          cursorErrorColor: colorScheme.errorContainer,
-          obscuringCharacter: widget.obscuringCharacter,
-          /* 
-        MAX parameters */
-          maxLines: widget.maxLines,
-          maxLength: widget.maxLength,
-          /* 
-        FOCUS */
-          autofocus: widget.autoFocus,
-          focusNode: _focusNode,
-          /* 
-        INPUT DECORATION */
-          decoration: InputDecoration(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+    return Material(
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScope.of(context).requestFocus(FocusNode());
+        },
+        child: Container(
+          color: AppColors.transparent,
+          margin: const EdgeInsets.symmetric(vertical: 4),
+          height: widget.heightOfField,
+          width: widget.widthOfField,
+          child: TextFormField(
+            restorationId: widget.restorationId,
+            controller: _controller,
+            keyboardType: widget.keyboardType,
             /* 
-          COUNTER */
-            counterText: (!widget.showCounterText || _controller.text.isEmpty)
-                ? ""
-                : "${_controller.text.length}/${widget.maxLength}",
-            counterStyle: AppTextStyling.label(widget.theme).copyWith(
-                color: (_controller.length < widget.minLength)
-                    ? AppColors.kErrorColor
-                    : colorScheme.onSurface),
+          VALIDATION  */
+            validator: (value) =>
+                TextFieldValidationService.getValidatorFunction(
+                        widget.validatorType,
+                        widget.allowEmpty,
+                        '',
+                        widget.minLength)
+                    ?.call(value),
+            //  _getValidator(),
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             /* 
-          PREFIX */
-            prefixIcon:
-                (widget.isNeedPrefixIcon == true) ? Icon(widget.icon) : null,
-            prefix: widget.prefix,
-            prefixStyle: textStyle,
+          HANDLERS */
+            onEditingComplete: widget.onEditingComplete,
+            onFieldSubmitted: widget.onFieldSubmitted,
+            onSaved: widget.onSaved,
+            onChanged: widget.onChanged,
+            // onTapOutside: () {},
             /* 
-          SUFFIX */
-            suffixIcon:
-                (widget.isNeedSuffixIcon == true) ? Icon(widget.icon) : null,
-            suffixText: widget.suffixText,
-            suffixStyle: textStyle,
+          Text STYLING */
+            style: textStyle,
+            textAlign: widget.textAlign,
             /* 
-          LABEL & HINT text */
-            // labelText: labelText,
-            labelStyle: textStyle.copyWith(fontSize: 13),
-            // label: Some widget can be here,
-            hintText: widget.hintText,
-            hintStyle: textStyle.copyWith(color: AppColors.inactiveGray),
+          CURSOR */
+            showCursor: true,
+            cursorWidth: 1.5,
+            cursorHeight: 15,
+            cursorColor: colorScheme.secondary,
+            cursorErrorColor: colorScheme.errorContainer,
+            obscuringCharacter: widget.obscuringCharacter,
             /* 
-          ERROR text */
-            // errorText: errorText,
-            errorStyle:
-                AppTextStyling.errorText(widget.theme).copyWith(fontSize: 13),
+          MAX parameters */
+            maxLines: widget.maxLines,
+            maxLength: widget.maxLength,
             /* 
-          BORDERS styling */
-            enabledBorder: AppBordersStyling.enabledBorderForTF(),
-            focusedBorder: AppBordersStyling.focusedBorderForTF(),
-            disabledBorder: AppBordersStyling.disabledBorderForTF(),
-            errorBorder: AppBordersStyling.errorBorderForTF(),
-            focusedErrorBorder: AppBordersStyling.focusedErrorBorderForTF(),
+          FOCUS */
+            autofocus: widget.autoFocus,
+            focusNode: _focusNode,
+            /* 
+          INPUT DECORATION */
+            decoration: InputDecoration(
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+              /* 
+            COUNTER */
+              counterText: (!widget.showCounterText || _controller.text.isEmpty)
+                  ? ""
+                  : "${_controller.text.length}/${widget.maxLength}",
+              counterStyle: AppTextStyling.label(widget.theme).copyWith(
+                  color: (_controller.length < widget.minLength)
+                      ? AppColors.kErrorColor
+                      : colorScheme.onSurface),
+              /* 
+            PREFIX */
+              prefixIcon:
+                  (widget.isNeedPrefixIcon == true) ? Icon(widget.icon) : null,
+              prefix: widget.prefix,
+              prefixStyle: textStyle,
+              /* 
+            SUFFIX */
+              suffixIcon:
+                  (widget.isNeedSuffixIcon == true) ? Icon(widget.icon) : null,
+              suffixText: widget.suffixText,
+              suffixStyle: textStyle,
+              /* 
+            LABEL & HINT text */
+              // labelText: labelText,
+              labelStyle: textStyle.copyWith(fontSize: 13),
+              // label: Some widget can be here,
+              hintText: widget.hintText,
+              hintStyle: textStyle.copyWith(color: AppColors.inactiveGray),
+              /* 
+            ERROR text */
+              // errorText: errorText,
+              errorStyle:
+                  AppTextStyling.errorText(widget.theme).copyWith(fontSize: 13),
+              /* 
+            BORDERS styling */
+              enabledBorder: AppBordersStyling.enabledBorderForTF(),
+              focusedBorder: AppBordersStyling.focusedBorderForTF(),
+              disabledBorder: AppBordersStyling.disabledBorderForTF(),
+              errorBorder: AppBordersStyling.errorBorderForTF(),
+              focusedErrorBorder: AppBordersStyling.focusedErrorBorderForTF(),
+            ),
+            /* */
           ),
-          /* */
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
+import '../Models/app_enums.dart';
 import '../Services/_service_locator.dart';
 import 'dialogs_service.dart';
 
@@ -75,11 +76,13 @@ class AuthService extends ChangeNotifier {
   Future<void> signUserInOrUp(
     BuildContext context,
     bool isLoginPage,
-    List<String> controllersValues,
+    Map<TextFields, String> textControllersValues,
   ) async {
-    final email = controllersValues[0];
-    final password = controllersValues[1];
-    final confirmPassword = controllersValues[2];
+    final email = textControllersValues[TextFields.email]!;
+    final password = textControllersValues[TextFields.password]!;
+    final confirmPassword =
+        textControllersValues[TextFields.passwordConfirmation] ?? password;
+
     _setLoading(true);
     try {
       if (isLoginPage) {
