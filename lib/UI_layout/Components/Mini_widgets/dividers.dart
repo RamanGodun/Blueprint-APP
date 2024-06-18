@@ -29,9 +29,10 @@ class AppDividers {
 
   static Widget divider2(ThemeData theme) {
     final colorScheme = theme.colorScheme;
+    final isDarkMode = Helpers.isDarkTheme(theme);
     return Divider(
       thickness: 0.5,
-      color: colorScheme.inverseSurface.withOpacity(0.5),
+      color: colorScheme.inverseSurface.withOpacity(isDarkMode ? 1 : 0.5),
     );
   }
 
@@ -56,27 +57,30 @@ class AppDividers {
  */
   static Widget dividerForSignPage(ThemeData theme) {
     // final isDarkMode = Helpers.isDarkTheme(theme);
-    return SizedBox(
-      height: 40,
-      child: Column(children: [
-        Row(
-          children: <Widget>[
-            Expanded(child: AppDividers.divider2(theme)),
-            Padding(
-              padding: AppStylingConstants.horizontal8,
-              child: Text(
-                AppStrings.continueWith,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface,
-                  fontWeight: FontWeight.w500,
+    return Material(
+      color: AppColors.transparent,
+      child: SizedBox(
+        height: 40,
+        child: Column(children: [
+          Row(
+            children: <Widget>[
+              Expanded(child: AppDividers.divider2(theme)),
+              Padding(
+                padding: AppStylingConstants.horizontal8,
+                child: Text(
+                  AppStrings.continueWith,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onSurface,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
-            ),
-            Expanded(child: AppDividers.divider2(theme)),
-          ],
-        ),
-        const SizedBox(height: 20),
-      ]),
+              Expanded(child: AppDividers.divider2(theme)),
+            ],
+          ),
+          const SizedBox(height: 20),
+        ]),
+      ),
     );
   }
 

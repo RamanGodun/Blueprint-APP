@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../State_management/Services/animation_controller_service.dart';
 import '../../../State_management/Helpers/Common/helpers.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../../Components/Buttons/app_buttons.dart';
 import '../../Components/Buttons/dd_buttons.dart';
 import '../../Components/Dialogs/custom_dialog.dart';
@@ -53,31 +54,32 @@ class _SettingsPageState extends State<SettingsPage>
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        leading: AppIconButtons.backIcon(context),
-        middle: Row(
-          children: [
-            AppTextWidgets.forAppBarTitle(context,
-                theme: theme, text: LocaleKeys.startScreen.tr()),
-            const Spacer(),
-          ],
+    return Material(
+      color: AppColors.transparent,
+      child: CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          leading: AppIconButtons.backIcon(context),
+          middle: Row(
+            children: [
+              AppTextWidgets.forAppBarTitle(context,
+                  theme: theme, text: LocaleKeys.startScreen.tr()),
+              const Spacer(),
+            ],
+          ),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AppIconButtons.changeLanguageButton(context),
+              AppIconButtons.dialogIconButton(context,
+                  onPressed: () => showCustomCupertinoDialog(
+                        context,
+                        const IconsGridView(),
+                      )),
+              AppIconButtons.signOutButton(context,
+                  onPressed: () => signUserOut()),
+            ],
+          ),
         ),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AppIconButtons.changeLanguageButton(context),
-            AppIconButtons.dialogIconButton(context,
-                onPressed: () => showCustomCupertinoDialog(
-                      context,
-                      const IconsGridView(),
-                    )),
-            AppIconButtons.signOutButton(context,
-                onPressed: () => signUserOut()),
-          ],
-        ),
-      ),
-      child: Material(
         child: Center(
           child: user == null
               ? Text(

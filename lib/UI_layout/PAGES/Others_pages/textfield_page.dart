@@ -29,21 +29,6 @@ class _TextFieldPageState extends State<TextFieldPage> {
     isValid = true;
   }
 
-  void validateInput() {
-    final validator = TextFieldValidationService.getValidatorFunction(
-        ValidatorType.integer, false);
-    final isValidInput = validator?.call(textController.text) == null;
-    setState(() {
-      isValid = isValidInput;
-    });
-  }
-
-  @override
-  void dispose() {
-    textController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     theme = Helpers.themeGet(context);
@@ -76,5 +61,20 @@ class _TextFieldPageState extends State<TextFieldPage> {
         ),
       ),
     );
+  }
+
+  void validateInput() {
+    final validator = TextFieldValidationService.getValidatorFunction(
+        ValidatorType.integer, false);
+    final isValidInput = validator?.call(textController.text) == null;
+    setState(() {
+      isValid = isValidInput;
+    });
+  }
+
+  @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
   }
 }

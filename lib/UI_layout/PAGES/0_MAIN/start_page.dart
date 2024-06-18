@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../State_management/Helpers/Common/helpers.dart';
+import '../../../State_management/Theme_configuration/app_colors.dart';
 import '../../Components/Buttons/icon_buttons.dart';
 import '../../Components/Buttons/app_buttons.dart';
 import '../../../State_management/Src/Generated_code/by easy_localization/locale_keys.g.dart';
@@ -31,19 +32,20 @@ class _StartPageState extends State<StartPage> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Row(
-          children: [
-            const SizedBox(width: 50),
-            AppTextWidgets.forAppBarTitle(context,
-                theme: theme, text: LocaleKeys.startScreen.tr()),
-            const Spacer(),
-          ],
+    return Material(
+      color: AppColors.transparent,
+      child: CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          middle: Row(
+            children: [
+              const SizedBox(width: 50),
+              AppTextWidgets.forAppBarTitle(context,
+                  theme: theme, text: LocaleKeys.startScreen.tr()),
+              const Spacer(),
+            ],
+          ),
+          trailing: AppIconButtons.toSettingsPageIconButton(context),
         ),
-        trailing: AppIconButtons.toSettingsPageIconButton(context),
-      ),
-      child: Material(
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 35),

@@ -36,7 +36,7 @@ abstract class AppBordersStyling {
     );
   }
 
-  static OutlineInputBorder focusedBorder2ForTF() {
+  static OutlineInputBorder focusedBorderForTF() {
     return OutlineInputBorder(
       borderSide:
           const BorderSide(color: AppColors.kAppPrimaryColor, width: 0.3),
@@ -44,7 +44,7 @@ abstract class AppBordersStyling {
     );
   }
 
-  static UnderlineInputBorder focusedBorderForTF() {
+  static UnderlineInputBorder focusedBorder1ForTF() {
     return const UnderlineInputBorder(
       borderSide: BorderSide(
         color: AppColors.kAppPrimaryColor,
@@ -67,7 +67,7 @@ abstract class AppBordersStyling {
     );
   }
 
-  static OutlineInputBorder focusedErrorBorder2ForTF() {
+  static OutlineInputBorder focusedErrorBorderForTF() {
     return OutlineInputBorder(
       borderSide:
           const BorderSide(color: AppColors.kErrorColorDark, width: 0.3),
@@ -75,7 +75,7 @@ abstract class AppBordersStyling {
     );
   }
 
-  static UnderlineInputBorder focusedErrorBorderForTF() {
+  static UnderlineInputBorder focusedErrorBorder1ForTF() {
     return const UnderlineInputBorder(
       borderSide: BorderSide(color: AppColors.kErrorColorDark, width: 0.3),
     );

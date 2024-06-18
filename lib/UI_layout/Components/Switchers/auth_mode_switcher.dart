@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../State_management/Theme_configuration/app_colors.dart';
+
 class AuthModeSwitcher extends StatelessWidget {
   final bool isLoginPage;
   final Function() changeAuthMode;
@@ -17,6 +19,7 @@ class AuthModeSwitcher extends StatelessWidget {
     final textTheme = theme.textTheme;
 
     return Material(
+      color: AppColors.transparent,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -64,93 +64,112 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
             backgroundColor: colorScheme.surface,
             child: Material(
               child: Center(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        const SizedBox(height: 50),
-                        AppImages.appLogoWidget(deviceSize, colorScheme),
-                        const SizedBox(height: 50),
-                        AppTextWidgets.greetingsText(theme, widget.isLoginPage),
-                        const SizedBox(height: 25),
-                        AppTextFormField(
-                          theme: theme,
-                          hintText: 'Enter e-mail',
-                          icon: Icons.mail,
-                          validatorType: ValidatorType.email,
-                          onChanged: (value) {
-                            textControllersValues[TextFields.email] = value;
-                            _updateButtonState();
-                          },
-                        ),
-                        AppTextFormField(
-                          theme: theme,
-                          hintText: 'Enter password',
-                          isObscureText: true,
-                          icon: Icons.lock,
-                          validatorType: ValidatorType.double,
-                          onChanged: (value) {
-                            textControllersValues[TextFields.password] = value;
-                            _updateButtonState();
-                          },
-                        ),
-                        if (!widget.isLoginPage)
+                child: GestureDetector(
+                  onTap: () => FocusScope.of(context).unfocus(),
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const SizedBox(height: 50),
+                          AppImages.appLogoWidget(deviceSize, colorScheme),
+                          const SizedBox(height: 50),
+                          AppTextWidgets.greetingsText(
+                              theme, widget.isLoginPage),
+                          const SizedBox(height: 25),
                           AppTextFormField(
                             theme: theme,
-                            hintText: 'Confirm password',
-                            isObscureText: true,
-                            icon: Icons.lock_outline,
-                            validatorType: ValidatorType.integer,
+                            hintText: 'Enter e-mail',
+                            icon: Icons.mail,
+                            validatorType: ValidatorType.email,
                             onChanged: (value) {
-                              textControllersValues[
-                                  TextFields.passwordConfirmation] = value;
+                              textControllersValues[TextFields.email] = value;
                               _updateButtonState();
                             },
+                            minLength: 6,
+                            // textAlign: TextAlign.center,
+                            isNeedPrefixIcon: true,
                           ),
-                        if (widget.isLoginPage)
-                          const ForgotPasswordTextWidget(),
-                        const SizedBox(height: 45),
-                        ValueListenableBuilder<bool>(
-                          valueListenable: isButtonActive,
-                          builder: (context, value, child) {
-                            return AppButtons.signInUp(context,
+                          const SizedBox(height: 12),
+                          AppTextFormField(
+                            theme: theme,
+                            hintText: 'Enter password',
+                            isObscureText: true,
+                            icon: Icons.lock,
+                            validatorType: ValidatorType.double,
+                            onChanged: (value) {
+                              textControllersValues[TextFields.password] =
+                                  value;
+                              _updateButtonState();
+                            },
+                            minLength: 5,
+                            // textAlign: TextAlign.center,
+                            isObscure: true,
+                            isNeedPrefixIcon: true,
+                          ),
+                          const SizedBox(height: 12),
+                          if (!widget.isLoginPage)
+                            AppTextFormField(
+                              theme: theme,
+                              hintText: 'Confirm password',
+                              isObscureText: true,
+                              icon: Icons.lock_outline,
+                              validatorType: ValidatorType.integer,
+                              onChanged: (value) {
+                                textControllersValues[
+                                    TextFields.passwordConfirmation] = value;
+                                _updateButtonState();
+                              },
+                              minLength: 5,
+                              // textAlign: TextAlign.center,
+                              isObscure: true,
+                              isNeedPrefixIcon: true,
+                            ),
+                          if (widget.isLoginPage)
+                            const ForgotPasswordTextWidget(),
+                          const SizedBox(height: 45),
+                          ValueListenableBuilder<bool>(
+                            valueListenable: isButtonActive,
+                            builder: (context, value, child) {
+                              return AppButtons.signInUp(context,
+                                  isLoginPage: widget.isLoginPage,
+                                  onPressed: value
+                                      ? () => authService.signUserInOrUp(
+                                          context,
+                                          widget.isLoginPage,
+                                          textControllersValues)
+                                      : null);
+                            },
+                          ),
+                          const SizedBox(height: 50),
+                          AppDividers.dividerForSignPage(theme),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            height: 60,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SignInTile(
+                                    onTap: _googleSignIn,
+                                    logInType: LogInType.googleSignIn),
+                                const SizedBox(width: 25),
+                                SignInTile(
+                                    onTap: () {},
+                                    logInType: LogInType.appleSignIn),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(top: 45.0, bottom: 20),
+                            child: AuthModeSwitcher(
                                 isLoginPage: widget.isLoginPage,
-                                onPressed: value
-                                    ? () => authService.signUserInOrUp(
-                                        context,
-                                        widget.isLoginPage,
-                                        textControllersValues)
-                                    : null);
-                          },
-                        ),
-                        const SizedBox(height: 50),
-                        AppDividers.dividerForSignPage(theme),
-                        const SizedBox(height: 20),
-                        SizedBox(
-                          height: 60,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SignInTile(
-                                  onTap: _googleSignIn,
-                                  logInType: LogInType.googleSignIn),
-                              const SizedBox(width: 25),
-                              SignInTile(
-                                  onTap: () {},
-                                  logInType: LogInType.appleSignIn),
-                            ],
+                                changeAuthMode: widget.changeAuthMode),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 45.0, bottom: 20),
-                          child: AuthModeSwitcher(
-                              isLoginPage: widget.isLoginPage,
-                              changeAuthMode: widget.changeAuthMode),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
