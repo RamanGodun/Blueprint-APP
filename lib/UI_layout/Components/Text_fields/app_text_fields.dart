@@ -170,6 +170,8 @@ class _AppTextFieldState extends State<AppTextField> {
                   style: AppTextStyling.forTextField(widget.theme)
                       .copyWith(fontWeight: FontWeight.w400),
                   showCursor: true,
+                  prefix:
+                      (widget.isNeedPrefix) ? Icon(widget.prefixIcon) : null,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
