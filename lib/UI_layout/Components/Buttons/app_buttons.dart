@@ -94,7 +94,7 @@ class AppButtons {
     BuildContext context, {
     required void Function()? onPressed,
   }) {
-    return AppButtonsStyling.inIOSStyle(
+    return AppButtonsStyling.forElevatedButton(
       context,
       onPressed: onPressed,
       buttonText: "Submit",

@@ -103,7 +103,7 @@ class _SubCategoriesOperationDialogState
               const SizedBox(height: 8),
               const SizedBox(width: 10),
               AppTextField(
-                controller: widget.nameController,
+                // controller: widget.nameController,
                 hintText: (widget.selectedSubCategory != null)
                     ? widget.selectedSubCategory!.title
                     : AppStrings.enterSubCategoryName,

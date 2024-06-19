@@ -22,6 +22,7 @@ class AppTextFormField extends StatefulWidget {
     this.onSaved,
     /* general settings */
     this.textAlign = TextAlign.start,
+    this.textSize = 17,
     this.heightOfField = 55,
     this.widthOfField = double.infinity,
     this.maxLength = 24,
@@ -29,9 +30,10 @@ class AppTextFormField extends StatefulWidget {
     this.borderWidth = 1.0,
     this.maxLines = 1,
     this.minLength = 3,
-    this.icon,
-    this.prefix,
-    this.textSize,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.prefixWidget,
+    this.suffixWidget,
     /* */
     this.hintText = "Hint text",
     this.prefixText = "",
@@ -57,14 +59,13 @@ class AppTextFormField extends StatefulWidget {
   final TextInputType? keyboardType;
 
   final String? hintText, obscuringCharacter, suffixText, labelText, prefixText;
-  final IconData? icon;
-  final Widget? prefix;
+  final IconData? prefixIcon, suffixIcon;
+  final Widget? prefixWidget, suffixWidget;
 
   final ThemeData theme;
   final TextAlign textAlign;
-  final double? textSize;
   final int maxLength, maxLines, minLength;
-  final double heightOfField, widthOfField, borderRadius, borderWidth;
+  final double heightOfField, widthOfField, borderRadius, borderWidth, textSize;
   final bool isObscureText,
       isReadOnly,
       isAllBorder,
@@ -188,17 +189,17 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
             prefixIcon: (widget.isNeedPrefixIcon == true)
                 ? Padding(
                     padding: const EdgeInsets.only(left: 20, right: 40),
-                    child:
-                        Icon(widget.icon, size: AppStylingConstants.iconSize),
+                    child: Icon(widget.prefixIcon,
+                        size: AppStylingConstants.iconSize),
                   )
                 : null,
-            prefix: widget.prefix,
+            prefix: widget.prefixWidget,
             prefixText: widget.prefixText,
             prefixStyle: textStyle,
             /* 
           SUFFIX */
             suffixIcon: (widget.isNeedSuffixIcon == true)
-                ? Icon(widget.icon)
+                ? Icon(widget.suffixIcon)
                 : GestureDetector(
                     onTap: () {
                       setState(() {
@@ -263,5 +264,6 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
     _focusNode.dispose();
     super.dispose();
   }
+
 /* */
 }

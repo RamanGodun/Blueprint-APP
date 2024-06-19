@@ -49,8 +49,8 @@ abstract class AppTextStyling {
 
   // Стиль тексту для текстових полів
   static TextStyle forTextField(ThemeData theme) {
-    TextStyle textStyle = theme.textTheme.displaySmall!.copyWith(
-      fontSize: 11.5,
+    TextStyle textStyle = theme.textTheme.displayMedium!.copyWith(
+      fontSize: 17.5,
       fontStyle: FontStyle.italic,
       fontWeight: FontWeight.w300,
     );

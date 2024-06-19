@@ -66,7 +66,7 @@ class _ApiKeyInputPageState extends State<ApiKeyInputPage> {
                 children: [
                   AppTextField(
                     theme: theme,
-                    controller: _apiKeyController,
+                    // controller: _apiKeyController,
                     hintText: 'Enter API Key here',
                     isValid: isValid,
                   ),

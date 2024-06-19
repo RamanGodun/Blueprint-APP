@@ -110,7 +110,7 @@ class _NewItemDialogState extends State<NewItemDialog> {
                     const SizedBox(width: 10),
                     Expanded(
                       child: AppTextField(
-                        controller: widget.nameController,
+                        // controller: widget.nameController,
                         hintText:
                             (widget.isNewPurchaseOnBaseOfBlueprint != null)
                                 ? widget.item!.name
@@ -138,7 +138,7 @@ class _NewItemDialogState extends State<NewItemDialog> {
                     SizedBox(
                       width: 38,
                       child: AppTextField(
-                        controller: widget.quantityController,
+                        // controller: widget.quantityController,
                         hintText:
                             (widget.isNewPurchaseOnBaseOfBlueprint != null)
                                 ? widget.item!.quantity.toString()
@@ -156,7 +156,7 @@ class _NewItemDialogState extends State<NewItemDialog> {
                     SizedBox(
                       width: 30,
                       child: AppTextField(
-                        controller: widget.measurementUnitController,
+                        // controller: widget.measurementUnitController,
                         hintText: "-",
                         theme: theme,
                         isValid: isValid,
@@ -184,7 +184,7 @@ class _NewItemDialogState extends State<NewItemDialog> {
                     ),
                     Expanded(
                       child: AppTextField(
-                        controller: widget.amountController,
+                        // controller: widget.amountController,
                         hintText:
                             (widget.isNewPurchaseOnBaseOfBlueprint != null)
                                 ? Helpers().formatAmount(widget.item!.amount)

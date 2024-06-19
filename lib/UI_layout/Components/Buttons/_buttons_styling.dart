@@ -130,6 +130,7 @@ abstract class AppButtonsStyling {
     return Material(
       color: AppColors.transparent,
       child: SizedBox(
+        width: double.infinity,
         height: AppStylingConstants.buttonsHeight,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(

@@ -79,57 +79,19 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                           AppTextWidgets.greetingsText(
                               theme, widget.isLoginPage),
                           const SizedBox(height: 25),
-                          AppTextFormField(
-                            theme: theme,
-                            hintText: 'Enter e-mail',
-                            icon: Icons.mail,
-                            validatorType: ValidatorType.email,
-                            onChanged: (value) {
-                              textControllersValues[TextFields.email] = value;
-                              _updateButtonState();
-                            },
-                            minLength: 6,
-                            // textAlign: TextAlign.center,
-                            isNeedPrefixIcon: true,
-                          ),
+
+                          /* TEXT FORM FIELDS */
+                          _emailTextFormFieldWidget(),
                           const SizedBox(height: 12),
-                          AppTextFormField(
-                            theme: theme,
-                            hintText: 'Enter password',
-                            isObscureText: true,
-                            icon: Icons.lock,
-                            validatorType: ValidatorType.double,
-                            onChanged: (value) {
-                              textControllersValues[TextFields.password] =
-                                  value;
-                              _updateButtonState();
-                            },
-                            minLength: 5,
-                            // textAlign: TextAlign.center,
-                            isObscure: true,
-                            isNeedPrefixIcon: true,
-                          ),
+                          _passwordTextFormFieldWidget(),
                           const SizedBox(height: 12),
                           if (!widget.isLoginPage)
-                            AppTextFormField(
-                              theme: theme,
-                              hintText: 'Confirm password',
-                              isObscureText: true,
-                              icon: Icons.lock_outline,
-                              validatorType: ValidatorType.integer,
-                              onChanged: (value) {
-                                textControllersValues[
-                                    TextFields.passwordConfirmation] = value;
-                                _updateButtonState();
-                              },
-                              minLength: 5,
-                              // textAlign: TextAlign.center,
-                              isObscure: true,
-                              isNeedPrefixIcon: true,
-                            ),
+                            _passwordConfirmationTextFormFieldWidget(),
                           if (widget.isLoginPage)
                             const ForgotPasswordTextWidget(),
                           const SizedBox(height: 45),
+
+                          /* SIGN IN/UP BUTTON */
                           ValueListenableBuilder<bool>(
                             valueListenable: isButtonActive,
                             builder: (context, value, child) {
@@ -137,15 +99,20 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                                   isLoginPage: widget.isLoginPage,
                                   onPressed: value
                                       ? () => authService.signUserInOrUp(
-                                          context,
-                                          widget.isLoginPage,
-                                          textControllersValues)
+                                            context,
+                                            widget.isLoginPage,
+                                            textControllersValues,
+                                          )
                                       : null);
                             },
                           ),
+
+                          /* DIVIDER */
                           const SizedBox(height: 50),
                           AppDividers.dividerForSignPage(theme),
                           const SizedBox(height: 20),
+
+                          /* ALTERNATIVE SIGNING */
                           SizedBox(
                             height: 60,
                             child: Row(
@@ -161,6 +128,8 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                               ],
                             ),
                           ),
+
+                          /* PAGE MODE SWITCHER */
                           Padding(
                             padding:
                                 const EdgeInsets.only(top: 45.0, bottom: 20),
@@ -168,6 +137,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
                                 isLoginPage: widget.isLoginPage,
                                 changeAuthMode: widget.changeAuthMode),
                           ),
+                          /* */
                         ],
                       ),
                     ),
@@ -178,6 +148,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
           );
   }
 
+  /* USED METHODS */
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -194,4 +165,57 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   Future<void> _googleSignIn() async {
     await authService.signInWithGoogle();
   }
+
+  /* TEXT FORM FIELD WIDGETS */
+  Widget _emailTextFormFieldWidget() {
+    return AppTextFormField(
+      theme: theme,
+      hintText: 'Enter e-mail',
+      prefixIcon: Icons.mail,
+      validatorType: ValidatorType.email,
+      onChanged: (value) {
+        textControllersValues[TextFields.email] = value;
+        _updateButtonState();
+      },
+      minLength: 6,
+      isNeedPrefixIcon: true,
+    );
+  }
+
+  Widget _passwordTextFormFieldWidget() {
+    return AppTextFormField(
+      theme: theme,
+      hintText: 'Enter password',
+      isObscureText: true,
+      prefixIcon: Icons.lock,
+      validatorType: ValidatorType.double,
+      onChanged: (value) {
+        textControllersValues[TextFields.password] = value;
+        _updateButtonState();
+      },
+      minLength: 5,
+      isObscure: true,
+      isNeedPrefixIcon: true,
+    );
+  }
+
+  Widget _passwordConfirmationTextFormFieldWidget() {
+    return AppTextFormField(
+      theme: theme,
+      hintText: 'Confirm password',
+      isObscureText: true,
+      prefixIcon: Icons.lock_outline,
+      validatorType: ValidatorType.integer,
+      onChanged: (value) {
+        textControllersValues[TextFields.passwordConfirmation] = value;
+        _updateButtonState();
+      },
+      minLength: 5,
+      isObscure: true,
+      isNeedPrefixIcon: true,
+    );
+  }
+/*
+ 
+ */
 }

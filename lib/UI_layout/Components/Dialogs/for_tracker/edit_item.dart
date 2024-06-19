@@ -109,7 +109,7 @@ class _EditItemDialogState extends State<EditItemDialog> {
                   const SizedBox(width: 10),
                   Expanded(
                     child: AppTextField(
-                      controller: widget.nameController,
+                      // controller: widget.nameController,
                       hintText: widget.item.name,
                       theme: theme,
                       isValid: isValid,
@@ -129,7 +129,7 @@ class _EditItemDialogState extends State<EditItemDialog> {
                   SizedBox(
                     width: 38,
                     child: AppTextField(
-                      controller: widget.quantityController,
+                      // controller: widget.quantityController,
                       hintText: widget.item.quantity.toString(),
                       theme: theme,
                       isValid: isValid,
@@ -143,7 +143,7 @@ class _EditItemDialogState extends State<EditItemDialog> {
                   const SizedBox(width: 4),
                   Expanded(
                     child: AppTextField(
-                      controller: widget.measurementUnitController,
+                      // controller: widget.measurementUnitController,
                       hintText: widget.item.measurementUnit,
                       theme: theme,
                       isValid: isValid,
@@ -172,7 +172,7 @@ class _EditItemDialogState extends State<EditItemDialog> {
                   ),
                   Expanded(
                       child: AppTextField(
-                    controller: widget.amountController,
+                    // controller: widget.amountController,
                     hintText: widget.item.amount.toString(),
                     theme: theme,
                     isValid: isValid,

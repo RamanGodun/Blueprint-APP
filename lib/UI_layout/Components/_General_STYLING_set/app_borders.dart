@@ -93,23 +93,29 @@ abstract class AppBordersStyling {
     return Border(
       bottom: BorderSide(
         color: isValid ? AppColors.kAppPrimaryColor : AppColors.kErrorColor,
-        width: 0.15,
+        width: 0.25,
       ),
     );
   }
 
   // OutlineInputBorder для текстового поля з фокусом
-  static OutlineInputBorder focusedBorderForTextField(ThemeData theme) {
+  static OutlineInputBorder focusedBorderForTextField(
+    ThemeData theme, {
+    bool isValid = true, // додавання значення за замовчуванням
+  }) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(9.0),
       borderSide: BorderSide(
-        color: theme.colorScheme.primary,
+        color: isValid ? theme.colorScheme.primary : AppColors.kErrorColor,
       ),
     );
   }
 
   // OutlineInputBorder для активного текстового поля
-  static OutlineInputBorder enabledBorderForTextField(ThemeData theme) {
+  static OutlineInputBorder enabledBorderForTextField(
+    ThemeData theme, {
+    bool isValid = true, // додавання значення за замовчуванням
+  }) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(9.0),
       borderSide: BorderSide(

@@ -33,4 +33,10 @@ enum DialogButtonType {
   cancelButtonInAndroidType,
 }
 
-enum TextFields { email, password, passwordConfirmation }
+enum TextFields { email, password, passwordConfirmation, name }
+
+enum WidgetType {
+  textField,
+  textFormField,
+  cupertinoStyle,
+}
