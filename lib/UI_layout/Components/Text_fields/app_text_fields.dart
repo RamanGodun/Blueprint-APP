@@ -212,10 +212,19 @@ class _AppTextFieldState extends State<AppTextField> {
   }
 
   Widget _buildTextField(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 3.0),
-      child: SizedBox(
-        height: widget.heightOfField,
+    final colorScheme = widget.theme.colorScheme;
+    // final textStyle =
+    //     AppTextStyling.forTextFormField(widget.theme, widget.textSize);
+
+    return Container(
+      color: AppColors.transparent,
+      height: widget.heightOfField,
+      width: widget.widthOfField,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScope.of(context).requestFocus(FocusNode());
+        },
         child: TextField(
           controller: _controller,
           focusNode: _focusNode,
@@ -252,6 +261,13 @@ class _AppTextFieldState extends State<AppTextField> {
                     color: widget.theme.colorScheme.onSurface.withOpacity(0.5))
                 : null,
             errorText: errorText,
+            counterText: (!widget.showCounterText || _controller.text.isEmpty)
+                ? ""
+                : "${_controller.text.length}/${widget.maxLength}",
+            counterStyle: AppTextStyling.label(widget.theme).copyWith(
+                color: (_controller.text.length < widget.minLength)
+                    ? AppColors.kErrorColor
+                    : colorScheme.onSurface),
           ),
           maxLength: widget.maxLength,
           maxLines: widget.maxLines,
